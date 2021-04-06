@@ -14,20 +14,14 @@ import Business.Enterprise.EnterpriseDirectory;
  * @author MyPC1
  */
 public class Network {
+
     private String name;
     private EnterpriseDirectory enterpriseDirectory;
-         private ChildDirectory directory;
-         private AdopterDirectory adirectory;
-//
-//    public ChildDirectory getDirectory() {
-//        return directory;
-//    }
-    
-    public Network(){
-        enterpriseDirectory=new EnterpriseDirectory();
-     //  directory = new ChildDirectory();
-       //adirectory = new AdopterDirectory();
+
+    public Network() {
+        enterpriseDirectory = new EnterpriseDirectory();
     }
+
     public String getName() {
         return name;
     }
@@ -39,19 +33,10 @@ public class Network {
     public EnterpriseDirectory getEnterpriseDirectory() {
         return enterpriseDirectory;
     }
-//
-//     public ChildDirectory getDirectory() {
-//        return directory;
-//    }
-//
-//    public AdopterDirectory getAdirectory() {
-//        return adirectory;
-//    }
-//    
-     
+
     @Override
-    public String toString(){
+    public String toString() {
         return name;
     }
-    
+
 }

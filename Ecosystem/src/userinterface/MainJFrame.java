@@ -36,7 +36,6 @@ public class MainJFrame extends javax.swing.JFrame {
         directory = dB4OUtil.retrieveDirectory();
         udirectory = dB4OUtil.retrieveUserDirectory();
          this.setSize(1680, 1050);
-     //   this.directory = new ChildDirectory();
     }
 
     /**

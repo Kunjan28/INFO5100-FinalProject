@@ -4,17 +4,10 @@
  */
 package Business.Organization;
 
-import Business.Child.Child;
-import Business.Child.ChildDirectory;
-import Business.Organization.Adoption.AdopterOrganization;
-import Business.Organization.Adoption.AdoptionOrganization;
-import Business.Organization.Adoption.BackgroundAndCriminalCheckOrganization;
-import Business.Organization.Adoption.FinanceCheckOrganization;
-import Business.Organization.Organization.Type;
-import Business.Organization.Orphanage.ChildCareOrganization;
-import Business.Organization.Orphanage.ChildRegistrationOrganization;
-import Business.Organization.Orphanage.FinanceOrphanageOrganization;
 
+
+
+import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
 /**
@@ -47,29 +40,15 @@ public class OrganizationDirectory {
             organization = new PharmacistOrganization();
             organizationList.add(organization);
         }
-        
-        
-        
-   //-----------Orphanage Organizations----------------
-        
-        
         else if (type.getValue().equals(Type.ChildCare.getValue())){
             organization = new ChildCareOrganization();
-            
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ChildRegistration.getValue())){
             organization = new ChildRegistrationOrganization();
-            
-            organizationList.add(organization);
-          //  organization.getChildDirectory();
-        }
-        else if (type.getValue().equals(Type.FinanceOrphanage.getValue())){
-            organization = new FinanceOrphanageOrganization();
             organizationList.add(organization);
         }
-        
-  //-----------Adoption Organizations----------------   
+       
         
         else if (type.getValue().equals(Type.CriminalCheck.getValue())){
             organization = new BackgroundAndCriminalCheckOrganization();

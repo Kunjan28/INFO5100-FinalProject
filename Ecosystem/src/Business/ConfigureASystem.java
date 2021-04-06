@@ -1,5 +1,6 @@
 package Business;
 
+
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
 import Business.Employee.Employee;
@@ -30,14 +31,15 @@ public class ConfigureASystem {
         return system;
     }
     
-    public static ChildDirectory configureDirectory(){
+        public static ChildDirectory configureDirectory(){
         ChildDirectory directory = ChildDirectory.getInstance();
         return directory;
     }
     
-    //returns user directory.
+    
     public static AdopterDirectory configureUserDirectory(){
         AdopterDirectory directory = AdopterDirectory.getInstance();
         return directory;
     }
+    
 }
