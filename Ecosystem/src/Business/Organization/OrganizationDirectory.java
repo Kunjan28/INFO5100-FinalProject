@@ -7,6 +7,7 @@ package Business.Organization;
 
 
 
+import Business.Enterprise.Enterprise;
 import Business.Organization.Organization.Type;
 import java.util.ArrayList;
 
@@ -69,5 +70,14 @@ public class OrganizationDirectory {
         return organization;
     
 }
+    
+     public boolean isUnique(String name){
+        for(Organization organization : organizationList){
+            if(name.equalsIgnoreCase(organization.getName())){
+                return false;
+            }
+        }
+        return true;
+    }
     
 }
