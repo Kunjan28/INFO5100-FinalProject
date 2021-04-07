@@ -25,4 +25,9 @@ public class ChildRegistrationRole extends Role{
         return null;
        // return new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory); // this would return the JPanel of the childregisteration
     }
+    
+    @Override
+    public String toString(){
+        return (RoleType.ChildRegistration.getValue());
+    }
 }

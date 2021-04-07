@@ -6,6 +6,7 @@
 package Business.Enterprise;
 
 
+import Business.Network.Network;
 import java.util.ArrayList;
 
 /**
@@ -48,5 +49,14 @@ public class EnterpriseDirectory {
             
         }
         return enterprise;
+    }
+    
+    public boolean isUnique(String name){
+        for(Enterprise enterprise : enterpriseList){
+            if(name.equalsIgnoreCase(enterprise.getName())){
+                return false;
+            }
+        }
+        return true;
     }
 }

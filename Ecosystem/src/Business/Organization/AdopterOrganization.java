@@ -16,13 +16,20 @@ import java.util.ArrayList;
  * 
  */
 public class AdopterOrganization extends Organization{
-    public AdopterOrganization() {
-         super(Organization.Type.Adopter.getValue());
+    String name;
+    public AdopterOrganization(String name) {
+        super(name);
+        this.name=name;
+    
     }
     @Override
     public ArrayList<Role> getSupportedRole() {
         ArrayList<Role> roles = new ArrayList();
         roles.add(new AdopterRole());
         return roles;
+    }
+    @Override
+    public Type getType() {
+        return  Organization.Type.Adopter;
     }
 }

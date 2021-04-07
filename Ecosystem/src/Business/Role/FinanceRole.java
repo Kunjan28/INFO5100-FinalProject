@@ -27,4 +27,9 @@ public class FinanceRole extends Role{
         return null;
         //return new FinanceCheckWorkAreaJPanel(userProcessContainer,account, organization, enterprise,  business,  udirectory);
     }
+    
+    @Override
+    public String toString(){
+        return (RoleType.FinanceCheck.getValue());
+    }
 }

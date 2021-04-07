@@ -10,25 +10,24 @@ import Business.Child.ChildDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
-
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-
+import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 
 /**
  *
  * @author Kunjan
  */
-public class AdopterRole extends Role {
+public class AdoptionAdminRole extends Role{
+    
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-       
-        return null;
-        //return new AdopterRegistrationandRequestJPanel(userProcessContainer, account, enterprise,business, organization, udirectory, directory);
+        return new AdminWorkAreaJPanel(userProcessContainer, enterprise,business);
     }
     
     @Override
     public String toString(){
-        return (RoleType.Adopter.getValue());
+        return (RoleType.AdoptionAdmin.getValue());
     }
+
 }

@@ -24,5 +24,10 @@ public class LabAssistantRole extends Role {
         return null;
 //return new LabAssistantWorkAreaJPanel(userProcessContainer, account, organization, business);
     }
+    
+    @Override
+    public String toString(){
+        return (RoleType.LabAssistant.getValue());
+    }
      
 }
