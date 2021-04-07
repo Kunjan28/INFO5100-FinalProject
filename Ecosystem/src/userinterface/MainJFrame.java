@@ -33,6 +33,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         system = dB4OUtil.retrieveSystem();
+        EcoSystem.setInstance(system);
         directory = dB4OUtil.retrieveDirectory();
         udirectory = dB4OUtil.retrieveUserDirectory();
          this.setSize(1680, 1050);
