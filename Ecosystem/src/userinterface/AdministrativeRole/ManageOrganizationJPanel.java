@@ -40,20 +40,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         //populateCombos();
          organizationJComboBox.removeAllItems();
         if(enterprise instanceof HospitalEnterprise){
-             organizationJComboBox.addItem(Type.Doctor.getValue());
-               organizationJComboBox.addItem(Type.Lab.getValue());
-               organizationJComboBox.addItem(Type.Pharmacist.getValue());
+             organizationJComboBox.addItem(Type.Doctor);
+               organizationJComboBox.addItem(Type.Lab);
+               organizationJComboBox.addItem(Type.Pharmacist);
         }
         if(enterprise instanceof FosterCareEnterprise){
-          organizationJComboBox.addItem(Type.ChildCare.getValue());
-               organizationJComboBox.addItem(Type.ChildRegistration.getValue());
-               organizationJComboBox.addItem(Type.FinanceOrphanage.getValue());  
+          organizationJComboBox.addItem(Type.ChildCare);
+               organizationJComboBox.addItem(Type.ChildRegistration);
+               organizationJComboBox.addItem(Type.FinanceOrphanage);  
         }
         if(enterprise instanceof AdoptionEnterprise){
-           organizationJComboBox.addItem(Type.Adopter.getValue());
-               organizationJComboBox.addItem(Type.Adoption.getValue());
-               organizationJComboBox.addItem(Type.FinanceCheck.getValue()); 
-                 organizationJComboBox.addItem(Type.CriminalCheck.getValue()); 
+           organizationJComboBox.addItem(Type.Adopter);
+               organizationJComboBox.addItem(Type.Adoption);
+               organizationJComboBox.addItem(Type.FinanceCheck); 
+                 organizationJComboBox.addItem(Type.CriminalCheck); 
         }
     }
     
@@ -165,21 +165,26 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                         .addGap(131, 131, 131)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 548, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(230, 230, 230)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(300, 300, 300)
                         .addComponent(addJButton, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backJButton))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(247, 247, 247)
-                        .addComponent(jLabel2)
-                        .addGap(101, 101, 101)
-                        .addComponent(orgInstanceName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(230, 230, 230)
+                                .addComponent(jLabel1))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(247, 247, 247)
+                                .addComponent(jLabel2)))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(orgInstanceName)
+                                .addGap(51, 51, 51))
+                            .addComponent(organizationJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(236, 236, 236))
         );
         layout.setVerticalGroup(
