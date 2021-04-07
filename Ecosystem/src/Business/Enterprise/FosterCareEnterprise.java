@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class FosterCareEnterprise extends Enterprise{
 
     public FosterCareEnterprise(String name) {
-        super(name, EnterpriseType.FosterCare); //Enterprise type is orphanage
+        super(name, EnterpriseType.FosterCare); 
     }
 
     @Override

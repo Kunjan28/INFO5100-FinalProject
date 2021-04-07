@@ -15,9 +15,10 @@ import java.util.ArrayList;
  * @author Kunjan
  */
 public class BackgroundAndCriminalCheckOrganization extends Organization{
-
-    public BackgroundAndCriminalCheckOrganization() {
-        super(Organization.Type.CriminalCheck.getValue());
+    String name;
+    public BackgroundAndCriminalCheckOrganization(String name) {
+        super(name);
+        this.name=name;
     }
     
      @Override
@@ -25,6 +26,11 @@ public class BackgroundAndCriminalCheckOrganization extends Organization{
         ArrayList<Role> roles = new ArrayList();
         roles.add(new CriminalCheckRole());
         return roles;
+    }
+    
+    @Override
+    public Type getType() {
+        return  Organization.Type.CriminalCheck;
     }
      
     

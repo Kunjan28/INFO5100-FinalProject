@@ -23,7 +23,7 @@ public abstract class Role {
         Doctor("Doctor"),
         LabAssistant("Lab Assistant"),
         ChildCare("Child Care"),
-        OrphanageAdmin("Orphanage Admin Organization"),
+        FosterCare("Foster Care Admin"),
         ChildRegistration("Child Registeration Organization"), 
         FinanceOrphanage ("Finance Organization"),
         AdoptionAdmin("Adoption Admin Organization"), 

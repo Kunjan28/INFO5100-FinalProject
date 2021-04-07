@@ -17,10 +17,10 @@ import java.util.ArrayList;
  */
 public class ChildCareOrganization extends Organization {
 
-  
-    public ChildCareOrganization() {
-       super(Organization.Type.ChildCare.getValue());
-      
+  String name;
+    public ChildCareOrganization(String name) {
+        super(name);
+        this.name=name;
     }
 
     @Override
@@ -29,6 +29,12 @@ public class ChildCareOrganization extends Organization {
         roles.add(new ChildCareRole());
         return roles;
     }
+    
+     @Override
+    public Type getType() {
+        return  Organization.Type.ChildCare;
+    }
+     
     
   
      

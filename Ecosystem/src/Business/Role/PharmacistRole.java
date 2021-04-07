@@ -27,4 +27,9 @@ public class PharmacistRole extends Role{
         //return new PharmacistWorkAreaJPanel(userProcessContainer, account, (PharmacistOrganization)organization,enterprise, business,directory);
     }
     
+    @Override
+    public String toString(){
+        return (RoleType.Pharmacist.getValue());
+    }
+    
 }

@@ -28,5 +28,9 @@ public class CriminalCheckRole extends Role {
         return null;
         //return new BackgroundAndCriminalCheckWorkAreaJPanel(userProcessContainer,account, organization, enterprise,  business,  udirectory);
     }
+    @Override
+    public String toString(){
+        return (RoleType.CriminalCheck.getValue());
+    }
 
 }

@@ -7,10 +7,12 @@ package Business;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -56,11 +58,42 @@ public class EcoSystem extends Organization{
     }
     
     public boolean checkIfUserIsUnique(String userName){
-        if(!this.getUserAccountDirectory().checkIfUsernameIsUnique(userName)){
-            return false;
+         if(this.business!=null){
+           if(business.getNetworkList()!=null && business.getNetworkList().size()>0){
+               for (Network network : business.getNetworkList()) {
+                   if(network.getEnterpriseDirectory()!=null && network.getEnterpriseDirectory().getEnterpriseList()!=null && network.getEnterpriseDirectory().getEnterpriseList().size()>0){
+                       
+                   }
+               }
+           }
         }
-        for(Network network:networkList){
-            
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
+                    if (ua.getUsername().equalsIgnoreCase(userName)) {
+                        return false;
+                    }
+                }
+                for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                    for (UserAccount ua : organization.getUserAccountDirectory().getUserAccountList()) {
+                        if (ua.getUsername().equalsIgnoreCase(userName)) {
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        return true;
+        
+       
+    }
+    
+    public boolean isUnique(String name){
+        for(Network network : networkList){
+            if(network.getName().equalsIgnoreCase(name)){
+                return false;
+            }
         }
         return true;
     }

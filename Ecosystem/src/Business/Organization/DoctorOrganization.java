@@ -13,9 +13,10 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class DoctorOrganization extends Organization{
-
-    public DoctorOrganization() {
-        super(Organization.Type.Doctor.getValue());
+    String name;
+    public DoctorOrganization(String name) {
+        super(name);
+        this.name=name;
     }
     
     @Override
@@ -24,5 +25,12 @@ public class DoctorOrganization extends Organization{
         roles.add(new DoctorRole());
         return roles;
     }
+
+    @Override
+    public Type getType() {
+        return Organization.Type.Doctor;
+    }
+    
+    
      
 }

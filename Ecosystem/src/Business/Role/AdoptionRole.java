@@ -26,8 +26,11 @@ public class AdoptionRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
        return null;
-        //return new AdoptionCheckWorkAreaJPanel(userProcessContainer, account, organization, enterprise,business, udirectory);
+       // return new AdoptionCheckWorkAreaJPanel(userProcessContainer, account, organization, enterprise,business, udirectory);
     }
-    
+    @Override
+    public String toString(){
+        return (RoleType.Adoption.getValue());
+    }
     
 }

@@ -17,9 +17,11 @@ import java.util.ArrayList;
 public class ChildRegistrationOrganization extends Organization {
 
     ChildDirectory directory;
+    String name;
 
-    public ChildRegistrationOrganization() {
-        super(Organization.Type.ChildRegistration.getValue());
+    public ChildRegistrationOrganization(String name) {
+        super(name);
+        this.name=name;
     }
 
     @Override
@@ -27,6 +29,11 @@ public class ChildRegistrationOrganization extends Organization {
         ArrayList<Role> roles = new ArrayList();
         roles.add(new ChildRegistrationRole());
         return roles;
+    }
+    
+    @Override
+    public Type getType() {
+        return  Organization.Type.ChildRegistration;
     }
 
 }

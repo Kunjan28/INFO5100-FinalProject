@@ -15,9 +15,10 @@ import java.util.ArrayList;
  * @author Kunjan
  */
 public class AdoptionOrganization extends Organization{
-
-    public AdoptionOrganization() {
-         super(Organization.Type.Adoption.getValue());
+    String name;
+    public AdoptionOrganization(String name) {
+        super(name);
+        this.name=name;
     
     }
     @Override
@@ -26,7 +27,10 @@ public class AdoptionOrganization extends Organization{
         roles.add(new AdoptionRole());
         return roles;
     }
-    
+    @Override
+    public Type getType() {
+        return  Organization.Type.Adoption;
+    }
 }
 
 

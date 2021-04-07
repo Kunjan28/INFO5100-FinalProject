@@ -26,44 +26,44 @@ public class OrganizationDirectory {
         return organizationList;
     }
     
-    public Organization createOrganization(Type type){
+    public Organization createOrganization(String name,Type type){
         Organization organization = null;
         if (type.getValue().equals(Type.Doctor.getValue())){
-            organization = new DoctorOrganization();
+            organization = new DoctorOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Lab.getValue())){
-            organization = new LabOrganization();
+            organization = new LabOrganization(name);
             organizationList.add(organization);
         }
          else if (type.getValue().equals(Type.Pharmacist.getValue())){
-            organization = new PharmacistOrganization();
+            organization = new PharmacistOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ChildCare.getValue())){
-            organization = new ChildCareOrganization();
+            organization = new ChildCareOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.ChildRegistration.getValue())){
-            organization = new ChildRegistrationOrganization();
+            organization = new ChildRegistrationOrganization(name);
             organizationList.add(organization);
         }
        
         
         else if (type.getValue().equals(Type.CriminalCheck.getValue())){
-            organization = new BackgroundAndCriminalCheckOrganization();
+            organization = new BackgroundAndCriminalCheckOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.FinanceCheck.getValue())){
-            organization = new FinanceCheckOrganization();
+            organization = new FinanceCheckOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Adoption.getValue())){
-            organization = new AdoptionOrganization();
+            organization = new AdoptionOrganization(name);
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.Adopter.getValue())){
-            organization = new AdopterOrganization();
+            organization = new AdopterOrganization(name);
             organizationList.add(organization);
         }
         return organization;

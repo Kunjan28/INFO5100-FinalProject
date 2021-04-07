@@ -25,6 +25,7 @@ public abstract class Organization {
   //  private ChildDirectory directory; // Added the child directory as the child data is manipulated at the organization level
     private int organizationID;
     private static int counter=0;
+    private Type type;
     
      public enum Type{
         Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacy Organization"),
@@ -77,19 +78,20 @@ public abstract class Organization {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-
-//    public ChildDirectory getChildDirectory() { //Child directory getter
-//        return directory;
-//    }
-
-   
-
-   
-    
+ 
     @Override
     public String toString() {
         return name;
     }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+    
     
     
 }

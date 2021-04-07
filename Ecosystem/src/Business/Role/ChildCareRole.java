@@ -26,5 +26,10 @@ public class ChildCareRole extends Role{
        return null;
 //return new ChildCareWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business, directory, udirectory);
     }
+    
+    @Override
+    public String toString(){
+        return (RoleType.ChildCare.getValue());
+    }
 
 }

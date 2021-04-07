@@ -13,9 +13,10 @@ import java.util.ArrayList;
  * @author raunak
  */
 public class LabOrganization extends Organization{
-
-    public LabOrganization() {
-        super(Organization.Type.Lab.getValue());
+    String name;
+    public LabOrganization(String name) {
+        super(name);
+        this.name=name;
     }
 
     @Override
@@ -24,7 +25,13 @@ public class LabOrganization extends Organization{
         roles.add(new LabAssistantRole());
         return roles;
     }
+
+    @Override
+    public Type getType() {
+        return  Organization.Type.Lab;
+    }
      
+    
    
     
     
