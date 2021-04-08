@@ -12,11 +12,12 @@ import Business.Child.ChildDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
-//import Business.Organization.Orphanage.ChildCareOrganization;
-//import Business.Organization.Orphanage.ChildRegistrationOrganization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.ChildCareAdoptionWorkRequest;
+import Business.WorkQueue.ChildCareWorkRequest;
 //import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 //import Business.WorkQueue.ChildCareWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -35,18 +36,18 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form ChildCareWorkAreaJPanel
      */
     JPanel userProcessContainer;
-     Enterprise enterprise;
-     Organization organization;
-     UserAccount account;
-     ChildCareOrganization childCareOrganization;
+    Enterprise enterprise;
+    Organization organization;
+    UserAccount account;
+    ChildCareOrganization childCareOrganization;
     ChildDirectory directory;
     Child child;
     EcoSystem business;
     ChildCareWorkAreaJPanel panel;
-     AdopterDirectory udirectory;
-     Adopter adopter;
-      Role roler;
-         Network network;
+    AdopterDirectory udirectory;
+    Adopter adopter;
+    Role roler;
+    Network network;
       
     public ChildCareWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
      initComponents();
@@ -87,7 +88,7 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
 
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        enterpriseLabel = new javax.swing.JLabel();
+        lblOrganization = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         orgLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -98,39 +99,46 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
         childTable = new javax.swing.JTable();
         viewChildBtn = new javax.swing.JButton();
         processBtn = new javax.swing.JButton();
-        assignBtn = new javax.swing.JButton();
-        deleteChildBtn = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        lblEnterprise = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
 
         jButton4.setText("jButton4");
 
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblOrganization.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblOrganization.setText("Organization :");
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 127, 30));
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 158, 30));
 
         orgLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         orgLabel.setText("<value>");
+        add(orgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 133, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Work Queue");
+        jLabel1.setText("Child Health Details");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 113, 130, 24));
 
         workTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Child ID", "Status"
+                "Message", "Doctor Name", "CC Admin", "Child ID", "Status", "Child Name"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -138,13 +146,12 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(workTable);
-        if (workTable.getColumnModel().getColumnCount() > 0) {
-            workTable.getColumnModel().getColumn(2).setResizable(false);
-            workTable.getColumnModel().getColumn(4).setResizable(false);
-        }
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 143, 560, 90));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Child details");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 360, 93, 24));
 
         childTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -171,12 +178,15 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
             childTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 402, 523, 89));
+
         viewChildBtn.setText("View Child Details");
         viewChildBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewChildBtnActionPerformed(evt);
             }
         });
+        add(viewChildBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 143, 33));
 
         processBtn.setText("Process Request");
         processBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -184,31 +194,26 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
                 processBtnActionPerformed(evt);
             }
         });
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 251, 133, 33));
 
-        assignBtn.setText("Assign to me");
-        assignBtn.addActionListener(new java.awt.event.ActionListener() {
+        btnAssign.setText("Assign to me");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignBtnActionPerformed(evt);
+                btnAssignActionPerformed(evt);
             }
         });
-
-        deleteChildBtn.setText("Delete Child");
-        deleteChildBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteChildBtnActionPerformed(evt);
-            }
-        });
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 251, 133, 33));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Child Id", "Adopter Name", "Status"
+                "Child Id", "Child Name", "Adopter ID", "Adopter Name", "Status", "Message"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -216,12 +221,8 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-        }
+
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 143, -1, 90));
 
         jButton1.setText("Process");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -229,81 +230,18 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 251, 133, 33));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Adopter Request");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 113, 105, 24));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(assignBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(processBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(247, 247, 247))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(viewChildBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(deleteChildBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 523, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(13, 13, 13)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(143, 143, 143))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(orgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(orgLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(83, 83, 83)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(processBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(assignBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(76, 76, 76)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewChildBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(deleteChildBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(137, 137, 137))
-        );
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/FosterCare/ChildCare/1577868739464.jpg"))); // NOI18N
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 350, 180));
+
+        lblEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        lblEnterprise.setText("EnterPrise :");
+        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 127, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
@@ -324,8 +262,8 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
            }
        }
        
-        ProcessChildCareWorkRequest pccwr = new ProcessChildCareWorkRequest(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
-        this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
+//    pjpj    ProcessChildCareWorkRequest pccwr = new ProcessChildCareWorkRequest(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
+//        this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
        layout.next(userProcessContainer);
     }//GEN-LAST:event_processBtnActionPerformed
@@ -348,7 +286,7 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewChildBtnActionPerformed
 
-    private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
        int selectedRow = workTable.getSelectedRow();
        if(selectedRow<0){
            JOptionPane.showMessageDialog(null, "Please select a request");
@@ -359,21 +297,7 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
        re.setStatus("Pending with child care");
        populateWorkRequest();
         processBtn.setEnabled(true);
-    }//GEN-LAST:event_assignBtnActionPerformed
-
-    private void deleteChildBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteChildBtnActionPerformed
-        int selectedRow = childTable.getSelectedRow();
-        if(selectedRow<0){
-             JOptionPane.showMessageDialog(null, "Please select a child");
-            return;
-        }
-        Child ch = (Child) childTable.getValueAt(selectedRow, 0);
-       int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
-       if(result==0){
-        directory.removeChild(ch);
-       }
-        populateChildTable();
-    }//GEN-LAST:event_deleteChildBtnActionPerformed
+    }//GEN-LAST:event_btnAssignActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int selectedRow = jTable1.getSelectedRow();
@@ -401,14 +325,14 @@ public void populateChildTable(){
     for(Child ch : directory.getChildList()){
         
    if(ch.getStatus().equalsIgnoreCase("Acquired") || ch.getStatus().startsWith("Adopted by")){
-          Object[] row = new Object[dtms.getColumnCount()];
-          row[0]=ch;
-          row[1]=ch.getChildname();
-          row[2]=ch.getChildAge();
-          row[3]=ch.getChildGender();
-          row[4]=ch.getStatus();
-          
-          dtms.addRow(row);
+//    pjpj      Object[] row = new Object[dtms.getColumnCount()];
+//          row[0]=ch;
+//          row[1]=ch.getChildname();
+//          row[2]=ch.getChildAge();
+//          row[3]=ch.getChildGender();
+//          row[4]=ch.getStatus();
+//          
+//          dtms.addRow(row);
         }
     }
 }
@@ -436,20 +360,21 @@ public void populateWorkRequest(){
 }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignBtn;
+    private javax.swing.JButton btnAssign;
     private javax.swing.JTable childTable;
-    private javax.swing.JButton deleteChildBtn;
-    private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
+    private javax.swing.JLabel lblEnterprise;
+    private javax.swing.JLabel lblOrganization;
     private javax.swing.JLabel orgLabel;
     private javax.swing.JButton processBtn;
     private javax.swing.JLabel valueLabel;

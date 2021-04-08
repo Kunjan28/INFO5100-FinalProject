@@ -29,6 +29,22 @@ public class Child {
     private boolean bed;
     private boolean table;
     private boolean closet;
+    Date dateOfBirth;
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+    
+    public String getAgefromDOB(Date dateOfBirth){
+//        birth_year = dateOfBirth.get
+//        int age = 
+        
+        return null;
+    }
 
     public double getBP() {
         return BP;
