@@ -118,7 +118,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
             organizationJTable.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 539, 128));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 160, 539, 128));
 
         addJButton.setText("Create Employee");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +126,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 460, 133, 33));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 490, 133, 33));
 
         organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationJComboBox.setMinimumSize(new java.awt.Dimension(64, 20));
@@ -135,11 +135,11 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 80, 277, 35));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 277, 35));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("View Organization");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 80, 190, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, 30));
 
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
         backJButton.setText("Back");
@@ -148,24 +148,23 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 20, 108, 32));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 108, 32));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Employee Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 368, 106, 34));
-        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 370, 227, 34));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 106, 34));
+        add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 227, 34));
 
-        organizationEmpJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         organizationEmpJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationEmpJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 320, 227, 35));
+        add(organizationEmpJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 320, 227, 35));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Organization");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(188, 315, 106, 35));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 106, 35));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 690, 430));

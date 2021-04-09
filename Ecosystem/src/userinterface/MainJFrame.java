@@ -36,7 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
         EcoSystem.setInstance(system);
         directory = dB4OUtil.retrieveDirectory();
         udirectory = dB4OUtil.retrieveUserDirectory();
-         this.setSize(1100, 700);
+         this.setSize(1250, 800);
     }
 
     /**
