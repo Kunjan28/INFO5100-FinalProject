@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Orphanage.ChildRegistrationRole;
+package userinterface.FosterCare.ChildRegistrationRole;
 
 import Business.Child.Child;
 import Business.Child.ChildDirectory;
