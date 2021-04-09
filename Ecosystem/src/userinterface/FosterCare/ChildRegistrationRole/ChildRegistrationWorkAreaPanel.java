@@ -79,18 +79,13 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnRegisterChild = new javax.swing.JButton();
+        btnCreateChild = new javax.swing.JButton();
         btnViewChild = new javax.swing.JButton();
         enterpriseLabel = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         btnDeleteChild = new javax.swing.JButton();
         enterpriseLabel1 = new javax.swing.JLabel();
         valueLabel1 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-
-        setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,15 +105,12 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 870, 100));
-
-        btnRegisterChild.setText("Register new child");
-        btnRegisterChild.addActionListener(new java.awt.event.ActionListener() {
+        btnCreateChild.setText("Register new child");
+        btnCreateChild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRegisterChildActionPerformed(evt);
+                btnCreateChildActionPerformed(evt);
             }
         });
-        add(btnRegisterChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 510, 150, 33));
 
         btnViewChild.setText("View Child Details");
         btnViewChild.addActionListener(new java.awt.event.ActionListener() {
@@ -126,16 +118,12 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
                 btnViewChildActionPerformed(evt);
             }
         });
-        add(btnViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 510, 150, 33));
 
-        enterpriseLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        enterpriseLabel.setText("ORGANISATION");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 27, 180, 30));
+        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel.setText("Organization:");
 
         valueLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 150, 30));
 
         btnDeleteChild.setText("Delete Child");
         btnDeleteChild.addActionListener(new java.awt.event.ActionListener() {
@@ -143,31 +131,73 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
                 btnDeleteChildActionPerformed(evt);
             }
         });
-        add(btnDeleteChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 510, 150, 33));
 
-        enterpriseLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        enterpriseLabel1.setText("Enterprise");
-        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 127, 30));
+        enterpriseLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        enterpriseLabel1.setText("EnterPrise :");
 
         valueLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         valueLabel1.setText("<value>");
-        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 150, 26));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kidIcon.jpeg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 150));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kidss.jpeg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, 630, 460));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnCreateChild, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnViewChild, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnDeleteChild, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 747, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(231, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(841, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valueLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(62, 62, 62)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCreateChild, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnViewChild, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnDeleteChild, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(296, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(enterpriseLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(520, Short.MAX_VALUE)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegisterChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterChildActionPerformed
+    private void btnCreateChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateChildActionPerformed
         // TODO add your handling code here:
         /*This code will take the flow to register a new child*/
-       RegisterNewChildJPanel panel = new RegisterNewChildJPanel(userProcessContainer, directory, account, enterprise, business, childRegistrationOrganization);
-       this.userProcessContainer.add("RegisterNewChildJPanel", panel);
+       RegisterNewChildJPanel registerChildJpanel = new RegisterNewChildJPanel(userProcessContainer, directory, account, enterprise, business, childRegistrationOrganization);
+       this.userProcessContainer.add("RegisterNewChildJPanel", registerChildJpanel);
        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
-    }//GEN-LAST:event_btnRegisterChildActionPerformed
+        layout.next(userProcessContainer);
+    }//GEN-LAST:event_btnCreateChildActionPerformed
 
     private void btnViewChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChildActionPerformed
         
@@ -221,13 +251,11 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCreateChild;
     private javax.swing.JButton btnDeleteChild;
-    private javax.swing.JButton btnRegisterChild;
     private javax.swing.JButton btnViewChild;
     private javax.swing.JLabel enterpriseLabel;
     private javax.swing.JLabel enterpriseLabel1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel valueLabel;

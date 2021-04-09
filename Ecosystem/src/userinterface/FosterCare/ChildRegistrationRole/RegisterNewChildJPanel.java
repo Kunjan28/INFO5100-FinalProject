@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package userinterface.FosterCare.ChildRegistrationRole;
+
 import Business.Child.Child;
 import Business.Child.ChildDirectory;
 import Business.EcoSystem;
@@ -45,7 +46,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-//  Child child;
+//    Child child;
     ChildDirectory directory;
     ChildRegistrationOrganization organization;
     Network network;
@@ -59,6 +60,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         this.business = business;
         this.organization = (ChildRegistrationOrganization) organization;
         jXDatePicker1.getMonthView().setUpperBound(new Date());
+
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -82,54 +84,45 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtName = new javax.swing.JTextField();
+        nameTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         maleRDB = new javax.swing.JRadioButton();
         femaleRDB = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         btnRegisterChild = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         photoText = new javax.swing.JTextField();
         uploadButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel6 = new javax.swing.JLabel();
-        txtMark = new javax.swing.JTextField();
-        cmbAge = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jDateOB = new org.jdesktop.swingx.JXDatePicker();
 
         jLabel8.setText("jLabel8");
 
         jLabel9.setText("jLabel9");
 
-        setBackground(new java.awt.Color(255, 255, 255));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CHILD REGISTRATION");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 320, 30));
+        jLabel1.setText("Child Registration");
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 130, 35));
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 190, 30));
+        jLabel2.setText("Name:");
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Date of Birth ");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 175, 130, 40));
+        jLabel3.setText("Date of Birth :");
 
         buttonGroup1.add(maleRDB);
         maleRDB.setText("Male");
-        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, 35));
 
         buttonGroup1.add(femaleRDB);
         femaleRDB.setText("Female");
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, -1, 35));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Gender");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, 35));
+        jLabel4.setText("Gender:");
 
         btnRegisterChild.setText("Register");
         btnRegisterChild.addActionListener(new java.awt.event.ActionListener() {
@@ -137,20 +130,16 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 btnRegisterChildActionPerformed(evt);
             }
         });
-        add(btnRegisterChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 120, 40));
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/iconspj/back.png"))); // NOI18N
+        jButton1.setText("<< Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 100, 30));
 
         photoText.setMaximumSize(new java.awt.Dimension(6, 20));
-        add(photoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 190, 30));
 
         uploadButton.setText("Upload");
         uploadButton.addActionListener(new java.awt.event.ActionListener() {
@@ -158,37 +147,119 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 uploadButtonActionPerformed(evt);
             }
         });
-        add(uploadButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 110, 30));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Photo: ");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 130, 35));
 
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel10.setText("Registration Date");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 260, 130, 35));
+        jLabel10.setText("Registration Date:");
 
         jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jXDatePicker1ActionPerformed(evt);
             }
         });
-        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 190, 30));
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("Identification Mark");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 130, 35));
-        add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 190, 30));
+        jLabel6.setText("Identification mark :");
 
-        cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
-        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 190, -1));
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jDateOB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jDateOBActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(61, 61, 61)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(maleRDB)
+                                .addGap(18, 18, 18)
+                                .addComponent(femaleRDB))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(2, 2, 2)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(photoText, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(uploadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jDateOB, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(127, 127, 127)
+                        .addComponent(btnRegisterChild, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(315, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jDateOB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(maleRDB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(femaleRDB, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(uploadButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(photoText, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(90, 90, 90)
+                .addComponent(btnRegisterChild, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+             userProcessContainer.remove(this);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
        browseImageFile();
@@ -200,13 +271,11 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
 /*Upon click the method would regoster the child and would send the details to the doctor for medical examination*/
     private void btnRegisterChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterChildActionPerformed
         try {
+            //Fetching the input from the application
             if(!validation()){
-                //Name
-                String childName = txtName.getText();
-                //Age
-                String ageString = cmbAge.getSelectedItem().toString();
-                int childAge = Integer.parseInt(ageString);
-                //Gender
+                String childName = nameTextField.getText();
+//  pjpj              String ageString = ageComboBox.getSelectedItem().toString();
+//                int childAge = Integer.parseInt(ageString);
                 String gender = "";
                 if(maleRDB.isSelected()){
                     gender = "Male";
@@ -214,10 +283,10 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 else if(femaleRDB.isSelected()){
                     gender = "Female";
                 }
-                //RegistrationDate
                 Date date = jXDatePicker1.getDate();
                 DateFormat formatit = new SimpleDateFormat("yyyy-MM-dd");
                 String temp = "";
+                
                 Date regDate = new Date();
                 try {
                     temp = formatit.format(date);
@@ -225,16 +294,15 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 } catch (Exception ex) {
                   JOptionPane.showMessageDialog(null, "Please select the registration date");
                 }
-                //IdentificationMark
-                String identificationMark = txtMark.getText();
+                String identificationMark = jTextArea1.getText();
                 
                 
                 Child child = new Child();
-//              directory=childRegistrationOrganization.getChildDirectory();
+//       directory=childRegistrationOrganization.getChildDirectory();
                 /*Setting the data in the child object*/
                 int childId =  directory.getChildList().size()+1;
                 child = directory.addChild();
-                child.setChildAge(childAge);
+//pjpj                child.setChildAge(childAge);
                 child.setChildId(childId);
                 child.setName(childName);
                 child.setIdentificationMark(identificationMark);
@@ -242,10 +310,10 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 child.setRegistrationDate(regDate);
                 child.setGender(gender);
                 child.setStatus("Newly Registered");
-                child.setMedicalStatus(child.getMedicalStatus()+"\n"+"Sent to Doctor");
+                child.setMedicalStatus(child.getMedicalStatus()+"\n"+"Medically Unfit");
                 /*Creating a work request for the child object created*/
                 DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
-                docwrkreq.setStatus("Sent to Doctor");
+                docwrkreq.setStatus("Medically Unfit");
                 docwrkreq.setMessage("Please medically examine the newly registered child");
                 docwrkreq.setSender(account);
                 docwrkreq.setChildId(child.getChildId());
@@ -263,40 +331,52 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                     // getNetworkList().getOrganizationDirectory().getOrganizationList()
                     System.out.println("network: "+network);
                     for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
+                        
                         for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
+                            
+                            
+                            
                           // if(this.network.equals(network)){
                             if (organization instanceof DoctorOrganization){
+                                
                                 org = organization;
                                 break;
                             }
-                          //}
+                          //  }
                             
                         }
                     }
                 }               
                 if (org!=null){
                     org.getWorkQueue().getWorkRequestList().add(docwrkreq);
+                    
                     account.getWorkQueue().getWorkRequestList().add(docwrkreq);
                     business.getWorkQueue().getWorkRequestList().add(docwrkreq);
+                    
                 }
-                JOptionPane.showMessageDialog(this, "Child Registration is successful!");
-                ChildRegistrationWorkAreaPanel childregpanel = new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory);
-                this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
-                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-                layout.next(userProcessContainer);
+                
+                  JOptionPane.showMessageDialog(this, "Child Registration is successful!");
+//                ChildRegistrationWorkAreaPanel childregpanel = new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory);
+//                this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
+//                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+//                layout.next(userProcessContainer);
             }
         } catch (ParseException ex) {
             Logger.getLogger(RegisterNewChildJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btnRegisterChildActionPerformed
 
+    private void jDateOBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDateOBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jDateOBActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterChild;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JComboBox<String> cmbAge;
     private javax.swing.JRadioButton femaleRDB;
+    private javax.swing.JButton jButton1;
+    private org.jdesktop.swingx.JXDatePicker jDateOB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -306,11 +386,12 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JRadioButton maleRDB;
+    private javax.swing.JTextField nameTextField;
     private javax.swing.JTextField photoText;
-    private javax.swing.JTextField txtMark;
-    private javax.swing.JTextField txtName;
     private javax.swing.JButton uploadButton;
     // End of variables declaration//GEN-END:variables
 
@@ -341,7 +422,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
      }
 //     Date selectedDate = formait.parse(selectedFormaString);
  
-     if(txtName.getText().isEmpty()){
+     if(nameTextField.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "Please enter the name of the child");
          return true;
      }
@@ -349,10 +430,10 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
          JOptionPane.showMessageDialog(null, "Please enter the name in the correct format(No special characters)");
          return true;
      }
-     else if(cmbAge.getSelectedIndex()==0){
-          JOptionPane.showMessageDialog(null, "Please provide the age of the child");
-         return true;
-     }
+//     else if(ageComboBox.getSelectedIndex()==0){
+//          JOptionPane.showMessageDialog(null, "Please provide the age of the child");
+//         return true;
+//     }
      else if(!maleRDB.isSelected()&& !femaleRDB.isSelected()){
          JOptionPane.showMessageDialog(null, "Please select the gender of the child");
          return true;
@@ -366,7 +447,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Please select the registration date");
          return true;  
      }
-     else if(txtMark.getText().isEmpty()){
+     else if(jTextArea1.getText().isEmpty()){
          JOptionPane.showMessageDialog(null, "Please enter the identification mark. If there are none, please write NA/None");
          return true;
      }
@@ -388,7 +469,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
        public boolean validateName(){
     boolean b=false;
     Pattern p = Pattern.compile("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
-    String name = txtName.getText();
+    String name = nameTextField.getText();
     Matcher m = p.matcher(name);
     b = m.matches();
     return b;
@@ -397,7 +478,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     private boolean validateIdentity() {
          boolean b=false;
     Pattern p = Pattern.compile("^[A-Za-z0-9. ]*$");
-    String name = txtMark.getText();
+    String name = jTextArea1.getText();
     Matcher m = p.matcher(name);
     b = m.matches();
     return b;

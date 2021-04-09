@@ -7,7 +7,7 @@ package Business.WorkQueue;
 
 /**
  *
- * @author sanja
+ * @author 12013
  */
 public class ChildCareAdoptionWorkRequest extends WorkRequest {
    private String userName;
