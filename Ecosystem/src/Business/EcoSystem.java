@@ -59,15 +59,7 @@ public class EcoSystem extends Organization{
     
     public boolean checkIfUserIsUnique(String userName){
          if(this.business!=null){
-           if(business.getNetworkList()!=null && business.getNetworkList().size()>0){
-               for (Network network : business.getNetworkList()) {
-                   if(network.getEnterpriseDirectory()!=null && network.getEnterpriseDirectory().getEnterpriseList()!=null && network.getEnterpriseDirectory().getEnterpriseList().size()>0){
-                       
-                   }
-               }
-           }
-        }
-        for (Network network : business.getNetworkList()) {
+           for (Network network : business.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
                 for (UserAccount ua : enterprise.getUserAccountDirectory().getUserAccountList()) {
                     if (ua.getUsername().equalsIgnoreCase(userName)) {
@@ -84,6 +76,8 @@ public class EcoSystem extends Organization{
             }
         }
 
+       }
+        
         return true;
         
        
@@ -96,5 +90,8 @@ public class EcoSystem extends Organization{
             }
         }
         return true;
+    }
+    public static void setInstance(EcoSystem system) {
+        business = system;
     }
 }
