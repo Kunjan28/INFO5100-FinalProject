@@ -10,9 +10,11 @@ import Business.Child.ChildDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.PharmacyOrganisation.PharmacistJPanel;
 
 
 /**
@@ -23,8 +25,8 @@ public class PharmacistRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory) {
-       return null;
-        //return new PharmacistWorkAreaJPanel(userProcessContainer, account, (PharmacistOrganization)organization,enterprise, business,directory);
+       //return null;
+       return new PharmacistJPanel(userProcessContainer, account, (PharmacistOrganization)organization,enterprise, business,directory);
     }
     
     @Override
