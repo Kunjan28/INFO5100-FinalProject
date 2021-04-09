@@ -4,17 +4,16 @@
  * and open the template in the editor.
  */
 package Business.WorkQueue;
-/*
-A class to hold the doctor work requests, this would be populated in the queue of the doctor
-*/
+
 /**
  *
- * @author rao.sid
+ * @author snehaswaroop
  */
 public class DoctorWorkRequest extends WorkRequest {
-     private String testResult;
-     private String medicinePrescribed;
-     private String Remarks;
+    
+    private String testResult;
+    private String medicinePrescribed;
+    private String Remarks;
     public String getMedicinePrescribed() {
         return medicinePrescribed;
     }
@@ -38,6 +37,5 @@ public class DoctorWorkRequest extends WorkRequest {
     public void setRemarks(String Remarks) {
         this.Remarks = Remarks;
     }
-    
     
 }

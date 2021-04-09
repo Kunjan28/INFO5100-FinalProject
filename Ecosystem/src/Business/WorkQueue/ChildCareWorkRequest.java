@@ -7,10 +7,11 @@ package Business.WorkQueue;
 
 /**
  *
- * @author rao.sid
+ * @author snehaswaroop
  */
-public class ChildCareWorkRequest extends WorkRequest{
-         private String testResult;
+public class ChildCareWorkRequest extends WorkRequest {
+    
+    private String testResult;
 
     public String getTestResult() {
         return testResult;
