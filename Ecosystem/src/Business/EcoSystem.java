@@ -76,7 +76,7 @@ public class EcoSystem extends Organization{
             }
         }
 
-        }
+       }
         
         return true;
         
@@ -90,5 +90,8 @@ public class EcoSystem extends Organization{
             }
         }
         return true;
+    }
+    public static void setInstance(EcoSystem system) {
+        business = system;
     }
 }

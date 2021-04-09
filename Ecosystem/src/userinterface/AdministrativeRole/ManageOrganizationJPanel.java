@@ -70,9 +70,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     private void populateTable(){
         DefaultTableModel model = (DefaultTableModel) organizationJTable.getModel();
-        
         model.setRowCount(0);
-        
         for (Organization organization : directory.getOrganizationList()){
             Object[] row = new Object[2];
             row[0] = organization.getType();
@@ -182,10 +180,16 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         if("".equals(orgInstanceName.getText())) {
             JOptionPane.showMessageDialog(null, "Enter organization name!"); 
         }else {
-            directory.createOrganization(orgInstanceName.getText(),type);
+             if (directory.isUnique(orgInstanceName.getText())) {
+                 directory.createOrganization(orgInstanceName.getText(),type);
             JOptionPane.showMessageDialog(null, "Organization Successfully Created");
             orgInstanceName.setText("");
             populateTable();
+             }
+             else{
+                   JOptionPane.showMessageDialog(null, "Organization name already exists!"); 
+             }
+            
             
         }
 
