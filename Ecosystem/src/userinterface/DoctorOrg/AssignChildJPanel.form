@@ -225,8 +225,8 @@
                 <Column editable="true" title="Message" type="java.lang.Object"/>
                 <Column editable="true" title="Child ID" type="java.lang.Object"/>
                 <Column editable="true" title="Child Name" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
                 <Column editable="true" title="Receiver" type="java.lang.Object"/>
+                <Column editable="true" title="Status" type="java.lang.Object"/>
                 <Column editable="true" title="Comments" type="java.lang.Object"/>
               </Table>
             </Property>
@@ -252,7 +252,7 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                   <Title/>
                   <Editor/>
                   <Renderer/>

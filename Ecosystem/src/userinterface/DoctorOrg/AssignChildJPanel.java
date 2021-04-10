@@ -77,29 +77,29 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     
     public void populateLabTable(){
         DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
-        model.setRowCount(0);
-        for (WorkRequest lab : userAccount.getWorkQueue().getWorkRequestList()){
-            if(lab instanceof DoctorWorkRequest || lab instanceof LabWorkRequest ){
-                if( lab.getChildId() == child.getChildId()){
-            Object[] row = new Object[model.getColumnCount()];
-            row[0] = lab;
-            row[1] = lab.getChildId();
-            row[2] = child.getName();
-            row[3] = lab.getStatus();
-            row[4] = lab.getReceiver();
-            if(lab instanceof DoctorWorkRequest){
-                String result = ((DoctorWorkRequest) lab).getTestResult();
-                row[5] = result == null ? "Waiting" : result;
-                }
-            else if(lab instanceof LabWorkRequest){
-                String result = ((LabWorkRequest) lab).getTestResult();
-                row[5] = result == null ? "Waiting" : result;
-                }
-            model.addRow(row);
-            }
-            }
         
+        model.setRowCount(0);
+        for (WorkRequest labrequest : userAccount.getWorkQueue().getWorkRequestList()){
+              if(labrequest instanceof DoctorWorkRequest || labrequest instanceof LabWorkRequest ){
+                  if( labrequest.getChildId() == child.getChildId()){
+            Object[] row = new Object[model.getColumnCount()];
             
+            row[1] = labrequest.getChildId();
+            row[2] = child.getName();
+            row[0] = labrequest;
+            row[3] = labrequest.getReceiver();
+            row[4] = labrequest.getStatus();
+            if(labrequest instanceof DoctorWorkRequest){
+                 String result = ((DoctorWorkRequest) labrequest).getTestResult();
+                  row[5] = result == null ? "Waiting" : result;
+            }
+            else if(labrequest instanceof LabWorkRequest){
+                String result = ((LabWorkRequest) labrequest).getTestResult();
+            row[5] = result == null ? "Waiting" : result;
+            }
+         model.addRow(row);
+                  }
+              }
         }
     }
     
@@ -297,13 +297,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Child ID", "Child Name", "Status", "Receiver", "Comments"
+                "Message", "Child ID", "Child Name", "Receiver", "Status", "Comments"
             }
         ));
         ScrollPaneLabWork.setViewportView(tblLab);
-        if (tblLab.getColumnModel().getColumnCount() > 0) {
-            tblLab.getColumnModel().getColumn(4).setResizable(false);
-        }
 
         add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 850, 120));
 

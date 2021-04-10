@@ -70,7 +70,6 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         txtTest = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -105,9 +104,6 @@ public class DoctorRequestLab extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 60, 40));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.gif"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 650, 470));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Enterprise");
@@ -161,6 +157,13 @@ public class DoctorRequestLab extends javax.swing.JPanel {
             userAccount.getWorkQueue().getWorkRequestList().add(request);
         }  
         }
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AssignChildJPanel panel = (AssignChildJPanel) component;
+        panel.populateLabTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
@@ -169,7 +172,6 @@ public class DoctorRequestLab extends javax.swing.JPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblLogo;

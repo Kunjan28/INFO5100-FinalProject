@@ -54,6 +54,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         }
     }
         valueLabel.setText(enterprise.getName());
+        btnProcess.setEnabled(false);
         populateTable();
     }
     
@@ -185,9 +186,10 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
+                btnProcess.setEnabled(true);
                 }
         populateTable();
-        btnProcess.setEnabled(true);
+        //btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

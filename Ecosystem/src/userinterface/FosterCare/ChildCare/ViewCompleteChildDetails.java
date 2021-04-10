@@ -76,7 +76,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
             femaleRDB.setSelected(true);
         }
         jXDatePicker1.setDate(child.getRegistrationDate());
-        txtIdentficationMark.setText(child.getIdentificationMark());
+        txtMark.setText(child.getIdentificationMark());
         bpText.setText(String.valueOf(child.getBP()));
         pulseText.setText(String.valueOf(child.getPulseRate()));
         tempText.setText(String.valueOf(child.getBodytemp()));
@@ -104,7 +104,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
   //Setting the image to the icon and then passing it ot he image JLabel    
   
 ImageIcon icon = new ImageIcon(image);
-   imageLable.setIcon(icon);
+   lblPic.setIcon(icon);
     
     }
   
@@ -125,14 +125,12 @@ ImageIcon icon = new ImageIcon(image);
         maleRDB = new javax.swing.JRadioButton();
         femaleRDB = new javax.swing.JRadioButton();
         lblGender = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        imageLable = new javax.swing.JLabel();
+        lblHeading = new javax.swing.JLabel();
+        lblPic = new javax.swing.JLabel();
         lblName = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        jLabel6 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        lblPersonalInfo = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblMedicalInfo = new javax.swing.JLabel();
         tempText = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         respRateText = new javax.swing.JTextField();
@@ -141,24 +139,26 @@ ImageIcon icon = new ImageIcon(image);
         medicalTextArea = new javax.swing.JTextArea();
         lblRegistDate = new javax.swing.JLabel();
         lblIdenMark = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txtIdentficationMark = new javax.swing.JTextArea();
-        jSeparator5 = new javax.swing.JSeparator();
         btnRequestFunds = new javax.swing.JButton();
         requestMedicalHelpBtn = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
+        lblBP = new javax.swing.JLabel();
         bpText = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
+        lblPulse = new javax.swing.JLabel();
         pulseText = new javax.swing.JTextField();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblRequest = new javax.swing.JTable();
         txtDOB = new javax.swing.JTextField();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
+        txtMark = new javax.swing.JTextField();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(50, 50));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 190, 30));
 
-        lblDOB.setText("Date of Birth:");
+        lblDOB.setText("Age");
+        add(lblDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 100, 30));
 
         maleRDB.setText("Male");
         maleRDB.addActionListener(new java.awt.event.ActionListener() {
@@ -166,46 +166,57 @@ ImageIcon icon = new ImageIcon(image);
                 maleRDBActionPerformed(evt);
             }
         });
+        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
 
         femaleRDB.setText("Female");
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 100, 30));
 
         lblGender.setText("Gender:");
+        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 150, 30));
 
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("View Child Details");
+        lblHeading.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHeading.setText("View Child Details");
+        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 10, 223, 40));
+        add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 180));
 
-        lblName.setText("Name:");
+        lblName.setText("Name");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 110, 30));
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Personal Info");
+        lblPersonalInfo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblPersonalInfo.setText("Personal Info");
+        add(lblPersonalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 121, 20));
 
         jLabel7.setText("Temperature");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, -1, 27));
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Medical Details");
+        lblMedicalInfo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblMedicalInfo.setText("Medical Info");
+        add(lblMedicalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 143, -1));
 
         tempText.setMinimumSize(new java.awt.Dimension(50, 50));
+        add(tempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 70, 30));
 
-        jLabel9.setText("Respiration Rate: ");
+        jLabel9.setText("Respiration Rate");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, -1, 27));
 
         respRateText.setMinimumSize(new java.awt.Dimension(50, 50));
+        add(respRateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 170, 70, -1));
 
         jLabel10.setText("Medical History:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, -1, 25));
 
         medicalTextArea.setColumns(20);
         medicalTextArea.setRows(5);
         jScrollPane1.setViewportView(medicalTextArea);
 
-        lblRegistDate.setText("Registration Date:");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 340, 110));
+
+        lblRegistDate.setText("Registration Date");
+        add(lblRegistDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 130, 30));
 
         lblIdenMark.setText("Identification mark");
-
-        txtIdentficationMark.setColumns(20);
-        txtIdentficationMark.setRows(5);
-        jScrollPane2.setViewportView(txtIdentficationMark);
-
-        jSeparator5.setOrientation(javax.swing.SwingConstants.VERTICAL);
+        add(lblIdenMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 130, 30));
 
         btnRequestFunds.setText("Request Funds");
         btnRequestFunds.addActionListener(new java.awt.event.ActionListener() {
@@ -213,30 +224,39 @@ ImageIcon icon = new ImageIcon(image);
                 btnRequestFundsActionPerformed(evt);
             }
         });
+        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 146, 33));
 
-        requestMedicalHelpBtn.setText("Request medical help");
+        requestMedicalHelpBtn.setText("Request Medical Help");
         requestMedicalHelpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestMedicalHelpBtnActionPerformed(evt);
             }
         });
+        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, 160, 30));
 
-        jButton3.setText("< back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 95, 30));
 
-        jLabel13.setText("BP:");
+        lblBP.setText("BP");
+        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 30));
 
         bpText.setMinimumSize(new java.awt.Dimension(50, 50));
+        add(bpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, 52, -1));
 
-        jLabel15.setText("Pulse Rate:");
+        lblPulse.setText("Pulse Rate");
+        add(lblPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, -1, 27));
 
         pulseText.setMinimumSize(new java.awt.Dimension(50, 50));
+        add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 170, 53, -1));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -252,178 +272,23 @@ ImageIcon icon = new ImageIcon(image);
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
+        jScrollPane3.setViewportView(tblRequest);
+        if (tblRequest.getColumnModel().getColumnCount() > 0) {
+            tblRequest.getColumnModel().getColumn(0).setResizable(false);
+            tblRequest.getColumnModel().getColumn(1).setResizable(false);
+            tblRequest.getColumnModel().getColumn(2).setResizable(false);
+            tblRequest.getColumnModel().getColumn(3).setResizable(false);
+            tblRequest.getColumnModel().getColumn(4).setResizable(false);
+            tblRequest.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(34, 34, 34)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel7)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tempText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel9)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(respRateText, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel13)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(bpText, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jLabel15)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(pulseText, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(jLabel10)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(requestMedicalHelpBtn)
-                                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGap(87, 87, 87)
-                                        .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(btnRequestFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addContainerGap()
-                                        .addComponent(imageLable, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(23, 23, 23)
-                                                        .addComponent(lblDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(maleRDB)
-                                                        .addGap(18, 18, 18)
-                                                        .addComponent(femaleRDB, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(25, 25, 25)
-                                                .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addGap(153, 153, 153)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblIdenMark, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(10, 10, 10)
-                                                .addComponent(jScrollPane2))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(lblRegistDate, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(jXDatePicker1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addGap(6, 6, 6)))))
-                                .addGap(112, 112, 112)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 38, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(imageLable, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maleRDB)
-                            .addComponent(femaleRDB, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblGender, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRegistDate, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jXDatePicker1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblIdenMark, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel8)
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(respRateText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(bpText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(pulseText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tempText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(18, 18, 18)
-                        .addComponent(requestMedicalHelpBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(btnRequestFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 477, 104));
+        add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 190, 30));
+        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 190, 30));
+        add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 190, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -433,7 +298,7 @@ ImageIcon icon = new ImageIcon(image);
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void requestMedicalHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedicalHelpBtnActionPerformed
      RequestMedicalHelp rqmh = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, directory, child);
@@ -464,32 +329,27 @@ ImageIcon icon = new ImageIcon(image);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bpText;
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRequestFunds;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton femaleRDB;
-    private javax.swing.JLabel imageLable;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTable jTable1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private javax.swing.JLabel lblBP;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblHeading;
     private javax.swing.JLabel lblIdenMark;
+    private javax.swing.JLabel lblMedicalInfo;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPersonalInfo;
+    private javax.swing.JLabel lblPic;
+    private javax.swing.JLabel lblPulse;
     private javax.swing.JLabel lblRegistDate;
     private javax.swing.JRadioButton maleRDB;
     private javax.swing.JTextArea medicalTextArea;
@@ -497,16 +357,17 @@ ImageIcon icon = new ImageIcon(image);
     private javax.swing.JTextField pulseText;
     private javax.swing.JButton requestMedicalHelpBtn;
     private javax.swing.JTextField respRateText;
+    private javax.swing.JTable tblRequest;
     private javax.swing.JTextField tempText;
     private javax.swing.JTextField txtDOB;
-    private javax.swing.JTextArea txtIdentficationMark;
+    private javax.swing.JTextField txtMark;
     // End of variables declaration//GEN-END:variables
 
     public void disableInput(){
       txtDOB.setEnabled(false);
     femaleRDB.setEnabled(false);
       bpText.setEnabled(false);
-      txtIdentficationMark.setEnabled(false);
+      txtMark.setEnabled(false);
       jXDatePicker1.setEnabled(false);
       maleRDB.setEnabled(false);
       medicalTextArea.setEnabled(false);
@@ -519,7 +380,7 @@ ImageIcon icon = new ImageIcon(image);
     }
     
     public void populaterequestTable() {
-        DefaultTableModel dtms = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtms = (DefaultTableModel) tblRequest.getModel();
         dtms.setRowCount(0);
         
         for(WorkRequest request: account.getWorkQueue().getWorkRequestList()){

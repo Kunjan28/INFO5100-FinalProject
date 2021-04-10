@@ -104,30 +104,32 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         lblEnterprise = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jButton3.setText("jButton3");
 
         jButton4.setText("jButton4");
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblOrganization.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblOrganization.setText("Organization :");
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 0, 127, 30));
+        lblOrganization.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblOrganization.setText("Organisation");
+        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 110, 30));
 
-        valueLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 0, 158, 30));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 158, 30));
 
-        orgLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        orgLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         orgLabel.setText("<value>");
-        add(orgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 0, 133, 30));
+        add(orgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, 133, 30));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Child Health Details");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 113, 130, 24));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 130, 24));
 
         workTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -147,11 +149,11 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 143, 560, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 560, 90));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Child details");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 360, 93, 24));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 340, 93, 24));
 
         childTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -178,31 +180,34 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
             childTable.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 402, 523, 89));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 380, 570, 90));
 
+        viewChildBtn.setBackground(new java.awt.Color(255, 255, 255));
         viewChildBtn.setText("View Child Details");
         viewChildBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 viewChildBtnActionPerformed(evt);
             }
         });
-        add(viewChildBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 510, 143, 33));
+        add(viewChildBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 400, 143, 33));
 
+        processBtn.setBackground(new java.awt.Color(255, 255, 255));
         processBtn.setText("Process Request");
         processBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 processBtnActionPerformed(evt);
             }
         });
-        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(219, 251, 133, 33));
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 250, 133, 33));
 
+        btnAssign.setBackground(new java.awt.Color(255, 255, 255));
         btnAssign.setText("Assign to me");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(76, 251, 133, 33));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 200, 133, 33));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -222,26 +227,34 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(jTable1);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 143, -1, 90));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 600, 570, 90));
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Process");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(775, 251, 133, 33));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, 133, 33));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Adopter Request");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(599, 113, 105, 24));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 105, 24));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/userinterface/FosterCare/ChildCare/1577868739464.jpg"))); // NOI18N
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 310, 350, 180));
+        lblEnterprise.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblEnterprise.setText("Enterprise ");
+        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, 30));
 
-        lblEnterprise.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lblEnterprise.setText("EnterPrise :");
-        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 127, 30));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kids.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 1010, 470));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("CHILD CARE");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 20, 320, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
@@ -251,39 +264,28 @@ public class ChildCareWorkAreaJPanel extends javax.swing.JPanel {
            return;
        }
        WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
-      
-        
        for(Child ch : directory.getChildList()){
-
            if(ch.getChildId()==re.getChildId()){
-
                child=ch;
-           
            }
        }
-       
-//    pjpj    ProcessChildCareWorkRequest pccwr = new ProcessChildCareWorkRequest(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
-//        this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
-       CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
+        ProcessChildCareWorkRequest pccwr = new ProcessChildCareWorkRequest(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
+        this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
+        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_processBtnActionPerformed
 
     private void viewChildBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewChildBtnActionPerformed
       int selectedRow = childTable.getSelectedRow();
-    
-      
       if(selectedRow<0){
            JOptionPane.showMessageDialog(null, "Please select a child");
           return;
-      }
-      
-          Child child = (Child) childTable.getValueAt(selectedRow, 0);      
-        
-       
+        }
+        Child child = (Child) childTable.getValueAt(selectedRow, 0); 
         ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer,account,organization,enterprise,business,directory, child);
-       this.userProcessContainer.add("ViewCompleteChildDetails", completeJapanel);
-       CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
+        this.userProcessContainer.add("ViewCompleteChildDetails", completeJapanel);
+        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_viewChildBtnActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -325,14 +327,14 @@ public void populateChildTable(){
     for(Child ch : directory.getChildList()){
         
    if(ch.getStatus().equalsIgnoreCase("Acquired") || ch.getStatus().startsWith("Adopted by")){
-//    pjpj      Object[] row = new Object[dtms.getColumnCount()];
-//          row[0]=ch;
-//          row[1]=ch.getChildname();
-//          row[2]=ch.getChildAge();
-//          row[3]=ch.getChildGender();
-//          row[4]=ch.getStatus();
-//          
-//          dtms.addRow(row);
+           Object[] row = new Object[dtms.getColumnCount()];
+          row[0]=ch;
+          row[1]=ch.getName();
+          row[2]=ch.getChildAge();
+          row[3]=ch.getGender();
+          row[4]=ch.getStatus();
+          
+          dtms.addRow(row);
         }
     }
 }
@@ -369,6 +371,7 @@ public void populateWorkRequest(){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
