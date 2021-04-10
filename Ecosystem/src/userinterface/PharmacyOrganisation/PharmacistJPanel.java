@@ -54,6 +54,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         }
     }
         valueLabel.setText(enterprise.getName());
+        btnProcess.setEnabled(false);
         populateTable();
     }
     
@@ -126,7 +127,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPharmacist);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 260, 820, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 670, 140));
 
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -134,7 +135,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 170, 30));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 170, 30));
 
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +143,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 460, 140, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 460, 140, -1));
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
         btnRefresh.setText("Refresh");
@@ -151,17 +152,17 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnRefreshActionPerformed(evt);
             }
         });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 120, 30));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 500, 460));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Enterprise");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, 80, 20));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 20));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, 100, -1));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 100, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
@@ -173,7 +174,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblPharmacist.getSelectedRow();
         if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table to assig");
+            JOptionPane.showMessageDialog(null,"Please select a child from table to assign");
             return;
         }
         WorkRequest request = (WorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
@@ -185,9 +186,10 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
+                btnProcess.setEnabled(true);
                 }
         populateTable();
-        btnProcess.setEnabled(true);
+        //btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

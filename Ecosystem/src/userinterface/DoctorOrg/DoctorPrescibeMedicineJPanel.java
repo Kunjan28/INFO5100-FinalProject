@@ -10,8 +10,14 @@ import Business.Child.ChildDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.PharmacistWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -88,9 +94,19 @@ public class DoctorPrescibeMedicineJPanel extends javax.swing.JPanel {
         add(txtPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 270, 90));
 
         Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
         add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 110, 30));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 60, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
@@ -103,6 +119,60 @@ public class DoctorPrescibeMedicineJPanel extends javax.swing.JPanel {
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 120, 20));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AssignChildJPanel panel = (AssignChildJPanel) component;
+        panel.populateMedicationTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        // TODO add your handling code here:
+        String prescription = txtPrescription.getText();
+        if(prescription.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Please enter medicines to be prescribed");
+        }
+        else{
+        PharmacistWorkRequest pharrequest = new PharmacistWorkRequest();
+        pharrequest.setMessage("Medicine Prescribed");
+        pharrequest.setSender(userAccount);
+        pharrequest.setChildId(request.getChildId());
+        System.out.println(request.getChildId());
+        pharrequest.setStatus("Prescription Sent");
+        pharrequest.setMedicinePrescribed(prescription);
+        
+        request.setStatus("Medicine Prescribed");
+        request.setTestResult("Child Treated and medicines Prescribed");
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+             //if(this.network.equals(network)){
+                            if (organization instanceof PharmacistOrganization){
+                                
+                                org = organization;
+                                break;
+                            }
+                          //  }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(pharrequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(pharrequest);
+        } 
+        }
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AssignChildJPanel panel = (AssignChildJPanel) component;
+        panel.populateMedicationTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_SaveActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

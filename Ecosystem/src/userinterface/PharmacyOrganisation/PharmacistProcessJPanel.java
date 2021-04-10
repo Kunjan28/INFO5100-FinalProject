@@ -75,6 +75,7 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
@@ -86,12 +87,13 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, 170));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 60, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 120, 40));
 
         lblComments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComments.setText("Comments");
@@ -108,7 +110,7 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 130, 500, 360));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 590, 470));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Enterprise");
@@ -164,6 +166,15 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
                 business.getWorkQueue().getWorkRequestList().add(temp);
             }
         }
+        
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        PharmacistJPanel panel = (PharmacistJPanel) component;
+        panel.populateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 

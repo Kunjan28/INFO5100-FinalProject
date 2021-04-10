@@ -10,10 +10,14 @@ import Business.Child.ChildDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Organization.LabOrganization;
+import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.LabWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -66,7 +70,6 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         txtTest = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -87,6 +90,11 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         add(txtTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, 270, 90));
 
         btnSave.setText("Save");
+        btnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaveActionPerformed(evt);
+            }
+        });
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 500, 110, 30));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
@@ -96,9 +104,6 @@ public class DoctorRequestLab extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 30, 60, 40));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.gif"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 150, 650, 470));
 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Enterprise");
@@ -122,13 +127,51 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
+        // TODO add your handling code here:
+        String message = txtTest.getText();
+        if(message.isEmpty())
+        {
+            JOptionPane.showMessageDialog(null,"Please enter test name");
+        }
+        else
+        {
+        LabWorkRequest request = new LabWorkRequest();
+        request.setMessage(message);
+        request.setSender(userAccount);
+        request.setStatus("Sent");
+        request.setChildId(request.getChildId());
+        request.setStatus("Medical Test Requested");
+        
+        Organization org = null;
+        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
+           // if(this.network.equals(network)){
+                if (organization instanceof LabOrganization){
+                org = organization;
+                break;
+                }
+      //        }
+        }
+        if (org!=null){
+            org.getWorkQueue().getWorkRequestList().add(request);
+            userAccount.getWorkQueue().getWorkRequestList().add(request);
+        }  
+        }
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        AssignChildJPanel panel = (AssignChildJPanel) component;
+        panel.populateLabTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnSaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblLogo;

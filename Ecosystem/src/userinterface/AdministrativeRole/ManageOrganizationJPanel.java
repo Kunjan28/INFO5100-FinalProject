@@ -130,7 +130,7 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(organizationJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 190, 600, 130));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, 600, 130));
 
         addJButton.setText("Add Organization");
         addJButton.addActionListener(new java.awt.event.ActionListener() {
@@ -138,14 +138,13 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 addJButtonActionPerformed(evt);
             }
         });
-        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 480, 133, 33));
+        add(addJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 490, 133, 33));
 
-        organizationJComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 330, 210, 35));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 210, 40));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 330, -1, 35));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, 35));
 
         backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
@@ -155,20 +154,20 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                 backJButtonActionPerformed(evt);
             }
         });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 30, 96, 29));
+        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 96, 29));
 
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 400, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
         orgInstanceName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 orgInstanceNameActionPerformed(evt);
             }
         });
-        add(orgInstanceName, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 200, 30));
+        add(orgInstanceName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 210, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/organisation.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 570, 390));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 700, 490));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/systemadmin.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
