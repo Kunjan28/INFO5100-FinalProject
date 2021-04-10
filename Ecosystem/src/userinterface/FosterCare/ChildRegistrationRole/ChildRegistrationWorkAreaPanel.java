@@ -19,6 +19,8 @@ import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -187,16 +189,39 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewChildActionPerformed
 
     private void btnDeleteChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteChildActionPerformed
-       int selectedRow = jTable1.getSelectedRow();
+ int selectedRow = jTable1.getSelectedRow();
        if(selectedRow<0){
            JOptionPane.showMessageDialog(null, "Please select a child to delete");
        }
        Child ch = (Child) jTable1.getValueAt(selectedRow, 0);
        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
-       if(result==0){
-      directory.removeChild(ch);
-       }
-       poplulateTable();
+        if (result == 0) {
+            directory.removeChild(ch);
+            List<DoctorOrganization> list = new ArrayList<>();
+            for (Network network : business.getNetworkList()) {
+                // getNetworkList().getOrganizationDirectory().getOrganizationList()
+                System.out.println("network: " + network);
+                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    if (this.network.equals(network)) {
+                        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+
+                            if (organization instanceof DoctorOrganization) {
+
+                                list.add((DoctorOrganization) organization);
+                            }
+                        }
+                    }
+
+                }
+            }
+            
+            for (DoctorOrganization org : list) {
+                org.getWorkQueue().delete(ch.getChildId());
+            }
+            account.getWorkQueue().delete(ch.getChildId());
+            business.getWorkQueue().delete(ch.getChildId());
+        }
+        poplulateTable();
        
     }//GEN-LAST:event_btnDeleteChildActionPerformed
 

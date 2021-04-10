@@ -5,6 +5,7 @@
 package Business.WorkQueue;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -20,5 +21,16 @@ public class WorkQueue {
 
     public ArrayList<WorkRequest> getWorkRequestList() {
         return workRequestList;
+    }
+    
+      public void delete(int childId){
+        List<WorkRequest> list = new ArrayList<>();
+       for(WorkRequest wr:workRequestList) {
+           if(childId==wr.getChildId()){
+               list.add(wr);
+               
+           }
+       }
+       workRequestList.removeAll(list);
     }
 }
