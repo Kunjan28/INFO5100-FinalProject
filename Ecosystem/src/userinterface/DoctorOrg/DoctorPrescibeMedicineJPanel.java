@@ -143,6 +143,7 @@ public class DoctorPrescibeMedicineJPanel extends javax.swing.JPanel {
         pharrequest.setMessage("Medicine Prescribed");
         pharrequest.setSender(userAccount);
         pharrequest.setChildId(request.getChildId());
+        pharrequest.setChildName(request.getChildName());
         System.out.println(request.getChildId());
         pharrequest.setStatus("Prescription Sent");
         pharrequest.setMedicinePrescribed(prescription);

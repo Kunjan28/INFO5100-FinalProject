@@ -65,10 +65,10 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             Object[] row = new Object[model.getColumnCount()];
             row[0] = request;
             row[1] = request.getChildId();
-            //row[2] = request.getChildName();
-            row[2] = request.getSender().getEmployee().getName();
-            row[3] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[4] = request.getStatus();
+            row[2] = request.getChildName();
+            row[3] = request.getSender().getEmployee().getName();
+            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[5] = request.getStatus();
             model.addRow(row);
         }
     }

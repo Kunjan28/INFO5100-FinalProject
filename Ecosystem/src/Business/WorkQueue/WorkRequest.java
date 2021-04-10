@@ -21,6 +21,7 @@ public abstract class WorkRequest {
     private Date resolveDate;
     private int childId;
     private int userId;
+    private String childName;
 
     public int getUserId() {
         return userId;
@@ -88,7 +89,15 @@ public abstract class WorkRequest {
     public void setChildId(int childId) {
         this.childId = childId;
     }
-   
+
+    public String getChildName() {
+        return childName;
+    }
+
+    public void setChildName(String childName) {
+        this.childName = childName;
+    }
+    
     @Override
     public String toString(){
         return message;

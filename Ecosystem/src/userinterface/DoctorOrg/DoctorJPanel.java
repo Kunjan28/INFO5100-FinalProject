@@ -65,12 +65,12 @@ public class DoctorJPanel extends javax.swing.JPanel {
             Object[] row = new Object[model.getColumnCount()];
             row[0] = request;
             row[1] = request.getChildId();
-            //row[2] = request.getName();
+            row[2] = request.getChildName();
             row[3] = request.getStatus();
             row[4] = request.getSender().getEmployee().getName();
             row[5] = request.getReceiver() == null ? null: request.getReceiver().getEmployee().getName();
             String result = ((DoctorWorkRequest) request).getTestResult();
-            row[5] = result == null ? "Waiting" : result;
+            row[6] = result == null ? "Waiting" : result;
             model.addRow(row);
             }   
        }
@@ -173,6 +173,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
         DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
 //        request.setReceiver(userAccount);
 //        request.setStatus("Under Examination");
+                if(request.getReceiver()!=null){
+                     JOptionPane.showMessageDialog(null, "Request already assigned.");
+                return;
+                }
                 if (request.getStatus().equalsIgnoreCase("Under Examination") || request.getStatus().equalsIgnoreCase("Pending") || request.getStatus().equalsIgnoreCase("Medicine Prescribed") || request.getStatus().equalsIgnoreCase("Medical Test Requested")) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
@@ -193,7 +197,13 @@ public class DoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a child from table before proceeding");
             return;
         }
+        
         DoctorWorkRequest request = (DoctorWorkRequest)tblDoctor.getValueAt(selectedRow,0);
+        if(request.getStatus().equalsIgnoreCase("Medicine Prescribed")){
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        }
+        
         request.setTestResult("Under Examination");
         System.out.println("Requesting child ID: " + request.getChildId());
         for(Child c: directory.getChildList()){

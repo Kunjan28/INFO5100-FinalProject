@@ -104,6 +104,7 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         {
             request.setTestResult(txtResult.getText());
             request.setStatus("Completed");
+            JOptionPane.showMessageDialog(null,"Results saved!");
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 

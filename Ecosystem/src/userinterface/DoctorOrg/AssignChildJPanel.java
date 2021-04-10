@@ -85,7 +85,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             Object[] row = new Object[model.getColumnCount()];
             
             row[1] = labrequest.getChildId();
-            row[2] = child.getName();
+            row[2] = labrequest.getChildName();
             row[0] = labrequest;
             row[3] = labrequest.getReceiver();
             row[4] = labrequest.getStatus();
@@ -113,7 +113,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             Object[] row = new Object[model.getColumnCount()];
             row[0]= pharrequest;
             row[1] = request.getChildId();
-            row[2]= child.getName();
+            row[2]= request.getChildName();
             row[3] = pharrequest.getReceiver();
             row[4]= pharrequest.getStatus();
             if(pharrequest instanceof DoctorWorkRequest){

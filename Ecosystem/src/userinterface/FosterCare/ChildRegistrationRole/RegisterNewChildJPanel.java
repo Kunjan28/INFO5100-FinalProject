@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,6 +52,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     ChildDirectory directory;
     ChildRegistrationOrganization organization;
     Network network;
+    Random rand;
 
     public RegisterNewChildJPanel(JPanel userProcessContainer, ChildDirectory directory, UserAccount account, Enterprise enterprise, EcoSystem business, Organization organization) {
         initComponents();
@@ -61,6 +63,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         this.business = business;
         this.organization = (ChildRegistrationOrganization) organization;
         jXDatePicker1.getMonthView().setUpperBound(new Date());
+        rand = new Random();
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -244,7 +247,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 Child child = new Child();
 //              directory=childRegistrationOrganization.getChildDirectory();
                 /*Setting the data in the child object*/
-                int childId =  directory.getChildList().size()+1;
+                int childId =  rand.nextInt(100);
                 child = directory.addChild();
                 child.setChildAge(childAge);
                 child.setChildId(childId);
@@ -261,6 +264,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 docwrkreq.setMessage("Please medically examine the newly registered child");
                 docwrkreq.setSender(account);
                 docwrkreq.setChildId(child.getChildId());
+                docwrkreq.setChildName(child.getName());
                 
                 /*
                 The below set of code iterates through the network list and get the network

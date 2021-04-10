@@ -170,7 +170,7 @@ ImageIcon icon = new ImageIcon(image);
             }
         });
         add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 133, 33));
-        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(324, 155, 135, 111));
+        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 81, 160, 130));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
         jButton1.setText("Back");
