@@ -21,7 +21,9 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -268,28 +270,41 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 Once it has found the Doctor organization, it sets the organization as Doctor organization
                 
                 */
-                Organization org = null;
+                List<DoctorOrganization> list = new ArrayList<>();
                 for (Network network : business.getNetworkList()){
                     // getNetworkList().getOrganizationDirectory().getOrganizationList()
                     System.out.println("network: "+network);
                     for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                        for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                          // if(this.network.equals(network)){
+                        if(this.network.equals(network)){
+                            for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
+                          
                             if (organization instanceof DoctorOrganization){
-                                org = organization;
-                                break;
+                               
+                                list.add((DoctorOrganization)organization);
                             }
-                          //}
+                          
                             
                         }
+                        }
+                        
+                        
                     }
-                }               
-                if (org!=null){
+                }
+                for(DoctorOrganization org:list){
                     org.getWorkQueue().getWorkRequestList().add(docwrkreq);
+                }
+                /*The below if code checks if there is some value for org. If there is then add the work request
+                - At the organization level, where other organization in the same enterprise can access it
+                -At the account level, so the child registration can also see the request created
+                - At the business level, as the request has to be transferred to a different organization in a different enterprise.
+                */
+                if(list!=null && list.size()>0){
                     account.getWorkQueue().getWorkRequestList().add(docwrkreq);
                     business.getWorkQueue().getWorkRequestList().add(docwrkreq);
+                    
                 }
-                JOptionPane.showMessageDialog(this, "Child Registration is successful!");
+                
+                /*Once the request has been moved and child data has been added, the data is moved to the Child registration page again*/
                 ChildRegistrationWorkAreaPanel childregpanel = new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory);
                 this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
