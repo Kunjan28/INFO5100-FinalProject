@@ -96,4 +96,20 @@ public class EcoSystem extends Organization{
     public static void setInstance(EcoSystem system) {
         business = system;
     }
+    
+        public ChildDirectory getDirectory() {
+        return directory;
+    }
+
+    public void setDirectory(ChildDirectory directory) {
+        this.directory = directory;
+    }
+
+    public AdopterDirectory getUdirectory() {
+        return udirectory;
+    }
+
+    public void setUdirectory(AdopterDirectory udirectory) {
+        this.udirectory = udirectory;
+    }
 }
