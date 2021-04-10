@@ -12,7 +12,9 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.ChildRegistrationOrganization;
 import Business.Organization.DoctorOrganization;
+import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
+import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -189,7 +191,7 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnViewChildActionPerformed
 
     private void btnDeleteChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteChildActionPerformed
- int selectedRow = jTable1.getSelectedRow();
+    int selectedRow = jTable1.getSelectedRow();
        if(selectedRow<0){
            JOptionPane.showMessageDialog(null, "Please select a child to delete");
        }
@@ -197,7 +199,7 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
         if (result == 0) {
             directory.removeChild(ch);
-            List<DoctorOrganization> list = new ArrayList<>();
+            List<Organization> list = new ArrayList<>();
             for (Network network : business.getNetworkList()) {
                 // getNetworkList().getOrganizationDirectory().getOrganizationList()
                 System.out.println("network: " + network);
@@ -205,9 +207,9 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
                     if (this.network.equals(network)) {
                         for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
 
-                            if (organization instanceof DoctorOrganization) {
+                            if (organization instanceof DoctorOrganization || organization instanceof PharmacistOrganization || organization instanceof LabOrganization) {
 
-                                list.add((DoctorOrganization) organization);
+                                list.add(organization);
                             }
                         }
                     }
@@ -215,7 +217,7 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
                 }
             }
             
-            for (DoctorOrganization org : list) {
+            for (Organization org : list) {
                 org.getWorkQueue().delete(ch.getChildId());
             }
             account.getWorkQueue().delete(ch.getChildId());
@@ -230,8 +232,8 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
       
         DefaultTableModel dtms = (DefaultTableModel)jTable1.getModel();
            dtms.setRowCount(0);
-       
-        for(Child child : directory.getChildList()){
+       if(directory!=null && directory.getChildList()!=null && directory.getChildList().size()>0){
+           for(Child child : directory.getChildList()){
             Object[] row = new Object[dtms.getColumnCount()];
             row[0] = child;
             row[1]=child.getName();
@@ -241,6 +243,8 @@ public class ChildRegistrationWorkAreaPanel extends javax.swing.JPanel {
             dtms.addRow(row);
         
         }
+       }
+        
     }
     /*Method to populate the table with work request that has been created for the doctor*/
 

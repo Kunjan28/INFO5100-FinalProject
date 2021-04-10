@@ -45,11 +45,13 @@ public class LabJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel)tblLab.getModel();
         model.setRowCount(0);
         for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
-            Object[] row = new Object[4];
-            row[0] = request;
-            row[1] = request.getSender().getEmployee().getName();
-            row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[3] = request.getStatus();
+            Object[] row = new Object[6];
+            row[0] = request.getChildId();
+            row[1] = request.getChildName();
+            row[2] = request.getSender().getEmployee().getName();
+            row[3] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[4] = request.getStatus();
+            row[5] = request;
             model.addRow(row);
         }
     }
@@ -85,15 +87,23 @@ public class LabJPanel extends javax.swing.JPanel {
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Status"
+                "Patient Id", "Patient Name", "Doctor Name", "Receiver", "Status", "Message"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblLab);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 790, 130));
@@ -129,7 +139,7 @@ public class LabJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a child from table");
             return;
         }
-        WorkRequest request = (WorkRequest)tblLab.getValueAt(selectedRow, 0);
+        WorkRequest request = (WorkRequest)tblLab.getValueAt(selectedRow, 5);
 //        request.setReceiver(userAccount);
 //        request.setStatus("Pending");
         if (request.getStatus().equalsIgnoreCase("Completed")) {
@@ -150,7 +160,11 @@ public class LabJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select a child from table");
             return;
         }
-        LabWorkRequest request = (LabWorkRequest)tblLab.getValueAt(selectedRow, 0);
+        LabWorkRequest request = (LabWorkRequest)tblLab.getValueAt(selectedRow, 5);
+        if (request.getStatus().equalsIgnoreCase("Completed")) {
+                JOptionPane.showMessageDialog(null, "Request already completed.");
+                return;
+                } 
         request.setStatus("Processing");
         //request.setTestResult("Lab test request recieved");
         LabProcessJPanel panel = new LabProcessJPanel(userProcessContainer, request);

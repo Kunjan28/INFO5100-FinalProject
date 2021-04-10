@@ -136,12 +136,14 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         }
         else
         {
-        LabWorkRequest request = new LabWorkRequest();
-        request.setMessage(message);
-        request.setSender(userAccount);
-        request.setStatus("Sent");
-        request.setChildId(request.getChildId());
-        request.setStatus("Medical Test Requested");
+        LabWorkRequest labRequest = new LabWorkRequest();
+        labRequest.setMessage(message);
+        labRequest.setSender(userAccount);
+        labRequest.setStatus("Sent");
+        labRequest.setChildId(request.getChildId());
+        labRequest.setChildName(request.getChildName());
+        
+        labRequest.setStatus("Medical Test Requested");
         
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
@@ -153,8 +155,8 @@ public class DoctorRequestLab extends javax.swing.JPanel {
       //        }
         }
         if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(request);
-            userAccount.getWorkQueue().getWorkRequestList().add(request);
+            org.getWorkQueue().getWorkRequestList().add(labRequest);
+            userAccount.getWorkQueue().getWorkRequestList().add(labRequest);
         }  
         }
         userProcessContainer.remove(this);
