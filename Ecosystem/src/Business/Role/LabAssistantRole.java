@@ -6,15 +6,13 @@ package Business.Role;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
-import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
-import userinterface.PharmacyOrganisation.PharmacistJPanel;
 import userinterface.labOrganisation.LabWorkArea;
 
 /**
@@ -24,9 +22,8 @@ import userinterface.labOrganisation.LabWorkArea;
 public class LabAssistantRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory,AdopterDirectory udirectorDirectory) {
-        //return null;
-    return new LabWorkArea(userProcessContainer, account, organization, business);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory, DonorDirectory donorDirectory) {
+        return new LabWorkArea(userProcessContainer, account, organization, business);
     }
     
     @Override

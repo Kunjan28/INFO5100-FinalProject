@@ -6,6 +6,7 @@ package Business.Role;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DoctorOrganization;
@@ -21,8 +22,12 @@ import userinterface.DoctorOrg.DoctorWorkArea;
 public class DoctorRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory,AdopterDirectory udirectorDirectory) {
-    //return null;        
-    return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization)organization, enterprise, business, directory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory, DonorDirectory donorDirectory) {
+        return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization) organization, enterprise, business, directory);
+    }
+    
+    @Override
+    public String toString(){
+        return (RoleType.Doctor.getValue());
     }
 }

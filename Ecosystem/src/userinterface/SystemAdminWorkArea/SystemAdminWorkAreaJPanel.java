@@ -129,15 +129,14 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 //        layout.next(rightSystemAdminPanel);
     }
     private void noOfSceneGraph(){
-//        noOfSceneGraph.setBackground(new Color(236,113,107));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
-//        manageEnterprise.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        userinterface.SystemAdminWorkArea.NoOfScenesGraph noOfScenesGraph = new userinterface.SystemAdminWorkArea.NoOfScenesGraph(rightSystemAdminPanel, ecosystem);
-//        rightSystemAdminPanel.add("NoOfScenesGraph",noOfScenesGraph);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
+        lblAnalysis.setBackground(new Color(236,113,107));
+        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
+        manageEnterprise.setBackground(new Color(215,81,81));
+        manageNetworkPanel.setBackground(new Color(215,81,81));
+        userinterface.SystemAdminWorkArea.Services servicesAtGlance = new userinterface.SystemAdminWorkArea.Services(rightSystemAdminPanel, ecosystem);
+        rightSystemAdminPanel.add("ServicesAtGlance",servicesAtGlance);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
         
     }
     /**

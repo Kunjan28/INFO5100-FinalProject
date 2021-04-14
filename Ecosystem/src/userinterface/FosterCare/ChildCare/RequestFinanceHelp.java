@@ -11,10 +11,13 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.ChildCareOrganization;
-import Business.Organization.DoctorOrganization;
+import Business.Organization.FinanceOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.EducationalHelpWorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -190,59 +193,58 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-       if(txtEduFunds.getText().isEmpty()){
+        if (txtEduFunds.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the Message for finance team");
             return;
         }
-//        FinanceCCWorkRequest fccwr = new FinanceCCWorkRequest();
-//pjpj    fccwr.setStatus("Requesting funds");
-////        fccwr.setMessage(txtEduFunds.getText()+" "+jTextArea1.getText());
-//        fccwr.setSender(account);
-//        fccwr.setChildId(child.getChildId());
-//        fccwr.setRemarks("Request for Finance Team");
-        
-         /*
-        The below set of code iterates through the network list and get the network
-        Once the network is received then it iterates over all the enterprises present in the network
-        It goes thought every organization in the enterprise.
-        
-        Once it has found the Doctor organization, it sets the organization as Doctor organization
-        
-        */
-        Organization org = null;
-        for (Network network : business.getNetworkList()){
-           // getNetworkList().getOrganizationDirectory().getOrganizationList()
-            System.out.println("network: "+network);
-            for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                   
-                
-			// if(this.network.equals(network)){
-//if (organization instanceof FinanceOrphanageOrganization){
-//		org = organization;
-//		break;
-//		}
-		//}
-            
+        EducationalHelpWorkRequest fccwr = new EducationalHelpWorkRequest();
+        try {
+            Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText()) + Long.parseLong(txtFundss.getText()) + Long.parseLong(txtFundsLiving.getText())
+                    + Long.parseLong(txtFundsMisc.getText());
+            fccwr.setAmt(amt.toString());
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Please enter numeric amount");
+            return;
         }
+        fccwr.setMessage("Requesting funds");
+        fccwr.setStatus("Initiated");
+        fccwr.setAmt(data);
+        fccwr.setSender(account);
+        fccwr.setChildId(child.getChildId());
+
+        fccwr.setRemarks("Request for Finance Team");
+
+        List<Organization> org = new ArrayList<>();
+        for (Network network : business.getNetworkList()) {
+            // getNetworkList().getOrganizationDirectory().getOrganizationList()
+            System.out.println("network: " + network);
+            for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+
+                for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+
+                    // if(this.network.equals(network)){
+                    if (organization instanceof FinanceOrganization) {
+                        org.add(organization);
+                        organization.getWorkQueue().getWorkRequestList().add(fccwr);
+                    }
+                    //}
+
+                }
             }
         }
-/*The below if code checks if there is some value for org. If there is then add the work request 
-        - At the organization level, where other organization in the same enterprise can access it
-        -At the account level, so the child registration can also see the request created
-        - At the business level, as the request has to be transferred to a different organization in a different enterprise.
-        */
-//        if (org!=null){
-//            org.getWorkQueue().getWorkRequestList().add(fccwr);
-//          
-//            account.getWorkQueue().getWorkRequestList().add(fccwr);
-//             business.getWorkQueue().getWorkRequestList().add(fccwr);
-//    
-//        }
+
+        if (org.size() > 0) {
+
+            account.getWorkQueue().getWorkRequestList().add(fccwr);
+            business.getWorkQueue().getWorkRequestList().add(fccwr);
+
+        }
+
+        JOptionPane.showMessageDialog(null, "Request raised to Funding team");
+
         ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
         
         

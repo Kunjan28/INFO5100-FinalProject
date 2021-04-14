@@ -30,6 +30,8 @@ public class Child {
     private boolean table;
     private boolean closet;
     Date dateOfBirth;
+    private boolean financialHelp;
+    private String amt;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -182,6 +184,22 @@ public class Child {
 
     public void setImageDetails(String imageDetails) {
         this.imageDetails = imageDetails;
+    }
+
+    public boolean isFinancialHelp() {
+        return financialHelp;
+    }
+
+    public void setFinancialHelp(boolean financialHelp) {
+        this.financialHelp = financialHelp;
+    }
+
+    public String getAmt() {
+        return amt;
+    }
+
+    public void setAmt(String amt) {
+        this.amt = amt;
     }
 
     

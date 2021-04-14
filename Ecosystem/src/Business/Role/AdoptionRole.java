@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 
@@ -25,8 +26,7 @@ import userinterface.Adoption.AdoptionAdmin.AdoptionMainWorkArea;
 public class AdoptionRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-       //return null;
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
         return new AdoptionMainWorkArea(userProcessContainer, account, organization, enterprise,business, udirectory);
     }
     @Override

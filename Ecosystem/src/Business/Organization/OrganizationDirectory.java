@@ -67,6 +67,14 @@ public class OrganizationDirectory {
             organization = new AdopterOrganization(name);
             organizationList.add(organization);
         }
+        else if (type.getValue().equals(Type.Donor.getValue())){
+            organization = new DonorOrganization(name);
+            organizationList.add(organization);
+        }
+        else if (type.getValue().equals(Type.FinanceOrganization.getValue())){
+            organization = new FinanceOrganization();
+            organizationList.add(organization);
+        }
         return organization;
     
 }
