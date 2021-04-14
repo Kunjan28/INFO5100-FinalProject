@@ -157,8 +157,8 @@
                               <Component id="jPanel3" min="-2" pref="304" max="-2" attributes="0"/>
                               <Component id="jPanel4" min="-2" pref="304" max="-2" attributes="0"/>
                               <Component id="loginButton" min="-2" pref="304" max="-2" attributes="0"/>
-                              <Component id="btnDonate" min="-2" pref="304" max="-2" attributes="0"/>
-                              <Component id="btnRegisterForAdoption" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
+                              <Component id="btnAdopt" min="-2" pref="304" max="-2" attributes="0"/>
+                              <Component id="btnDonate" alignment="0" min="-2" pref="304" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="227" max="-2" attributes="0"/>
                       </Group>
@@ -179,9 +179,9 @@
                   <EmptySpace min="28" pref="28" max="-2" attributes="0"/>
                   <Component id="loginButton" min="-2" pref="33" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Component id="btnRegisterForAdoption" min="-2" pref="33" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Component id="btnDonate" min="-2" pref="33" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <Component id="btnAdopt" min="-2" pref="33" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -403,7 +403,7 @@
             <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="cancelButtonMousePressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="btnDonate">
+        <Component class="javax.swing.JLabel" name="btnAdopt">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -422,10 +422,10 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDonateMousePressed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnAdoptMousePressed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="btnRegisterForAdoption">
+        <Component class="javax.swing.JLabel" name="btnDonate">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -444,7 +444,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnRegisterForAdoptionMousePressed"/>
+            <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnDonateMousePressed"/>
           </Events>
         </Component>
       </SubComponents>

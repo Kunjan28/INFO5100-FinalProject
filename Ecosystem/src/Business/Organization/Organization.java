@@ -22,15 +22,15 @@ public abstract class Organization {
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
-  //  private ChildDirectory directory; // Added the child directory as the child data is manipulated at the organization level
     private int organizationID;
     private static int counter=0;
     private Type type;
     
      public enum Type{
         Admin("Admin Organization"), Doctor("Doctor Organization"), Lab("Lab Organization"),Pharmacist("Pharmacy Organization"),
-        OrphanageAdmin("Orphanage Admin Organization"), ChildCare("Child Care Organization"), ChildRegistration("Child Registeration Organization"), FinanceOrphanage ("Finance Organization"),
-        AdoptionAdmin("Adoption Admin Organization"), Adoption("Adoption Organization"), CriminalCheck("Criminal Check Organization"), FinanceCheck("Finance Check Organization"),Adopter("Adopter Organization");
+        OrphanageAdmin("Orphanage Admin Organization"), ChildCare("Child Care Organization"), ChildRegistration("Child Registeration Organization"), FinanceOrganization ("Finance Organization"),
+        AdoptionAdmin("Adoption Admin Organization"), Adoption("Adoption Organization"), CriminalCheck("Criminal Check Organization"), FinanceCheck("Finance Check Organization"),Adopter("Adopter Organization")
+        ,Donor("Donor Organization");
         private String value;
         private Type(String value) {
             this.value = value;
@@ -44,7 +44,6 @@ public abstract class Organization {
         workQueue = new WorkQueue();
         employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory(); 
-        //directory = new ChildDirectory(); // Creating a new directory during the call to the constructor
         organizationID = counter;
         ++counter;
     }

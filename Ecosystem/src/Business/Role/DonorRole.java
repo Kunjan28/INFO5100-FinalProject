@@ -10,28 +10,23 @@ import Business.Child.ChildDirectory;
 import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+import Business.Organization.DonorOrganization;
 import Business.Organization.Organization;
-import Business.Organization.PharmacistOrganization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.PharmacyOrganisation.PharmacyWorkArea;
-
+import userinterface.Donor.DonorChildSelectionJPanel;
+;
 
 /**
  *
  * @author Kunjan
  */
-public class PharmacistRole extends Role{
+public class DonorRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory,DonorDirectory donorDirectory) {
-       return new PharmacyWorkArea(userProcessContainer, account, (PharmacistOrganization)organization,enterprise, business,directory);
-    }
-    
-    @Override
-    public String toString(){
-        return (RoleType.Pharmacist.getValue());
+        return new DonorChildSelectionJPanel(userProcessContainer, account, organization,enterprise, business,udirectorDirectory,directory,donorDirectory);
     }
     
 }

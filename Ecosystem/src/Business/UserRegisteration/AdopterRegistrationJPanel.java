@@ -3,27 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.AdopterRegisteration;
+package Business.UserRegisteration;
 
-import Business.Adopter.Adopter;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 
 import Business.Network.Network;
-import Business.Organization.Organization;
+import Business.Utils.CommonMail;
+
 
 
 import Business.WorkQueue.WorkQueue;
-import java.awt.CardLayout;
 import java.awt.Color;
 import java.util.Properties;
-//import javax.mail.Message;
-//import javax.mail.MessagingException;
-//import javax.mail.Session;
-//import javax.mail.Transport;
-//import javax.mail.internet.InternetAddress;
-//import javax.mail.internet.MimeMessage;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,12 +31,11 @@ import javax.swing.JPanel;
 import Business.WorkQueue.UserRegistrationRequest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.Duration;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-//import javafx.animation.PauseTransition;
-import javax.swing.JTextField;
-import javax.swing.Timer;
+
+
 
 /**
  *
@@ -47,21 +45,17 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
-    //private Validation validation;
     private ActionListener eventListener;
     private boolean emailValid;
     private boolean contactValid;
     private boolean userUnique;
     /**
-     * Creates new form UserRegistrationJPanel
+     * Creates new form AdopterRegistrationJPanel
      */
     public AdopterRegistrationJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-//        populateNetworkComboBox();
-//        populateCarrierComboBox();
-//        validation = new Validation();
         usernameExistsMessage.setVisible(false);
         emailValidateMessage.setVisible(false);
         emailSuccessLabel.setVisible(false);
@@ -295,14 +289,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        //Network network = (Network) stateCombo.getSelectedItem();
-        //Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
 
-//        if (network == null) {
-//            stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-//            stateCombo.setForeground(Color.red);
-//
-//        }
         if (txtUserName.getText().isEmpty()) {
             txtUserName.setBorder(BorderFactory.createLineBorder(Color.RED));
             txtUserName.setForeground(Color.red);
@@ -328,11 +315,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             txtSSN.setForeground(Color.red);
 
         }
-//        if (type == null) {
-//            orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-//            orgCombo.setForeground(Color.red);
-//
-//        }
+
         if (txtIncome.getText().isEmpty()) {
             txtIncome.setBorder(BorderFactory.createLineBorder(Color.RED));
             txtIncome.setForeground(Color.red);
@@ -341,9 +324,9 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
         
         if (txtName.getText().isEmpty() || txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
                 || txtSSN.getText().isEmpty()
-               // || type == null
+              
                 || txtIncome.getText().isEmpty()
-                //|| locationPoint == null
+                
                 ) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
 //        } else if(!contactValidity(uContact.getText())){
@@ -384,7 +367,9 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 //                contact = uContact.getText() + "@tmomail.net";
 //            }
             //registrationRequest.setContactCarrierName(contact);
-           // sendEmailMessage(uEmail.getText());
+            String subject = "Adopter Registeration";
+            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.";
+            CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
            // sendTextMessage(contact);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {

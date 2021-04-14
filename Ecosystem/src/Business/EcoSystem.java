@@ -7,6 +7,7 @@ package Business;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
@@ -25,6 +26,7 @@ public class EcoSystem extends Organization{
     private ArrayList<Network> networkList;
     private ChildDirectory directory;
     private AdopterDirectory udirectory;
+    private DonorDirectory donorDirectory;
     public static EcoSystem getInstance(){
         if(business==null){
             business=new EcoSystem();
@@ -48,6 +50,7 @@ public class EcoSystem extends Organization{
         networkList=new ArrayList<Network>();
         directory = new ChildDirectory();
         udirectory = new AdopterDirectory();
+        donorDirectory = new DonorDirectory();
       
     }
 
@@ -112,4 +115,13 @@ public class EcoSystem extends Organization{
     public void setUdirectory(AdopterDirectory udirectory) {
         this.udirectory = udirectory;
     }
+    
+    public DonorDirectory getDonorDirectory() {
+        return donorDirectory;
+    }
+
+    public void setDonorDirectory(DonorDirectory donorDirectory) {
+        this.donorDirectory = donorDirectory;
+    }
+    
 }

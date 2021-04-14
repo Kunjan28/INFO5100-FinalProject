@@ -10,27 +10,23 @@ import Business.Child.ChildDirectory;
 import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
+
 import Business.Organization.Organization;
+
+
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.FundingFinanceRole.FinanceWorkAreaJPanel;
 
 
 /**
  *
  * @author Kunjan
  */
-public class FosterCareRole extends Role{
-    
+public class FundingFinanceRole extends Role{
+
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return null;
-        //return new AdminWorkAreaJPanel(userProcessContainer, enterprise,business);
+        return new FinanceWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business, directory);
     }
-    
-    @Override
-    public String toString(){
-        return (RoleType.FosterCare.getValue());
-    }
-
-    
 }

@@ -7,6 +7,7 @@ package userinterface.AdministrativeRole;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
@@ -22,6 +23,8 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel;
+import userinterface.FundingRoleAdmin.FundingUnitWorkRequestJPanel;
 
 /**
  *
@@ -33,7 +36,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      * Creates new form SystemAdminWorkAreaJPanel
      */
     JPanel userProcessContainer;
-    EcoSystem ecosystem;
+    EcoSystem business;
 
     Enterprise enterprise;
     
@@ -45,56 +48,28 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     Organization organization;
     AdopterDirectory udirectory;
     ChildDirectory directory;
+    DonorDirectory donorDirectory;
    
     
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
         initComponents();
         System.out.println("here");
-        this.userProcessContainer=userProcessContainer;  
+        this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
-        this.ecosystem=business;
-        this.udirectory= udirectory;
-        this.directory=directory;
-
-//         this.userProcessContainer = userProcessContainer;
-//        this.account = account;
-//        this.business = business;
-//       this.network = network;
-//        this.enterprise = enterprise;
-//        this.organization = organization;
-//        this.udirectory= udirectory;
-       if(!"Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())) manageRequestPanel.setVisible(false);
-        
-
-
+        this.business = business;
+        this.udirectory = udirectory;
+        this.directory = directory;
+        this.donorDirectory = donorDirectory;
+        manageRequestPanel.setVisible(false);
+        if ("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue()) || "Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())) {
+            manageRequestPanel.setVisible(true);
+        }
         manageOrganisation();
-        
-        
-        
-        //populateTree();
-//        organizationJComboBox.removeAllItems();
-//        if(enterprise instanceof HospitalEnterprise){
-//             organizationJComboBox.addItem(Organization.Type.Doctor);
-//               organizationJComboBox.addItem(Organization.Type.Lab);
-//               organizationJComboBox.addItem(Organization.Type.Pharmacist);
-//        }
-//        if(enterprise instanceof FosterCareEnterprise){
-//          organizationJComboBox.addItem(Organization.Type.ChildCare);
-//               organizationJComboBox.addItem(Organization.Type.ChildRegistration);
-//               organizationJComboBox.addItem(Organization.Type.FinanceOrphanage);  
-//        }
-//        if(enterprise instanceof AdoptionEnterprise){
-//           organizationJComboBox.addItem(Organization.Type.Adopter);
-//               organizationJComboBox.addItem(Organization.Type.Adoption);
-//               organizationJComboBox.addItem(Organization.Type.FinanceCheck); 
-//                 organizationJComboBox.addItem(Organization.Type.CriminalCheck); 
-//        }
-        
     }
     
     public void populateTree(){
         DefaultTreeModel model=(DefaultTreeModel)jTree1.getModel();
-        ArrayList<Network> networkList=ecosystem.getNetworkList();
+        ArrayList<Network> networkList=business.getNetworkList();
         ArrayList<Enterprise> enterpriseList;
         ArrayList<Organization> organizationList;
         
@@ -134,25 +109,15 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageOrganisation(){
-//        manageNetworkPanel.setBackground(new Color(236,113,107));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
+       
         ManageOrganizationJPanel panel = new ManageOrganizationJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory(), enterprise);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        //userProcessContainer, enterprise.getOrganizationDirectory(), enterprise
      }
     
     private void manageEmployee(){
-//        manageEmployee.setBackground(new Color(236,113,107));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-
+        manageRequestPanel.setBackground(new Color(215,81,81));
         ManageEmployeeJPanel panel = new ManageEmployeeJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory());
         rightSystemAdminPanel.add("ManageEnterpriseJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -161,18 +126,28 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageUser(){
-        
-//        manageUser.setBackground(new Color(236,113,107));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-
-        ManageUserAccountJPanel panel = new ManageUserAccountJPanel(rightSystemAdminPanel, enterprise, ecosystem);
+        manageEmployee.setBackground(new Color(215,81,81));
+        manageRequestPanel.setBackground(new Color(215,81,81));
+        ManageUserAccountJPanel panel = new ManageUserAccountJPanel(rightSystemAdminPanel, enterprise, business);
         rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        //userProcessContainer, enterprise,system
+    }
+    
+    private void manageRequests(){
+        manageRequestPanel.setBackground(new Color(236,113,107));
+        manageEmployee.setBackground(new Color(215,81,81));
+         if("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
+               AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,udirectory);
+        rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
+         }
+         else if("Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
+             FundingUnitWorkRequestJPanel vOUWRJP = new FundingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,udirectory,donorDirectory);
+        rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
+         }
+        
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
     }
     
     private void sceneDetails(){
@@ -193,10 +168,10 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 //        manageUser.setBackground(new Color(215,81,81));
 //        manageEmployee.setBackground(new Color(215,81,81));
 //        manageNetworkPanel.setBackground(new Color(215,81,81));
-        userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel panel = new userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, ecosystem,udirectory);
-        rightSystemAdminPanel.add("NoOfScenesGraph",panel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
+//        userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel panel = new userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, ecosystem,udirectory);
+//        rightSystemAdminPanel.add("NoOfScenesGraph",panel);
+//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+//        layout.next(rightSystemAdminPanel);
         
     }
     /**
@@ -485,12 +460,12 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void ManageRequestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageRequestMousePressed
         // TODO add your handling code here:
-        noOfSceneGraph();
+        manageRequests();
     }//GEN-LAST:event_ManageRequestMousePressed
 
     private void manageRequestPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRequestPanelMousePressed
         // TODO add your handling code here:
-          noOfSceneGraph();
+          manageRequests();
     }//GEN-LAST:event_manageRequestPanelMousePressed
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged

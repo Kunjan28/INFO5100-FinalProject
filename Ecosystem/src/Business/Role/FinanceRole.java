@@ -7,6 +7,7 @@ package Business.Role;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
+import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 
@@ -24,8 +25,7 @@ import userinterface.Adoption.FinanceCheck.FinanceWorkArea;
 public class FinanceRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-        //return null;
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
         return new FinanceWorkArea(userProcessContainer,account, organization, enterprise,  business,  udirectory);
     }
     

@@ -9,6 +9,7 @@ package userinterface.AdministrativeRole;
 import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
 import Business.Enterprise.FosterCareEnterprise;
+import Business.Enterprise.FundingEnterprise;
 
 import Business.Enterprise.HospitalEnterprise;
 import Business.Organization.Organization;
@@ -47,13 +48,17 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         if(enterprise instanceof FosterCareEnterprise){
           organizationJComboBox.addItem(Type.ChildCare);
                organizationJComboBox.addItem(Type.ChildRegistration);
-               organizationJComboBox.addItem(Type.FinanceOrphanage);  
         }
         if(enterprise instanceof AdoptionEnterprise){
            organizationJComboBox.addItem(Type.Adopter);
                organizationJComboBox.addItem(Type.Adoption);
                organizationJComboBox.addItem(Type.FinanceCheck); 
                  organizationJComboBox.addItem(Type.CriminalCheck); 
+        }
+        if(enterprise instanceof FundingEnterprise){
+           organizationJComboBox.addItem(Type.FinanceOrganization);
+               organizationJComboBox.addItem(Type.Donor);
+               
         }
     }
     
