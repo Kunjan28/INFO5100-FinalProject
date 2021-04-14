@@ -104,7 +104,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("VIEW CHILD DETAILS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 30, 310, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 310, 20));
 
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -117,10 +117,12 @@ public class ViewChildDetails extends javax.swing.JPanel {
                 "Child ID", "Name", "Age", "Gender", "Status"
             }
         ));
+        tblChild.setOpaque(false);
         tblChildDetails.setViewportView(tblChild);
 
-        add(tblChildDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 320, 630, 120));
+        add(tblChildDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 320, 850, 140));
 
+        btnView.setBackground(new java.awt.Color(255, 255, 255));
         btnView.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnView.setText("View Child Details");
         btnView.addActionListener(new java.awt.event.ActionListener() {
@@ -128,10 +130,10 @@ public class ViewChildDetails extends javax.swing.JPanel {
                 btnViewActionPerformed(evt);
             }
         });
-        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 480, 160, -1));
+        add(btnView, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 160, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids 2.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 810, 360));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 100, 890, 410));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed

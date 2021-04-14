@@ -181,7 +181,7 @@ public class LabWorkArea extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
-        setBackground(new java.awt.Color(215, 81, 81));
+        setBackground(new java.awt.Color(255, 204, 153));
         setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new java.awt.BorderLayout());
 

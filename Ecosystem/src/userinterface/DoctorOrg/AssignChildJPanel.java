@@ -73,6 +73,16 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         getChildDetails();
         populateLabTable();
         populateMedicationTable();
+        
+        txtName.setEnabled(false);
+        cmbAge.setEnabled(false);
+        btnMale.setEnabled(false);
+        btnFemale.setEnabled(false);
+        txtMark.setEnabled(false);
+        lblName.setEnabled(false);
+        lblAge.setEnabled(false);
+        lblGender.setEnabled(false);
+        lblMark.setEnabled(false);
     }
     
     public void populateLabTable(){
@@ -114,23 +124,42 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             row[1] = request.getChildId();
             row[2]= request.getChildName();
             row[3] = pharrequest.getReceiver();
-            row[4]= pharrequest.getStatus();
+            //row[4]= pharrequest.getStatus();
+//            if(pharrequest instanceof DoctorWorkRequest){
+//                 String result = ((DoctorWorkRequest) pharrequest).getTestResult();
+//                  row[4] = result == null ? "Prescribed Medicine" : result;
+//            }
+//            else if(pharrequest instanceof PharmacistWorkRequest){
+//                String result = ((PharmacistWorkRequest) pharrequest).getTestResult();
+//            row[5] = result == null ? "Waiting" : result;
+//            }
+//            if(pharrequest instanceof DoctorWorkRequest){
+//                 String medicalPrescription = ((DoctorWorkRequest) pharrequest).getMedicinePrescribed();
+//            row[6] = medicalPrescription == null ? "": medicalPrescription;
+//            }
+//            else if(pharrequest instanceof PharmacistWorkRequest){
+//               String medicalPrescription = ((PharmacistWorkRequest) pharrequest).getMedicinePrescribed();
+//            row[6] = medicalPrescription == null ? "": medicalPrescription;
+//            }
+                
             if(pharrequest instanceof DoctorWorkRequest){
                  String result = ((DoctorWorkRequest) pharrequest).getTestResult();
-                  row[5] = result == null ? "Prescribed Medicine" : result;
+                  row[4] = result == null ? "Prescribed Medicine" : result;
             }
             else if(pharrequest instanceof PharmacistWorkRequest){
                 String result = ((PharmacistWorkRequest) pharrequest).getTestResult();
-            row[5] = result == null ? "Waiting" : result;
+            row[4] = result == null ? "Waiting" : result;
             }
             if(pharrequest instanceof DoctorWorkRequest){
                  String medicalPrescription = ((DoctorWorkRequest) pharrequest).getMedicinePrescribed();
-            row[6] = medicalPrescription == null ? "": medicalPrescription;
+            row[5] = medicalPrescription == null ? "": medicalPrescription;
             }
             else if(pharrequest instanceof PharmacistWorkRequest){
                String medicalPrescription = ((PharmacistWorkRequest) pharrequest).getMedicinePrescribed();
-            row[6] = medicalPrescription == null ? "": medicalPrescription;
+            row[5] = medicalPrescription == null ? "": medicalPrescription;
             }
+
+            
            model.addRow(row);
              }
         }        
@@ -190,10 +219,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblGender = new javax.swing.JLabel();
+        lblMark = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtMark = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -229,21 +258,21 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         jLabel1.setText("PERSONAL INFORMATION");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 350, 20));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 120, 30));
+        lblName.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblName.setText("Name");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 70, 120, 30));
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("Age");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 120, 20));
+        lblAge.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblAge.setText("Age");
+        add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 120, 20));
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("Gender");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 130, 20));
+        lblGender.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblGender.setText("Gender");
+        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 130, 20));
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Identification Mark");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 140, 20));
+        lblMark.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        lblMark.setText("Identification Mark");
+        add(lblMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 140, 20));
 
         txtName.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 210, 30));
@@ -296,7 +325,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Child ID", "Child Name", "Status", "Receiver", "Comments"
+                "Test Requested", "Child ID", "Child Name", "Receiver", "Message", "Status"
             }
         ));
         ScrollPaneLabWork.setViewportView(tblLab);
@@ -305,13 +334,13 @@ public class AssignChildJPanel extends javax.swing.JPanel {
 
         tblMedication.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Child ID", "Child Name", "Status", "Receiver", "Status", "Comments", "Medication Prescribed"
+                "Message", "Child ID", "Child Name", "Receiver", "Status", "Medication Prescribed"
             }
         ));
         jScrollPane2.setViewportView(tblMedication);
@@ -330,13 +359,14 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         btnFemale.setText("Female");
         add(btnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 120, -1));
 
+        btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 100, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 60, 30));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -455,6 +485,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         txtRR.setEnabled(true);
         btnRequestTest.setEnabled(true);
         btnPrescribeMedication.setEnabled(true);
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
@@ -468,17 +499,17 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JComboBox<String> cmbAge;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblBP;
     private javax.swing.JLabel lblChildPic;
+    private javax.swing.JLabel lblGender;
     private javax.swing.JLabel lblLabWork;
+    private javax.swing.JLabel lblMark;
     private javax.swing.JLabel lblMedicationHistory;
+    private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblPulseRate;
     private javax.swing.JLabel lblRespiratoryRate;
     private javax.swing.JLabel lblTemp;
