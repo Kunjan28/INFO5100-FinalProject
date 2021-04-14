@@ -114,7 +114,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Prescription", "Patient's ID", "Patients Name", "Doctor", "Receiver", "Status"
+                "Message", "Patient's ID", "Patients Name", "Doctor", "Receiver", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -127,7 +127,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblPharmacist);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 670, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 850, 150));
 
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
@@ -135,7 +135,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 460, 170, 30));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 170, 30));
 
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -143,7 +143,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 460, 140, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 140, -1));
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
         btnRefresh.setText("Refresh");

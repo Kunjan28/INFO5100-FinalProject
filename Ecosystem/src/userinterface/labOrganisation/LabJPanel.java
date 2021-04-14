@@ -129,7 +129,7 @@ public class LabJPanel extends javax.swing.JPanel {
         add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 800, 540));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 760, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -143,11 +143,12 @@ public class LabJPanel extends javax.swing.JPanel {
 //        request.setReceiver(userAccount);
 //        request.setStatus("Pending");
         if (request.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
+                JOptionPane.showMessageDialog(null, "Request already completed");
                 return;
                 } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Processing");
+                JOptionPane.showMessageDialog(null, "Request assigned");
                 }
         populateTable();
         btnProcess.setEnabled(true);

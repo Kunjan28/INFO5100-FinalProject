@@ -188,15 +188,15 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new java.awt.BorderLayout());
 
-        systemAdminPanel.setBackground(new java.awt.Color(255, 204, 204));
+        systemAdminPanel.setBackground(new java.awt.Color(255, 204, 153));
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 204));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
         jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        manageNetworkPanel.setBackground(new java.awt.Color(255, 204, 204));
+        manageNetworkPanel.setBackground(new java.awt.Color(255, 204, 153));
         manageNetworkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 manageNetworkPanelMousePressed(evt);
@@ -237,7 +237,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
         jPanel3.add(manageNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
 
-        noOfSceneGraph.setBackground(new java.awt.Color(255, 204, 204));
+        noOfSceneGraph.setBackground(new java.awt.Color(255, 204, 153));
         noOfSceneGraph.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 noOfSceneGraphMousePressed(evt);
@@ -286,7 +286,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jLabel7.setText("Selected Node:");
         jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
 
-        jTree1.setBackground(new java.awt.Color(255, 204, 204));
+        jTree1.setBackground(new java.awt.Color(255, 204, 153));
         jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jTree1.setForeground(new java.awt.Color(0, 0, 0));
         jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
@@ -298,7 +298,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
 
-        viewGraphScene.setBackground(new java.awt.Color(255, 204, 204));
+        viewGraphScene.setBackground(new java.awt.Color(255, 204, 153));
         viewGraphScene.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 viewGraphSceneMousePressed(evt);

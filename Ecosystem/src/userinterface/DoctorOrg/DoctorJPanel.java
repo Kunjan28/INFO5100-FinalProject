@@ -185,7 +185,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 request.setStatus("Pending");
                 }
                 populateRequestTable();
-                JOptionPane.showMessageDialog(null, "Request has successfully assigned");
+                JOptionPane.showMessageDialog(null, "Request has been assigned");
         populateRequestTable();
         btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssignToMeActionPerformed

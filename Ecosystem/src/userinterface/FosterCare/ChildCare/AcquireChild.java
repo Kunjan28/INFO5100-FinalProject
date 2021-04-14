@@ -88,9 +88,6 @@ public class AcquireChild extends javax.swing.JPanel {
 
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        lblOrganization = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
-        orgLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         workTable = new javax.swing.JTable();
         processBtn = new javax.swing.JButton();
@@ -99,7 +96,6 @@ public class AcquireChild extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        lblEnterprise = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -110,24 +106,12 @@ public class AcquireChild extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblOrganization.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblOrganization.setText("Organisation");
-        add(lblOrganization, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 100, 110, 30));
-
-        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 90, 158, 30));
-
-        orgLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        orgLabel.setText("<value>");
-        add(orgLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 100, 133, 30));
-
         workTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Message", "Doctor Name", "CC Admin", "Child ID", "Status", "Child Name"
+                "Comments", "Pharmacy Name", "CC Admin", "Child ID", "Child Name", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -140,7 +124,7 @@ public class AcquireChild extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(workTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 260, 560, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 870, 130));
 
         processBtn.setBackground(new java.awt.Color(255, 255, 255));
         processBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -150,7 +134,7 @@ public class AcquireChild extends javax.swing.JPanel {
                 processBtnActionPerformed(evt);
             }
         });
-        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 370, 160, 33));
+        add(processBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 160, 33));
 
         btnAssign.setBackground(new java.awt.Color(255, 255, 255));
         btnAssign.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
@@ -160,7 +144,7 @@ public class AcquireChild extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 133, 33));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 133, 33));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -194,11 +178,6 @@ public class AcquireChild extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Adopter Request");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 105, 24));
-
-        lblEnterprise.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblEnterprise.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEnterprise.setText("Enterprise ");
-        add(lblEnterprise, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 100, 30));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids 2.png"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -238,7 +217,8 @@ public class AcquireChild extends javax.swing.JPanel {
        re.setReceiver(account);
        re.setStatus("Pending with child care");
        populateWorkRequest();
-        processBtn.setEnabled(true);
+       processBtn.setEnabled(true);
+       JOptionPane.showMessageDialog(null, "Request Assigned");
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -265,20 +245,21 @@ public class AcquireChild extends javax.swing.JPanel {
 public void populateWorkRequest(){
     
     
-    DefaultTableModel dtms = (DefaultTableModel)workTable.getModel();
-       dtms.setRowCount(0);
+    DefaultTableModel table = (DefaultTableModel)workTable.getModel();
+       table.setRowCount(0);
     for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
      
        if(req instanceof ChildCareWorkRequest){
            
-          Object[] row = new Object[dtms.getColumnCount()];
+          Object[] row = new Object[table.getColumnCount()];
           row[0]=req;
           row[1]=req.getSender();
           row[2]=req.getReceiver();
           row[3]=req.getChildId();
-          row[4]=req.getStatus();
+          row[4]=req.getChildName();
+          row[5]=req.getStatus();
           
-          dtms.addRow(row);
+          table.addRow(row);
            }
         
     }
@@ -295,11 +276,7 @@ public void populateWorkRequest(){
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel lblEnterprise;
-    private javax.swing.JLabel lblOrganization;
-    private javax.swing.JLabel orgLabel;
     private javax.swing.JButton processBtn;
-    private javax.swing.JLabel valueLabel;
     private javax.swing.JTable workTable;
     // End of variables declaration//GEN-END:variables
 

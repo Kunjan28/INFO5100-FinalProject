@@ -130,6 +130,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
         lblGender = new javax.swing.JLabel();
         rdbMale = new javax.swing.JRadioButton();
         rdbFemale = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1338, 900));
@@ -288,6 +289,9 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 450, -1, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adp.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 870, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -335,9 +339,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         }
         
-        if (txtName.getText().isEmpty()
-                || txtPwd.getText().isEmpty()
-                || txtEmail.getText().isEmpty()
+        if (txtName.getText().isEmpty() || txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
                 || txtSSN.getText().isEmpty()
                // || type == null
                 || txtIncome.getText().isEmpty()
@@ -646,6 +648,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel emailSuccessLabel;
     private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGender;
