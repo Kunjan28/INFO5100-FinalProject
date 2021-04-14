@@ -23,8 +23,8 @@ public class FosterCareRole extends Role{
     
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-        
-        return new AdminWorkAreaJPanel(userProcessContainer, enterprise,business);
+        return null;
+        //return new AdminWorkAreaJPanel(userProcessContainer, enterprise,business);
     }
     
     @Override

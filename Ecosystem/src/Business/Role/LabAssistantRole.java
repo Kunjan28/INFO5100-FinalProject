@@ -15,7 +15,7 @@ import Business.UserAccount.UserAccount;
 
 import javax.swing.JPanel;
 import userinterface.PharmacyOrganisation.PharmacistJPanel;
-import userinterface.labOrganisation.LabJPanel;
+import userinterface.labOrganisation.LabWorkArea;
 
 /**
  *
@@ -26,7 +26,7 @@ public class LabAssistantRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory,AdopterDirectory udirectorDirectory) {
         //return null;
-    return new LabJPanel(userProcessContainer, account, organization, business);
+    return new LabWorkArea(userProcessContainer, account, organization, business);
     }
     
     @Override

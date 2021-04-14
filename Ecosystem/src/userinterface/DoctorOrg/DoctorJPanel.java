@@ -128,7 +128,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblDoctor);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 290, 730, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 730, 120));
 
         btnAssignToMe.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign To Me");
@@ -150,10 +150,10 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
         btnRefresh.setText("Refresh");
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 50, 140, 30));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 140, 30));
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hosp.jpeg"))); // NOI18N
-        add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 180, 660, 430));
+        add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 800, 530));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Enterprise");
@@ -212,6 +212,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 child = c;
             }
         }
+        
         AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer ,request, child ,userAccount, doctororganization,enterprise , business, directory);
         userProcessContainer.add("AssignedChildJPanel", assignedChildJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();        

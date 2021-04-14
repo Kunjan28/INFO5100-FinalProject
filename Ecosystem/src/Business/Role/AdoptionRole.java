@@ -14,6 +14,7 @@ import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.Adoption.AdoptionAdmin.AdoptionMainWorkArea;
 
 
 
@@ -25,8 +26,8 @@ public class AdoptionRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-       return null;
-       // return new AdoptionCheckWorkAreaJPanel(userProcessContainer, account, organization, enterprise,business, udirectory);
+       //return null;
+        return new AdoptionMainWorkArea(userProcessContainer, account, organization, enterprise,business, udirectory);
     }
     @Override
     public String toString(){

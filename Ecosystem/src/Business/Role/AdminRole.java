@@ -16,13 +16,13 @@ import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 
 /**
  *
- * @author raunak
+ * @author Kunjan
  */
 public class AdminRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-       return new AdminWorkAreaJPanel(userProcessContainer, enterprise, business);
+       return new AdminWorkAreaJPanel(userProcessContainer,account,organization, enterprise, business,directory,udirectory);
        
     }
 

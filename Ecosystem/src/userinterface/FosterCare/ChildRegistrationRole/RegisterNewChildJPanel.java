@@ -93,7 +93,6 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         femaleRDB = new javax.swing.JRadioButton();
         jLabel4 = new javax.swing.JLabel();
         btnRegisterChild = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         photoText = new javax.swing.JTextField();
         uploadButton = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -124,7 +123,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Date of Birth ");
+        jLabel3.setText("Age");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 175, 130, 40));
 
         buttonGroup1.add(maleRDB);
@@ -146,17 +145,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 btnRegisterChildActionPerformed(evt);
             }
         });
-        add(btnRegisterChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 120, 40));
-
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 20, 100, 30));
+        add(btnRegisterChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 130, -1));
 
         photoText.setMaximumSize(new java.awt.Dimension(6, 20));
         add(photoText, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 190, 30));
@@ -195,15 +184,9 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
         add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 190, -1));
 
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/rainbowkids.png"))); // NOI18N
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, 670, 440));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids.png"))); // NOI18N
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 340, 940, 460));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
        browseImageFile();
@@ -308,11 +291,13 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                     
                 }
                 
+                System.out.println("Child registered successfully");
+                JOptionPane.showMessageDialog(null, "Child registered successfully");
                 /*Once the request has been moved and child data has been added, the data is moved to the Child registration page again*/
-                ChildRegistrationWorkAreaPanel childregpanel = new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory);
-                this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
-                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-                layout.next(userProcessContainer);
+//                ViewChildTable childregpanel = new ViewChildTable(userProcessContainer, account, organization, enterprise, business, directory);
+//                this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
+//                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+//                layout.next(userProcessContainer);
             }
         } catch (ParseException ex) {
             Logger.getLogger(RegisterNewChildJPanel.class.getName()).log(Level.SEVERE, null, ex);
@@ -321,7 +306,6 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRegisterChild;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbAge;

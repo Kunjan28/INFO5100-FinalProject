@@ -16,7 +16,7 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import userinterface.DoctorOrg.DoctorJPanel;
+//import userinterface.DoctorOrg.PharmacyWorkArea;
 
 /**
  *
@@ -126,10 +126,10 @@ public class LabJPanel extends javax.swing.JPanel {
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
         btnRefresh.setText("Refresh");
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 20, 110, -1));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 110, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 660, 420));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 800, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -157,15 +157,16 @@ public class LabJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblLab.getSelectedRow();
         if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table");
+            JOptionPane.showMessageDialog(null,"Please select child from table");
             return;
         }
         LabWorkRequest request = (LabWorkRequest)tblLab.getValueAt(selectedRow, 5);
         if (request.getStatus().equalsIgnoreCase("Completed")) {
                 JOptionPane.showMessageDialog(null, "Request already completed.");
                 return;
-                } 
+                } else {
         request.setStatus("Processing");
+        }
         //request.setTestResult("Lab test request recieved");
         LabProcessJPanel panel = new LabProcessJPanel(userProcessContainer, request);
         userProcessContainer.add("processWorkRequestJPanel", panel);

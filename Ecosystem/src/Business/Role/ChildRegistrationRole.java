@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.FosterCare.ChildRegistrationRole.ChildRegistrationWorkAreaPanel;
+import userinterface.FosterCare.ChildRegistrationRole.ChildRegistrationMainWorkArea;
 
 
 /**
@@ -24,7 +24,7 @@ public class ChildRegistrationRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
 //        return null;
-        return new ChildRegistrationWorkAreaPanel(userProcessContainer, account, organization, enterprise, business, directory); // this would return the JPanel of the childregisteration
+        return new ChildRegistrationMainWorkArea(userProcessContainer, account, organization, enterprise, business, directory); // this would return the JPanel of the childregisteration
     }
     
     @Override

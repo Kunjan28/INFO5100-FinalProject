@@ -13,6 +13,7 @@ import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.AdopterRegisteration.AdopterWorkArea;
 
 
 /**
@@ -23,8 +24,8 @@ public class AdopterRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
        
-        return null;
-        //return new AdopterRegistrationandRequestJPanel(userProcessContainer, account, enterprise,business, organization, udirectory, directory);
+        //return null;
+        return new AdopterWorkArea(userProcessContainer, account,organization, enterprise,business,  udirectory, directory);
     }
     
     @Override

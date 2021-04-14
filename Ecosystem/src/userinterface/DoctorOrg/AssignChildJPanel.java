@@ -83,10 +83,9 @@ public class AssignChildJPanel extends javax.swing.JPanel {
               if(labrequest instanceof DoctorWorkRequest || labrequest instanceof LabWorkRequest ){
                   if( labrequest.getChildId() == child.getChildId()){
             Object[] row = new Object[model.getColumnCount()];
-            
+            row[0] = labrequest;
             row[1] = labrequest.getChildId();
             row[2] = labrequest.getChildName();
-            row[0] = labrequest;
             row[3] = labrequest.getReceiver();
             row[4] = labrequest.getStatus();
             if(labrequest instanceof DoctorWorkRequest){
@@ -220,7 +219,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         cmbAge = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        lblChildPic = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -228,7 +227,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PERSONAL INFORMATION");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, 350, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 40, 350, 20));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel2.setText("Name");
@@ -255,23 +254,23 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("VITAL SIGNS");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 20, 340, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 340, 20));
 
         lblTemp.setText("Body Temperature");
-        add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 80, 130, 20));
+        add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 130, 20));
 
         lblPulseRate.setText("Pulse Rate");
-        add(lblPulseRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 120, 110, 20));
+        add(lblPulseRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 110, 20));
 
         lblRespiratoryRate.setText("Respiratory Rate");
-        add(lblRespiratoryRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 120, -1));
+        add(lblRespiratoryRate, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 170, 120, -1));
 
         lblBP.setText("Blood Pressure");
-        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, 140, 20));
-        add(txtTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 70, 160, 30));
-        add(txtPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 120, 160, -1));
-        add(txtRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 170, 160, -1));
-        add(txtBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 220, 160, -1));
+        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 210, 140, 20));
+        add(txtTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 70, 160, 30));
+        add(txtPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 120, 160, -1));
+        add(txtRR, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 170, 160, -1));
+        add(txtBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, 160, -1));
 
         btnRequestTest.setText("Request Lab Test");
         btnRequestTest.addActionListener(new java.awt.event.ActionListener() {
@@ -279,7 +278,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 btnRequestTestActionPerformed(evt);
             }
         });
-        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 300, 150, -1));
+        add(btnRequestTest, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 310, 150, -1));
 
         btnPrescribeMedication.setText("Prescribe Medication");
         btnPrescribeMedication.addActionListener(new java.awt.event.ActionListener() {
@@ -287,7 +286,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 btnPrescribeMedicationActionPerformed(evt);
             }
         });
-        add(btnPrescribeMedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 300, 160, 30));
+        add(btnPrescribeMedication, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 310, 160, 30));
 
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -297,12 +296,12 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Child ID", "Child Name", "Receiver", "Status", "Comments"
+                "Message", "Child ID", "Child Name", "Status", "Receiver", "Comments"
             }
         ));
         ScrollPaneLabWork.setViewportView(tblLab);
 
-        add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 850, 120));
+        add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 850, 120));
 
         tblMedication.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -317,13 +316,13 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblMedication);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 620, 850, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 620, 850, 120));
 
         lblLabWork.setText("Lab Work History");
-        add(lblLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 200, 20));
+        add(lblLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 200, 20));
 
         lblMedicationHistory.setText("Medication History");
-        add(lblMedicationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, 190, -1));
+        add(lblMedicationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, 190, -1));
 
         btnMale.setText("Male");
         add(btnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
@@ -337,7 +336,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 10, 100, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 10, 100, 30));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -345,16 +344,14 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                 btnSaveActionPerformed(evt);
             }
         });
-        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 260, 90, -1));
+        add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 90, -1));
 
         cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
         add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 210, -1));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/colorfulHands.jpeg"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 870, 660));
-
-        jLabel8.setText("jLabel8");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 190, 180));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 860, 660));
+        add(lblChildPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
@@ -368,12 +365,12 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private void btnPrescribeMedicationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrescribeMedicationActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        userProcessContainer.add("DoctorPrescibeMedicine", new DoctorPrescibeMedicineJPanel(userProcessContainer, userAccount,  enterprise ,child, childdirectory,request ,business));
+        userProcessContainer.add("DoctorPrescibeMedicine", new DoctorPrescibeMedicine(userProcessContainer, userAccount,  enterprise ,child, childdirectory,request ,business));
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPrescribeMedicationActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
+//        // TODO add your handling code here:
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -477,9 +474,9 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblBP;
+    private javax.swing.JLabel lblChildPic;
     private javax.swing.JLabel lblLabWork;
     private javax.swing.JLabel lblMedicationHistory;
     private javax.swing.JLabel lblPulseRate;
