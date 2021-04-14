@@ -114,11 +114,11 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Prescription", "Patient's ID", "Patient's Name", "Doctor", "Receiver", "Comments"
+                "Prescription", "Patient's ID", "Patients Name", "Doctor", "Receiver", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, true, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -200,7 +200,12 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             return;
         }
         PharmacistWorkRequest request = (PharmacistWorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
+        if (request.getStatus().equalsIgnoreCase("Delivered")) {
+                JOptionPane.showMessageDialog(null, "Request already completed.");
+                return;
+                } else {
         request.setStatus("Processing");
+        }
         PharmacistProcessJPanel processWorkRequestJPanel = new PharmacistProcessJPanel(userProcessContainer, request, userAccount, enterprise,child, directory,business,pharmacistOrganization);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

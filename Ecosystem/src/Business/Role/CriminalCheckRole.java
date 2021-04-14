@@ -13,6 +13,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
+import userinterface.Adoption.BGCandCriminalCheck.BGCandCriminalWorkArea;
 
 
 /**
@@ -25,8 +26,8 @@ public class CriminalCheckRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-        return null;
-        //return new BackgroundAndCriminalCheckWorkAreaJPanel(userProcessContainer,account, organization, enterprise,  business,  udirectory);
+        //return null;
+        return new BGCandCriminalWorkArea(userProcessContainer,account, organization, enterprise,  business,  udirectory);
     }
     @Override
     public String toString(){

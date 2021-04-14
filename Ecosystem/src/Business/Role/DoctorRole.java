@@ -12,7 +12,7 @@ import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.DoctorOrg.DoctorJPanel;
+import userinterface.DoctorOrg.DoctorWorkArea;
 
 /**
  *
@@ -23,6 +23,6 @@ public class DoctorRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory,AdopterDirectory udirectorDirectory) {
     //return null;        
-    return new DoctorJPanel(userProcessContainer, account, (DoctorOrganization)organization, enterprise, business, directory);
+    return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization)organization, enterprise, business, directory);
     }
 }

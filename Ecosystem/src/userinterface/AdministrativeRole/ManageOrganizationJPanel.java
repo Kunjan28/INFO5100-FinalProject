@@ -93,7 +93,6 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         addJButton = new javax.swing.JButton();
         organizationJComboBox = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        backJButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         orgInstanceName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -142,20 +141,11 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
         add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 330, 210, 40));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setText("Organization Type ");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, 35));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 330, -1, 35));
 
-        backJButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        backJButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        backJButton.setText("Back");
-        backJButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backJButtonActionPerformed(evt);
-            }
-        });
-        add(backJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 30, 96, 29));
-
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, -1, -1));
 
@@ -166,8 +156,8 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
         });
         add(orgInstanceName, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 390, 210, 30));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/organisation.png"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 700, 490));
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/org.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 640, 570));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/systemadmin.jpeg"))); // NOI18N
         jLabel4.setText("jLabel4");
@@ -194,20 +184,12 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_addJButtonActionPerformed
 
-    private void backJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backJButtonActionPerformed
-
-        userProcessContainer.remove(this);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_backJButtonActionPerformed
-
     private void orgInstanceNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgInstanceNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_orgInstanceNameActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addJButton;
-    private javax.swing.JButton backJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

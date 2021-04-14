@@ -23,8 +23,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.FosterCare.ChildRegistrationRole.ChildRegistrationWorkAreaPanel;
-import userinterface.FosterCare.ChildCare.ChildCareWorkAreaJPanel;
+import userinterface.FosterCare.ChildRegistrationRole.ViewChildTable;
+import userinterface.FosterCare.ChildCare.AcquireChild;
 
 /**
  *
@@ -43,7 +43,7 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.child = child;
         nameTextField.setText(child.getName());
-//pjpj        ageComboBox.setSelectedIndex(child.getChildAge());
+        cmbAge.setSelectedIndex(child.getChildAge());
         if (child.getGender().equalsIgnoreCase("Male")) {
             maleRDB.setSelected(true);
         } else if (child.getGender().equalsIgnoreCase("female")) {
@@ -98,7 +98,7 @@ ImageIcon icon = new ImageIcon(image);
         saveBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
         imageLable = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -106,10 +106,9 @@ ImageIcon icon = new ImageIcon(image);
         lblPhoto = new javax.swing.JLabel();
         imageTextField = new javax.swing.JTextField();
         uploadBtn = new javax.swing.JButton();
-        nameTextField2 = new javax.swing.JTextField();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
-        jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        cmbAge = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setEnabled(false);
@@ -118,17 +117,19 @@ ImageIcon icon = new ImageIcon(image);
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("VIEW CHILD DETAILS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 50, 660, 40));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 50, 520, 40));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Name:");
+        jLabel2.setText("Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 150, 30));
 
         nameTextField.setEnabled(false);
         add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 210, 30));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Date Of Birth :");
+        jLabel3.setText("Age");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 150, 30));
 
         buttonGroup1.add(maleRDB);
@@ -141,8 +142,9 @@ ImageIcon icon = new ImageIcon(image);
         femaleRDB.setEnabled(false);
         add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 143, 30));
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Gender:");
+        jLabel4.setText("Gender");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 150, 30));
 
         updateBtn.setText("Update");
@@ -170,17 +172,18 @@ ImageIcon icon = new ImageIcon(image);
             }
         });
         add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 133, 33));
-        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 81, 160, 130));
+        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 150));
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        jButton1.setText("Back");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnBackActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 120, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 120, 30));
 
+        jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Identification mark");
         add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 150, 30));
@@ -192,12 +195,14 @@ ImageIcon icon = new ImageIcon(image);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 230, 80));
 
+        jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel11.setText("Registration Date:");
+        jLabel11.setText("Registration Date");
         add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 150, 30));
 
+        lblPhoto.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblPhoto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblPhoto.setText("Photo:");
+        lblPhoto.setText("Photo");
         add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 33));
 
         imageTextField.setEnabled(false);
@@ -217,30 +222,27 @@ ImageIcon icon = new ImageIcon(image);
         });
         add(uploadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 114, 30));
 
-        nameTextField2.setEnabled(false);
-        add(nameTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 210, 30));
-
         jXDatePicker1.setEnabled(false);
         add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 210, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kidIcon.jpeg"))); // NOI18N
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 160, 130));
-
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kids.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 130, 800, 480));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 970, 480));
+
+        cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
+        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-                userProcessContainer.remove(this);
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ChildRegistrationWorkAreaPanel dwjp = (ChildRegistrationWorkAreaPanel) component;
+        ViewChildTable dwjp = (ViewChildTable) component;
         dwjp.poplulateTable();
 //        dwjp.populateChildRequestTable();
         
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnBackActionPerformed
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         enableInput();
@@ -254,8 +256,8 @@ ImageIcon icon = new ImageIcon(image);
         try {
             if(!validation()){
                 String childName = nameTextField.getText();
-//pjpj                String ageString = ageComboBox.getSelectedItem().toString();
-//pjpj                int childAge = Integer.parseInt(ageString);
+                String ageString = cmbAge.getSelectedItem().toString();
+                int childAge = Integer.parseInt(ageString);
                 String gender = "";
                 if(maleRDB.isSelected()){
                     gender = "Male";
@@ -274,7 +276,7 @@ ImageIcon icon = new ImageIcon(image);
                 }
                 String identificationMark = jTextArea1.getText();
                 
-// pjpj               child.setChildAge(childAge);
+                 child.setChildAge(childAge);
                 child.setChildId(child.getChildId());
                 child.setName(childName);
                 child.setIdentificationMark(identificationMark);
@@ -303,11 +305,11 @@ ImageIcon icon = new ImageIcon(image);
 
 private void enableInput(){
 CancelBtn.setEnabled(true);
-nameTextField2.setEnabled(true);
+//nameTextField2.setEnabled(true);
 femaleRDB.setEnabled(true);
 imageLable.setEnabled(true);
 
-jButton1.setEnabled(true);
+btnBack.setEnabled(true);
 jScrollPane1.setEnabled(true);
 jTextArea1.setEnabled(true);
 jXDatePicker1.setEnabled(true);
@@ -319,7 +321,7 @@ uploadBtn.setEnabled(true);
 }
 private void disableInput(){
     CancelBtn.setEnabled(false);
-nameTextField2.setEnabled(false);
+//nameTextField2.setEnabled(false);
 femaleRDB.setEnabled(false);
 
 imageTextField.setEnabled(false);
@@ -345,18 +347,18 @@ uploadBtn.setEnabled(false);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelBtn;
+    private javax.swing.JButton btnBack;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cmbAge;
     private javax.swing.JRadioButton femaleRDB;
     private javax.swing.JLabel imageLable;
     private javax.swing.JTextField imageTextField;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -364,7 +366,6 @@ uploadBtn.setEnabled(false);
     private javax.swing.JLabel lblPhoto;
     private javax.swing.JRadioButton maleRDB;
     private javax.swing.JTextField nameTextField;
-    private javax.swing.JTextField nameTextField2;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton uploadBtn;

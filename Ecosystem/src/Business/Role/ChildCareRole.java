@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.FosterCare.ChildCare.ChildCareWorkAreaJPanel;
+import userinterface.FosterCare.ChildCare.ChildCareWorkArea;
 
 /**
  *
@@ -23,7 +23,7 @@ public class ChildCareRole extends Role {
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
 //       return null;
-        return new ChildCareWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business, directory, udirectory);
+        return new ChildCareWorkArea(userProcessContainer, account, organization, enterprise, business, directory, udirectory);
     }
 
     @Override

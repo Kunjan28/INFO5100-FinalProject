@@ -106,6 +106,13 @@ public class LabProcessJPanel extends javax.swing.JPanel {
             request.setStatus("Completed");
             JOptionPane.showMessageDialog(null,"Results saved!");
         }
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        LabJPanel panel = (LabJPanel) component;
+        panel.populateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnSaveActionPerformed
 
 

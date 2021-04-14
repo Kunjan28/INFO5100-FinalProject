@@ -188,29 +188,29 @@ ImageIcon icon = new ImageIcon(image);
         add(lblPersonalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 121, 20));
 
         jLabel7.setText("Temperature");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 130, -1, 27));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, -1, 27));
 
         lblMedicalInfo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblMedicalInfo.setText("Medical Info");
-        add(lblMedicalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 143, -1));
+        add(lblMedicalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 143, -1));
 
         tempText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(tempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 130, 70, 30));
+        add(tempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, 70, 30));
 
         jLabel9.setText("Respiration Rate");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 170, -1, 27));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, 27));
 
         respRateText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(respRateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 170, 70, -1));
+        add(respRateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 70, -1));
 
         jLabel10.setText("Medical History:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 230, -1, 25));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, 25));
 
         medicalTextArea.setColumns(20);
         medicalTextArea.setRows(5);
         jScrollPane1.setViewportView(medicalTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 260, 340, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 340, 110));
 
         lblRegistDate.setText("Registration Date");
         add(lblRegistDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 130, 30));
@@ -224,7 +224,7 @@ ImageIcon icon = new ImageIcon(image);
                 btnRequestFundsActionPerformed(evt);
             }
         });
-        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 470, 146, 33));
+        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 146, 30));
 
         requestMedicalHelpBtn.setText("Request Medical Help");
         requestMedicalHelpBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +232,7 @@ ImageIcon icon = new ImageIcon(image);
                 requestMedicalHelpBtnActionPerformed(evt);
             }
         });
-        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, 160, 30));
+        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, 160, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
@@ -242,19 +242,19 @@ ImageIcon icon = new ImageIcon(image);
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 30, 95, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 95, 30));
 
         lblBP.setText("BP");
-        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 130, 50, 30));
+        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 120, 50, 30));
 
         bpText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(bpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 130, 52, -1));
+        add(bpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 52, -1));
 
         lblPulse.setText("Pulse Rate");
-        add(lblPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 170, -1, 27));
+        add(lblPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, -1, 27));
 
         pulseText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 170, 53, -1));
+        add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 170, 53, -1));
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -282,7 +282,7 @@ ImageIcon icon = new ImageIcon(image);
             tblRequest.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 380, 477, 104));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 390, 510, 104));
         add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 190, 30));
         add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 190, 30));
         add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 190, 30));
@@ -292,9 +292,9 @@ ImageIcon icon = new ImageIcon(image);
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ChildCareWorkAreaJPanel dwjp = (ChildCareWorkAreaJPanel) component;
+        ViewChildDetails dwjp = (ViewChildDetails) component;
         dwjp.populateChildTable();
-        dwjp.populateWorkRequest();
+        //dwjp.populateWorkRequest();
 
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
