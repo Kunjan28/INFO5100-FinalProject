@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Nidhi
+ * @author Kunjan
  */
 public class FinanceOrganization extends Organization {
 

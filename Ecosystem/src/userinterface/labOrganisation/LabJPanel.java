@@ -39,6 +39,7 @@ public class LabJPanel extends javax.swing.JPanel {
         this.business = business;
         this.labOrganization = (LabOrganization)organization;
         populateTable();
+         btnProcess.setEnabled(false);
     }
     
     public void populateTable(){
@@ -149,9 +150,10 @@ public class LabJPanel extends javax.swing.JPanel {
                 request.setReceiver(userAccount);
                 request.setStatus("Processing");
                 JOptionPane.showMessageDialog(null, "Request assigned");
+                btnProcess.setEnabled(true);
                 }
         populateTable();
-        btnProcess.setEnabled(true);
+       
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

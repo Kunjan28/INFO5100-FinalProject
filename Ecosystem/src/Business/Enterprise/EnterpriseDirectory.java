@@ -46,7 +46,8 @@ public class EnterpriseDirectory {
             enterpriseList.add(enterprise);
         }
         else if(type == Enterprise.EnterpriseType.Funding){
-            
+            enterprise = new FundingEnterprise(name);
+            enterpriseList.add(enterprise);
         }
         return enterprise;
     }
