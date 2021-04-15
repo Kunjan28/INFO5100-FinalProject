@@ -14,7 +14,13 @@ import Business.Organization.DonorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DonorWorkRequest;
+import java.awt.CardLayout;
+import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DoctorOrg.DoctorJPanel;
 
 /**
  *
@@ -22,7 +28,7 @@ import javax.swing.JPanel;
  */
 public class PaymentPanel extends javax.swing.JPanel {
 
-     JPanel userProcessContainer;
+    JPanel userProcessContainer;
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
@@ -58,118 +64,175 @@ public class PaymentPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         cardNo = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        txtCVV = new javax.swing.JTextField();
+        txtExp = new javax.swing.JTextField();
+        txtPostal = new javax.swing.JTextField();
+        btnPay = new javax.swing.JButton();
+        btnBack = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
-        jLabel1.setText("Card Payment");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("CARD PAYMENT");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
         jLabel2.setText("Card Number");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
         jLabel3.setText("CVV");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
         jLabel4.setText("Expiration Date");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
 
         jLabel5.setText("Postal Code");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
 
-        cardNo.setText("jTextField1");
-
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setText("jTextField3");
-
-        jTextField4.setText("jTextField4");
-
-        jButton1.setText("Pay");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        cardNo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cardNoActionPerformed(evt);
             }
         });
+        add(cardNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 150, 180, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel5))
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cardNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(134, 134, 134)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton1)
-                            .addComponent(jLabel1))))
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(cardNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
+        txtCVV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCVVActionPerformed(evt);
+            }
+        });
+        add(txtCVV, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 180, -1));
+        add(txtExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 180, -1));
+
+        txtPostal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPostalActionPerformed(evt);
+            }
+        });
+        add(txtPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 180, -1));
+
+        btnPay.setText("Pay");
+        btnPay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPayActionPerformed(evt);
+            }
+        });
+        add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 110, -1));
+
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 20, 90, -1));
+
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 12)); // NOI18N
+        jLabel6.setText("last 4 digits");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 200, 30));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 650, 390));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         // TODO add your handling code here:
+        if(cardNo.getText().isEmpty() || txtCVV.getText().isEmpty() || txtPostal.getText().isEmpty() || txtExp.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter all the fields");
+        }
+        else if(!ValidateCVV()) {
+            JOptionPane.showMessageDialog(null, "CVV should be 3 digits");
+        }
+        else if(!ValidateCardNo()) {
+            JOptionPane.showMessageDialog(null, "Please enter last 4 digits of your card");
+        }
+        else if(!ValidatePostal()) {
+            JOptionPane.showMessageDialog(null, "Zip should be 5 digits");
+        }
+        else {
         DonorWorkRequest adc = new DonorWorkRequest();
         adc.setChildId(ch.getChildId());
         adc.setUserId(account.getEmployee().getId());
         adc.setUserName(donor.getName());
-        adc.setMessage("Payment initiated");
+        adc.setMessage("New Donation");
         donororganization.getWorkQueue().getWorkRequestList().add(adc);
         if (donororganization != null) {
             // org.getWorkQueue().getWorkRequestList().add(adc);
             account.getWorkQueue().getWorkRequestList().add(adc);
             business.getWorkQueue().getWorkRequestList().add(adc);
         } 
+        JOptionPane.showMessageDialog(null, "Thank you! Payment Initiated");
+        }
         
+    }//GEN-LAST:event_btnPayActionPerformed
+    
+    private boolean ValidateCVV() {
+        String cvv = txtCVV.getText();
+        if((cvv.matches("^[0-9]")) && (cvv.length()==3)) {
+            return true;
+            }
+        return false;
+    }
+    
+    private boolean ValidateCardNo() {
+        String card = cardNo.getText();
+        if((card.matches("^[0-9]")) && (card.length()==4)) {
+            return true;
+            }
+        return false;
+    }
+    
+    private boolean ValidatePostal() {
+        String zip = txtPostal.getText();
+        if((zip.matches("^[0-9]")) && (zip.length()==5)) {
+            return true;
+            }
+        return false;
+    }
+    
+    
+    private void txtCVVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCVVActionPerformed
+        // TODO add your handling code here:
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_txtCVVActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DonorRequestTable panel = (DonorRequestTable) component;
+        panel.populateChildTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void cardNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cardNoActionPerformed
+
+    private void txtPostalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPostalActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtPostalActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnPay;
     private javax.swing.JTextField cardNo;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JTextField txtCVV;
+    private javax.swing.JTextField txtExp;
+    private javax.swing.JTextField txtPostal;
     // End of variables declaration//GEN-END:variables
 
 

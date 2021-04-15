@@ -78,118 +78,64 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         txtEduFunds = new javax.swing.JTextField();
         btnSubmit = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtFundsMedExp = new javax.swing.JTextField();
-        txtFundss = new javax.swing.JTextField();
         txtFundsLiving = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtFundsMisc = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
-        lblEduFunds.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblEduFunds.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblEduFunds.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        lblEduFunds.setText("Funds towards Education :");
+        lblEduFunds.setText("Funds for Education");
+        add(lblEduFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 180, 190, 40));
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Miscellaneous :");
+        jLabel2.setText("Miscellaneous");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 213, 38));
+        add(txtEduFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 222, 27));
 
         btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btnSubmit.setText("Submit");
+        btnSubmit.setText("Request");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 480, 133, 33));
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Funds towards ____ :");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Funds towards Medical Expenses :");
+        jLabel4.setText("Funds for Medical Expenses");
+        jLabel4.setToolTipText("");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 240, 36));
 
         txtFundsMedExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFundsMedExpActionPerformed(evt);
             }
         });
+        add(txtFundsMedExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 250, 222, 27));
+        add(txtFundsLiving, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, 222, 27));
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel5.setText("Funds towards Living Expenses :");
+        jLabel5.setText("Funds for Living Expenses");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 230, 36));
+        add(txtFundsMisc, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 222, 27));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Request for Funds");
+        jLabel1.setText("REQUEST FOR FUNDS");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 870, 40));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(232, 232, 232)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(lblEduFunds))
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtFundss, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFundsLiving, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFundsMedExp, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtEduFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtFundsMisc, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(283, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(80, 80, 80)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEduFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEduFunds, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFundsMedExp, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(txtFundsLiving, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtFundss, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(txtFundsMisc, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(2, 2, 2)))
-                .addGap(56, 56, 56)
-                .addComponent(btnSubmit, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/funds.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 860, 380));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
@@ -199,7 +145,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         }
         EducationalHelpWorkRequest fccwr = new EducationalHelpWorkRequest();
         try {
-            Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText()) + Long.parseLong(txtFundss.getText()) + Long.parseLong(txtFundsLiving.getText())
+            Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText())  + Long.parseLong(txtFundsLiving.getText())
                     + Long.parseLong(txtFundsMisc.getText());
             fccwr.setAmt(amt.toString());
         } catch (Exception e) {
@@ -208,7 +154,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         }
         fccwr.setMessage("Requesting funds");
         fccwr.setStatus("Initiated");
-        fccwr.setAmt(data);
+        //fccwr.setAmt(data);
         fccwr.setSender(account);
         fccwr.setChildId(child.getChildId());
 
@@ -267,6 +213,5 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
     private javax.swing.JTextField txtFundsLiving;
     private javax.swing.JTextField txtFundsMedExp;
     private javax.swing.JTextField txtFundsMisc;
-    private javax.swing.JTextField txtFundss;
     // End of variables declaration//GEN-END:variables
 }

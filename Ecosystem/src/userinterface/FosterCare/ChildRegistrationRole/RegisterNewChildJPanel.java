@@ -399,7 +399,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     
     
     
-       public boolean validateName(){
+    public boolean validateName(){
     boolean b=false;
     Pattern p = Pattern.compile("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
     String name = txtName.getText();

@@ -122,39 +122,41 @@ ImageIcon icon = new ImageIcon(image);
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 150, 150, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 150, 30));
 
         nameTextField.setEnabled(false);
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 210, 30));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Age");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 150, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 150, 30));
 
         buttonGroup1.add(maleRDB);
         maleRDB.setText("Male");
         maleRDB.setEnabled(false);
-        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 260, 120, 30));
+        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 80, 30));
 
         buttonGroup1.add(femaleRDB);
         femaleRDB.setText("Female");
         femaleRDB.setEnabled(false);
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, 143, 30));
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Gender");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 150, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, 30));
 
+        updateBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         updateBtn.setText("Update");
         updateBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 530, 133, 33));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 133, 33));
 
+        saveBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         saveBtn.setText("Save");
         saveBtn.setEnabled(false);
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -162,8 +164,9 @@ ImageIcon icon = new ImageIcon(image);
                 saveBtnActionPerformed(evt);
             }
         });
-        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 530, 133, 33));
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 570, 133, 33));
 
+        CancelBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         CancelBtn.setText("Cancel");
         CancelBtn.setEnabled(false);
         CancelBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -171,39 +174,38 @@ ImageIcon icon = new ImageIcon(image);
                 CancelBtnActionPerformed(evt);
             }
         });
-        add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 530, 133, 33));
-        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 150));
+        add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 133, 33));
+        add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 180));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 10, 120, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 50, 30));
 
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Identification mark");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 420, 150, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 150, 30));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 410, 230, 80));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 210, 80));
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Registration Date");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 300, 150, 30));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 150, 30));
 
         lblPhoto.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblPhoto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPhoto.setText("Photo");
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 150, 33));
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 150, 33));
 
         imageTextField.setEnabled(false);
         imageTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -211,7 +213,7 @@ ImageIcon icon = new ImageIcon(image);
                 imageTextFieldActionPerformed(evt);
             }
         });
-        add(imageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 210, 30));
+        add(imageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 210, 30));
 
         uploadBtn.setText("Update Photo");
         uploadBtn.setEnabled(false);
@@ -220,16 +222,16 @@ ImageIcon icon = new ImageIcon(image);
                 uploadBtnActionPerformed(evt);
             }
         });
-        add(uploadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, 114, 30));
+        add(uploadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 114, 30));
 
         jXDatePicker1.setEnabled(false);
-        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 300, 210, -1));
+        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 210, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kids.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 970, 480));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 970, 290));
 
         cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
-        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 210, 210, 30));
+        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -238,8 +240,6 @@ ImageIcon icon = new ImageIcon(image);
         Component component = componentArray[componentArray.length - 1];
         ViewChildTable dwjp = (ViewChildTable) component;
         dwjp.poplulateTable();
-//        dwjp.populateChildRequestTable();
-        
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -308,7 +308,7 @@ CancelBtn.setEnabled(true);
 //nameTextField2.setEnabled(true);
 femaleRDB.setEnabled(true);
 imageLable.setEnabled(true);
-
+cmbAge.setEnabled(true);
 btnBack.setEnabled(true);
 jScrollPane1.setEnabled(true);
 jTextArea1.setEnabled(true);
@@ -323,7 +323,7 @@ private void disableInput(){
     CancelBtn.setEnabled(false);
 //nameTextField2.setEnabled(false);
 femaleRDB.setEnabled(false);
-
+cmbAge.setEnabled(false);
 imageTextField.setEnabled(false);
 
 jScrollPane1.setEnabled(false);

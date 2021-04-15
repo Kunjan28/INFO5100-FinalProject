@@ -92,7 +92,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("BACKGROUND AND CRIMINAL CHECK PROCESS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 20, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
 
         jLabel2.setText("ADOPTER DETAILS");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 150, 20));

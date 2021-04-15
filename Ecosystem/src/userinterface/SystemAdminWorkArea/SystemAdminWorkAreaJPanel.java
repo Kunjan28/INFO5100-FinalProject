@@ -79,11 +79,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageOrganisation(){
-//        manageNetworkPanel.setBackground(new Color(236,113,107));
-//        manageEnterprise.setBackground(new Color(215,81,81));
-//        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageNetworkJPanel manageNetworkPanel = new userinterface.SystemAdminWorkArea.ManageNetworkJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageNetworkJPanel",manageNetworkPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -91,25 +86,13 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      }
     
     private void manageEnterprise(){
-//        manageEnterprise.setBackground(new Color(236,113,107));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel manageEnterprise = new userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageEnterpriseJPanel",manageEnterprise);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        
     }
     
     private void manageEnterpriseAdmin(){
-        
-//        manageEnterpriseAdmin.setBackground(new Color(236,113,107));
-//        manageEnterprise.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
         userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel manageEnterpriseAdmin = new userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",manageEnterpriseAdmin);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -117,28 +100,21 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void sceneDetails(){
-        
-//        viewGraphScene.setBackground(new Color(236,113,107));
-//        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
-//        manageEnterprise.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
+       
 //        userinterface.SystemAdminWorkArea.SceneDetailsGraph sceneDetailsGraph = new userinterface.SystemAdminWorkArea.SceneDetailsGraph(rightSystemAdminPanel, ecosystem);
 //        rightSystemAdminPanel.add("SceneDetailsGraph",sceneDetailsGraph);
 //        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
 //        layout.next(rightSystemAdminPanel);
     }
+    
     private void noOfSceneGraph(){
-        lblAnalysis.setBackground(new Color(236,113,107));
-        manageEnterpriseAdmin.setBackground(new Color(215,81,81));
-        manageEnterprise.setBackground(new Color(215,81,81));
-        manageNetworkPanel.setBackground(new Color(215,81,81));
+
         userinterface.SystemAdminWorkArea.Services servicesAtGlance = new userinterface.SystemAdminWorkArea.Services(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ServicesAtGlance",servicesAtGlance);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        
     }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -318,11 +294,11 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setBackground(new java.awt.Color(255, 204, 204));
+        jLabel5.setBackground(new java.awt.Color(255, 204, 153));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
 
-        Analysis.setBackground(new java.awt.Color(255, 204, 204));
+        Analysis.setBackground(new java.awt.Color(255, 204, 153));
         Analysis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         Analysis.setText("No Of Graph Scene");
         Analysis.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -390,7 +366,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
         lblGraph.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
 
-        graph.setBackground(new java.awt.Color(255, 204, 204));
+        graph.setBackground(new java.awt.Color(255, 204, 153));
         graph.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         graph.setText("View Graph Scene Details");
         graph.addMouseListener(new java.awt.event.MouseAdapter() {

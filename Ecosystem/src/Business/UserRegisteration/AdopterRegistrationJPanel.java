@@ -391,8 +391,9 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             txtAge.setText("");
             
             
-        } else if (!emailValid || !contactValid || !userUnique) {
-            JOptionPane.showMessageDialog(null, "Invalid credentials");
+//        } else if (!emailValid || !contactValid || !userUnique) {
+//            JOptionPane.showMessageDialog(null, "Invalid credentials");
+//        }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 

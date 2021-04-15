@@ -152,7 +152,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnRefreshActionPerformed(evt);
             }
         });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, 30));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 500, 460));
@@ -178,8 +178,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
-///        request.setReceiver(userAccount);
-///        request.setStatus("Pending");
         if (request.getStatus().equalsIgnoreCase("Delivered")) {
                 JOptionPane.showMessageDialog(null, "Request already completed.");
                 return;

@@ -104,12 +104,6 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
     }
     
     private void BGCandCriminalRequestJPanel(){
-//        manageNetworkPanel.setBackground(new Color(236,113,107));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-         
         BGCandCriminalCheckRequestTable panel = new BGCandCriminalCheckRequestTable(rightSystemAdminPanel, account, bgcOrganization, enterprise, business, udirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -128,19 +122,13 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
 
         systemAdminPanel = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        LabNetworkPanel = new javax.swing.JPanel();
+        bgcAndCriminal = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        childRegistration = new javax.swing.JLabel();
-        noOfSceneGraph = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        noOfGraphSceneLabel = new javax.swing.JLabel();
+        BGCAndCri = new javax.swing.JLabel();
         lblSelectedNode1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        viewGraphScene = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        viewGraphSceneDetails = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
@@ -156,90 +144,47 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LabNetworkPanel.setBackground(new java.awt.Color(255, 204, 153));
-        LabNetworkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+        bgcAndCriminal.setBackground(new java.awt.Color(255, 204, 153));
+        bgcAndCriminal.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                LabNetworkPanelMousePressed(evt);
+                bgcAndCriminalMousePressed(evt);
             }
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
 
-        childRegistration.setBackground(new java.awt.Color(255, 204, 204));
-        childRegistration.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        childRegistration.setText("Process BGC & Criminal Check");
-        childRegistration.addMouseListener(new java.awt.event.MouseAdapter() {
+        BGCAndCri.setBackground(new java.awt.Color(255, 204, 204));
+        BGCAndCri.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        BGCAndCri.setText("Process BGC & Criminal Check");
+        BGCAndCri.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                childRegistrationMousePressed(evt);
+                BGCAndCriMousePressed(evt);
             }
         });
 
-        javax.swing.GroupLayout LabNetworkPanelLayout = new javax.swing.GroupLayout(LabNetworkPanel);
-        LabNetworkPanel.setLayout(LabNetworkPanelLayout);
-        LabNetworkPanelLayout.setHorizontalGroup(
-            LabNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LabNetworkPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout bgcAndCriminalLayout = new javax.swing.GroupLayout(bgcAndCriminal);
+        bgcAndCriminal.setLayout(bgcAndCriminalLayout);
+        bgcAndCriminalLayout.setHorizontalGroup(
+            bgcAndCriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgcAndCriminalLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(childRegistration, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BGCAndCri, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
-        LabNetworkPanelLayout.setVerticalGroup(
-            LabNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(LabNetworkPanelLayout.createSequentialGroup()
+        bgcAndCriminalLayout.setVerticalGroup(
+            bgcAndCriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bgcAndCriminalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(LabNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(childRegistration, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(bgcAndCriminalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BGCAndCri, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
-        jPanel3.add(LabNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
-
-        noOfSceneGraph.setBackground(new java.awt.Color(255, 204, 153));
-        noOfSceneGraph.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                noOfSceneGraphMousePressed(evt);
-            }
-        });
-
-        jLabel5.setBackground(new java.awt.Color(255, 204, 204));
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
-
-        noOfGraphSceneLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        noOfGraphSceneLabel.setText("No Of Graph Scene");
-        noOfGraphSceneLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                noOfGraphSceneLabelMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout noOfSceneGraphLayout = new javax.swing.GroupLayout(noOfSceneGraph);
-        noOfSceneGraph.setLayout(noOfSceneGraphLayout);
-        noOfSceneGraphLayout.setHorizontalGroup(
-            noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, noOfSceneGraphLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        noOfSceneGraphLayout.setVerticalGroup(
-            noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(noOfSceneGraphLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(noOfSceneGraphLayout.createSequentialGroup()
-                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(noOfSceneGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 40));
+        jPanel3.add(bgcAndCriminal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
 
         lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
@@ -261,29 +206,6 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTree1);
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
-
-        viewGraphScene.setBackground(new java.awt.Color(255, 204, 153));
-        viewGraphScene.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneMousePressed(evt);
-            }
-        });
-        viewGraphScene.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
-        viewGraphScene.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
-
-        viewGraphSceneDetails.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        viewGraphSceneDetails.setText("View Graph Scene Details");
-        viewGraphSceneDetails.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneDetailsMousePressed(evt);
-            }
-        });
-        viewGraphScene.add(viewGraphSceneDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 231, 31));
-
-        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 40));
 
         jSeparator2.setBackground(new java.awt.Color(255, 204, 204));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
@@ -311,34 +233,14 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         add(systemAdminPanel, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void childRegistrationMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_childRegistrationMousePressed
+    private void BGCAndCriMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BGCAndCriMousePressed
         BGCandCriminalRequestJPanel();
-    }//GEN-LAST:event_childRegistrationMousePressed
+    }//GEN-LAST:event_BGCAndCriMousePressed
 
-    private void LabNetworkPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LabNetworkPanelMousePressed
+    private void bgcAndCriminalMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bgcAndCriminalMousePressed
         // TODO add your handling code here:
         BGCandCriminalRequestJPanel();
-    }//GEN-LAST:event_LabNetworkPanelMousePressed
-
-    private void viewGraphSceneDetailsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneDetailsMousePressed
-        // TODO add your handling code here:
-        //sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneDetailsMousePressed
-
-    private void viewGraphSceneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneMousePressed
-        // TODO add your handling code here:
-        //sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneMousePressed
-
-    private void noOfGraphSceneLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noOfGraphSceneLabelMousePressed
-        // TODO add your handling code here:
-        //noOfSceneGraph();
-    }//GEN-LAST:event_noOfGraphSceneLabelMousePressed
-
-    private void noOfSceneGraphMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noOfSceneGraphMousePressed
-        // TODO add your handling code here:
-          //noOfSceneGraph();
-    }//GEN-LAST:event_noOfSceneGraphMousePressed
+    }//GEN-LAST:event_bgcAndCriminalMousePressed
 
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         // TODO add your handling code here:
@@ -350,22 +252,16 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel LabNetworkPanel;
-    private javax.swing.JLabel childRegistration;
+    private javax.swing.JLabel BGCAndCri;
+    private javax.swing.JPanel bgcAndCriminal;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblSelectedNode1;
-    private javax.swing.JLabel noOfGraphSceneLabel;
-    private javax.swing.JPanel noOfSceneGraph;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
-    private javax.swing.JPanel viewGraphScene;
-    private javax.swing.JLabel viewGraphSceneDetails;
     // End of variables declaration//GEN-END:variables
 }

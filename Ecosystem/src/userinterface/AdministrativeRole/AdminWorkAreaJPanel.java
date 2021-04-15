@@ -109,7 +109,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageOrganisation(){
-       
         ManageOrganizationJPanel panel = new ManageOrganizationJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory(), enterprise);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -117,7 +116,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
      }
     
     private void manageEmployee(){
-        manageRequestPanel.setBackground(new Color(215,81,81));
         ManageEmployeeJPanel panel = new ManageEmployeeJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory());
         rightSystemAdminPanel.add("ManageEnterpriseJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -126,8 +124,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageUser(){
-        manageEmployee.setBackground(new Color(215,81,81));
-        manageRequestPanel.setBackground(new Color(215,81,81));
         ManageUserAccountJPanel panel = new ManageUserAccountJPanel(rightSystemAdminPanel, enterprise, business);
         rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -135,8 +131,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }
     
     private void manageRequests(){
-        manageRequestPanel.setBackground(new Color(236,113,107));
-        manageEmployee.setBackground(new Color(215,81,81));
          if("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
                AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,udirectory);
         rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
@@ -150,30 +144,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(rightSystemAdminPanel);
     }
     
-    private void sceneDetails(){
-        
-//        viewGraphScene.setBackground(new Color(236,113,107));
-//        manageUser.setBackground(new Color(215,81,81));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-//        userinterface.SystemAdminWorkArea.SceneDetailsGraph sceneDetailsGraph = new userinterface.SystemAdminWorkArea.SceneDetailsGraph(rightSystemAdminPanel, ecosystem);
-//        rightSystemAdminPanel.add("SceneDetailsGraph",sceneDetailsGraph);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
-    }
-    private void noOfSceneGraph(){
-//        noOfSceneGraph.setBackground(new Color(236,113,107));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel panel = new userinterface.AdopterRoleAdmin.AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, ecosystem,udirectory);
-//        rightSystemAdminPanel.add("NoOfScenesGraph",panel);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
-        
-    }
+ 
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -198,9 +169,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        viewGraphScene = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        viewGraphSceneDetails = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
@@ -326,6 +294,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
 
+        ManageRequest.setBackground(new java.awt.Color(255, 204, 153));
         ManageRequest.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         ManageRequest.setText("Manage Request");
         ManageRequest.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -377,29 +346,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
 
-        viewGraphScene.setBackground(new java.awt.Color(255, 204, 153));
-        viewGraphScene.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneMousePressed(evt);
-            }
-        });
-        viewGraphScene.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
-        viewGraphScene.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
-
-        viewGraphSceneDetails.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        viewGraphSceneDetails.setText("View Graph Scene Details");
-        viewGraphSceneDetails.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneDetailsMousePressed(evt);
-            }
-        });
-        viewGraphScene.add(viewGraphSceneDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 231, 31));
-
-        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 40));
-
         jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
         jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
@@ -448,16 +394,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
        manageUser();
     }//GEN-LAST:event_manageEnterpriseAdminMousePressed
 
-    private void viewGraphSceneDetailsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneDetailsMousePressed
-        // TODO add your handling code here:
-        sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneDetailsMousePressed
-
-    private void viewGraphSceneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneMousePressed
-        // TODO add your handling code here:
-        sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneMousePressed
-
     private void ManageRequestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageRequestMousePressed
         // TODO add your handling code here:
         manageRequests();
@@ -479,7 +415,6 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ManageRequest;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
@@ -496,7 +431,5 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel manageUser;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
-    private javax.swing.JPanel viewGraphScene;
-    private javax.swing.JLabel viewGraphSceneDetails;
     // End of variables declaration//GEN-END:variables
 }

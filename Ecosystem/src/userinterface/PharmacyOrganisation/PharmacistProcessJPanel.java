@@ -86,14 +86,13 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyLogo.jpeg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, 170));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 120, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 60, 50));
 
         lblComments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComments.setText("Comments");

@@ -82,42 +82,41 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Symptoms");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 220, 87, 42));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 87, 42));
 
         txtSymptoms.setColumns(20);
         txtSymptoms.setRows(5);
         jScrollPane1.setViewportView(txtSymptoms);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 180, 310, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 210, 310, 110));
 
-        btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSubmit.setText("Submit");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubmitActionPerformed(evt);
             }
         });
-        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 380, 133, 33));
+        add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 133, 33));
 
         lblHeading.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("REQUEST MEDICAL HELP");
-        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 460, 30));
+        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 460, 30));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 30, 100, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 40, 30));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doctoricon.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 130));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/docChild.jpeg"))); // NOI18N
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 60, 460, 440));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 450, 550));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed

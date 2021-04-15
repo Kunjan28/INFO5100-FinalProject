@@ -117,43 +117,14 @@ public class LabWorkArea extends javax.swing.JPanel {
     }
     
     private void manageLabWorkAreaJPanel(){
-//        manageNetworkPanel.setBackground(new Color(236,113,107));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-        //DoctorJPanel panel = new DoctorJPanel(rightSystemAdminPanel, userAccount, doctororganization, enterprise, ecosystem, childDirectory);
         LabJPanel panel = new LabJPanel(rightSystemAdminPanel, userAccount, labOrganization, ecosystem);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        //userProcessContainer, enterprise.getOrganizationDirectory(), enterprise
      }
     
-    private void sceneDetails(){
-        
-//        viewGraphScene.setBackground(new Color(236,113,107));
-//        manageUser.setBackground(new Color(215,81,81));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        noOfSceneGraph.setBackground(new Color(215,81,81));
-//        userinterface.SystemAdminWorkArea.SceneDetailsGraph sceneDetailsGraph = new userinterface.SystemAdminWorkArea.SceneDetailsGraph(rightSystemAdminPanel, ecosystem);
-//        rightSystemAdminPanel.add("SceneDetailsGraph",sceneDetailsGraph);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
-    }
-    private void noOfSceneGraph(){
-//        noOfSceneGraph.setBackground(new Color(236,113,107));
-//        viewGraphScene.setBackground(new Color(215,81,81));
-//        manageUser.setBackground(new Color(215,81,81));
-//        manageEmployee.setBackground(new Color(215,81,81));
-//        manageNetworkPanel.setBackground(new Color(215,81,81));
-//        userinterface.SystemAdminWorkArea.NoOfScenesGraph noOfScenesGraph = new userinterface.SystemAdminWorkArea.NoOfScenesGraph(rightSystemAdminPanel, ecosystem);
-//        rightSystemAdminPanel.add("NoOfScenesGraph",noOfScenesGraph);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
-        
-    }
+   
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -168,17 +139,11 @@ public class LabWorkArea extends javax.swing.JPanel {
         LabNetworkPanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         LabWorkArea = new javax.swing.JLabel();
-        noOfSceneGraph = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        noOfGraphSceneLabel = new javax.swing.JLabel();
         lblSelectedNode1 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTree1 = new javax.swing.JTree();
-        viewGraphScene = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        viewGraphSceneDetails = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 153));
@@ -234,48 +199,6 @@ public class LabWorkArea extends javax.swing.JPanel {
 
         jPanel3.add(LabNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
 
-        noOfSceneGraph.setBackground(new java.awt.Color(255, 204, 153));
-        noOfSceneGraph.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                noOfSceneGraphMousePressed(evt);
-            }
-        });
-
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
-
-        noOfGraphSceneLabel.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        noOfGraphSceneLabel.setText("No Of Graph Scene");
-        noOfGraphSceneLabel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                noOfGraphSceneLabelMousePressed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout noOfSceneGraphLayout = new javax.swing.GroupLayout(noOfSceneGraph);
-        noOfSceneGraph.setLayout(noOfSceneGraphLayout);
-        noOfSceneGraphLayout.setHorizontalGroup(
-            noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, noOfSceneGraphLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        noOfSceneGraphLayout.setVerticalGroup(
-            noOfSceneGraphLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(noOfSceneGraphLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(noOfSceneGraphLayout.createSequentialGroup()
-                .addComponent(noOfGraphSceneLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-
-        jPanel3.add(noOfSceneGraph, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 280, 40));
-
         lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
 
@@ -295,32 +218,9 @@ public class LabWorkArea extends javax.swing.JPanel {
 
         jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
 
-        viewGraphScene.setBackground(new java.awt.Color(255, 204, 153));
-        viewGraphScene.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneMousePressed(evt);
-            }
-        });
-        viewGraphScene.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/view.png"))); // NOI18N
-        viewGraphScene.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 31));
-
-        viewGraphSceneDetails.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        viewGraphSceneDetails.setText("View Graph Scene Details");
-        viewGraphSceneDetails.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                viewGraphSceneDetailsMousePressed(evt);
-            }
-        });
-        viewGraphScene.add(viewGraphSceneDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 231, 31));
-
-        jPanel3.add(viewGraphScene, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 280, 40));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
+        jSeparator.setBackground(new java.awt.Color(0, 51, 51));
+        jSeparator.setForeground(new java.awt.Color(0, 0, 0));
+        jPanel3.add(jSeparator, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -353,26 +253,6 @@ public class LabWorkArea extends javax.swing.JPanel {
         manageLabWorkAreaJPanel();
     }//GEN-LAST:event_LabNetworkPanelMousePressed
 
-    private void viewGraphSceneDetailsMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneDetailsMousePressed
-        // TODO add your handling code here:
-        sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneDetailsMousePressed
-
-    private void viewGraphSceneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_viewGraphSceneMousePressed
-        // TODO add your handling code here:
-        sceneDetails();
-    }//GEN-LAST:event_viewGraphSceneMousePressed
-
-    private void noOfGraphSceneLabelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noOfGraphSceneLabelMousePressed
-        // TODO add your handling code here:
-        noOfSceneGraph();
-    }//GEN-LAST:event_noOfGraphSceneLabelMousePressed
-
-    private void noOfSceneGraphMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_noOfSceneGraphMousePressed
-        // TODO add your handling code here:
-          noOfSceneGraph();
-    }//GEN-LAST:event_noOfSceneGraphMousePressed
-
     private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
         // TODO add your handling code here:
          DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
@@ -386,19 +266,13 @@ public class LabWorkArea extends javax.swing.JPanel {
     private javax.swing.JPanel LabNetworkPanel;
     private javax.swing.JLabel LabWorkArea;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator;
     private javax.swing.JTree jTree1;
     private javax.swing.JLabel lblSelectedNode1;
-    private javax.swing.JLabel noOfGraphSceneLabel;
-    private javax.swing.JPanel noOfSceneGraph;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
-    private javax.swing.JPanel viewGraphScene;
-    private javax.swing.JLabel viewGraphSceneDetails;
     // End of variables declaration//GEN-END:variables
 }

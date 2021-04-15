@@ -82,15 +82,14 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         });
         add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 110, 33));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.setToolTipText("");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 50, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel2.setText("PROCESS CHILD CARE REQUEST");

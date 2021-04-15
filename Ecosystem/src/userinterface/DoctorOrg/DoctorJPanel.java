@@ -100,7 +100,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblDoctorPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doctoricon.png"))); // NOI18N
-        add(lblDoctorPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 160, 180));
+        add(lblDoctorPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 180));
 
         lblDoctorOrganisation.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblDoctorOrganisation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -150,17 +150,17 @@ public class DoctorJPanel extends javax.swing.JPanel {
 
         btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
         btnRefresh.setText("Refresh");
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 140, 30));
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 100, 30));
 
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hosp.jpeg"))); // NOI18N
         add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 800, 530));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Enterprise");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 80, 20));
 
         valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 20));
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 190, 130, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed

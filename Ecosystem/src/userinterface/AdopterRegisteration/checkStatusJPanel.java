@@ -138,14 +138,15 @@ public class checkStatusJPanel extends javax.swing.JPanel {
         if(tblReq.getRowCount()<1){
             JOptionPane.showMessageDialog(null, "Adoption request is still in process with the Investigation team");
         }
-        if(bgcstatus.equals("Approved")&& financestatus.equals("Approved")){
-            
+        //if(bgcstatus.equals("Approved")&& financestatus.equals("Approved")){
+        else if ("Approved".equals(bgcstatus) && "Approved".equals((financestatus))) {
         childSelectionJpanel csjp = new childSelectionJpanel(userProcessContainer, account, adopterorganization, enterprise, business, udirectory, uid, directory);
         this.userProcessContainer.add("ChildSelectionJPanel", csjp);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer); 
         }
-        else if(bgcstatus.equals("Pending")|| financestatus.equals("Pending")){
+        //else if(bgcstatus.equals("Pending")|| financestatus.equals("Pending")){
+        else if("Pending".equals(bgcstatus) || "Pending".equals(financestatus)) {
             JOptionPane.showMessageDialog(null, "Adoption request is still in process with the Investigation team");
         }
         else

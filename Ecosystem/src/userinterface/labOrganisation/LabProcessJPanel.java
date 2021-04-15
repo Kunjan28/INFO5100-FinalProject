@@ -52,19 +52,18 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         lblLab.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLab.setText("LAB PROCESS");
-        add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 480, 20));
+        add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 480, 20));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LabIcon.jpeg"))); // NOI18N
         add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 140));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 70, 30));
 
         lblResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblResult.setText("Result");
@@ -80,7 +79,7 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 130, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 580, 370));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 720, 370));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

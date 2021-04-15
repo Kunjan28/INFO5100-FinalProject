@@ -38,13 +38,14 @@ public class FinanceWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form FinanceWorkAreaJPanel
      */
-   JPanel userProcessContainer;
-   UserAccount account;
-   FinanceOrganization financeOrphanageOrganization;
-   Enterprise enterprise;
-EcoSystem business;
-ChildDirectory directory;
-  int countApprove=0, countDeny=0, countPending=0; 
+    JPanel userProcessContainer;
+    UserAccount account;
+    FinanceOrganization financeOrphanageOrganization;
+    Enterprise enterprise;
+    EcoSystem business;
+    ChildDirectory directory;
+    int countApprove=0, countDeny=0, countPending=0; 
+    
    //FinanceOrphProcessRequest orph;
 public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
       initComponents();
@@ -55,10 +56,10 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
       this.directory=directory;
       this.business=business;
             valueLabel.setText(financeOrphanageOrganization.getName());
-            processBt.setEnabled(false);
-            processBt1.setEnabled(false);
+            btnProcess.setEnabled(false);
+            //processBt1.setEnabled(false);
             populateRequesttable();
-            populateDonorRequesttable();
+            //populateDonorRequesttable();
             
     }
 
@@ -75,20 +76,19 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
         valueLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        assignBtn = new javax.swing.JButton();
-        processBt = new javax.swing.JButton();
-        freechartpanel = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        assignBtn1 = new javax.swing.JButton();
-        processBt1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        comments = new javax.swing.JTextField();
+        btnAssigToMe = new javax.swing.JButton();
+        btnProcess = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+
+        setBackground(new java.awt.Color(255, 255, 255));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        enterpriseLabel.setText("EnterPrise :");
+        enterpriseLabel.setText("Enterprise");
+        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 127, 30));
 
         valueLabel.setText("<value>");
+        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 0, 158, 30));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -108,120 +108,31 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
         });
         jScrollPane1.setViewportView(jTable1);
 
-        assignBtn.setText("Assign to me");
-        assignBtn.addActionListener(new java.awt.event.ActionListener() {
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 890, 160));
+
+        btnAssigToMe.setText("Assign To Me");
+        btnAssigToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignBtnActionPerformed(evt);
+                btnAssigToMeActionPerformed(evt);
             }
         });
+        add(btnAssigToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 133, 33));
 
-        processBt.setText("Process");
-        processBt.addActionListener(new java.awt.event.ActionListener() {
+        btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processBtActionPerformed(evt);
+                btnProcessActionPerformed(evt);
             }
         });
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 133, 33));
 
-        freechartpanel.setBackground(new java.awt.Color(102, 102, 102));
-        freechartpanel.setLayout(new java.awt.BorderLayout());
-
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Results"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane2.setViewportView(jTable2);
-
-        assignBtn1.setText("Assign to me");
-        assignBtn1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignBtn1ActionPerformed(evt);
-            }
-        });
-
-        processBt1.setText("Process");
-        processBt1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processBt1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setText("Comments");
-
-        comments.setText("jTextField1");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 71, Short.MAX_VALUE)
-                .addComponent(freechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(enterpriseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(valueLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(assignBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(38, 38, 38)
-                        .addComponent(processBt, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(assignBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(158, 158, 158)
-                                .addComponent(jLabel1)
-                                .addGap(28, 28, 28)
-                                .addComponent(comments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(92, 92, 92)
-                                .addComponent(processBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 802, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(enterpriseLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
-                    .addComponent(valueLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(108, 108, 108)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processBt, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(assignBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(processBt1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(comments, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
-                .addComponent(freechartpanel, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("VIEW FUND REQUESTS");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 270, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void processBtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtActionPerformed
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
 int selectedRow = jTable1.getSelectedRow();
         if(selectedRow<0){
             JOptionPane.showMessageDialog(null, "Please select a request");
@@ -253,9 +164,9 @@ int selectedRow = jTable1.getSelectedRow();
         
         
         
-    }//GEN-LAST:event_processBtActionPerformed
+    }//GEN-LAST:event_btnProcessActionPerformed
 
-    private void assignBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtnActionPerformed
+    private void btnAssigToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssigToMeActionPerformed
         int selectedRow = jTable1.getSelectedRow();
         if(selectedRow<0){
             JOptionPane.showMessageDialog(null, "Please select a request");
@@ -265,59 +176,17 @@ int selectedRow = jTable1.getSelectedRow();
         req.setReceiver(account);
         req.setTestResult("Pending with  Finance Team");
         populateRequesttable();
-          processBt.setEnabled(true);
-    }//GEN-LAST:event_assignBtnActionPerformed
-
-    private void assignBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtn1ActionPerformed
-        // TODO add your handling code here:
-          int selectedRow = jTable2.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null, "Please select a request");
-            return;
-        }
-        DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
-        req.setReceiver(account);
-        req.setMessage("Payment processed");
-        populateDonorRequesttable();
-          processBt1.setEnabled(true);
-    }//GEN-LAST:event_assignBtn1ActionPerformed
-
-    private void processBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBt1ActionPerformed
-        // TODO add your handling code here:
-        int selectedRow = jTable2.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null, "Please select a request");
-            return;
-        }
-        DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
-       req.setMessage(comments.getText());
-        req.setStatus("Payment recieved");
-        if(this.directory!=null && this.directory.getChildList().size()>0){
-        for(Child ch:this.directory.getChildList()){
-            if(req.getChildId()==ch.getChildId()){
-                ch.setFinancialHelp(false);
-               
-                break;
-            }
-        }
-        }
-        populateDonorRequesttable(); 
-    }//GEN-LAST:event_processBt1ActionPerformed
+          btnProcess.setEnabled(true);
+    }//GEN-LAST:event_btnAssigToMeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignBtn;
-    private javax.swing.JButton assignBtn1;
-    private javax.swing.JTextField comments;
+    private javax.swing.JButton btnAssigToMe;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JPanel freechartpanel;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JButton processBt;
-    private javax.swing.JButton processBt1;
     private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -356,63 +225,63 @@ int selectedRow = jTable1.getSelectedRow();
       //  populateFreeChart();
             }
     
-    public void populateDonorRequesttable() {
-        DefaultTableModel dtms =(DefaultTableModel) jTable2.getModel();
-        dtms.setRowCount(0);
-        
-       for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof DonorWorkRequest){
-                Object[] row = new Object[dtms.getColumnCount()];
-                row[0]=req;
-                row[1]=req.getSender();
-                row[2]=req.getReceiver();
-                row[3]=req.getChildId();
-                String remarks = ((DonorWorkRequest)req).getRemarks();
-                row[4]=remarks;
-                String result = "";
-                //((DonorWorkRequest)req).getTestResult();
-                row[5]= result == null ? "Waiting" : result;
-                
-                if(result=="Approved"){
-                    countApprove++;  
-                  }
-                 else if(result=="Denied"){
-                      countDeny++;
-                  }
-                 else {
-                     countPending++;
-                 }
-             dtms.addRow(row);
+//    public void populateDonorRequesttable() {
+//        DefaultTableModel dtms =(DefaultTableModel) jTable2.getModel();
+//        dtms.setRowCount(0);
+//        
+//       for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
+//            if(req instanceof DonorWorkRequest){
+//                Object[] row = new Object[dtms.getColumnCount()];
+//                row[0]=req;
+//                row[1]=req.getSender();
+//                row[2]=req.getReceiver();
+//                row[3]=req.getChildId();
+//                String remarks = ((DonorWorkRequest)req).getRemarks();
+//                row[4]=remarks;
+//                String result = "";
+//                //((DonorWorkRequest)req).getTestResult();
+//                row[5]= result == null ? "Waiting" : result;
 //                
-                  
-                 
-            }
-          
-        }
-        
-        
-        //populateFreeChart();
-            }
+//                if(result=="Approved"){
+//                    countApprove++;  
+//                  }
+//                 else if(result=="Denied"){
+//                      countDeny++;
+//                  }
+//                 else {
+//                     countPending++;
+//                 }
+//             dtms.addRow(row);
+////                
+//                  
+//                 
+//            }
+//          
+//        }
+//        
+//        
+//        //populateFreeChart();
+//            }
 
 
-    public void populateFreeChart() {
-        
-        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        dataset.setValue(countApprove, "Workqueue", "Approved");
-        dataset.setValue(countDeny, "Workqueue", "Denied");
-        dataset.setValue(countPending, "Workqueue", "Pending");
-        
-        JFreeChart free = ChartFactory.createBarChart("Finance Organization contribution", "Workqueue", "Count", dataset, PlotOrientation.VERTICAL, false, false, false);
-        CategoryPlot plot = free.getCategoryPlot();
-        plot.setRangeGridlinePaint(Color.BLUE);
-        BarRenderer br = (BarRenderer) plot.getRenderer();
-        br.setMaximumBarWidth(.05);
-        ChartPanel chartPanel = new ChartPanel(free);
-       
-        freechartpanel.removeAll();
-        freechartpanel.add(chartPanel, BorderLayout.CENTER);
-       
-        freechartpanel.validate();
-                
-    }
+//    public void populateFreeChart() {
+//        
+//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//        dataset.setValue(countApprove, "Workqueue", "Approved");
+//        dataset.setValue(countDeny, "Workqueue", "Denied");
+//        dataset.setValue(countPending, "Workqueue", "Pending");
+//        
+//        JFreeChart free = ChartFactory.createBarChart("Finance Organization contribution", "Workqueue", "Count", dataset, PlotOrientation.VERTICAL, false, false, false);
+//        CategoryPlot plot = free.getCategoryPlot();
+//        plot.setRangeGridlinePaint(Color.BLUE);
+//        BarRenderer br = (BarRenderer) plot.getRenderer();
+//        br.setMaximumBarWidth(.05);
+//        ChartPanel chartPanel = new ChartPanel(free);
+//       
+//        freechartpanel.removeAll();
+//        freechartpanel.add(chartPanel, BorderLayout.CENTER);
+//       
+//        freechartpanel.validate();
+//                
+//    }
 }

@@ -101,13 +101,13 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         });
         add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 110, 30));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 60, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 40, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/prescribtion.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 100, 550, 570));
