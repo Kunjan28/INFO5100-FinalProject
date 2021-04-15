@@ -63,7 +63,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
            row[1]= request.getSender().getEmployee().getName();
            row[2]= request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
-           
+           //row[4] = request.getReceiver();
            row[5] = request.getStatus();
             dtm.addRow(row);
             }

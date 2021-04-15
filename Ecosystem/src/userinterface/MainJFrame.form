@@ -235,7 +235,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="2" right="2" top="2">
-                  <Color PropertyName="color" blue="6b" green="71" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="cc" red="ff" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -277,7 +277,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon/user (6).png"/>
+                  <Image iconType="3" name="/Images/user.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -314,7 +314,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="2" right="2" top="2">
-                  <Color PropertyName="color" blue="6b" green="71" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="cc" red="ff" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -348,7 +348,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/icon/house-key (1).png"/>
+                  <Image iconType="3" name="/Images/pwdIcon.png"/>
                 </Property>
               </Properties>
             </Component>
@@ -383,7 +383,7 @@
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="2" right="2" top="2">
-                  <Color PropertyName="color" blue="6b" green="71" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="cc" red="ff" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -414,11 +414,11 @@
               <Font name="Lucida Grande" size="14" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Adopt"/>
+            <Property name="text" type="java.lang.String" value="ADOPT"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="2" right="2" top="2">
-                  <Color PropertyName="color" blue="6b" green="71" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="cc" red="ff" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>
@@ -436,11 +436,11 @@
               <Font name="Lucida Grande" size="14" style="1"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="Donate"/>
+            <Property name="text" type="java.lang.String" value="DONATE"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder bottom="2" left="2" right="2" top="2">
-                  <Color PropertyName="color" blue="6b" green="71" red="ec" type="rgb"/>
+                  <Color PropertyName="color" blue="99" green="cc" red="ff" type="rgb"/>
                 </MatteColorBorder>
               </Border>
             </Property>

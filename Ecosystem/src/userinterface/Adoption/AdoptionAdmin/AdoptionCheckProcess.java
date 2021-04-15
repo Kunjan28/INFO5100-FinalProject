@@ -56,6 +56,14 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         this.adoptionWorkRequest = adoptionWorkRequest;
         populateWorkRequest();
         setUserDetailsField();
+        
+        txtName.setEnabled(false);
+        txtAge.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtIncome.setEnabled(false);
+        rdbMale.setEnabled(false);
+        rdbFemale.setEnabled(false);
+        txtSSN.setEnabled(false);
     }
     
     public void setUserDetailsField(){
@@ -64,11 +72,10 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         txtIncome.setText(String.valueOf(adopter.getAnnualIncome()));
         txtName.setText(adopter.getName());
         txtSSN.setText(adopter.getSsn());
-        if(adopter.getGender().equalsIgnoreCase("male")){
+        if(adopter.getGender().equalsIgnoreCase("Male")){
             rdbMale.setSelected(true);
         }
-        else
-        {
+        else {
             rdbFemale.setSelected(true);
         }
     }
@@ -151,10 +158,20 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
 
         jLabel6.setText("Email ID");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 70, -1));
+
+        txtEmail.setEditable(false);
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 170, -1));
+
+        txtName.setEditable(false);
         add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 170, -1));
+
+        txtAge.setEditable(false);
         add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 170, 30));
+
+        txtSSN.setEditable(false);
         add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 170, -1));
+
+        txtIncome.setEditable(false);
         add(txtIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, -1));
 
         rdbMale.setText("Male");

@@ -73,7 +73,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FINANCE CHECK REQUEST");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 46, 383, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 383, -1));
 
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -88,7 +88,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 171, 759, 166));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 759, 166));
 
         btnAssign.setText("Assign");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
@@ -96,7 +96,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 397, 145, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 145, -1));
 
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
@@ -104,7 +104,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 397, 135, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 135, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed

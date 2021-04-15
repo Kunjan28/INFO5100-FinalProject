@@ -50,7 +50,6 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         UpperPanel.setVisible(false);
         this.setSize(1250, 800);
-        
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         udirectory = system.getUdirectory();
         directory = system.getDirectory();
@@ -148,12 +147,12 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(236, 113, 107)));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         jPanel3.setPreferredSize(new java.awt.Dimension(302, 34));
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/user (6).png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/user.png"))); // NOI18N
 
         userNameJTextField.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         userNameJTextField.setToolTipText("");
@@ -188,12 +187,12 @@ public class MainJFrame extends javax.swing.JFrame {
         );
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(236, 113, 107)));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         jPanel4.setPreferredSize(new java.awt.Dimension(302, 34));
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/house-key (1).png"))); // NOI18N
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pwdIcon.png"))); // NOI18N
 
         passwordField.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         passwordField.setBorder(null);
@@ -223,7 +222,7 @@ public class MainJFrame extends javax.swing.JFrame {
         loginButton.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         loginButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         loginButton.setText("LOGIN");
-        loginButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(236, 113, 107)));
+        loginButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 loginButtonMousePressed(evt);
@@ -241,8 +240,8 @@ public class MainJFrame extends javax.swing.JFrame {
         btnAdopt.setBackground(new java.awt.Color(255, 255, 255));
         btnAdopt.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnAdopt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAdopt.setText("Adopt");
-        btnAdopt.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(236, 113, 107)));
+        btnAdopt.setText("ADOPT");
+        btnAdopt.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         btnAdopt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnAdoptMousePressed(evt);
@@ -252,8 +251,8 @@ public class MainJFrame extends javax.swing.JFrame {
         btnDonate.setBackground(new java.awt.Color(255, 255, 255));
         btnDonate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnDonate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDonate.setText("Donate");
-        btnDonate.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(236, 113, 107)));
+        btnDonate.setText("DONATE");
+        btnDonate.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         btnDonate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 btnDonateMousePressed(evt);

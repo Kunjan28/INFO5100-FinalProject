@@ -169,11 +169,10 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            //if (request.getStatus().equalsIgnoreCase("Completed")) {
             if("Completed".equalsIgnoreCase(request.getStatus())) {
-              JOptionPane.showMessageDialog(null, "Request already processed.");
-               return;
-           } else {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
                 populateTable();
@@ -193,6 +192,10 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
             UserRegistrationRequest request = (UserRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
             /*Employee emp = new Employee();
             emp.setName(request.getName());*/
+            if("Completed".equalsIgnoreCase(request.getStatus())) {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else {
          
                 Organization org = organizationDirectory.createOrganization(request.getName(),Organization.Type.Adopter );
                 Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
@@ -254,7 +257,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
             }
         //}
         }
-        
+            
         /*The below if code checks if there is some value for org. If there is then add the work request 
         - At the organization level, where other organization in the same enterprise can access it
         -At the account level, so the adopter can also see see the request created
@@ -268,7 +271,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a request message to process.");
             return;
             }
-       
+            }
         }
     }//GEN-LAST:event_processJButtonActionPerformed
 
