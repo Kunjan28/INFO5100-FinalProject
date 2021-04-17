@@ -79,6 +79,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
             row[2]=ch.getChildAge();
             row[3]=ch.getGender();
             row[4]=ch.getStatus();
+            
             table.addRow(row);
             }
         }
@@ -106,6 +107,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
         jLabel1.setText("VIEW CHILD DETAILS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 30, 310, 20));
 
+        tblChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},

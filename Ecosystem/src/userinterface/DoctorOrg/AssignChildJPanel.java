@@ -283,7 +283,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("VITAL SIGNS");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 40, 340, 20));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 40, 340, 20));
 
         lblTemp.setText("Body Temperature");
         add(lblTemp, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 130, 20));
@@ -330,7 +330,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         ));
         ScrollPaneLabWork.setViewportView(tblLab);
 
-        add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, 850, 120));
+        add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 850, 90));
 
         tblMedication.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -345,13 +345,15 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(tblMedication);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 620, 850, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 850, 90));
 
+        lblLabWork.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblLabWork.setText("Lab Work History");
-        add(lblLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 420, 200, 20));
+        add(lblLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 200, 20));
 
+        lblMedicationHistory.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblMedicationHistory.setText("Medication History");
-        add(lblMedicationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 600, 190, -1));
+        add(lblMedicationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, 190, -1));
 
         btnMale.setText("Male");
         add(btnMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 170, -1, -1));
@@ -360,13 +362,13 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         add(btnFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 170, 120, -1));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 60, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 10, 70, 30));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {

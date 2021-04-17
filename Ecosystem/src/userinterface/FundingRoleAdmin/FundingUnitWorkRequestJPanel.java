@@ -68,13 +68,16 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
             if (workRequest instanceof DonorRegistrationRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = workRequest;
-                row[1] = ((DonorRegistrationRequest) workRequest).getStatus();
-                row[2] = ((DonorRegistrationRequest) workRequest).getUserName();
-                row[3] = ((DonorRegistrationRequest) workRequest).getName();
-                row[4] = ((DonorRegistrationRequest) workRequest).getUserEmailId();
-                row[5] = ((DonorRegistrationRequest) workRequest).getUserCity();
-                row[6] = ((DonorRegistrationRequest) workRequest).getOrgType();
-                //row[7] = ((UserRegistrationRequest) workRequest).getNetwork();
+                //row[0] = ((DonorRegistrationRequest) workRequest).getStatus();
+                //row[0] = ((DonorRegistrationRequest) workRequest).getUserName();
+                row[1] = ((DonorRegistrationRequest) workRequest).getName();
+                
+                row[2] = ((DonorRegistrationRequest) workRequest).getUserEmailId();
+                row[3] = ((DonorRegistrationRequest) workRequest).getUserContact();
+                row[4] = ((DonorRegistrationRequest) workRequest).getSsn();
+                row[5] = ((DonorRegistrationRequest) workRequest).getStatus();
+                //row[6] = ((DonorRegistrationRequest) workRequest).getOrgType();
+                
 
                 model.addRow(row);
             }
@@ -96,6 +99,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1058, 840));
@@ -106,20 +110,20 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         workRequestJTable.setForeground(new java.awt.Color(25, 56, 82));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Request #", "Status", "UserName", "Name", "Email ID", "City", "Organization Type", "Network"
+                "UserName", "Name", "Email ID", "Contact", "SSN", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -133,18 +137,18 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         workRequestJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(workRequestJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 140, 854, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 870, 170));
 
         assignJButton.setBackground(new java.awt.Color(255, 255, 255));
         assignJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         assignJButton.setForeground(new java.awt.Color(25, 56, 82));
-        assignJButton.setText("Assign to me");
+        assignJButton.setText("Assign To Me");
         assignJButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 assignJButtonActionPerformed(evt);
             }
         });
-        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(415, 387, -1, -1));
+        add(assignJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 470, -1, -1));
 
         processJButton.setBackground(new java.awt.Color(255, 255, 255));
         processJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -155,13 +159,16 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(558, 387, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 470, 130, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MANAGE VOLUNTEER UNIT WORK REQUEST");
+        jLabel1.setText("MANAGE SPONSOR WORK REQUEST");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 41, 431, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/employee.jpg"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 960, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -191,7 +198,11 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         try{
         if (selectedRow >= 0) {
             DonorRegistrationRequest request = (DonorRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
-        
+            if (request.getStatus().equalsIgnoreCase("Completed")) {
+              JOptionPane.showMessageDialog(null, "Request already processed.");
+               return;
+            }
+            
             Organization org = organizationDirectory.createOrganization(request.getName(), Organization.Type.Donor);
             Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
             UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorRole());
@@ -224,6 +235,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
     private javax.swing.JTable workRequestJTable;

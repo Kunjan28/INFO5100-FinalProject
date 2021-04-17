@@ -11,8 +11,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Utils.CommonMail;
-
-
 import Business.WorkQueue.WorkQueue;
 import java.awt.Color;
 import java.util.Properties;
@@ -25,10 +23,7 @@ import javax.mail.internet.MimeMessage;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-
-
 import Business.WorkQueue.DonorRegistrationRequest;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
@@ -54,8 +49,8 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        populateNetworkComboBox();
-        populateCarrierComboBox();
+        //populateNetworkComboBox();
+        //populateCarrierComboBox();
         usernameExistsMessage.setVisible(false);
         emailValidateMessage.setVisible(false);
         emailSuccessLabel.setVisible(false);
@@ -71,20 +66,20 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         return matcher.matches();
     }
     
-
-    public void populateNetworkComboBox() {
-        stateCombo.removeAllItems();
-        for (Network network : system.getNetworkList()) {
-            stateCombo.addItem(network);
-        }
-    }
-      public void populateCarrierComboBox() {
-        contactCarrier.removeAllItems();
-        contactCarrier.addItem("ATT");
-        contactCarrier.addItem("Sprint");
-        contactCarrier.addItem("TMobile");
-        contactCarrier.addItem("Verizon");
-    }
+//
+//    public void populateNetworkComboBox() {
+//        stateCombo.removeAllItems();
+//        for (Network network : system.getNetworkList()) {
+//            stateCombo.addItem(network);
+//        }
+//    }
+//      public void populateCarrierComboBox() {
+//        contactCarrier.removeAllItems();
+//        contactCarrier.addItem("ATT");
+//        contactCarrier.addItem("Sprint");
+//        contactCarrier.addItem("TMobile");
+//        contactCarrier.addItem("Verizon");
+//    }
     
 
    
@@ -102,30 +97,24 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        userName = new javax.swing.JTextField();
+        txtUserName = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        uName = new javax.swing.JTextField();
-        uPass = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
+        txtPwd = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        uEmail = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        uCity = new javax.swing.JTextField();
+        txtAge = new javax.swing.JTextField();
+        txtSSN = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        uContact = new javax.swing.JTextField();
-        stateCombo = new javax.swing.JComboBox();
-        orgCombo = new javax.swing.JComboBox();
+        txtContact = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
-        jLabel11 = new javax.swing.JLabel();
-        contactCarrier = new javax.swing.JComboBox<>();
         usernameExistsMessage = new javax.swing.JLabel();
         emailValidateMessage = new javax.swing.JLabel();
         emailSuccessLabel = new javax.swing.JLabel();
         userNameSuccessLabel = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1338, 900));
@@ -136,56 +125,56 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Volunteer Organization Registration");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, -1, -1));
+        jLabel1.setText("SPONSORER REGISTRATION FORM");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 30, 470, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
         jLabel2.setText("Name");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
 
-        userName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        userName.setForeground(new java.awt.Color(25, 56, 82));
-        userName.addActionListener(new java.awt.event.ActionListener() {
+        txtUserName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtUserName.setForeground(new java.awt.Color(25, 56, 82));
+        txtUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
+                txtUserNameActionPerformed(evt);
             }
         });
-        userName.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtUserName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                userNameKeyPressed(evt);
+                txtUserNameKeyPressed(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                userNameKeyTyped(evt);
+                txtUserNameKeyTyped(evt);
             }
         });
-        add(userName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 35));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 250, 35));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(25, 56, 82));
         jLabel3.setText("Username");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
 
-        uName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        uName.setForeground(new java.awt.Color(25, 56, 82));
-        uName.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtName.setForeground(new java.awt.Color(25, 56, 82));
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                uNameKeyReleased(evt);
+                txtNameKeyReleased(evt);
             }
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                uNameKeyTyped(evt);
+                txtNameKeyTyped(evt);
             }
         });
-        add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 250, 35));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 35));
 
-        uPass.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        uPass.setForeground(new java.awt.Color(25, 56, 82));
-        uPass.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPwd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtPwd.setForeground(new java.awt.Color(25, 56, 82));
+        txtPwd.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                uPassKeyTyped(evt);
+                txtPwdKeyTyped(evt);
             }
         });
-        add(uPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 253, 35));
+        add(txtPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 253, 35));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(25, 56, 82));
@@ -197,125 +186,64 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         jLabel5.setText("Email Id");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
 
-        uEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        uEmail.setForeground(new java.awt.Color(25, 56, 82));
-        uEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtAge.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtAge.setForeground(new java.awt.Color(25, 56, 82));
+        txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                uEmailKeyTyped(evt);
+                txtAgeKeyTyped(evt);
             }
         });
-        add(uEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 35));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
 
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel6.setText("State");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, -1, 20));
-
-        uCity.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        uCity.setForeground(new java.awt.Color(25, 56, 82));
-        uCity.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSSN.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtSSN.setForeground(new java.awt.Color(25, 56, 82));
+        txtSSN.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                uCityKeyTyped(evt);
+                txtSSNKeyTyped(evt);
             }
         });
-        add(uCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 250, 35));
+        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 250, 35));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(25, 56, 82));
         jLabel7.setText("SSN");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel8.setText("Organization");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, 20));
-
         jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(25, 56, 82));
         jLabel9.setText("Contact No");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 560, -1, 30));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, 30));
 
-        uContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        uContact.setForeground(new java.awt.Color(25, 56, 82));
-        uContact.addActionListener(new java.awt.event.ActionListener() {
+        txtContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtContact.setForeground(new java.awt.Color(25, 56, 82));
+        txtContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                uContactActionPerformed(evt);
+                txtContactActionPerformed(evt);
             }
         });
-        uContact.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                uContactKeyTyped(evt);
-            }
+        txtContact.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                uContactKeyPressed(evt);
+                txtContactKeyPressed(evt);
             }
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                uContactKeyReleased(evt);
+                txtContactKeyReleased(evt);
             }
-        });
-        add(uContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 560, 250, 35));
-
-        stateCombo.setBackground(new java.awt.Color(255, 255, 255));
-        stateCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        stateCombo.setForeground(new java.awt.Color(25, 56, 82));
-        stateCombo.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                stateComboItemStateChanged(evt);
-            }
-        });
-        stateCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                stateComboActionPerformed(evt);
-            }
-        });
-        add(stateCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
-
-        orgCombo.setBackground(new java.awt.Color(255, 255, 255));
-        orgCombo.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        orgCombo.setForeground(new java.awt.Color(25, 56, 82));
-        orgCombo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                orgComboActionPerformed(evt);
-            }
-        });
-        orgCombo.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                orgComboKeyTyped(evt);
+                txtContactKeyTyped(evt);
             }
         });
-        add(orgCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 460, 250, 35));
+        add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 250, 35));
 
         btnRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnRegister.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(25, 56, 82));
-        btnRegister.setText("Register");
+        btnRegister.setText("Donate");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 690, -1, -1));
-
-        jLabel11.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel11.setText("Carrier");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 520, -1, 20));
-
-        contactCarrier.setBackground(new java.awt.Color(255, 255, 255));
-        contactCarrier.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        contactCarrier.setForeground(new java.awt.Color(25, 56, 82));
-        contactCarrier.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        contactCarrier.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                contactCarrierActionPerformed(evt);
-            }
-        });
-        contactCarrier.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                contactCarrierKeyTyped(evt);
-            }
-        });
-        add(contactCarrier, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 510, 250, 35));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, 130, -1));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
@@ -331,114 +259,103 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
         add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
 
-        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/add-user.png"))); // NOI18N
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        jLabel10.setText("Age");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 50, -1));
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/RegisterOPAQUE.png"))); // NOI18N
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, -1, -1));
+        txtEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        txtEmail.setForeground(new java.awt.Color(25, 56, 82));
+        txtEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtEmailKeyTyped(evt);
+            }
+        });
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 35));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void stateComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stateComboActionPerformed
-        /*Network n = (Network) stateCombo.getSelectedItem();
-        for (Enterprise e : n.getEnterpriseDirectory().getEnterpriseList()) {
-            for (Organization o : e.getOrganizationDirectory().getOrganizationList()) {
-                if (o instanceof VolunteerCompanyOrganization) {
-                    orgCombo.addItem(Organization.Type.Company);
-                } else if (o instanceof VolunteerNGOOrganization) {
-                    orgCombo.addItem(Organization.Type.NGO);
-                } else if (o instanceof VolunteerPersonalOrganization) {
-                    orgCombo.addItem(Organization.Type.Personal);
-                } else if (o instanceof VolunteerHospitalOrganization) {
-                    orgCombo.addItem(Organization.Type.Hospital);
-                }
-            }
-        }
-        */
-    }//GEN-LAST:event_stateComboActionPerformed
-
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-        Network network = (Network) stateCombo.getSelectedItem();
-        Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
-
-        if (network == null) {
-            stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-            stateCombo.setForeground(Color.red);
-
-        }
-        if (uName.getText().isEmpty()) {
-            uName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            uName.setForeground(Color.red);
-
-        }
-        if (userName.getText().isEmpty()) {
-            userName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            userName.setForeground(Color.red);
+//        Network network = (Network) stateCombo.getSelectedItem();
+//        Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
+//
+//        if (network == null) {
+//            stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
+//            stateCombo.setForeground(Color.red);
+//
+//        }
+        if (txtName.getText().isEmpty()) {
+            txtName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtName.setForeground(Color.red);
 
         }
-        if (uPass.getText().isEmpty()) {
-            uPass.setBorder(BorderFactory.createLineBorder(Color.RED));
-            uPass.setForeground(Color.red);
+        if (txtUserName.getText().isEmpty()) {
+            txtUserName.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtUserName.setForeground(Color.red);
 
         }
-        if (uEmail.getText().isEmpty()) {
-            uEmail.setBorder(BorderFactory.createLineBorder(Color.RED));
-            uEmail.setForeground(Color.red);
+        if (txtPwd.getText().isEmpty()) {
+            txtPwd.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtPwd.setForeground(Color.red);
 
         }
-        if (uCity.getText().isEmpty()) {
-            uCity.setBorder(BorderFactory.createLineBorder(Color.RED));
-            uCity.setForeground(Color.red);
+        if (txtAge.getText().isEmpty()) {
+            txtAge.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtAge.setForeground(Color.red);
 
         }
-        if (type == null) {
-            orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-            orgCombo.setForeground(Color.red);
+        if (txtSSN.getText().isEmpty()) {
+            txtSSN.setBorder(BorderFactory.createLineBorder(Color.RED));
+            txtSSN.setForeground(Color.red);
 
-        }
-        if (uContact.getText().isEmpty()) {
-            uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
-            uContact.setForeground(Color.red);
-
-        }
+       }
+//        if (type == null) {
+//            orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
+//            orgCombo.setForeground(Color.red);
+//
+//        }
+//        if (uContact.getText().isEmpty()) {
+//            uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
+//            uContact.setForeground(Color.red);
+//
+//        }
         
-        if (userName.getText().isEmpty()
-                || uPass.getText().isEmpty()
-                || uEmail.getText().isEmpty()
-                || uCity.getText().isEmpty()
+        if (txtUserName.getText().isEmpty()
+                || txtPwd.getText().isEmpty()
+                || txtAge.getText().isEmpty()
+                || txtSSN.getText().isEmpty()
                // || type == null
-                || uContact.getText().isEmpty()
+                || txtContact.getText().isEmpty()
                 //|| locationPoint == null
                 ) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
 //        } else if(!contactValidity(uContact.getText())){
 //            JOptionPane.showMessageDialog(null, "Phone format incorrect");
         } 
-        else if (emailValid && userUnique) {
+        else if (isValidEmail(txtEmail.getText()) && userUnique) {
             DonorRegistrationRequest registrationRequest = new DonorRegistrationRequest();
-            registrationRequest.setName(userName.getText());
-            registrationRequest.setUserName(uName.getText());
-            registrationRequest.setUserPassword(uPass.getText());
-            registrationRequest.setUserEmailId(uEmail.getText());
-            registrationRequest.setNetwork(network);
-            registrationRequest.setUserCity(uCity.getText());
-            registrationRequest.setOrgType(type);
+            registrationRequest.setName(txtUserName.getText());
+            registrationRequest.setUserName(txtName.getText());
+            registrationRequest.setUserPassword(txtPwd.getText());
+            registrationRequest.setUserEmailId(txtEmail.getText());
+            //registrationRequest.setNetwork(network);
+            registrationRequest.setUserCity(txtSSN.getText());
+            //registrationRequest.setOrgType(type);
             registrationRequest.setStatus("Requested");
-            registrationRequest.setUserContact(uContact.getText());
-            String contact = "";
+            registrationRequest.setUserContact(txtContact.getText());
+            registrationRequest.setSsn(txtSSN.getText());
+            //String contact = "";
 
-            if (contactCarrier.getSelectedItem().equals("ATT")) {
-                contact = uContact.getText() + "@txt.att.net";
-            } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
-                contact = uContact.getText() + "@vmobl.com";
-            } else if (contactCarrier.getSelectedItem().equals("Sprint")) {
-                contact = uContact.getText() + "@messaging.sprintpcs.com";
-            } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
-                contact = uContact.getText() + "@tmomail.net";
-            }
-            registrationRequest.setContactCarrierName(contact);
+//            if (contactCarrier.getSelectedItem().equals("ATT")) {
+//                contact = txtContact.getText() + "@txt.att.net";
+//            } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
+//                contact = txtContact.getText() + "@vmobl.com";
+//            } else if (contactCarrier.getSelectedItem().equals("Sprint")) {
+//                contact = txtContact.getText() + "@messaging.sprintpcs.com";
+//            } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
+//                contact = txtContact.getText() + "@tmomail.net";
+//            }
+            //registrationRequest.setContactCarrierName(contact);
             String subject = "Adopter Registeration";
             String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.";
-            CommonMail.sendEmailMessage(uEmail.getText(),subject,content);
+ //EMAIL           CommonMail.sendEmailMessage(txtAge.getText(),subject,content);
            // sendTextMessage(contact);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
@@ -451,92 +368,82 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                 }
             }
             JOptionPane.showMessageDialog(null, "You have been registered succesfully!");
-            uName.setText("");
-            userName.setText("");
-            uPass.setText("");
-            uEmail.setText("");
-            uCity.setText("");
-            uContact.setText("");
+            txtName.setText("");
+            txtUserName.setText("");
+            txtPwd.setText("");
+            txtAge.setText("");
+            txtSSN.setText("");
+            txtContact.setText("");
+            txtEmail.setText("");
             
-        } else if (!emailValid || !contactValid || !userUnique) {
-            JOptionPane.showMessageDialog(null, "Invalid credentials");
+//        } else if (!emailValid || !contactValid || !userUnique) {
+//           JOptionPane.showMessageDialog(null, "Invalid credentials");
+//        }
         }
     }//GEN-LAST:event_btnRegisterActionPerformed
 
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
+    private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
+    }//GEN-LAST:event_txtUserNameActionPerformed
 
-    private void userNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyPressed
+    private void txtUserNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_userNameKeyPressed
+    }//GEN-LAST:event_txtUserNameKeyPressed
 
-    private void userNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userNameKeyTyped
+    private void txtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyTyped
         // TODO add your handling code here:
-        userName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        userName.setForeground(Color.BLACK);
-    }//GEN-LAST:event_userNameKeyTyped
+        txtUserName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txtUserName.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txtUserNameKeyTyped
 
-    private void uNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyTyped
+    private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_uNameKeyTyped
+    }//GEN-LAST:event_txtNameKeyTyped
 
-    private void uPassKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uPassKeyTyped
+    private void txtPwdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPwdKeyTyped
         // TODO add your handling code here:
-        uPass.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uPass.setForeground(Color.BLACK);
-    }//GEN-LAST:event_uPassKeyTyped
+        txtPwd.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txtPwd.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txtPwdKeyTyped
 
-    private void uEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uEmailKeyTyped
+    private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
         // TODO add your handling code here:
-        if (!isValidEmail(uEmail.getText())) {
-            emailValidateMessage.setVisible(true);
-            emailValid = false;
-        } else {
-            uEmail.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            uEmail.setForeground(Color.BLACK);
-            emailValidateMessage.setVisible(false);
-            emailSuccessLabel.setVisible(true);
-            emailValid = true;
-            int delay = 2500; //milliseconds
-            ActionListener taskPerformer = new ActionListener() {
-                public void actionPerformed(ActionEvent evt) {
-                    emailSuccessLabel.setVisible(false);
-                }
-            };
-            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-            tick.setRepeats(false);
-            tick.start();
-        }
-    }//GEN-LAST:event_uEmailKeyTyped
+//        if (!isValidEmail(txtAge.getText())) {
+//            emailValidateMessage.setVisible(true);
+//            emailValid = false;
+//        } else {
+//            txtAge.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+//            txtAge.setForeground(Color.BLACK);
+//            emailValidateMessage.setVisible(false);
+//            emailSuccessLabel.setVisible(true);
+//            emailValid = true;
+//            int delay = 2500; //milliseconds
+//            ActionListener taskPerformer = new ActionListener() {
+//                public void actionPerformed(ActionEvent evt) {
+//                    emailSuccessLabel.setVisible(false);
+//                }
+//            };
+//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
+//            tick.setRepeats(false);
+//            tick.start();
+//        }
+    }//GEN-LAST:event_txtAgeKeyTyped
 
-    private void stateComboItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_stateComboItemStateChanged
+    private void txtSSNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSSNKeyTyped
         // TODO add your handling code here:
-        stateCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        stateCombo.setForeground(Color.BLACK);
-    }//GEN-LAST:event_stateComboItemStateChanged
+        txtSSN.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        txtSSN.setForeground(Color.BLACK);
+    }//GEN-LAST:event_txtSSNKeyTyped
 
-    private void uCityKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uCityKeyTyped
+    private void txtNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyReleased
         // TODO add your handling code here:
-        uCity.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        uCity.setForeground(Color.BLACK);
-    }//GEN-LAST:event_uCityKeyTyped
-
-    private void orgComboKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_orgComboKeyTyped
-        // TODO add your handling code here:
-        orgCombo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        orgCombo.setForeground(Color.BLACK);
-    }//GEN-LAST:event_orgComboKeyTyped
-
-    private void uNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uNameKeyReleased
-        // TODO add your handling code here:
-        if (!system.checkIfUserIsUnique(uName.getText())) {
+        if (!system.checkIfUserIsUnique(txtName.getText())) {
             usernameExistsMessage.setVisible(true);
             userNameSuccessLabel.setVisible(false);
             userUnique = false;
         } else {
-            uName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            uName.setForeground(Color.BLACK);
+            txtName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+            txtName.setForeground(Color.BLACK);
             usernameExistsMessage.setVisible(false);
             userNameSuccessLabel.setVisible(true);
             userUnique = true;
@@ -550,22 +457,10 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             tick.setRepeats(false);
             tick.start();
         }
-    }//GEN-LAST:event_uNameKeyReleased
+    }//GEN-LAST:event_txtNameKeyReleased
 
 
-    private void orgComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_orgComboActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_orgComboActionPerformed
-
-    private void contactCarrierKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactCarrierKeyTyped
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactCarrierKeyTyped
-
-    private void contactCarrierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactCarrierActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactCarrierActionPerformed
-
-    private void uContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyReleased
+    private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
         // TODO add your handling code here:
         //        if(uContact.getText().trim().length() != 11){
             //          contactFormatMessage.setVisible(true);
@@ -590,19 +485,23 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             //            tick.setRepeats(false);
             //            tick.start();
             //        }
-    }//GEN-LAST:event_uContactKeyReleased
+    }//GEN-LAST:event_txtContactKeyReleased
 
-    private void uContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyPressed
+    private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uContactKeyPressed
+    }//GEN-LAST:event_txtContactKeyPressed
 
-    private void uContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_uContactKeyTyped
+    private void txtContactKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyTyped
         // TODO add your handling code here:
-    }//GEN-LAST:event_uContactKeyTyped
+    }//GEN-LAST:event_txtContactKeyTyped
 
-    private void uContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uContactActionPerformed
+    private void txtContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_uContactActionPerformed
+    }//GEN-LAST:event_txtContactActionPerformed
+
+    private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailKeyTyped
 
 
     public static void sendEmailMessage(String emailId) {
@@ -721,29 +620,23 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
-    private javax.swing.JComboBox<String> contactCarrier;
     private javax.swing.JLabel emailSuccessLabel;
     private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JComboBox orgCombo;
-    private javax.swing.JComboBox stateCombo;
-    private javax.swing.JTextField uCity;
-    private javax.swing.JTextField uContact;
-    private javax.swing.JTextField uEmail;
-    private javax.swing.JTextField uName;
-    private javax.swing.JTextField uPass;
-    private javax.swing.JTextField userName;
+    private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtContact;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPwd;
+    private javax.swing.JTextField txtSSN;
+    private javax.swing.JTextField txtUserName;
     private javax.swing.JLabel userNameSuccessLabel;
     private javax.swing.JLabel usernameExistsMessage;
     // End of variables declaration//GEN-END:variables

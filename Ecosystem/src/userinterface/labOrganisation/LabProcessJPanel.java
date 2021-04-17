@@ -39,7 +39,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblLab = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
         txtResult = new javax.swing.JTextField();
@@ -52,25 +51,23 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         lblLab.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLab.setText("LAB PROCESS");
-        add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 90, 480, 20));
+        add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 480, 20));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LabIcon.jpeg"))); // NOI18N
-        add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 140, 140));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 20, 110, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 70, 30));
 
+        lblResult.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblResult.setText("Result");
         add(lblResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 120, 20));
         add(txtResult, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 230, 290, 100));
 
+        btnSave.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +77,7 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 400, 130, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 120, 580, 370));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 720, 370));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -121,7 +118,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblLab;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblResult;
     private javax.swing.JTextField txtResult;
     // End of variables declaration//GEN-END:variables

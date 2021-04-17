@@ -72,7 +72,7 @@ public class AcquireChild extends javax.swing.JPanel {
       }
   }
         
-         populateAdopterTable();
+//         populateAdopterTable();
 //         populateChildTable();
          populateWorkRequest();
     }
@@ -92,10 +92,6 @@ public class AcquireChild extends javax.swing.JPanel {
         workTable = new javax.swing.JTable();
         processBtn = new javax.swing.JButton();
         btnAssign = new javax.swing.JButton();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
@@ -111,7 +107,7 @@ public class AcquireChild extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Comments", "Pharmacy Name", "CC Admin", "Child ID", "Child Name", "Status"
+                "Comments", "Pharmacy Name", "Child Care Admin", "Child ID", "Child Name", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -146,42 +142,9 @@ public class AcquireChild extends javax.swing.JPanel {
         });
         add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 370, 133, 33));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Child Id", "Child Name", "Adopter ID", "Adopter Name", "Status", "Message"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable1);
-
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 600, 570, 90));
-
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Process");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 630, 133, 33));
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Adopter Request");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 560, 105, 24));
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids 2.png"))); // NOI18N
         jLabel4.setText("jLabel4");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 1010, 500));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 340, 1010, 370));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -196,11 +159,15 @@ public class AcquireChild extends javax.swing.JPanel {
            return;
        }
        WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
+       if (re.getStatus().equalsIgnoreCase("Acquired")) {
+                JOptionPane.showMessageDialog(null, "Request already completed.");
+                return;
+       } else {
        for(Child ch : directory.getChildList()){
            if(ch.getChildId()==re.getChildId()){
                child=ch;
            }
-       }
+       } }
         ProcessAcquireChild pccwr = new ProcessAcquireChild(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
         this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
         CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
@@ -214,43 +181,27 @@ public class AcquireChild extends javax.swing.JPanel {
            return;
        }
        WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
-       re.setReceiver(account);
-       re.setStatus("Pending with child care");
-       populateWorkRequest();
-       processBtn.setEnabled(true);
-       JOptionPane.showMessageDialog(null, "Request Assigned");
-    }//GEN-LAST:event_btnAssignActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow<0){
-             JOptionPane.showMessageDialog(null, "Please select a request");
-            return;
-        }
        
-        ChildCareAdoptionWorkRequest req = (ChildCareAdoptionWorkRequest) jTable1.getValueAt(selectedRow, 0);
-        req.setStatus("Approved");
-        for(Child ch: directory.getChildList()){
-            if(ch.getChildId()==req.getChildId()){
-                ch.setStatus("Adopted by "+req.getUserName());
-            }
-        }
-        
-        
-        
-        populateAdopterTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
+       if (re.getStatus().equalsIgnoreCase("Acquired")) {
+                JOptionPane.showMessageDialog(null, "Request already completed.");
+                return;
+       } else {
+            re.setReceiver(account);
+            re.setStatus("Pending with child care");
+            populateWorkRequest();
+            processBtn.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Request Assigned");
+       }
+    }//GEN-LAST:event_btnAssignActionPerformed
 
 
 public void populateWorkRequest(){
-    
-    
     DefaultTableModel table = (DefaultTableModel)workTable.getModel();
        table.setRowCount(0);
     for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
      
-       if(req instanceof ChildCareWorkRequest){
-           
+       if(req instanceof ChildCareWorkRequest ){
+                      
           Object[] row = new Object[table.getColumnCount()];
           row[0]=req;
           row[1]=req.getSender();
@@ -267,37 +218,33 @@ public void populateWorkRequest(){
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
     private javax.swing.JButton processBtn;
     private javax.swing.JTable workTable;
     // End of variables declaration//GEN-END:variables
 
-    public void populateAdopterTable(){
-        DefaultTableModel dtms = (DefaultTableModel) jTable1.getModel();
-        dtms.setRowCount(0);
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof ChildCareAdoptionWorkRequest){
-
-                
-                    Object[] row = new Object[dtms.getColumnCount()];
-                    row[0]=req;
-                    row[1]=req.getChildId();
-                    row[2]= ((ChildCareAdoptionWorkRequest) req).getUserName();
-                    row[3]= req.getStatus();
-                    dtms.addRow(row);
-                }
-            
-        }
-        
-    }
+//    public void populateAdopterTable(){
+//        DefaultTableModel dtms = (DefaultTableModel) jTable1.getModel();
+//        dtms.setRowCount(0);
+//        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
+//            if(req instanceof ChildCareAdoptionWorkRequest){
+//
+//                
+//                    Object[] row = new Object[dtms.getColumnCount()];
+//                    row[0]=req;
+//                    row[1]=req.getChildId();
+//                    row[2]= ((ChildCareAdoptionWorkRequest) req).getUserName();
+//                    row[3]= req.getStatus();
+//                    dtms.addRow(row);
+//                }
+//            
+//        }
+//        
+//    }
     
     
 

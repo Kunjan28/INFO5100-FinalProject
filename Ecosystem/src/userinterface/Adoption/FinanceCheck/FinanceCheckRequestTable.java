@@ -66,15 +66,17 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         tblRequest = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("FINANCE CHECK REQUEST");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 46, 383, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 50, 383, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -83,28 +85,33 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "User ID", "User Name", "Status"
+                "Message", "Sender", "Receiver", "User ID", "Adopter Name", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(51, 171, 759, 166));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 960, 166));
 
+        btnAssign.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAssign.setText("Assign");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 397, 145, -1));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 400, 145, -1));
 
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(516, 397, 135, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 135, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 70, 680, 580));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -116,9 +123,10 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         }
         
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         
-        if(statusval.equals("Pending with Finance organization")){
+        if(receiverval == null) {
+        //if(statusval.equals("Pending with Finance organization")){
         WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
         re.setReceiver(account);
         re.setStatus("Finance organization processing");
@@ -127,10 +135,10 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         else{
         if(statusval.equals("Approved")||statusval.equals("Denied"))
             JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-        else if(receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
+//        else if(!receiverval.equals(account.getUsername()))
+//            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
+//        else if(receiverval.equals(account.getUsername()))
+//            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
         } 
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -143,7 +151,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         }
         WorkRequest req = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         for(Adopter a: udirectory.getAdoptersList()){
             if(a.getUserId()==req.getUserId()){
                 adopter=a;
@@ -160,7 +168,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);}
         else if(statusval.equals("Approved")|| statusval.equals("Denied"))
-            JOptionPane.showMessageDialog(null,"The selected workrerequest is already processed");
+            JOptionPane.showMessageDialog(null,"The selected work request is already processed");
         else if(!receiverval.equals(account.getUsername()))
             JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");
         } 
@@ -177,7 +185,8 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
            row[1]=request.getSender().getEmployee().getName();
            row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
-           row[4] = request.getStatus();
+           row[4] = request.getName();
+           row[5] = request.getStatus();
             dtm.addRow(row);
             }
         }
@@ -187,6 +196,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnProcess;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblRequest;
     // End of variables declaration//GEN-END:variables

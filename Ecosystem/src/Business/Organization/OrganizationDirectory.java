@@ -72,7 +72,7 @@ public class OrganizationDirectory {
             organizationList.add(organization);
         }
         else if (type.getValue().equals(Type.FinanceOrganization.getValue())){
-            organization = new FinanceOrganization();
+            organization = new FinanceOrganization(name);
             organizationList.add(organization);
         }
         return organization;

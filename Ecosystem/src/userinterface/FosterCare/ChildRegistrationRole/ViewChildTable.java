@@ -55,9 +55,8 @@ public class ViewChildTable extends javax.swing.JPanel {
         this.business = business;
         this.directory = directory;
         this.enterprise = enterprise;
-        valueLabel.setText(enterprise.getName());
-
-        valueLabel1.setText(childRegistrationOrganization.getName());
+        //valueLabel.setText(enterprise.getName());
+        //valueLabel1.setText(childRegistrationOrganization.getName());
 
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -84,28 +83,25 @@ public class ViewChildTable extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblNewChild = new javax.swing.JTable();
         btnViewChild = new javax.swing.JButton();
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         btnDeleteChild = new javax.swing.JButton();
-        enterpriseLabel1 = new javax.swing.JLabel();
-        valueLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        tblNewChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblNewChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Child Id", "Child Name", "Gender", "Age", "Status", "Medical Status", "Assigned Doctor"
+                "Child Id", "Child Name", "Gender", "Age", "Status", "Medical Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -114,55 +110,36 @@ public class ViewChildTable extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblNewChild);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, 870, 100));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 870, 210));
 
+        btnViewChild.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnViewChild.setText("View Child Details");
         btnViewChild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnViewChildActionPerformed(evt);
             }
         });
-        add(btnViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 400, 150, 33));
+        add(btnViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 450, 150, 33));
 
-        enterpriseLabel.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        enterpriseLabel.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        enterpriseLabel.setText("ORGANISATION");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(301, 27, 180, 30));
-
-        valueLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 150, 30));
-
+        btnDeleteChild.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnDeleteChild.setText("Delete Child");
         btnDeleteChild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDeleteChildActionPerformed(evt);
             }
         });
-        add(btnDeleteChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 400, 150, 33));
-
-        enterpriseLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        enterpriseLabel1.setText("Enterprise");
-        add(enterpriseLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 170, 127, 30));
-
-        valueLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        valueLabel1.setText("<value>");
-        add(valueLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 30, 150, 26));
+        add(btnDeleteChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 450, 150, 33));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/transparentKids.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, 480, 330));
-
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
-        jButton1.setText("Refresh");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 30, 120, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 410, 480, 330));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/childLogo.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 180, 160));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setText("VIEW CHILD RECORDS");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 50, 370, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnViewChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewChildActionPerformed
@@ -219,11 +196,6 @@ public class ViewChildTable extends javax.swing.JPanel {
        
     }//GEN-LAST:event_btnDeleteChildActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        poplulateTable();
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 /*Method to populate the table of with child details*/    
     public void poplulateTable(){
       
@@ -237,6 +209,8 @@ public class ViewChildTable extends javax.swing.JPanel {
             row[2]=child.getGender();
             row[3]=child.getChildAge();
             row[4]=child.getStatus();
+            row[5]=child.getMedicalStatus();
+            
             dtms.addRow(row);
         
         }
@@ -249,14 +223,10 @@ public class ViewChildTable extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteChild;
     private javax.swing.JButton btnViewChild;
-    private javax.swing.JLabel enterpriseLabel;
-    private javax.swing.JLabel enterpriseLabel1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblNewChild;
-    private javax.swing.JLabel valueLabel;
-    private javax.swing.JLabel valueLabel1;
     // End of variables declaration//GEN-END:variables
 }

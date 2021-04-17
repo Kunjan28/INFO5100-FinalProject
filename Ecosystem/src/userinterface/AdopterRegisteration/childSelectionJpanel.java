@@ -79,11 +79,12 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CHILD SELECTION");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 30, 383, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 383, -1));
 
+        tblChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -105,15 +106,16 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblChild);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 710, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 790, 150));
 
+        btnAdopt.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAdopt.setText("Adopt");
         btnAdopt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdoptActionPerformed(evt);
             }
         });
-        add(btnAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
+        add(btnAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 340, 100, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed

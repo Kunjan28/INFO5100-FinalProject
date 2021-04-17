@@ -53,6 +53,14 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         this.financeCCWorkRequest =  financeCCWorkRequest;
         populateWorkRequest();
         setUserDetailsField();
+        
+        txtName.setEnabled(false);
+        txtAge.setEnabled(false);
+        txtSSN.setEnabled(false);
+        txtIncome.setEnabled(false);
+        txtEmail.setEnabled(false);
+        rdbMale.setEnabled(false);
+        rdbFemale.setEnabled(false);
     }
 
     /**
@@ -84,13 +92,15 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         rdbMale = new javax.swing.JRadioButton();
         rdbFemale = new javax.swing.JRadioButton();
+        btnRefresh = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("FINANCE REQUEST PROCESS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 30, 338, 24));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, 338, 24));
 
         jLabel2.setText("Email ID");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 90, 20));
@@ -136,20 +146,23 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 670, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 900, 110));
 
+        lblRemarks.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblRemarks.setText("Remarks");
         add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 70, -1));
         add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 210, 70));
 
+        btnDeny.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnDeny.setText("Deny");
         btnDeny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDenyActionPerformed(evt);
             }
         });
-        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, 120, -1));
+        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, 120, -1));
 
+        btnApprove.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +176,17 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, -1, -1));
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, -1));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance-png-20994.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 650, 640));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -173,14 +197,17 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
             return;
         }
         
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
+        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+            JOptionPane.showMessageDialog(null,"Request already processed");
+        } else {
         if(receiverval.equals(account.getUsername())){
         FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest)tblRequest.getValueAt(selectedRow,0);
 
         request.setStatus("Approved");
         request.setRemarks(txtRemarks.getText());
-        request.setSender(account);
+        //request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setFinanceStatus("Approved");
         populateWorkRequest();
@@ -198,6 +225,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         }
         else
             JOptionPane.showMessageDialog(null,"Please select work request assigned to you");
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
@@ -207,15 +235,20 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select the request to proceed.");
             return;
         }
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
+        
+        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+            JOptionPane.showMessageDialog(null,"Request already processed");
+        } else {
+        
         if(receiverval.equals(account.getUsername())){
 
         FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest)tblRequest.getValueAt(selectedRow,0);
 
         request.setStatus("Denied");
         request.setRemarks(txtRemarks.getText());
-        request.setSender(account);
+        //request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setFinanceStatus("Denied");
         populateWorkRequest();
@@ -228,7 +261,13 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                 }
             }
         }}
+        }
     }//GEN-LAST:event_btnDenyActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateWorkRequest();
+    }//GEN-LAST:event_btnRefreshActionPerformed
     
     public void populateWorkRequest(){
       
@@ -237,16 +276,17 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()){
             if(request instanceof FinanceAdoptionWorkRequest){
                 if(request.getUserId() == financeCCWorkRequest.getUserId()){
-                    if((request.getStatus()).equals("Finance organization processing")){
+                    //if((request.getStatus()).equals("Finance organization processing")){
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0]=request;
                 row[1]=request.getSender().getEmployee().getName();
                 row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
                 row[3] = request.getUserId();
-                row[4] = request.getStatus();
+                row[4] = request.getName();
+                row[5] = request.getStatus();
                  dtm.addRow(row);
             }}}
-        }
+        //}
     }
     public void setUserDetailsField(){
         txtAge.setText(String.valueOf(adopter.getAge()));
@@ -268,6 +308,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnDeny;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -275,6 +316,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRemarks;
     private javax.swing.JRadioButton rdbFemale;

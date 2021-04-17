@@ -15,6 +15,7 @@ import Business.Organization.Organization;
 //pjpjp import Business.Organization.Orphanage.ChildCareOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.EducationalHelpWorkRequest;
 //pjpj import Business.WorkQueue.DoctorWorkRequest;
 //pjpj import Business.WorkQueue.FinanceCCWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -151,14 +152,15 @@ ImageIcon icon = new ImageIcon(image);
         txtDOB = new javax.swing.JTextField();
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         txtMark = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(50, 50));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 190, 30));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 190, 30));
 
         lblDOB.setText("Age");
-        add(lblDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 170, 100, 30));
+        add(lblDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 170, 100, 30));
 
         maleRDB.setText("Male");
         maleRDB.addActionListener(new java.awt.event.ActionListener() {
@@ -166,13 +168,13 @@ ImageIcon icon = new ImageIcon(image);
                 maleRDBActionPerformed(evt);
             }
         });
-        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 220, -1, -1));
+        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, -1, -1));
 
         femaleRDB.setText("Female");
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 220, 100, 30));
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 100, 50));
 
-        lblGender.setText("Gender:");
-        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 220, 150, 30));
+        lblGender.setText("Gender");
+        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 130, 30));
 
         lblHeading.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -181,81 +183,83 @@ ImageIcon icon = new ImageIcon(image);
         add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 170, 180));
 
         lblName.setText("Name");
-        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 120, 110, 30));
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 120, 110, 30));
 
         lblPersonalInfo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblPersonalInfo.setText("Personal Info");
-        add(lblPersonalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 80, 121, 20));
+        add(lblPersonalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 121, 20));
 
         jLabel7.setText("Temperature");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 120, -1, 27));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 340, -1, 27));
 
         lblMedicalInfo.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblMedicalInfo.setText("Medical Info");
-        add(lblMedicalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 80, 143, -1));
+        add(lblMedicalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 143, -1));
 
         tempText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(tempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 120, 70, 30));
+        add(tempText, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 340, 190, 30));
 
         jLabel9.setText("Respiration Rate");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 170, -1, 27));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 390, -1, 27));
 
         respRateText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(respRateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 170, 70, -1));
+        add(respRateText, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, 190, -1));
 
         jLabel10.setText("Medical History:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, 25));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, -1, 25));
 
         medicalTextArea.setColumns(20);
         medicalTextArea.setRows(5);
         jScrollPane1.setViewportView(medicalTextArea);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 340, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 460, 370, 90));
 
         lblRegistDate.setText("Registration Date");
-        add(lblRegistDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 260, 130, 30));
+        add(lblRegistDate, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, 130, 30));
 
         lblIdenMark.setText("Identification mark");
-        add(lblIdenMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, 130, 30));
+        add(lblIdenMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 130, 30));
 
+        btnRequestFunds.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnRequestFunds.setText("Request Funds");
         btnRequestFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRequestFundsActionPerformed(evt);
             }
         });
-        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 470, 146, 30));
+        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 740, 180, 30));
 
+        requestMedicalHelpBtn.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         requestMedicalHelpBtn.setText("Request Medical Help");
         requestMedicalHelpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 requestMedicalHelpBtnActionPerformed(evt);
             }
         });
-        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 410, 160, 30));
+        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 740, 180, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 20, 95, 30));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 40, 30));
 
-        lblBP.setText("BP");
-        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 120, 50, 30));
+        lblBP.setText("Blood Pressure");
+        add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 100, 30));
 
         bpText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(bpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 120, 52, -1));
+        add(bpText, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 340, 190, -1));
 
         lblPulse.setText("Pulse Rate");
-        add(lblPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 170, -1, 27));
+        add(lblPulse, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 400, -1, 27));
 
         pulseText.setMinimumSize(new java.awt.Dimension(50, 50));
-        add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 170, 53, -1));
+        add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 190, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -273,19 +277,14 @@ ImageIcon icon = new ImageIcon(image);
             }
         });
         jScrollPane3.setViewportView(tblRequest);
-        if (tblRequest.getColumnModel().getColumnCount() > 0) {
-            tblRequest.getColumnModel().getColumn(0).setResizable(false);
-            tblRequest.getColumnModel().getColumn(1).setResizable(false);
-            tblRequest.getColumnModel().getColumn(2).setResizable(false);
-            tblRequest.getColumnModel().getColumn(3).setResizable(false);
-            tblRequest.getColumnModel().getColumn(4).setResizable(false);
-            tblRequest.getColumnModel().getColumn(5).setResizable(false);
-        }
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 390, 510, 104));
-        add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 170, 190, 30));
-        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 260, 190, 30));
-        add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 190, 30));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, 890, 104));
+        add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 190, 30));
+        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 190, 30));
+        add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 190, 30));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids5.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 1010, 480));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -333,6 +332,7 @@ ImageIcon icon = new ImageIcon(image);
     private javax.swing.JButton btnRequestFunds;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton femaleRDB;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel9;
@@ -390,16 +390,16 @@ ImageIcon icon = new ImageIcon(image);
            row[1]=request.getChildId();
            row[2]=request.getSender();
            row[3]=request.getReceiver();
-         
-            System.out.println("did i print in the viewcompletechilddetaisl populate function");
            if(request instanceof DoctorWorkRequest){
              String result = ((DoctorWorkRequest) request).getTestResult();
             String remarks = ((DoctorWorkRequest) request).getRemarks();
              row[5]=remarks;
             row[4] = result == null ? "Waiting" : result;
            }
-           
-           
+           if(request instanceof EducationalHelpWorkRequest) {
+               row[4] = request.getStatus();
+               row[5] = ((EducationalHelpWorkRequest) request).getRemarks();
+           }
            dtms.addRow(row);
            }
         }

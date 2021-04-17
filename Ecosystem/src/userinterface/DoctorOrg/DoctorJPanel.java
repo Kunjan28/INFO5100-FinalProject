@@ -43,7 +43,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         this.directory = directory;
         this.userAccount = account;
         this.business = business;
-        valueLabel.setText(enterprise.getName());
+        
         for(Network net: business.getNetworkList()){
         for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
             if(ent.equals(enterprise)){
@@ -53,6 +53,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         }
         populateRequestTable();
         System.out.println("this is " + enterprise.getName());
+        btnProcess.setEnabled(false);
     }
     
     
@@ -85,27 +86,20 @@ public class DoctorJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblDoctorPic = new javax.swing.JLabel();
         lblDoctorOrganisation = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDoctor = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         lblImg = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblDoctorPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doctoricon.png"))); // NOI18N
-        add(lblDoctorPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 160, 180));
-
         lblDoctorOrganisation.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblDoctorOrganisation.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblDoctorOrganisation.setText("DOCTOR ORGANISATION");
-        add(lblDoctorOrganisation, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 540, 30));
+        lblDoctorOrganisation.setText("DOCTOR ORGANIZATION");
+        add(lblDoctorOrganisation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 20, 540, 30));
 
         tblDoctor.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -128,7 +122,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblDoctor);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 360, 730, 120));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 970, 210));
 
         btnAssignToMe.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign To Me");
@@ -148,19 +142,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
         });
         add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 560, 130, -1));
 
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
-        btnRefresh.setText("Refresh");
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 50, 140, 30));
-
         lblImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/hosp.jpeg"))); // NOI18N
-        add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, 800, 530));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("Enterprise");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 80, 20));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 200, 130, 20));
+        add(lblImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 800, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -223,13 +206,9 @@ public class DoctorJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnProcess;
-    private javax.swing.JButton btnRefresh;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDoctorOrganisation;
-    private javax.swing.JLabel lblDoctorPic;
     private javax.swing.JLabel lblImg;
     private javax.swing.JTable tblDoctor;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

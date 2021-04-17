@@ -86,15 +86,15 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyLogo.jpeg"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, 170));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.setText("Back");
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 20, 120, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 60, 50));
 
+        lblComments.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblComments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblComments.setText("Comments");
         add(lblComments, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, 100, 20));
@@ -142,10 +142,11 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
             request.setStatus("Delivered");
             ChildCareWorkRequest temp = new ChildCareWorkRequest();
             temp.setStatus("Medically Fit");
-            temp.setMessage("Child has been cured");
+            temp.setMessage("Child has been medicated");
             temp.setSender(userAccount);
             temp.setTestResult("Completed");
             temp.setChildId(request.getChildId());
+            temp.setChildName(request.getChildName());
         
         Organization org = null;
             for (Network network : business.getNetworkList()){

@@ -56,7 +56,7 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
             }
         }
     } 
-        valueLabel.setText(enterprise.getName());
+      
     }
 
     /**
@@ -69,55 +69,44 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        lblLogo = new javax.swing.JLabel();
         lblPrescription = new javax.swing.JLabel();
         txtPrescription = new javax.swing.JTextField();
         Save = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PRESCRIBE MEDICINE");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 309, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 309, -1));
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doctoricon.png"))); // NOI18N
-        add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(29, 38, 170, 140));
-
+        lblPrescription.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblPrescription.setText("Prescription");
         add(lblPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 160, 20));
         add(txtPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, 270, 90));
 
+        Save.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         Save.setText("Save");
         Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SaveActionPerformed(evt);
             }
         });
-        add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 110, 30));
+        add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 120, 30));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 60, 40));
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 40, 40));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/prescribtion.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 100, 550, 570));
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Enterprise");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, 80, 20));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 210, 120, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -181,10 +170,7 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPrescription;
     private javax.swing.JTextField txtPrescription;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

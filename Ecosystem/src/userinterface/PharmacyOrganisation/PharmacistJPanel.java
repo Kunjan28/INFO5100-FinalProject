@@ -89,7 +89,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         tblPharmacist = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
@@ -103,7 +102,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
 
         lblPharmacist.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblPharmacist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblPharmacist.setText("PHARMACIST ORGANISATION");
+        lblPharmacist.setText("PHARMACIST ORGANIZATION");
         add(lblPharmacist, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 80, 450, -1));
 
         tblPharmacist.setModel(new javax.swing.table.DefaultTableModel(
@@ -129,6 +128,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, 850, 150));
 
+        btnAssignToMe.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -137,6 +137,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         });
         add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 500, 170, 30));
 
+        btnProcess.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -144,15 +145,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             }
         });
         add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 140, -1));
-
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 20, 120, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 500, 460));
@@ -165,11 +157,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 100, 20));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblPharmacist.getSelectedRow();
@@ -178,8 +165,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             return;
         }
         WorkRequest request = (WorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
-///        request.setReceiver(userAccount);
-///        request.setStatus("Pending");
         if (request.getStatus().equalsIgnoreCase("Delivered")) {
                 JOptionPane.showMessageDialog(null, "Request already completed.");
                 return;
@@ -216,7 +201,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnProcess;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -27,7 +27,16 @@ public class DonorRegistrationRequest extends WorkRequest{
     private String userCity;
     private String userContact;
     private String contactCarrierName;
+    private String ssn;
 
+    public String getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(String ssn) {
+        this.ssn = ssn;
+    }
+    
     public String getContactCarrierName() {
         return contactCarrierName;
     }
@@ -114,6 +123,11 @@ public class DonorRegistrationRequest extends WorkRequest{
 
     public void setUserContact(String userContact) {
         this.userContact = userContact;
+    }
+
+    @Override
+    public String toString() {
+        return userName;
     }
 
   
