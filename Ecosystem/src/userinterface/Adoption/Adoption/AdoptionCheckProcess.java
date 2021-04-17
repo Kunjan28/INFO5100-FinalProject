@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Adoption.AdoptionAdmin;
+package userinterface.Adoption.Adoption;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
@@ -91,7 +91,8 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                 if(request.getUserId() == adoptionWorkRequest.getUserId()){
            Object[] row = new Object[model.getColumnCount()];
            row[0]=request;
-           row[1]=request.getSender().getEmployee().getName();
+           row[1]=request.getName();
+           //row[1]=request.getSender().getEmployee().getName();
            row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
            row[4] = request.getStatus();
@@ -128,6 +129,8 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInitiateBCG = new javax.swing.JTable();
         btnInitiateBCG = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -135,27 +138,33 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         lblHeading.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("ADOPTION PROCESS");
-        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 460, 20));
+        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, 460, 30));
 
-        lblAdopterDetails.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
+        lblAdopterDetails.setFont(new java.awt.Font("Lucida Grande", 1, 20)); // NOI18N
         lblAdopterDetails.setText("Adopter Details");
-        add(lblAdopterDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 130, 20));
+        add(lblAdopterDetails, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 110, 180, 20));
 
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Name");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 150, 100, 20));
 
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setText("Age");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 80, -1));
 
+        jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setText("Gender");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 230, 60, -1));
 
+        jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setText("SSN");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 270, 50, 20));
 
+        jLabel5.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel5.setText("Income");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 310, 70, -1));
 
+        jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel6.setText("Email ID");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 70, -1));
 
@@ -185,6 +194,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, -1));
 
+        tblInitiateBCG.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblInitiateBCG.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -193,7 +203,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Name", "Sender", "Adopter ID", "Status"
+                "Message", "Name", "Receiver", "Adopter ID", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -206,15 +216,27 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblInitiateBCG);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 800, 100));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 440, 810, 110));
 
-        btnInitiateBCG.setText("Initiate BCG");
+        btnInitiateBCG.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        btnInitiateBCG.setText("Initiate BGC");
         btnInitiateBCG.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInitiateBCGActionPerformed(evt);
             }
         });
         add(btnInitiateBCG, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 580, 150, 30));
+
+        btnRefresh.setText("Refresh");
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRefreshActionPerformed(evt);
+            }
+        });
+        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 110, -1));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids11.png"))); // NOI18N
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 930, 510));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbMaleActionPerformed
@@ -228,13 +250,21 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
+        
         Object receiverval =  tblInitiateBCG.getValueAt(selectedRow, 2);
         Object statusval =  tblInitiateBCG.getValueAt(selectedRow, 4);
         AdoptionWorkRequest request = (AdoptionWorkRequest)tblInitiateBCG.getValueAt(selectedRow,0);
+        
+        if (request.getStatus().equalsIgnoreCase("Initialized BGC")) {
+            JOptionPane.showMessageDialog(null,"BGC already initiated");
+        }
+        else {
         if(receiverval.equals(account.getUsername()) && statusval.equals("Pending with Adoption Organization")){
         request.setStatus("Initialized BGC");
         request.setSender(account);
         request.setUserId(adopter.getUserId());
+        request.setName(adopter.getName());
+        
         //populateWorkRequest();
         
         BGCWorkRequest bgcreq = new BGCWorkRequest();
@@ -242,6 +272,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         bgcreq.setStatus("Pending with BGC organization");
         bgcreq.setSender(account);
         bgcreq.setUserId(adopter.getUserId());
+        bgcreq.setName(adopter.getName());
 
         Organization org = null;
         for (Network network : business.getNetworkList()){
@@ -267,6 +298,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         wrk.setBgcStatus("Pending");
         wrk.setFinanceStatus("Pending");
         wrk.setMessage("BGC initialized");
+        wrk.setName(adopter.getName());
         
          Organization org1 = null;
         for (Network network : business.getNetworkList()){
@@ -295,18 +327,25 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");
         else if(!statusval.equals("Pending with Adoption Organization"))
             JOptionPane.showMessageDialog(null,"The selected workrequest assigned to you is already processed");
-        
+        }
     }//GEN-LAST:event_btnInitiateBCGActionPerformed
+
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+        // TODO add your handling code here:
+        populateWorkRequest();
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInitiateBCG;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdopterDetails;
     private javax.swing.JLabel lblHeading;

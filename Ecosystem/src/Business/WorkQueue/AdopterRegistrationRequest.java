@@ -14,7 +14,7 @@ import Business.Organization.Organization;
  *
  * @author Kunjan
  */
-public class UserRegistrationRequest extends WorkRequest{
+public class AdopterRegistrationRequest extends WorkRequest{
     
     private Network network;
     private Enterprise enterprise;
@@ -26,18 +26,28 @@ public class UserRegistrationRequest extends WorkRequest{
     private String userEmailId;
     private String userCity;
     private String userContact;
-    private String contactCarrierName;
     private String ssn;
     private String annualIncome;
     private String gender;
+    private String address1;
+    private String address2;
 
-    public String getContactCarrierName() {
-        return contactCarrierName;
+    public String getAddress1() {
+        return address1;
     }
 
-    public void setContactCarrierName(String contactCarrierName) {
-        this.contactCarrierName = contactCarrierName;
+    public void setAddress1(String address1) {
+        this.address1 = address1;
     }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+    
     
     public Network getNetwork() {
         return network;
@@ -142,6 +152,12 @@ public class UserRegistrationRequest extends WorkRequest{
     public void setUserContact(String userContact) {
         this.userContact = userContact;
     }
-  
+
+    @Override
+    public String toString() {
+        return userName;
+    }
+    
+    
     
 }

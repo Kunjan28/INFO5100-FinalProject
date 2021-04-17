@@ -67,16 +67,17 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
 
             if (workRequest instanceof DonorRegistrationRequest) {
                 Object[] row = new Object[model.getColumnCount()];
-                
+                row[0] = workRequest;
                 //row[0] = ((DonorRegistrationRequest) workRequest).getStatus();
                 //row[0] = ((DonorRegistrationRequest) workRequest).getUserName();
-                row[0] = ((DonorRegistrationRequest) workRequest).getName();
-                row[1] = ((DonorRegistrationRequest) workRequest).getUserName();
+                row[1] = ((DonorRegistrationRequest) workRequest).getName();
+                
                 row[2] = ((DonorRegistrationRequest) workRequest).getUserEmailId();
                 row[3] = ((DonorRegistrationRequest) workRequest).getUserContact();
-                row[4] = ((DonorRegistrationRequest) workRequest).getStatus();
+                row[4] = ((DonorRegistrationRequest) workRequest).getSsn();
+                row[5] = ((DonorRegistrationRequest) workRequest).getStatus();
                 //row[6] = ((DonorRegistrationRequest) workRequest).getOrgType();
-                row[5] = workRequest;
+                
 
                 model.addRow(row);
             }
@@ -115,14 +116,14 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "UserName", "Name", "Email ID", "Contact", "Status", "Message"
+                "UserName", "Name", "Email ID", "Contact", "SSN", "Status"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -163,7 +164,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("MANAGE DONOR WORK REQUEST");
+        jLabel1.setText("MANAGE SPONSOR WORK REQUEST");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 41, 431, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/employee.jpg"))); // NOI18N
@@ -175,7 +176,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
 
         if (selectedRow >= 0) {
-            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 5);
+            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
             if (request.getStatus().equalsIgnoreCase("Completed")) {
               JOptionPane.showMessageDialog(null, "Request already processed.");
                return;
@@ -196,8 +197,12 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
         try{
         if (selectedRow >= 0) {
-            DonorRegistrationRequest request = (DonorRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 5);
-        
+            DonorRegistrationRequest request = (DonorRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            if (request.getStatus().equalsIgnoreCase("Completed")) {
+              JOptionPane.showMessageDialog(null, "Request already processed.");
+               return;
+            }
+            
             Organization org = organizationDirectory.createOrganization(request.getName(), Organization.Type.Donor);
             Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
             UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorRole());

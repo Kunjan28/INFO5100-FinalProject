@@ -18,7 +18,7 @@ import Business.Role.AdopterRole;
 
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.AdoptionWorkRequest;
-import Business.WorkQueue.UserRegistrationRequest;
+import Business.WorkQueue.AdopterRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -64,16 +64,15 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
         for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkRequestList()) {
 
-            if (workRequest instanceof UserRegistrationRequest) {
+            if (workRequest instanceof AdopterRegistrationRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = workRequest;
-                row[1] = ((UserRegistrationRequest) workRequest).getUserName();
-                row[2] = ((UserRegistrationRequest) workRequest).getName();
-                row[3] = ((UserRegistrationRequest) workRequest).getUserEmailId();
-                row[4] = ((UserRegistrationRequest) workRequest).getAnnualIncome();
-                row[5] = ((UserRegistrationRequest) workRequest).getStatus();
-                //row[6] = ((UserRegistrationRequest) workRequest).getOrgType();
-                //row[7] = ((UserRegistrationRequest) workRequest).getNetwork();
+                row[1] = ((AdopterRegistrationRequest) workRequest).getName();
+                row[2] = ((AdopterRegistrationRequest) workRequest).getUserEmailId();
+                row[3] = ((AdopterRegistrationRequest) workRequest).getGender();
+                row[4] = ((AdopterRegistrationRequest) workRequest).getAnnualIncome();
+                row[5] = ((AdopterRegistrationRequest) workRequest).getSsn();
+                row[6] = ((AdopterRegistrationRequest) workRequest).getStatus();
 
                 model.addRow(row);
             }
@@ -105,20 +104,20 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         workRequestJTable.setForeground(new java.awt.Color(25, 56, 82));
         workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Request #", "UserName", "Name", "Email ID", "Income", "Status"
+                "UserName", "Name", "Email ID", "Gender", "Income", "SSN", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -132,7 +131,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         workRequestJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(workRequestJTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 854, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 980, 170));
 
         assignJButton.setBackground(new java.awt.Color(255, 255, 255));
         assignJButton.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -154,9 +153,9 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 390, -1, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(619, 390, 120, -1));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("ADOPTION WORK REQUEST");
@@ -175,6 +174,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
             } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
+                
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request has successfully assigned");
            }
@@ -189,7 +189,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         int selectedRow = workRequestJTable.getSelectedRow();
         //try{
         if (selectedRow >= 0) {
-            UserRegistrationRequest request = (UserRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            AdopterRegistrationRequest request = (AdopterRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
             /*Employee emp = new Employee();
             emp.setName(request.getName());*/
             if("Completed".equalsIgnoreCase(request.getStatus())) {
@@ -210,17 +210,19 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         adopter.setAnnualIncome(Long.parseLong(request.getAnnualIncome()));
         //adopter.setAnnualIncome(request.getAnnualIncome());
         adopter.setEmailId(request.getUserEmailId());
-        adopter.setGender("Male");
-        adopter.setName(request.getUserName());
-        adopter.setSsn(request.getUserCity());
+        adopter.setGender(request.getGender());
+        adopter.setName(request.getName());
+        adopter.setSsn(request.getSsn());
         adopter.setUserId(uid);
         adopter.setUsername(ua1.getUsername());
         adopter.setFlag(false);
+        adopter.setName(request.getName());
             AdoptionWorkRequest awr = new AdoptionWorkRequest();
             awr.setStatus("");
             awr.setMessage("I want to adopt");
             awr.setSender(ua1);
             awr.setUserId(adopter.getUserId());
+            awr.setName(adopter.getName());
 
             request.setStatus("Completed");
             JOptionPane.showMessageDialog(null, "User account has been activated successfully");

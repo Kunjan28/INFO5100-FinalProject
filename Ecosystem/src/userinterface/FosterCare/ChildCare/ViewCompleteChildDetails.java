@@ -15,6 +15,7 @@ import Business.Organization.Organization;
 //pjpjp import Business.Organization.Orphanage.ChildCareOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.EducationalHelpWorkRequest;
 //pjpj import Business.WorkQueue.DoctorWorkRequest;
 //pjpj import Business.WorkQueue.FinanceCCWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -170,7 +171,7 @@ ImageIcon icon = new ImageIcon(image);
         add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, -1, -1));
 
         femaleRDB.setText("Female");
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 120, 100, 30));
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 100, 50));
 
         lblGender.setText("Gender");
         add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 130, 30));
@@ -219,6 +220,7 @@ ImageIcon icon = new ImageIcon(image);
         lblIdenMark.setText("Identification mark");
         add(lblIdenMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 160, 130, 30));
 
+        btnRequestFunds.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnRequestFunds.setText("Request Funds");
         btnRequestFunds.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -227,6 +229,7 @@ ImageIcon icon = new ImageIcon(image);
         });
         add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 740, 180, 30));
 
+        requestMedicalHelpBtn.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         requestMedicalHelpBtn.setText("Request Medical Help");
         requestMedicalHelpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -256,6 +259,7 @@ ImageIcon icon = new ImageIcon(image);
         pulseText.setMinimumSize(new java.awt.Dimension(50, 50));
         add(pulseText, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 400, 190, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -386,16 +390,16 @@ ImageIcon icon = new ImageIcon(image);
            row[1]=request.getChildId();
            row[2]=request.getSender();
            row[3]=request.getReceiver();
-         
-            System.out.println("did i print in the viewcompletechilddetaisl populate function");
            if(request instanceof DoctorWorkRequest){
              String result = ((DoctorWorkRequest) request).getTestResult();
             String remarks = ((DoctorWorkRequest) request).getRemarks();
              row[5]=remarks;
             row[4] = result == null ? "Waiting" : result;
            }
-           
-           
+           if(request instanceof EducationalHelpWorkRequest) {
+               row[4] = request.getStatus();
+               row[5] = ((EducationalHelpWorkRequest) request).getRemarks();
+           }
            dtms.addRow(row);
            }
         }

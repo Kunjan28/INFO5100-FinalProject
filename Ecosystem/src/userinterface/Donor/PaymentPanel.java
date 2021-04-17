@@ -80,15 +80,19 @@ public class PaymentPanel extends javax.swing.JPanel {
         jLabel1.setText("CARD PAYMENT");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 50, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel2.setText("Card Number");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, -1, -1));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel3.setText("CVV");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, -1));
 
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel4.setText("Expiration Date");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
 
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel5.setText("Postal Code");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, -1));
 
@@ -133,7 +137,9 @@ public class PaymentPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 12)); // NOI18N
         jLabel6.setText("last 4 digits");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 200, 30));
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 180, 650, 390));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 830, 540));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
@@ -163,32 +169,57 @@ public class PaymentPanel extends javax.swing.JPanel {
             business.getWorkQueue().getWorkRequestList().add(adc);
         } 
         JOptionPane.showMessageDialog(null, "Thank you! Payment Initiated");
+         btnPay.setEnabled(false);
+         cardNo.setText("");
+        txtCVV.setText("");
+        txtPostal.setText("");
+        txtExp.setText("");
         }
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        DonorRequestTable panel = (DonorRequestTable) component;
+        panel.populateChildTable();
+        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+        
+       
+        
         
     }//GEN-LAST:event_btnPayActionPerformed
     
     private boolean ValidateCVV() {
         String cvv = txtCVV.getText();
-        if((cvv.matches("^[0-9]")) && (cvv.length()==3)) {
-            return true;
-            }
-        return false;
+        Pattern pattern;
+        Matcher matcher;
+        String PHONE_PATTERN = "^[0-9]{3}$";
+        pattern = Pattern.compile(PHONE_PATTERN);
+        matcher = pattern.matcher(cvv);
+        return matcher.matches();
+//        if((cvv.matches("^[0-9]")) && (cvv.length()==3)) {
+//            return true;
+//            }
+//        return false;
     }
     
     private boolean ValidateCardNo() {
         String card = cardNo.getText();
-        if((card.matches("^[0-9]")) && (card.length()==4)) {
-            return true;
-            }
-        return false;
+        Pattern pattern;
+        Matcher matcher;
+        String PHONE_PATTERN = "^[0-9]{4}$";
+        pattern = Pattern.compile(PHONE_PATTERN);
+        matcher = pattern.matcher(card);
+        return matcher.matches();    
     }
     
     private boolean ValidatePostal() {
         String zip = txtPostal.getText();
-        if((zip.matches("^[0-9]")) && (zip.length()==5)) {
-            return true;
-            }
-        return false;
+        Pattern pattern;
+        Matcher matcher;
+        String PHONE_PATTERN = "^[0-9]{5}$";
+        pattern = Pattern.compile(PHONE_PATTERN);
+        matcher = pattern.matcher(zip);
+        return matcher.matches();
     }
     
     

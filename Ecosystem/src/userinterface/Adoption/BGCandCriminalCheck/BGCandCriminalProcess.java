@@ -54,6 +54,14 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         this.adopter = adopter;
         populateWorkRequest();
         setUserDetailsField();
+        
+        txtName.setEnabled(false);
+        txtAge.setEnabled(false);
+        txtSSN.setEnabled(false);
+        rdbMale.setEnabled(false);
+        rdbFemale.setEnabled(false);
+        txtIncome.setEnabled(false);
+        txtEmail.setEnabled(false);
     }
 
     /**
@@ -86,32 +94,39 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         txtRemarks = new javax.swing.JTextField();
         btnApprove = new javax.swing.JButton();
         btnDeny = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setText("BACKGROUND AND CRIMINAL CHECK PROCESS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, -1, -1));
 
+        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel2.setText("ADOPTER DETAILS");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 90, 150, 20));
 
         lblEmail.setText("Email ID");
         add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 90, 20));
 
+        lblName.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblName.setText("Name");
         add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 130, 110, 20));
 
+        lblAge.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblAge.setText("Age");
         add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 110, 20));
 
+        lblSSN.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblSSN.setText("SSN");
         add(lblSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 110, 20));
 
+        lblGender.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblGender.setText("Gender");
         add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 130, 110, 20));
 
+        lblIncome.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblIncome.setText("Income");
         add(lblIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, 90, 20));
         add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 210, 180, -1));
@@ -132,6 +147,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 130, -1, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -140,7 +156,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Sender", "Receiver", "User ID", "User Name", "Status"
+                "Message", "Sender", "Receiver", "Adopter ID", "Adopter Name", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -153,27 +169,35 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 850, 110));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 290, 850, 160));
 
+        lblRemarks.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblRemarks.setText("Remarks");
-        add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 500, 90, -1));
-        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, 210, 70));
+        add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 90, -1));
 
+        txtRemarks.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 210, 70));
+
+        btnApprove.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnApprove.setText("Approve");
         btnApprove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApproveActionPerformed(evt);
             }
         });
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 590, 140, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 630, 140, -1));
 
+        btnDeny.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnDeny.setText("Deny");
         btnDeny.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDenyActionPerformed(evt);
             }
         });
-        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 590, 130, -1));
+        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, 130, -1));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 830, 610));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -188,15 +212,20 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
             return;
         }
 
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
+        
+        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+            JOptionPane.showMessageDialog(null,"Request already processed");
+        } else {
+        
         if(receiverval.equals(account.getUsername())){
         
         BGCWorkRequest request = (BGCWorkRequest)tblRequest.getValueAt(selectedRow,0);
         
         request.setStatus("Approved");
         request.setRemarks(txtRemarks.getText());
-        request.setSender(account);
+        //request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setBgcStatus("Approved");
         populateWorkRequest();
@@ -206,6 +235,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         fcwreq.setStatus("Pending with Finance organization");
         fcwreq.setSender(account);
         fcwreq.setUserId(adopter.getUserId());
+        fcwreq.setName(adopter.getName());
 
         Organization org = null;
         for (Network network : business.getNetworkList()){
@@ -242,6 +272,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         }
         else
             JOptionPane.showMessageDialog(null,"Please select work request assigned to you");
+        }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
@@ -252,8 +283,12 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
             return;
         }
         
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
+        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+            JOptionPane.showMessageDialog(null,"Request already processed");
+        }
+        else {
         if(receiverval.equals(account.getUsername())){
 
         BGCWorkRequest request = (BGCWorkRequest)tblRequest.getValueAt(selectedRow,0);
@@ -281,6 +316,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         }
         else
             JOptionPane.showMessageDialog(null,"Please select work request assigned to you");  
+        }
     }//GEN-LAST:event_btnDenyActionPerformed
     
     public void populateWorkRequest(){
@@ -290,16 +326,18 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()){
             if(request instanceof BGCWorkRequest){
                 if(request.getUserId() == bgcWorkRequest.getUserId()){
-                if((request.getStatus()).equals("BGC organization processing")){
+                //if((request.getStatus()).equals("BGC organization processing")){
                 Object[] row = new Object[dtm.getColumnCount()];
-                row[0]=request;
-                row[1]=request.getSender().getEmployee().getName();
-                row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                row[0]= request;
+                row[1]= request.getSender().getEmployee().getName();
+                //row[1] = request.getName();
+                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
                 row[3] = request.getUserId();
-                row[4] = request.getStatus();
+                row[4] = request.getName();
+                row[5] = request.getStatus();
                  dtm.addRow(row);
             }}}
-        }
+        //}
     }
 public void setUserDetailsField(){
         txtAge.setText(String.valueOf(adopter.getAge()));
@@ -324,6 +362,7 @@ public void setUserDetailsField(){
     private javax.swing.JButton btnDeny;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblEmail;

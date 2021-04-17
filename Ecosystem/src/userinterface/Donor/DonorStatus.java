@@ -89,6 +89,7 @@ public class DonorStatus extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         workReqTable = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -96,8 +97,9 @@ public class DonorStatus extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PAYMENT STATUS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 380, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 40, 380, 30));
 
+        workReqTable.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         workReqTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -116,12 +118,16 @@ public class DonorStatus extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workReqTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 240, 880, 137));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 910, 137));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 740, 480));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable workReqTable;
     // End of variables declaration//GEN-END:variables

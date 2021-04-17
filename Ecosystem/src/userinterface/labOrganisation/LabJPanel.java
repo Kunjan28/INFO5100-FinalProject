@@ -66,7 +66,6 @@ public class LabJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLab = new javax.swing.JTable();
@@ -78,14 +77,12 @@ public class LabJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/LabIcon.jpeg"))); // NOI18N
-        add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 34, 160, 140));
-
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("LAB ORGANISATION");
+        jLabel2.setText("LAB ORGANIZATION");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 70, 431, -1));
 
+        tblLab.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblLab.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -109,6 +106,7 @@ public class LabJPanel extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 790, 130));
 
+        btnAssignToMe.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +115,7 @@ public class LabJPanel extends javax.swing.JPanel {
         });
         add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 160, 30));
 
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +184,6 @@ public class LabJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JTable tblLab;
     // End of variables declaration//GEN-END:variables
 }

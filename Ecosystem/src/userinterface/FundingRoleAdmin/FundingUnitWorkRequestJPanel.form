@@ -55,8 +55,8 @@
                 <Column editable="false" title="Name" type="java.lang.String"/>
                 <Column editable="false" title="Email ID" type="java.lang.Object"/>
                 <Column editable="false" title="Contact" type="java.lang.Object"/>
+                <Column editable="false" title="SSN" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
-                <Column editable="true" title="Message" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -156,7 +156,7 @@
           <Color blue="52" green="38" red="19" type="rgb"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="MANAGE DONOR WORK REQUEST"/>
+        <Property name="text" type="java.lang.String" value="MANAGE SPONSOR WORK REQUEST"/>
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

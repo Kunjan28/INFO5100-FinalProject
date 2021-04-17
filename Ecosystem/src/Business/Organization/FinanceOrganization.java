@@ -17,7 +17,11 @@ import java.util.ArrayList;
  */
 public class FinanceOrganization extends Organization {
 
-  
+    String name;
+    public FinanceOrganization(String name) {
+        super(name);
+        this.name=name;
+    }
     public FinanceOrganization() {
        super(Organization.Type.FinanceOrganization.getValue());
     }
@@ -27,6 +31,10 @@ public class FinanceOrganization extends Organization {
         ArrayList<Role> roles = new ArrayList();
         roles.add(new FundingFinanceRole());
         return roles;
+    }
+    @Override
+    public Type getType() {
+        return  Organization.Type.FinanceOrganization;
     }
      
 }

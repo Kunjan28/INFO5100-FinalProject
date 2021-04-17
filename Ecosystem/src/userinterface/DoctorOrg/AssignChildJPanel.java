@@ -347,9 +347,11 @@ public class AssignChildJPanel extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 850, 90));
 
+        lblLabWork.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblLabWork.setText("Lab Work History");
         add(lblLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 460, 200, 20));
 
+        lblMedicationHistory.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblMedicationHistory.setText("Medication History");
         add(lblMedicationHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 630, 190, -1));
 

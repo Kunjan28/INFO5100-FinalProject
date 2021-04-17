@@ -79,7 +79,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Symptoms");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 260, 87, 42));
@@ -99,7 +99,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         });
         add(btnSubmit, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 133, 33));
 
-        lblHeading.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        lblHeading.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("REQUEST MEDICAL HELP");
         add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 460, 30));
@@ -134,6 +134,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         docwrkreq.setSender(account);
         docwrkreq.setChildId(child.getChildId());
         docwrkreq.setRemarks("Request for Doctor");
+        docwrkreq.setChildName(child.getName());
      
         /*
         The below set of code iterates through the network list and get the network

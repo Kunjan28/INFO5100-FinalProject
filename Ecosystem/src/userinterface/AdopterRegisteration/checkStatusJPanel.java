@@ -93,14 +93,16 @@ public class checkStatusJPanel extends javax.swing.JPanel {
         tblRequest = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         btnProceed = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setText("TRACK YOUR STATUS");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, 240, 20));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 60, 260, 20));
 
+        tblReq.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
@@ -122,15 +124,19 @@ public class checkStatusJPanel extends javax.swing.JPanel {
         });
         tblRequest.setViewportView(tblReq);
 
-        add(tblRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 720, 130));
+        add(tblRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 860, 130));
 
+        btnProceed.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProceed.setText("Proceed");
         btnProceed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProceedActionPerformed(evt);
             }
         });
-        add(btnProceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 340, 150, 30));
+        add(btnProceed, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 340, 150, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids 2.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 250, 920, 400));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
@@ -157,6 +163,7 @@ public class checkStatusJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProceed;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JTable tblReq;
     private javax.swing.JScrollPane tblRequest;
     // End of variables declaration//GEN-END:variables

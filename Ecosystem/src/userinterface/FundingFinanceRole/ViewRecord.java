@@ -74,7 +74,7 @@ public class ViewRecord extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("VIEW RECORD");
+        jLabel1.setText("VIEW TRANSACTION RECORD");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 32, 320, 20));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(

@@ -90,6 +90,7 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
         valueLabel.setText("<value>");
         add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 0, 158, 30));
 
+        jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -110,6 +111,7 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 230, 890, 160));
 
+        btnAssigToMe.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAssigToMe.setText("Assign To Me");
         btnAssigToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -118,6 +120,7 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
         });
         add(btnAssigToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 440, 133, 33));
 
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

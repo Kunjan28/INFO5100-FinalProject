@@ -15,7 +15,7 @@ import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.Adoption.AdoptionAdmin.AdoptionMainWorkArea;
+import userinterface.Adoption.Adoption.AdoptionMainWorkArea;
 
 
 

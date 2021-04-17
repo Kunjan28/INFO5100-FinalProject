@@ -335,6 +335,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="lblLabWork">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Lab Work History"/>
       </Properties>
       <Constraints>
@@ -345,6 +348,9 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblMedicationHistory">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Lucida Grande" size="14" style="1"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Medication History"/>
       </Properties>
       <Constraints>

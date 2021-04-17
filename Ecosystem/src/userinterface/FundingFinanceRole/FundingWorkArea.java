@@ -58,77 +58,9 @@ public class FundingWorkArea extends javax.swing.JPanel {
         this.business=business;
       
         manageFinance();
-      
-      
-      
-      
-      
-      
-            //valueLabel.setText(financeOrphanageOrganization.getName());
-//            processBt.setEnabled(false);
-//            processBt1.setEnabled(false);
-        
-        //populateTree();
-//        organizationJComboBox.removeAllItems();
-//        if(enterprise instanceof HospitalEnterprise){
-//             organizationJComboBox.addItem(Organization.Type.Doctor);
-//               organizationJComboBox.addItem(Organization.Type.Lab);
-//               organizationJComboBox.addItem(Organization.Type.Pharmacist);
-//        }
-//        if(enterprise instanceof FosterCareEnterprise){
-//          organizationJComboBox.addItem(Organization.Type.ChildCare);
-//               organizationJComboBox.addItem(Organization.Type.ChildRegistration);
-//               organizationJComboBox.addItem(Organization.Type.FinanceOrphanage);  
-//        }
-//        if(enterprise instanceof AdoptionEnterprise){
-//           organizationJComboBox.addItem(Organization.Type.Adopter);
-//               organizationJComboBox.addItem(Organization.Type.Adoption);
-//               organizationJComboBox.addItem(Organization.Type.FinanceCheck); 
-//                 organizationJComboBox.addItem(Organization.Type.CriminalCheck); 
-//        }
         
     }
-    
-    public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree1.getModel();
-        ArrayList<Network> networkList=business.getNetworkList();
-        ArrayList<Enterprise> enterpriseList;
-        ArrayList<Organization> organizationList;
-        
-        Network network;
-        Enterprise enterprise;
-        Organization organization;
-        
-        DefaultMutableTreeNode networks=new DefaultMutableTreeNode("Networks");
-        DefaultMutableTreeNode root=(DefaultMutableTreeNode)model.getRoot();
-        root.removeAllChildren();
-        root.insert(networks, 0);
-        
-        DefaultMutableTreeNode networkNode;
-        DefaultMutableTreeNode enterpriseNode;
-        DefaultMutableTreeNode organizationNode;
-        
-        for(int i=0;i<networkList.size();i++){
-            network=networkList.get(i);
-            networkNode=new DefaultMutableTreeNode(network.getName());
-            networks.insert(networkNode, i);
-            
-            enterpriseList=network.getEnterpriseDirectory().getEnterpriseList();
-            for(int j=0; j<enterpriseList.size();j++){
-                enterprise=enterpriseList.get(j);
-                enterpriseNode=new DefaultMutableTreeNode(enterprise.getName());
-                networkNode.insert(enterpriseNode, j);
-                
-                organizationList=enterprise.getOrganizationDirectory().getOrganizationList();
-                for(int k=0;k<organizationList.size();k++){
-                    organization=organizationList.get(k);
-                    organizationNode=new DefaultMutableTreeNode(organization.getName());
-                    enterpriseNode.insert(organizationNode, k);
-                }
-            }
-        }
-        model.reload();
-    }
+  
     
     private void manageFinance(){
         FinanceWorkAreaJPanel panel = new FinanceWorkAreaJPanel(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, directory);
@@ -162,11 +94,6 @@ public class FundingWorkArea extends javax.swing.JPanel {
         lblViewYourStatus = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblViewStatus = new javax.swing.JLabel();
-        lblSelectedNode1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jSeparator2 = new javax.swing.JSeparator();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -189,10 +116,10 @@ public class FundingWorkArea extends javax.swing.JPanel {
         });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
 
         DonorWorkArea.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        DonorWorkArea.setText("Funding Work Area");
+        DonorWorkArea.setText("Fund Request Work Area");
         DonorWorkArea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DonorWorkAreaMousePressed(evt);
@@ -216,7 +143,7 @@ public class FundingWorkArea extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(manageNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DonorWorkArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -233,7 +160,7 @@ public class FundingWorkArea extends javax.swing.JPanel {
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
 
         lblViewStatus.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblViewStatus.setText("Status");
+        lblViewStatus.setText("Transaction Work Area");
         lblViewStatus.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblViewStatusMousePressed(evt);
@@ -260,29 +187,6 @@ public class FundingWorkArea extends javax.swing.JPanel {
         );
 
         jPanel3.add(lblViewYourStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 280, 40));
-
-        lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
-
-        jTree1.setBackground(new java.awt.Color(255, 204, 153));
-        jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTree1.setForeground(new java.awt.Color(0, 0, 0));
-        jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
-            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTree1ValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTree1);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -325,25 +229,12 @@ public class FundingWorkArea extends javax.swing.JPanel {
           TrackStatus();
     }//GEN-LAST:event_lblViewYourStatusMousePressed
 
-    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-        // TODO add your handling code here:
-         DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
-        if(selectedNode!=null){
-            lblSelectedNode1.setText(selectedNode.toString());
-        }
-    }//GEN-LAST:event_jTree1ValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DonorWorkArea;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JLabel lblViewStatus;
     private javax.swing.JPanel lblViewYourStatus;
     private javax.swing.JPanel manageNetworkPanel;

@@ -73,7 +73,7 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 123, 25));
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 300, 127));
 
-        submitBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        submitBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         submitBtn.setText("Save");
         submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

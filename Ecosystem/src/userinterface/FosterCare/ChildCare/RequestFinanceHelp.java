@@ -100,7 +100,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 360, 213, 38));
         add(txtEduFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 190, 222, 27));
 
-        btnSubmit.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnSubmit.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSubmit.setText("Request");
         btnSubmit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,7 +129,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 300, 230, 36));
         add(txtFundsMisc, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 370, 222, 27));
 
-        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("REQUEST FOR FUNDS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 870, 40));

@@ -71,6 +71,7 @@ public class DonorRequestTable extends javax.swing.JPanel {
         childTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         btnPay = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -98,7 +99,7 @@ public class DonorRequestTable extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DONATE");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 80, 250, 50));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 40, 250, 50));
 
         btnPay.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btnPay.setText("Pay With Card");
@@ -108,6 +109,9 @@ public class DonorRequestTable extends javax.swing.JPanel {
             }
         });
         add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 500, 150, 30));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/donateIcon.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, 930, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
@@ -180,6 +184,7 @@ public class DonorRequestTable extends javax.swing.JPanel {
     private javax.swing.JButton btnPay;
     private javax.swing.JTable childTable;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

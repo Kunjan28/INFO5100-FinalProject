@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Adoption.AdoptionAdmin;
+package userinterface.Adoption.Adoption;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
@@ -59,7 +59,8 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
             if(request instanceof AdoptionWorkRequest){
            Object[] row = new Object[dtm.getColumnCount()];
            row[0]=request;
-           row[1]=request.getSender().getEmployee().getName();
+           row[1] = request.getName();
+           //row[1]=request.getSender().getEmployee().getName();
                 System.out.println("details of sender"+request.getSender().getEmployee().getName());
            row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
@@ -85,6 +86,7 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
         tblAdoptersRequest = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -94,6 +96,7 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
         jLabel1.setText("ADOPTION REQUEST");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 357, -1));
 
+        tblAdoptersRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblAdoptersRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -102,28 +105,34 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Message", "Adopter Name", "Sender", "Adopter ID", "Status"
+                "Message", "Adopter Name", "Receiver", "Adopter ID", "Status"
             }
         ));
         jScrollPane1.setViewportView(tblAdoptersRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 790, 107));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 830, 160));
 
+        btnAssignToMe.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAssignToMe.setText("Assign To Me");
         btnAssignToMe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 360, 132, -1));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 460, 132, -1));
 
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 360, 112, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, 112, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adopt.png"))); // NOI18N
+        jLabel2.setText("jLabel2");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 730, 530));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -139,6 +148,7 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
         WorkRequest re = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
         re.setReceiver(account);
         re.setStatus("Pending with Adoption Organization");
+//        re.setName(adopter.getName());
         populateWorkRequest();
         }
         else if(statusval.equals("Initialized BGC"))
@@ -188,6 +198,7 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnProcess;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblAdoptersRequest;
     // End of variables declaration//GEN-END:variables

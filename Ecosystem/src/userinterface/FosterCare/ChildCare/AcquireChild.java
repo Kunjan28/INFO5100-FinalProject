@@ -200,8 +200,8 @@ public void populateWorkRequest(){
        table.setRowCount(0);
     for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
      
-       if(req instanceof ChildCareWorkRequest){
-           
+       if(req instanceof ChildCareWorkRequest ){
+                      
           Object[] row = new Object[table.getColumnCount()];
           row[0]=req;
           row[1]=req.getSender();

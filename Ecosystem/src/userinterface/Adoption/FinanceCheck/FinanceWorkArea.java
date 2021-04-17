@@ -61,47 +61,6 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         
     }
     
-    public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree1.getModel();
-        ArrayList<Network> networkList=business.getNetworkList();
-        ArrayList<Enterprise> enterpriseList;
-        ArrayList<Organization> organizationList;
-        
-        Network network;
-        Enterprise enterprise;
-        Organization organization;
-        
-        DefaultMutableTreeNode networks=new DefaultMutableTreeNode("Networks");
-        DefaultMutableTreeNode root=(DefaultMutableTreeNode)model.getRoot();
-        root.removeAllChildren();
-        root.insert(networks, 0);
-        
-        DefaultMutableTreeNode networkNode;
-        DefaultMutableTreeNode enterpriseNode;
-        DefaultMutableTreeNode organizationNode;
-        
-        for(int i=0;i<networkList.size();i++){
-            network=networkList.get(i);
-            networkNode=new DefaultMutableTreeNode(network.getName());
-            networks.insert(networkNode, i);
-            
-            enterpriseList=network.getEnterpriseDirectory().getEnterpriseList();
-            for(int j=0; j<enterpriseList.size();j++){
-                enterprise=enterpriseList.get(j);
-                enterpriseNode=new DefaultMutableTreeNode(enterprise.getName());
-                networkNode.insert(enterpriseNode, j);
-                
-                organizationList=enterprise.getOrganizationDirectory().getOrganizationList();
-                for(int k=0;k<organizationList.size();k++){
-                    organization=organizationList.get(k);
-                    organizationNode=new DefaultMutableTreeNode(organization.getName());
-                    enterpriseNode.insert(organizationNode, k);
-                }
-            }
-        }
-        model.reload();
-    }
-    
     private void financeRequestJPanel(){
         FinanceCheckRequestTable panel = new FinanceCheckRequestTable(rightSystemAdminPanel, account, financeOrganization, enterprise, business, udirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
@@ -124,11 +83,7 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         FinanceRequest = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         finReq = new javax.swing.JLabel();
-        lblSelectedNode1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 204));
@@ -149,9 +104,11 @@ public class FinanceWorkArea extends javax.swing.JPanel {
                 FinanceRequestMousePressed(evt);
             }
         });
+        FinanceRequest.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
+        FinanceRequest.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, -1));
 
         finReq.setBackground(new java.awt.Color(255, 204, 204));
         finReq.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -161,54 +118,12 @@ public class FinanceWorkArea extends javax.swing.JPanel {
                 finReqMousePressed(evt);
             }
         });
+        FinanceRequest.add(finReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 225, 36));
 
-        javax.swing.GroupLayout FinanceRequestLayout = new javax.swing.GroupLayout(FinanceRequest);
-        FinanceRequest.setLayout(FinanceRequestLayout);
-        FinanceRequestLayout.setHorizontalGroup(
-            FinanceRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinanceRequestLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(finReq, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        FinanceRequestLayout.setVerticalGroup(
-            FinanceRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(FinanceRequestLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(FinanceRequestLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(finReq, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addContainerGap())
-        );
+        jPanel3.add(FinanceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, -1));
 
-        jPanel3.add(FinanceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
-
-        lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
-
-        jScrollPane2.setBackground(new java.awt.Color(255, 204, 153));
-
-        jTree1.setBackground(new java.awt.Color(255, 204, 153));
-        jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTree1.setForeground(new java.awt.Color(0, 0, 0));
-        jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
-            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTree1ValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTree1);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
-
-        jSeparator2.setBackground(new java.awt.Color(255, 204, 204));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finIcon.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 200, 180));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -241,25 +156,13 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         financeRequestJPanel();
     }//GEN-LAST:event_FinanceRequestMousePressed
 
-    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-        // TODO add your handling code here:
-         DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
-        if(selectedNode!=null){
-            lblSelectedNode1.setText(selectedNode.toString());
-        }
-    }//GEN-LAST:event_jTree1ValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel FinanceRequest;
     private javax.swing.JLabel finReq;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
     // End of variables declaration//GEN-END:variables

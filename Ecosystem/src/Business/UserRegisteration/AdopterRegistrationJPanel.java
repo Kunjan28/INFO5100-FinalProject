@@ -28,7 +28,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
-import Business.WorkQueue.UserRegistrationRequest;
+import Business.WorkQueue.AdopterRegistrationRequest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -125,6 +125,13 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
         rdbMale = new javax.swing.JRadioButton();
         rdbFemale = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        cmbCity = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtAdd1 = new javax.swing.JTextField();
+        txtAdd2 = new javax.swing.JTextField();
+        txtContact = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1338, 900));
@@ -135,8 +142,8 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("ADOPTION REQUEST");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 30, 370, -1));
+        jLabel1.setText("ADOPTER REGISTRATION FORM");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 30, 430, -1));
 
         lblName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblName.setForeground(new java.awt.Color(25, 56, 82));
@@ -286,6 +293,26 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adp.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 280, 870, 610));
+
+        jLabel3.setText("Street Address Line2");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 190, -1, -1));
+
+        jLabel4.setText("Street Address Line1");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, -1, -1));
+
+        add(cmbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 150, -1));
+
+        jLabel5.setText("City");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 240, 60, -1));
+
+        txtAdd1.setText("jTextField1");
+        add(txtAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 130, -1, -1));
+
+        txtAdd2.setText("jTextField1");
+        add(txtAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, -1, -1));
+
+        txtContact.setText("jTextField1");
+        add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 300, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -333,7 +360,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 //            JOptionPane.showMessageDialog(null, "Phone format incorrect");
         } 
         else if (emailValid && userUnique) {
-            UserRegistrationRequest registrationRequest = new UserRegistrationRequest();
+            AdopterRegistrationRequest registrationRequest = new AdopterRegistrationRequest();
             //AdopterRequest registrationRequest = new AdopterRequest();
             //UserRegistrationRequ registrationRequest = new Adopter();
             
@@ -352,6 +379,10 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setGender(gender);
             //registrationRequest.setNetwork(network);
             registrationRequest.setSsn(txtSSN.getText());
+            registrationRequest.setAddress1(txtAdd1.getText());
+            registrationRequest.setAddress2(txtAdd2.getText());
+            registrationRequest.setUserContact(txtContact.getText());
+           
             //registrationRequest.setOrgType(type);
             //registrationRequest.setStatus("Requested");
             registrationRequest.setAnnualIncome(txtIncome.getText());
@@ -368,7 +399,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 //            }
             //registrationRequest.setContactCarrierName(contact);
             String subject = "Adopter Registeration";
-            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.";
+            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
             CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
            // sendTextMessage(contact);
             for (Network network1 : system.getNetworkList()) {
@@ -631,10 +662,14 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JComboBox<String> cmbCity;
     private javax.swing.JLabel emailSuccessLabel;
     private javax.swing.JLabel emailValidateMessage;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lblAge;
     private javax.swing.JLabel lblEmail;
     private javax.swing.JLabel lblGender;
@@ -645,7 +680,10 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblUserName;
     private javax.swing.JRadioButton rdbFemale;
     private javax.swing.JRadioButton rdbMale;
+    private javax.swing.JTextField txtAdd1;
+    private javax.swing.JTextField txtAdd2;
     private javax.swing.JTextField txtAge;
+    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtIncome;
     private javax.swing.JTextField txtName;

@@ -61,9 +61,11 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
            Object[] row = new Object[dtm.getColumnCount()];
            row[0]= request;
            row[1]= request.getSender().getEmployee().getName();
+           //row[2] = request.getName();
            row[2]= request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
            //row[4] = request.getReceiver();
+           row[4] = request.getName();
            row[5] = request.getStatus();
             dtm.addRow(row);
             }
@@ -84,6 +86,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         tblRequest = new javax.swing.JTable();
         btnAssign = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -91,8 +94,9 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         lblHeading.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("BACKGROUND AND CRIMINAL CHECK REQUESTS");
-        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 57, 511, -1));
+        add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 511, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -106,23 +110,30 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 870, 140));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 1030, 170));
 
+        btnAssign.setBackground(new java.awt.Color(255, 255, 255));
+        btnAssign.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAssign.setText("ASSIGN TO ME");
         btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAssignActionPerformed(evt);
             }
         });
-        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 160, 30));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 580, 160, 30));
 
+        btnProcess.setBackground(new java.awt.Color(255, 255, 255));
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("PROCESS");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 440, 150, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 570, 150, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids5.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 1040, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
@@ -133,7 +144,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
             return;
         }
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         
         
         if(statusval.equals("Pending with BGC organization")){
@@ -162,7 +173,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         }
         WorkRequest req = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 4);
+        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         for(Adopter a: udirectory.getAdoptersList()){
             if(a.getUserId()==req.getUserId()){
                 adopter=a;
@@ -190,6 +201,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
     private javax.swing.JButton btnProcess;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHeading;
     private javax.swing.JTable tblRequest;

@@ -125,8 +125,8 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("DONATE HERE");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 30, -1, -1));
+        jLabel1.setText("SPONSORER REGISTRATION FORM");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 30, 470, -1));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(25, 56, 82));
@@ -340,6 +340,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             //registrationRequest.setOrgType(type);
             registrationRequest.setStatus("Requested");
             registrationRequest.setUserContact(txtContact.getText());
+            registrationRequest.setSsn(txtSSN.getText());
             //String contact = "";
 
 //            if (contactCarrier.getSelectedItem().equals("ATT")) {

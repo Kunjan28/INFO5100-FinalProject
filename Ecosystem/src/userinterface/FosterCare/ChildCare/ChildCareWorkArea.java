@@ -64,66 +64,6 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         
         manageChildAreaJPanel();
         
-        //populateTree();
-//        organizationJComboBox.removeAllItems();
-//        if(enterprise instanceof HospitalEnterprise){
-//             organizationJComboBox.addItem(Organization.Type.Doctor);
-//               organizationJComboBox.addItem(Organization.Type.Lab);
-//               organizationJComboBox.addItem(Organization.Type.Pharmacist);
-//        }
-//        if(enterprise instanceof FosterCareEnterprise){
-//          organizationJComboBox.addItem(Organization.Type.ChildCare);
-//               organizationJComboBox.addItem(Organization.Type.ChildRegistration);
-//               organizationJComboBox.addItem(Organization.Type.FinanceOrphanage);  
-//        }
-//        if(enterprise instanceof AdoptionEnterprise){
-//           organizationJComboBox.addItem(Organization.Type.Adopter);
-//               organizationJComboBox.addItem(Organization.Type.Adoption);
-//               organizationJComboBox.addItem(Organization.Type.FinanceCheck); 
-//                 organizationJComboBox.addItem(Organization.Type.CriminalCheck); 
-//        }
-        
-    }
-    
-    public void populateTree(){
-        DefaultTreeModel model=(DefaultTreeModel)jTree1.getModel();
-        ArrayList<Network> networkList=business.getNetworkList();
-        ArrayList<Enterprise> enterpriseList;
-        ArrayList<Organization> organizationList;
-        
-        Network network;
-        Enterprise enterprise;
-        Organization organization;
-        
-        DefaultMutableTreeNode networks=new DefaultMutableTreeNode("Networks");
-        DefaultMutableTreeNode root=(DefaultMutableTreeNode)model.getRoot();
-        root.removeAllChildren();
-        root.insert(networks, 0);
-        
-        DefaultMutableTreeNode networkNode;
-        DefaultMutableTreeNode enterpriseNode;
-        DefaultMutableTreeNode organizationNode;
-        
-        for(int i=0;i<networkList.size();i++){
-            network=networkList.get(i);
-            networkNode=new DefaultMutableTreeNode(network.getName());
-            networks.insert(networkNode, i);
-            
-            enterpriseList=network.getEnterpriseDirectory().getEnterpriseList();
-            for(int j=0; j<enterpriseList.size();j++){
-                enterprise=enterpriseList.get(j);
-                enterpriseNode=new DefaultMutableTreeNode(enterprise.getName());
-                networkNode.insert(enterpriseNode, j);
-                
-                organizationList=enterprise.getOrganizationDirectory().getOrganizationList();
-                for(int k=0;k<organizationList.size();k++){
-                    organization=organizationList.get(k);
-                    organizationNode=new DefaultMutableTreeNode(organization.getName());
-                    enterpriseNode.insert(organizationNode, k);
-                }
-            }
-        }
-        model.reload();
     }
     
     private void manageChildAreaJPanel(){
@@ -157,11 +97,7 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         lblViewChild = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         ViewChild = new javax.swing.JLabel();
-        lblSelectedNode1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTree1 = new javax.swing.JTree();
-        jSeparator2 = new javax.swing.JSeparator();
+        jLabel1 = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 153));
@@ -182,9 +118,11 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
                 ChildWorkAreaMousePressed(evt);
             }
         });
+        ChildWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
+        ChildWorkArea.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, -1));
 
         CC.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         CC.setText("Child Care Area");
@@ -193,29 +131,9 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
                 CCMousePressed(evt);
             }
         });
+        ChildWorkArea.add(CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 220, 40));
 
-        javax.swing.GroupLayout ChildWorkAreaLayout = new javax.swing.GroupLayout(ChildWorkArea);
-        ChildWorkArea.setLayout(ChildWorkAreaLayout);
-        ChildWorkAreaLayout.setHorizontalGroup(
-            ChildWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ChildWorkAreaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CC, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        ChildWorkAreaLayout.setVerticalGroup(
-            ChildWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(ChildWorkAreaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(ChildWorkAreaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel3.add(ChildWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
+        jPanel3.add(ChildWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 280, -1));
 
         lblViewChild.setBackground(new java.awt.Color(255, 204, 153));
         lblViewChild.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -223,9 +141,11 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
                 lblViewChildMousePressed(evt);
             }
         });
+        lblViewChild.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
+        lblViewChild.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 26));
 
         ViewChild.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         ViewChild.setText("View Child Details");
@@ -234,53 +154,12 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
                 ViewChildMousePressed(evt);
             }
         });
+        lblViewChild.add(ViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 0, 231, 38));
 
-        javax.swing.GroupLayout lblViewChildLayout = new javax.swing.GroupLayout(lblViewChild);
-        lblViewChild.setLayout(lblViewChildLayout);
-        lblViewChildLayout.setHorizontalGroup(
-            lblViewChildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblViewChildLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ViewChild, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        lblViewChildLayout.setVerticalGroup(
-            lblViewChildLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblViewChildLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-            .addGroup(lblViewChildLayout.createSequentialGroup()
-                .addComponent(ViewChild, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        jPanel3.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, -1));
 
-        jPanel3.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 280, -1));
-
-        lblSelectedNode1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jPanel3.add(lblSelectedNode1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, 230, 30));
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jLabel7.setText("Selected Node:");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 140, 30));
-
-        jTree1.setBackground(new java.awt.Color(255, 204, 153));
-        jTree1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        jTree1.setForeground(new java.awt.Color(0, 0, 0));
-        jTree1.addTreeSelectionListener(new javax.swing.event.TreeSelectionListener() {
-            public void valueChanged(javax.swing.event.TreeSelectionEvent evt) {
-                jTree1ValueChanged(evt);
-            }
-        });
-        jScrollPane2.setViewportView(jTree1);
-
-        jPanel3.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 250, 270));
-
-        jSeparator2.setBackground(new java.awt.Color(0, 51, 51));
-        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        jPanel3.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/childCare.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 180, 200));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -323,27 +202,15 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
           ViewChild();
     }//GEN-LAST:event_lblViewChildMousePressed
 
-    private void jTree1ValueChanged(javax.swing.event.TreeSelectionEvent evt) {//GEN-FIRST:event_jTree1ValueChanged
-        // TODO add your handling code here:
-         DefaultMutableTreeNode selectedNode= (DefaultMutableTreeNode)jTree1.getLastSelectedPathComponent();
-        if(selectedNode!=null){
-            lblSelectedNode1.setText(selectedNode.toString());
-        }
-    }//GEN-LAST:event_jTree1ValueChanged
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel CC;
     private javax.swing.JPanel ChildWorkArea;
     private javax.swing.JLabel ViewChild;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTree jTree1;
-    private javax.swing.JLabel lblSelectedNode1;
     private javax.swing.JPanel lblViewChild;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;

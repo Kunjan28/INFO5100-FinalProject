@@ -124,7 +124,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Age");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 175, 130, 40));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, 130, 40));
 
         buttonGroup1.add(maleRDB);
         maleRDB.setText("Male");
@@ -139,6 +139,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         jLabel4.setText("Gender");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 220, 130, 35));
 
+        btnRegisterChild.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnRegisterChild.setText("Register");
         btnRegisterChild.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -240,7 +241,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 child.setRegistrationDate(regDate);
                 child.setGender(gender);
                 child.setStatus("Newly Registered");
-                child.setMedicalStatus(child.getMedicalStatus()+"\n"+"Sent to Doctor");
+                child.setMedicalStatus((child.getMedicalStatus()==null ? "" :child.getMedicalStatus()) +"Sent to Doctor");
                 /*Creating a work request for the child object created*/
                 DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
                 docwrkreq.setStatus("Sent to Doctor");

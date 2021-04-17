@@ -104,10 +104,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnLogoutLabelMousePressed(evt);
             }
         });
-        UpperPanel.add(btnLogoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 20, 60, 50));
+        UpperPanel.add(btnLogoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 20, 60, 50));
 
         greetingUserLabel.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        UpperPanel.add(greetingUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 690, 60));
+        greetingUserLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        UpperPanel.add(greetingUserLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 560, 40));
 
         back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
         back.addActionListener(new java.awt.event.ActionListener() {
@@ -115,7 +116,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 backActionPerformed(evt);
             }
         });
-        UpperPanel.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 30, 30, 30));
+        UpperPanel.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, 30, 30));
 
         getContentPane().add(UpperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -240,7 +241,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnAdopt.setBackground(new java.awt.Color(255, 255, 255));
         btnAdopt.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnAdopt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnAdopt.setText("ADOPT");
+        btnAdopt.setText("ADOPT A CHILD");
         btnAdopt.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         btnAdopt.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -251,7 +252,7 @@ public class MainJFrame extends javax.swing.JFrame {
         btnDonate.setBackground(new java.awt.Color(255, 255, 255));
         btnDonate.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         btnDonate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        btnDonate.setText("DONATE");
+        btnDonate.setText("SPONSOR A CHILD");
         btnDonate.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
         btnDonate.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -375,7 +376,7 @@ public class MainJFrame extends javax.swing.JFrame {
             userNameJTextField.setText("");
             passwordField.setText("");
             if (userAccount != null && userAccount.getRole() != null) {
-            String greetings = " ";
+            String greetings = "Welcome ";
             greetings = greetings + " " + userAccount.getUsername();
             container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system, directory, udirectory,donorDirectory));
             greetingUserLabel.setText(greetings + " !!!");
