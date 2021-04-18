@@ -13,12 +13,12 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.UserRegisteration.AdopterRegistrationJPanel;
-import Business.UserRegisteration.DonorRegistrationJPanel;
+import userinterface.UserRegisteration.DonorRegistrationJPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import userinterface.UserRegisteration.AdopterRegistrationJPanel;
 ;
 
 /**
