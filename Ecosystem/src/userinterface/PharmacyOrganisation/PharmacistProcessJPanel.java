@@ -33,7 +33,7 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem business;
     PharmacistWorkRequest request ;
-    private ChildDirectory childdirectory;
+    private ChildDirectory directory;
     private Child child;
     Network network;
     
@@ -44,7 +44,7 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.child = child;
-        this.childdirectory=childdirectory;
+        this.directory=directory;
         this.business = business;
         for(Network net: business.getNetworkList()){
         for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
@@ -147,6 +147,21 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
             temp.setTestResult("Completed");
             temp.setChildId(request.getChildId());
             temp.setChildName(request.getChildName());
+             if(this.directory!=null && this.directory.getChildList().size()>0){
+            for(Child ch:this.directory.getChildList()){
+                if(request.getChildId()==ch.getChildId()){
+                   
+                    if("Acquired".equalsIgnoreCase(ch.getStatus())){
+                         ch.setMedicalHelp(false);
+                          temp.setIsAcquiredReq(false);
+                    }
+                    else{
+                        temp.setIsAcquiredReq(true);
+                    }
+                    break;
+                }
+            }
+        }
         
         Organization org = null;
             for (Network network : business.getNetworkList()){

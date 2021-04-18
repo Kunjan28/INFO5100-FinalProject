@@ -199,8 +199,8 @@ public void populateWorkRequest(){
     DefaultTableModel table = (DefaultTableModel)workTable.getModel();
        table.setRowCount(0);
     for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
-     
-       if(req instanceof ChildCareWorkRequest ){
+        ChildCareWorkRequest request = (ChildCareWorkRequest) req;
+       if(req instanceof ChildCareWorkRequest && request.isIsAcquiredReq()){
                       
           Object[] row = new Object[table.getColumnCount()];
           row[0]=req;
