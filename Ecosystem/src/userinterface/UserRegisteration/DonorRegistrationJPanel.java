@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business.UserRegisteration;
+package userinterface.UserRegisteration;
 
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 
 import Business.Network.Network;
-import Business.Organization.Organization;
-import Business.Utils.CommonMail;
 import Business.WorkQueue.WorkQueue;
 import java.awt.Color;
 import java.util.Properties;
