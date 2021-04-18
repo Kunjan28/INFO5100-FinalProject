@@ -16,7 +16,6 @@ import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.FundingFinanceRole.FinanceWorkAreaJPanel;
 import userinterface.FundingFinanceRole.FundingWorkArea;
 
 
@@ -29,5 +28,9 @@ public class FundingFinanceRole extends Role{
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
         return new FundingWorkArea(userProcessContainer, account, organization, enterprise, business, directory);
+    }
+     @Override
+    public String toString(){
+        return (RoleType.Finance.getValue());
     }
 }

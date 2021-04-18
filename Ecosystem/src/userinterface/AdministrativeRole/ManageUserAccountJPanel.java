@@ -211,6 +211,9 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         Employee employee = (Employee) employeeJComboBox.getSelectedItem();
         Role role = (Role) roleJComboBox.getSelectedItem();
         organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+       JOptionPane.showMessageDialog(null,"User Account Created");
+        nameJTextField.setText("");
+        passwordJTextField.setText("");
         popData();
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
@@ -220,6 +223,8 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         if (organization != null){
             populateEmployeeComboBox(organization);
             populateRoleComboBox(organization);
+             nameJTextField.setText("");
+             passwordJTextField.setText("");
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

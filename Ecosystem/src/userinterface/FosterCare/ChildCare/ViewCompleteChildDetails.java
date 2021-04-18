@@ -86,7 +86,9 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
        // imageTextField.setText(child.getImageDetails());
         displayImage();
         populaterequestTable();
-        System.out.println(child.isBed()+" "+child.isTable()+" "+child.isCloset());
+     
+        btnRequestFunds.setEnabled(!child.isFinancialHelp());
+        requestMedicalHelpBtn.setEnabled(!child.isMedicalHelp());
         
         
         
