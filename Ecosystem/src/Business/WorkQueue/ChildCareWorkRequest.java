@@ -12,6 +12,8 @@ package Business.WorkQueue;
 public class ChildCareWorkRequest extends WorkRequest {
     
     private String testResult;
+    
+    private boolean isAcquiredReq;
 
     public String getTestResult() {
         return testResult;
@@ -20,5 +22,15 @@ public class ChildCareWorkRequest extends WorkRequest {
     public void setTestResult(String testResult) {
         this.testResult = testResult;
     }
+
+    public boolean isIsAcquiredReq() {
+        return isAcquiredReq;
+    }
+
+    public void setIsAcquiredReq(boolean isAcquiredReq) {
+        this.isAcquiredReq = isAcquiredReq;
+    }
+    
+   
     
 }

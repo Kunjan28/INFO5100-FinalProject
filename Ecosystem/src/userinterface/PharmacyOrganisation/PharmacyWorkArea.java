@@ -44,7 +44,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         this.ecosystem=ecosystem;
         this.pharmacistOrganization = (PharmacistOrganization)pharmacistOrganization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childDirectory = childDirectory;
         this.userAccount = account;
         
         managePharmacyWorkAreaJPanel();

@@ -295,19 +295,11 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 System.out.println("Child registered successfully");
                 txtName.setText("");
                 buttonGroup1.clearSelection();
-              cmbAge.getModel().setSelectedItem(0);
+                cmbAge.getModel().setSelectedItem(0);
                 jXDatePicker1.getEditor().setText("");
                 txtMark.setText("");
                 photoText.setText("");
-                
-                
-                
                 JOptionPane.showMessageDialog(null, "Child registered successfully");
-                /*Once the request has been moved and child data has been added, the data is moved to the Child registration page again*/
-//                ViewChildTable childregpanel = new ViewChildTable(userProcessContainer, account, organization, enterprise, business, directory);
-//                this.userProcessContainer.add("ChildRegistrationWorkAreaPanel", childregpanel);
-//                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-//                layout.next(userProcessContainer);
             }
         } catch (ParseException ex) {
             Logger.getLogger(RegisterNewChildJPanel.class.getName()).log(Level.SEVERE, null, ex);

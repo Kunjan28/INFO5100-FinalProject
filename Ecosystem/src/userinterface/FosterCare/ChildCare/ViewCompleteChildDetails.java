@@ -387,6 +387,7 @@ ImageIcon icon = new ImageIcon(image);
         
         for(WorkRequest request: account.getWorkQueue().getWorkRequestList()){
            if(request.getChildId()==child.getChildId()){
+               System.out.println(child.getMedicalStatus());
             Object[] row = new Object[dtms.getColumnCount()];
            row[0]=request;
            row[1]=request.getChildId();
