@@ -32,6 +32,7 @@ public class Child {
     Date dateOfBirth;
     private boolean financialHelp;
     private String amt;
+    private boolean medicalHelp;
 
     public Date getDateOfBirth() {
         return dateOfBirth;
@@ -202,6 +203,14 @@ public class Child {
         this.amt = amt;
     }
 
+    public boolean isMedicalHelp() {
+        return medicalHelp;
+    }
+
+    public void setMedicalHelp(boolean medicalHelp) {
+        this.medicalHelp = medicalHelp;
+    }
+    
     
     @Override
     public String toString(){

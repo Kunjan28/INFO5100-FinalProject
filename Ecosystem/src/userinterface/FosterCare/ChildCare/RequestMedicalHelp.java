@@ -127,7 +127,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         
         String symptoms = txtSymptoms.getText();
         child.setMedicalStatus(child.getMedicalStatus()+"\n"+symptoms+" on date "+new Date());
-        
+        child.setMedicalHelp(true);
         DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
         docwrkreq.setStatus("Medically Unfit");
         docwrkreq.setMessage(symptoms);

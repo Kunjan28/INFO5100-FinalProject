@@ -23,17 +23,17 @@ public abstract class Role {
         Admin("Admin"),
         Doctor("Doctor"),
         LabAssistant("Lab Assistant"),
-        ChildCare("Child Care"),
+        ChildCare("Child Care Examinator"),
         FosterCare("Foster Care Admin"),
-        ChildRegistration("Child Registeration Organization"), 
-        Finance ("Finance Organization"),
+        ChildRegistration("Child Registrar"), 
+        Finance ("Accountant"),
         AdoptionAdmin("Adoption Admin Organization"), 
-        Adoption("Adoption Organization"), 
-        Adopter("Adopter Organization"),
-        CriminalCheck("Criminal Check Organization"),
-        FinanceCheck("Finance Check Organization"),
-        Pharmacist("Pharmacy Organization"),
-        Donor("Donor Organization");
+        Adoption("Adoption Manager"), 
+        Adopter("Adopter"),
+        CriminalCheck("Criminal Check Org Employee"),
+        FinanceCheck("Finance Check Org Employee"),
+        Pharmacist("Pharmacist"),
+        Donor("Sponsorer");
         
         
         
