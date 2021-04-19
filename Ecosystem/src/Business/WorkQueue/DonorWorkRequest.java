@@ -13,6 +13,7 @@ public class DonorWorkRequest extends WorkRequest {
     private String Remarks;
     private String userName;
     private String amount;
+    private String emailId;
 
     public String getAmount() {
         return amount;
@@ -36,6 +37,14 @@ public class DonorWorkRequest extends WorkRequest {
 
     public void setUserName(String userName) {
         this.userName = userName;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
     }
     
     

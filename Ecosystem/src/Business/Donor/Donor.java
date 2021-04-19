@@ -15,16 +15,14 @@ public class Donor {
     private int age;
     private int userId;
     private String username;
-    private boolean flag = false;
-
-    public boolean isFlag() {
-        return flag;
-    }
-
-    public void setFlag(boolean flag) {
-        this.flag = flag;
-    }
-
+    private float annualIncome;
+    private String name;
+    private String ssn;
+    private String gender;
+    private String emailId;
+    private String address1;
+    private String address2;
+    
     public String getUsername() {
         return username;
     }
@@ -40,13 +38,6 @@ public class Donor {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    private float annualIncome;
-    private String name;
-    private String ssn;
-    private String gender;
-    private String emailId;
-    private String address1;
-    private String address2;
 
     public String getAddress1() {
         return address1;

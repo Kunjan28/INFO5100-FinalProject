@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class AdoptionRequestTable extends javax.swing.JPanel {
+public class AdoptionRequestJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form AdoptionCheckTable
@@ -37,7 +37,7 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
     
-    public AdoptionRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public AdoptionRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.udirectory=udirectory;
@@ -50,24 +50,19 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
     
     public void populateWorkRequest(){
       
-        DefaultTableModel dtm = (DefaultTableModel)tblAdoptersRequest.getModel();
-           dtm.setRowCount(0);
-       
-//            dtm.setRowCount(0);
-        for (WorkRequest request : this.business.getWorkQueue().getWorkRequestList()){
-         
-            if(request instanceof AdoptionWorkRequest){
-           Object[] row = new Object[dtm.getColumnCount()];
-           row[0]=request;
-           row[1] = request.getName();
-           //row[1]=request.getSender().getEmployee().getName();
-                System.out.println("details of sender"+request.getSender().getEmployee().getName());
-           row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-           row[3] = request.getUserId();
-           row[4] = request.getStatus();
-           //row[5] = request.getMessage();
-           //row[6] = request.getMessage();
-            dtm.addRow(row);
+        DefaultTableModel dtm = (DefaultTableModel) tblAdoptersRequest.getModel();
+        dtm.setRowCount(0);
+        for (WorkRequest request : this.business.getWorkQueue().getWorkRequestList()) {
+
+            if (request instanceof AdoptionWorkRequest) {
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getName();
+                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                row[3] = request.getUserId();
+                row[4] = request.getStatus();
+
+                dtm.addRow(row);
             }
         }
     }
@@ -148,10 +143,9 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
         WorkRequest re = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
         re.setReceiver(account);
         re.setStatus("Pending with Adoption Organization");
-//        re.setName(adopter.getName());
         populateWorkRequest();
         }
-        else if(statusval.equals("Initialized BGC"))
+        else if( "Initialized BGC".equals(statusval))
             JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
         else if(!receiverval.equals(account.getUsername()))
             JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
@@ -163,34 +157,32 @@ public class AdoptionRequestTable extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblAdoptersRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
         WorkRequest req = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
-        Object receiverval =  tblAdoptersRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblAdoptersRequest.getValueAt(selectedRow, 4);
-        for(Adopter a: udirectory.getAdoptersList()){
-            if(a.getUserId()==req.getUserId()){
-                adopter=a;
-                //System.out.println("Checking"+adopter);
+        Object receiverval = tblAdoptersRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblAdoptersRequest.getValueAt(selectedRow, 4);
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUserId() == req.getUserId()) {
+                adopter = a;
             }
         }
-        //System.out.println("Receivervalue:"+receiverval+"   account username"+account.getUsername());
-        if(receiverval==null){
-            JOptionPane.showMessageDialog(null,"Please first assign it to yourself");
+        if (receiverval == null) {
+            JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
+        } else {
+            if (receiverval.equals(account.getUsername()) && "Pending with Adoption Organization".equals(statusval)) {
+                AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer, account, adoptionOrganization, enterprise, business, udirectory, (AdoptionWorkRequest) req, adopter);
+                this.userProcessContainer.add("AdoptionCheckProcessRequestJPanel", panel);
+                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else if (!receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
+            } else if (!"Pending with Adoption Organization".equals(statusval)) {
+                JOptionPane.showMessageDialog(null, "The selected workrequest assigned to you is already processed");
+            }
         }
-        else{
-        if( receiverval.equals(account.getUsername()) && statusval.equals("Pending with Adoption Organization")){
-        AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer,account, adoptionOrganization, enterprise, business, udirectory,(AdoptionWorkRequest) req, adopter);
-        this.userProcessContainer.add("AdoptionCheckProcessRequestJPanel", panel);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-        layout.next(userProcessContainer);}
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");
-        else if(!statusval.equals("Pending with Adoption Organization"))
-            JOptionPane.showMessageDialog(null,"The selected workrequest assigned to you is already processed");
-        } 
     }//GEN-LAST:event_btnProcessActionPerformed
 
 

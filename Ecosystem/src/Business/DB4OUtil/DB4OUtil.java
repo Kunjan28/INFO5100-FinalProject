@@ -90,32 +90,5 @@ public class DB4OUtil {
         conn.close();
         return system;
     }
-    
-    public ChildDirectory retrieveDirectory(){
-     ObjectContainer conn = createConnection();
-        ObjectSet<ChildDirectory> systems = conn.query(ChildDirectory.class); // Change to the object you want to save
-        ChildDirectory system;
-        if (systems.size() == 0){
-            system = ConfigureASystem.configureDirectory();  // If there's no System in the record, create a new one
-        }
-        else{
-            system = systems.get(systems.size() - 1);
-        }
-        conn.close();
-        return system;   
-    }
-    // retrieves user directory.- MainJFrame uses this
-    public AdopterDirectory retrieveUserDirectory(){
-     ObjectContainer conn = createConnection();
-        ObjectSet<AdopterDirectory> systems = conn.query(AdopterDirectory.class); // Change to the object you want to save
-        AdopterDirectory system;
-        if (systems.size() == 0){
-            system = ConfigureASystem.configureUserDirectory();  // If there's no System in the record, create a new one
-        }
-        else{
-            system = systems.get(systems.size() - 1);
-        }
-        conn.close();
-        return system;   
-    }
+
 }

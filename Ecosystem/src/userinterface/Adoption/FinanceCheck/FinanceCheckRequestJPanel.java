@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class FinanceCheckRequestTable extends javax.swing.JPanel {
+public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form FinanceCheckRequestTable
@@ -37,7 +37,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
     FinanceCheckOrganization financeOrganization;
     Adopter adopter;
     
-    public FinanceCheckRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public FinanceCheckRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
         initComponents();
         
         this.userProcessContainer=userProcessContainer;
@@ -46,9 +46,6 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.financeOrganization = (FinanceCheckOrganization)organization;
-//        valueLabel.setText(enterprise.getName());
-//        orgLabel.setText(organization.getName());
-        //this.adopter = adopter;
         populateWorkRequest();
     }
 
@@ -126,7 +123,6 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         
         if(receiverval == null) {
-        //if(statusval.equals("Pending with Finance organization")){
         WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
         re.setReceiver(account);
         re.setStatus("Finance organization processing");
@@ -135,10 +131,10 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         else{
         if(statusval.equals("Approved")||statusval.equals("Denied"))
             JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-//        else if(!receiverval.equals(account.getUsername()))
-//            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-//        else if(receiverval.equals(account.getUsername()))
-//            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
+        else if(!receiverval.equals(account.getUsername()))
+            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
+        else if(receiverval.equals(account.getUsername()))
+            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
         } 
     }//GEN-LAST:event_btnAssignActionPerformed
 
@@ -167,7 +163,7 @@ public class FinanceCheckRequestTable extends javax.swing.JPanel {
         this.userProcessContainer.add("FinanceCheckProcessRequestJPanel", panel);
         CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);}
-        else if(statusval.equals("Approved")|| statusval.equals("Denied"))
+        else if("Approved".equals(statusval)|| "Denied".equals(statusval))
             JOptionPane.showMessageDialog(null,"The selected work request is already processed");
         else if(!receiverval.equals(account.getUsername()))
             JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");

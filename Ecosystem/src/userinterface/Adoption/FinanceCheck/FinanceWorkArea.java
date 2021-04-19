@@ -62,7 +62,7 @@ public class FinanceWorkArea extends javax.swing.JPanel {
     }
     
     private void financeRequestJPanel(){
-        FinanceCheckRequestTable panel = new FinanceCheckRequestTable(rightSystemAdminPanel, account, financeOrganization, enterprise, business, udirectory);
+        FinanceCheckRequestJPanel panel = new FinanceCheckRequestJPanel(rightSystemAdminPanel, account, financeOrganization, enterprise, business, udirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

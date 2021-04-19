@@ -70,7 +70,7 @@ public class FundingWorkArea extends javax.swing.JPanel {
      }
     
     private void TrackStatus(){
-        ViewRecord panel = new ViewRecord(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, directory);
+        ViewAndProcessTransactionRecord panel = new ViewAndProcessTransactionRecord(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, directory);
         rightSystemAdminPanel.add("SceneDetailsGraph",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

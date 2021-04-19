@@ -18,6 +18,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.DonorRole;
 
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdoptionWorkRequest;
 import Business.WorkQueue.DonorRegistrationRequest;
 import Business.WorkQueue.DonorWorkRequest;
@@ -228,6 +229,9 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
             awr.setName(donor.getName());
 
             request.setStatus("Completed");
+            String subject = "Account activation";
+            String content = "Your account has been activated. You may proceed with further process of funding. \n Thank you";
+            CommonMail.sendEmailMessage(request.getUserEmailId(),subject,content);
             JOptionPane.showMessageDialog(null, "User account has been activated successfully");
 
             populateTable();

@@ -7,27 +7,13 @@ package userinterface.Adoption.Adoption;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
-import Business.Child.Child;
-import Business.Child.ChildDirectory;
 import Business.EcoSystem;
-import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.FosterCareEnterprise;
-import Business.Enterprise.HospitalEnterprise;
-import Business.Network.Network;
 import Business.Organization.AdoptionOrganization;
-import Business.Organization.ChildRegistrationOrganization;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -61,8 +47,8 @@ public class AdoptionMainWorkArea extends javax.swing.JPanel {
     
     
     private void adoptionRequest(){
-        AdoptionRequestTable panel = new AdoptionRequestTable(rightSystemAdminPanel, account, adoptionOrganization, enterprise, business, udirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        AdoptionRequestJPanel panel = new AdoptionRequestJPanel(rightSystemAdminPanel, account, adoptionOrganization, enterprise, business, udirectory);
+        rightSystemAdminPanel.add("AdoptionRequestJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
      }

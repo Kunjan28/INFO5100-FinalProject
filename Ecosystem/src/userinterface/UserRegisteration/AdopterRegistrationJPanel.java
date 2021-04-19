@@ -369,6 +369,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setUserContact(txtContact.getText());
             registrationRequest.setStatus("Request access");
             registrationRequest.setAnnualIncome(txtIncome.getText());
+            registrationRequest.setAge(txtAge.getText());
             String subject = "Adopter Registeration";
             String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
             CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);

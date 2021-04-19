@@ -6,18 +6,12 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
-import Business.Enterprise.Enterprise;
-import Business.Network.Network;
-
-import Business.Organization.Organization;
 import Business.WorkQueue.AdoptionWorkRequest;
 import Business.WorkQueue.DoctorWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
 
 import Business.WorkQueue.WorkRequest;
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Component;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -31,9 +25,6 @@ import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.data.category.CategoryDataset;
-import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
@@ -63,7 +54,6 @@ public class Services extends javax.swing.JPanel {
         
         
         for(WorkRequest workQue:system.getWorkQueue().getWorkRequestList()) {
-            //boolean isVisited = false;
            if(workQue instanceof AdoptionWorkRequest){
                adpReqList.add((AdoptionWorkRequest)workQue);
             }

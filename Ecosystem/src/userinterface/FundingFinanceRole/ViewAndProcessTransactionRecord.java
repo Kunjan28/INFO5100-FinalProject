@@ -12,6 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.DonorWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class ViewRecord extends javax.swing.JPanel {
+public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
 
     /**
      * Creates new form ViewRecord
@@ -37,7 +38,7 @@ public class ViewRecord extends javax.swing.JPanel {
     int countApprove=0, countDeny=0, countPending=0; 
     
     
-    public ViewRecord(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public ViewAndProcessTransactionRecord(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
@@ -75,7 +76,7 @@ public class ViewRecord extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("VIEW TRANSACTION RECORD");
+        jLabel1.setText("TRANSACTION RECORD");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(326, 32, 320, 20));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
@@ -170,6 +171,9 @@ public class ViewRecord extends javax.swing.JPanel {
                 }
             }
         }
+        String subject = "Payment Receipt";
+        String content = "We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
+        CommonMail.sendEmailMessage(req.getEmailId(), subject, content);
         }
         populateDonorRequesttable();
     }//GEN-LAST:event_processBt1ActionPerformed

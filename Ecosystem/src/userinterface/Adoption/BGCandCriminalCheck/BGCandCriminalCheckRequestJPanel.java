@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
+public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form BGCandCriminalCheckRequestTable
@@ -37,7 +37,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
     BackgroundAndCriminalCheckOrganization bgcOrganization;
     Adopter adopter;
     
-    public BGCandCriminalCheckRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public BGCandCriminalCheckRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.udirectory=udirectory;
@@ -45,10 +45,7 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.bgcOrganization = (BackgroundAndCriminalCheckOrganization)organization;
-//        valueLabel.setText(enterprise.getName());
-//        orgLabel.setText(organization.getName());
-        this.adopter = adopter;
-        
+        this.adopter = adopter; 
         populateWorkRequest();
     }
     
@@ -61,10 +58,8 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
            Object[] row = new Object[dtm.getColumnCount()];
            row[0]= request;
            row[1]= request.getSender().getEmployee().getName();
-           //row[2] = request.getName();
            row[2]= request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
            row[3] = request.getUserId();
-           //row[4] = request.getReceiver();
            row[4] = request.getName();
            row[5] = request.getStatus();
             dtm.addRow(row);
@@ -147,54 +142,51 @@ public class BGCandCriminalCheckRequestTable extends javax.swing.JPanel {
         Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         
         
-        if(statusval.equals("Pending with BGC organization")){
+        if("Pending with BGC organization".equals(statusval) || receiverval==null){
         WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
         re.setReceiver(account);
         re.setStatus("BGC organization processing");
         populateWorkRequest();
         }
         else{
-        //if(statusval.equals("Approved")||statusval.equals("Denied"))
         if("Approved".equals(statusval) || "Denied".equals(statusval))
             JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-//        else if(!receiverval.equals(account.getUsername()))
-//            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-//        else if(receiverval.equals(account.getUsername()))
-//            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
+        else if(!receiverval.equals(account.getUsername()))
+            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
+        else if(receiverval.equals(account.getUsername()))
+            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
         } 
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
         WorkRequest req = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        for(Adopter a: udirectory.getAdoptersList()){
-            if(a.getUserId()==req.getUserId()){
-                adopter=a;
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUserId() == req.getUserId()) {
+                adopter = a;
             }
         }
-        if(receiverval==null){
-            JOptionPane.showMessageDialog(null,"Please first assign it to yourself");
+        if (receiverval == null) {
+            JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
+        } else {
+            if (receiverval.equals(account.getUsername()) && statusval.equals("BGC organization processing")) {
+                BGCandCriminalProcess panel = new BGCandCriminalProcess(userProcessContainer, account, bgcOrganization, enterprise, business, udirectory, (BGCWorkRequest) req, adopter);
+                this.userProcessContainer.add("BackgroundAndCriminalCheckProcessRequestJPanel", panel);
+                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+                JOptionPane.showMessageDialog(null, "The selected workrerequest is already processed");
+            } else if (!receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
+            }
         }
-        
-        
-        else{
-        if( receiverval.equals(account.getUsername()) && statusval.equals("BGC organization processing")){
-        BGCandCriminalProcess panel = new BGCandCriminalProcess(userProcessContainer,account, bgcOrganization, enterprise, business, udirectory,(BGCWorkRequest) req, adopter);
-        this.userProcessContainer.add("BackgroundAndCriminalCheckProcessRequestJPanel", panel);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-        layout.next(userProcessContainer);}
-        else if(statusval.equals("Approved")|| statusval.equals("Denied"))
-            JOptionPane.showMessageDialog(null,"The selected workrerequest is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");
-        } 
     }//GEN-LAST:event_btnProcessActionPerformed
 
 
