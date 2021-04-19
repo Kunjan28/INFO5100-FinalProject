@@ -13,13 +13,6 @@ import Business.Utils.CommonMail;
 import Business.Utils.ValidationHelper;
 import Business.WorkQueue.WorkQueue;
 import java.awt.Color;
-import java.util.Properties;
-import javax.mail.Message;
-import javax.mail.MessagingException;
-import javax.mail.Session;
-import javax.mail.Transport;
-import javax.mail.internet.InternetAddress;
-import javax.mail.internet.MimeMessage;
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -74,15 +67,6 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         for (Network network : system.getNetworkList()) {
             cmbCity.addItem(network);
         }
-    }
-    
-    public static boolean isValidEmail(String email) {
-        Pattern pattern;
-        Matcher matcher;
-        String EMAIL_PATTERN = "^[\\w!#$%&‘*+/=?`{|}~^-]+(?:\\.[\\w!#$%&‘*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
-        pattern = Pattern.compile(EMAIL_PATTERN);
-        matcher = pattern.matcher(email);
-        return matcher.matches();
     }
     
     /**
@@ -376,7 +360,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-//        Network network = (Network) cmbCity.getSelectedItem();
+        Network network = (Network) cmbCity.getSelectedItem();
         if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty()||txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
                 || txtSSN.getText().isEmpty()  || txtAge.getText().isEmpty() 
                || (!rdbMale.isSelected() && !rdbFemale.isSelected())
@@ -406,7 +390,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setUserContact(txtContact.getText());
             registrationRequest.setStatus("Request access");
             registrationRequest.setAnnualIncome(txtIncome.getText());
-            String subject = "Adopter Registeration";
+            String subject = "Sponsorer Registeration";
             String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
             CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
             for (Network network1 : system.getNetworkList()) {

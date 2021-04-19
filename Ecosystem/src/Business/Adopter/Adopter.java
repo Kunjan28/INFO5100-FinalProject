@@ -15,6 +15,11 @@ public class Adopter {
     private int userId;
     private String username;
     private boolean flag = false;
+    private float annualIncome;
+    private String name;
+    private String ssn;
+    private String gender;
+    private String emailId;
 
     public boolean isFlag() {
         return flag;
@@ -39,11 +44,6 @@ public class Adopter {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    private float annualIncome;
-    private String name;
-    private String ssn;
-    private String gender;
-    private String emailId;
 
     public int getAge() {
         return age;

@@ -166,6 +166,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         adc.setAmount(ch.getAmt());
         adc.setStatus("Payment Successful");
         adc.setSender(account);
+        adc.setEmailId(donor.getEmailId());
         adc.setRemarks("Payment Completed from Sponsor");
         donororganization.getWorkQueue().getWorkRequestList().add(adc);
         if (donororganization != null) {

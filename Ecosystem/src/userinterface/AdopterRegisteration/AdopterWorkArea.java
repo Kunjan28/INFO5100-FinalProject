@@ -7,25 +7,14 @@ package userinterface.AdopterRegisteration;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
-import Business.Child.Child;
 import Business.Child.ChildDirectory;
 import Business.EcoSystem;
-import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.FosterCareEnterprise;
-import Business.Enterprise.HospitalEnterprise;
-import Business.Network.Network;
 import Business.Organization.AdopterOrganization;
-import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -44,7 +33,6 @@ public class AdopterWorkArea extends javax.swing.JPanel {
     AdopterOrganization adopterorganization;
     Adopter adopter;
     String bgcstatus,financestatus;
-    int uid;
     ChildDirectory directory;
     
     
@@ -56,24 +44,22 @@ public class AdopterWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.adopterorganization =(AdopterOrganization) organization;
-        this.uid = uid;
         this.directory = directory;
-        //if condition for enabling proceed with adoption button if BGC and fin checks are approved
        for(Adopter a: udirectory.getAdoptersList()){
            if(a.getUsername().equals(account.getUsername())){
                adopter=a;
            }
        }
         valueLabel.setText(organization.getName());
-        manageDoctorWorkAreaJPanel();
+        goToCheckStatusJPanel();
         
     }
     
    
     
-    private void manageDoctorWorkAreaJPanel(){
-        checkStatusJPanel panel = new checkStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, udirectory, adopter.getUserId(),directory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+    private void goToCheckStatusJPanel(){
+        CheckStatusJPanel panel = new CheckStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, udirectory, adopter.getUserId(),directory);
+        rightSystemAdminPanel.add("CheckStatusJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
         
@@ -168,12 +154,12 @@ public class AdopterWorkArea extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void adoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_adoMousePressed
-        manageDoctorWorkAreaJPanel();
+        goToCheckStatusJPanel();
     }//GEN-LAST:event_adoMousePressed
 
     private void AdopterMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdopterMousePressed
         // TODO add your handling code here:
-        manageDoctorWorkAreaJPanel();
+        goToCheckStatusJPanel();
     }//GEN-LAST:event_AdopterMousePressed
 
 

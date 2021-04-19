@@ -31,5 +31,17 @@ public class ValidationHelper {
         Matcher matcher = pattern.matcher(val);
         return matcher.matches();
     }
+    //Child Registeration validation
+    public static boolean validateName(String name) {
+        Pattern pattern = Pattern.compile("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+        Matcher matcher = pattern.matcher(name);
+        return matcher.matches();
+    }
+    
+    public static boolean validateIdentity(String identity) {
+        Pattern pattern = Pattern.compile("^[A-Za-z0-9. ]*$");
+        Matcher matcher = pattern.matcher(identity);
+        return matcher.matches();
+    }
 
 }

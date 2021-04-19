@@ -26,28 +26,10 @@ public class Child {
     private double pulseRate;
     private double respirationRate;
     private double bodytemp;
-    private boolean bed;
-    private boolean table;
-    private boolean closet;
-    Date dateOfBirth;
     private boolean financialHelp;
     private String amt;
     private boolean medicalHelp;
-
-    public Date getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(Date dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
-    
-    public String getAgefromDOB(Date dateOfBirth){
-//        birth_year = dateOfBirth.get
-//        int age = 
-        
-        return null;
-    }
+    private boolean isSpecialChild;
 
     public double getBP() {
         return BP;
@@ -59,30 +41,6 @@ public class Child {
 
     public double getPulseRate() {
         return pulseRate;
-    }
-
-    public boolean isBed() {
-        return bed;
-    }
-
-    public void setBed(boolean bed) {
-        this.bed = bed;
-    }
-
-    public boolean isTable() {
-        return table;
-    }
-
-    public void setTable(boolean table) {
-        this.table = table;
-    }
-
-    public boolean isCloset() {
-        return closet;
-    }
-
-    public void setCloset(boolean closet) {
-        this.closet = closet;
     }
 
     public void setPulseRate(double pulseRate) {
@@ -112,8 +70,6 @@ public class Child {
     public void setMedicalStatus(String medicalStatus) {
         this.medicalStatus = medicalStatus;
     }
-
-    
 
     public String getGender() {
         return gender;
@@ -209,6 +165,14 @@ public class Child {
 
     public void setMedicalHelp(boolean medicalHelp) {
         this.medicalHelp = medicalHelp;
+    }
+
+    public boolean isIsSpecialChild() {
+        return isSpecialChild;
+    }
+
+    public void setIsSpecialChild(boolean isSpecialChild) {
+        this.isSpecialChild = isSpecialChild;
     }
     
     

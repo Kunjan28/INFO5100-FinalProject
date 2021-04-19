@@ -47,8 +47,8 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
     }
     
     private void BGCandCriminalRequestJPanel(){
-        BGCandCriminalCheckRequestTable panel = new BGCandCriminalCheckRequestTable(rightSystemAdminPanel, account, bgcOrganization, enterprise, business, udirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        BGCandCriminalCheckRequestJPanel panel = new BGCandCriminalCheckRequestJPanel(rightSystemAdminPanel, account, bgcOrganization, enterprise, business, udirectory);
+        rightSystemAdminPanel.add("BGCandCriminalCheckRequestTable",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
      }

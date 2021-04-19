@@ -199,7 +199,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         
         Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
             JOptionPane.showMessageDialog(null,"Request already processed");
         } else {
         if(receiverval.equals(account.getUsername())){
@@ -207,7 +207,6 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
         request.setStatus("Approved");
         request.setRemarks(txtRemarks.getText());
-        //request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setFinanceStatus("Approved");
         populateWorkRequest();
@@ -238,7 +237,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         Object statusval =  tblRequest.getValueAt(selectedRow, 5);
         Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
         
-        if (statusval.equals("Approved") || statusval.equals("Denied")) {
+        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
             JOptionPane.showMessageDialog(null,"Request already processed");
         } else {
         
@@ -248,7 +247,6 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
         request.setStatus("Denied");
         request.setRemarks(txtRemarks.getText());
-        //request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setFinanceStatus("Denied");
         populateWorkRequest();
@@ -276,7 +274,6 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()){
             if(request instanceof FinanceAdoptionWorkRequest){
                 if(request.getUserId() == financeCCWorkRequest.getUserId()){
-                    //if((request.getStatus()).equals("Finance organization processing")){
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0]=request;
                 row[1]=request.getSender().getEmployee().getName();
@@ -286,12 +283,10 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                 row[5] = request.getStatus();
                  dtm.addRow(row);
             }}}
-        //}
     }
     public void setUserDetailsField(){
         txtAge.setText(String.valueOf(adopter.getAge()));
         txtEmail.setText(adopter.getEmailId());
-        //txtGender.setText(adopter.getGender());
         if(adopter.getGender().equalsIgnoreCase("male")){
             rdbMale.setSelected(true);
         }

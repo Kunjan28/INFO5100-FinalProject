@@ -48,8 +48,6 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.bgcOrganization = (BackgroundAndCriminalCheckOrganization)organization;
-//        valueLabel.setText(enterprise.getName());
-//        orgLabel.setText(organization.getName());
         this.bgcWorkRequest = bgcWorkRequest;
         this.adopter = adopter;
         populateWorkRequest();
@@ -208,115 +206,109 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if (selectedRow < 0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the request to proceed.");
             return;
         }
 
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        
-        if (statusval.equals("Approved") || statusval.equals("Denied")) {
-            JOptionPane.showMessageDialog(null,"Request already processed");
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+
+        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+            JOptionPane.showMessageDialog(null, "Request already processed");
         } else {
-        
-        if(receiverval.equals(account.getUsername())){
-        
-        BGCWorkRequest request = (BGCWorkRequest)tblRequest.getValueAt(selectedRow,0);
-        
-        request.setStatus("Approved");
-        request.setRemarks(txtRemarks.getText());
-        //request.setSender(account);
-        request.setUserId(adopter.getUserId());
-        request.setBgcStatus("Approved");
-        populateWorkRequest();
-        
-        FinanceAdoptionWorkRequest fcwreq = new FinanceAdoptionWorkRequest();
-        fcwreq.setMessage("Please initiate Finance check");
-        fcwreq.setStatus("Pending with Finance organization");
-        fcwreq.setSender(account);
-        fcwreq.setUserId(adopter.getUserId());
-        fcwreq.setName(adopter.getName());
 
-        Organization org = null;
-        for (Network network : business.getNetworkList()){
-            for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                    if (organization instanceof FinanceCheckOrganization){
+            if (receiverval.equals(account.getUsername())) {
 
-                        org = organization;
-                        break;
-                    } 
+                BGCWorkRequest request = (BGCWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+                request.setStatus("Approved");
+                request.setRemarks(txtRemarks.getText());
+                request.setUserId(adopter.getUserId());
+                request.setBgcStatus("Approved");
+                populateWorkRequest();
+                FinanceAdoptionWorkRequest fcwreq = new FinanceAdoptionWorkRequest();
+                fcwreq.setMessage("Please initiate Finance check");
+                fcwreq.setStatus("Pending with Finance organization");
+                fcwreq.setSender(account);
+                fcwreq.setUserId(adopter.getUserId());
+                fcwreq.setName(adopter.getName());
+
+                Organization org = null;
+                for (Network network : business.getNetworkList()) {
+                    for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                            if (organization instanceof FinanceCheckOrganization) {
+                                org = organization;
+                                break;
+                            }
+                        }
+                    }
                 }
-            }
-        }
-        
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(fcwreq);
-            account.getWorkQueue().getWorkRequestList().add(fcwreq);
-            business.getWorkQueue().getWorkRequestList().add(fcwreq);
-        }
-        
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req.getUserId()==adopter.getUserId()){
-                if(req instanceof AdopterWorkRequest){
-                    ((AdopterWorkRequest) req).setFinanceStatus("Pending");
-                    ((AdopterWorkRequest) req).setBgcStatus("Approved");
-                    ((AdopterWorkRequest) req).setMessage("Finance check initialized");
-                }
-            }
-        }
 
-        
-        JOptionPane.showMessageDialog(null,"Finance check initialized successfully!");
-        
-        }
-        else
-            JOptionPane.showMessageDialog(null,"Please select work request assigned to you");
+                if (org != null) {
+                    org.getWorkQueue().getWorkRequestList().add(fcwreq);
+                    account.getWorkQueue().getWorkRequestList().add(fcwreq);
+                    business.getWorkQueue().getWorkRequestList().add(fcwreq);
+                }
+
+                for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+                    if (req.getUserId() == adopter.getUserId()) {
+                        if (req instanceof AdopterWorkRequest) {
+                            ((AdopterWorkRequest) req).setFinanceStatus("Pending");
+                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                            ((AdopterWorkRequest) req).setMessage("Finance check initialized");
+                        }
+                    }
+                }
+
+                JOptionPane.showMessageDialog(null, "Finance check initialized successfully!");
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
+            }
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if (selectedRow < 0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the request to proceed.");
             return;
         }
-        
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        if (statusval.equals("Approved") || statusval.equals("Denied")) {
-            JOptionPane.showMessageDialog(null,"Request already processed");
-        }
-        else {
-        if(receiverval.equals(account.getUsername())){
 
-        BGCWorkRequest request = (BGCWorkRequest)tblRequest.getValueAt(selectedRow,0);
-        
-        request.setStatus("Denied");
-        request.setRemarks(txtRemarks.getText());
-        request.setSender(account);
-        request.setUserId(adopter.getUserId());
-        request.setBgcStatus("Denied");
-        populateWorkRequest();
-        
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req.getUserId()==adopter.getUserId()){
-                if(req instanceof AdopterWorkRequest){
-                    if(((AdopterWorkRequest) req).getFinanceStatus().equals("Pending")){
-                    ((AdopterWorkRequest) req).setFinanceStatus("Cancelled");
-                    ((AdopterWorkRequest) req).setBgcStatus("Denied");
-                    ((AdopterWorkRequest) req).setMessage("BGC Failed.Request cancelled");
-                    
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+            JOptionPane.showMessageDialog(null, "Request already processed");
+        } else {
+            if (receiverval.equals(account.getUsername())) {
+
+                BGCWorkRequest request = (BGCWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+
+                request.setStatus("Denied");
+                request.setRemarks(txtRemarks.getText());
+                request.setSender(account);
+                request.setUserId(adopter.getUserId());
+                request.setBgcStatus("Denied");
+                populateWorkRequest();
+
+                for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+                    if (req.getUserId() == adopter.getUserId()) {
+                        if (req instanceof AdopterWorkRequest) {
+                            if (((AdopterWorkRequest) req).getFinanceStatus().equals("Pending")) {
+                                ((AdopterWorkRequest) req).setFinanceStatus("Cancelled");
+                                ((AdopterWorkRequest) req).setBgcStatus("Denied");
+                                ((AdopterWorkRequest) req).setMessage("BGC Failed.Request cancelled");
+
+                            }
+                        }
                     }
                 }
+                JOptionPane.showMessageDialog(null, "Background check denied. Adopt request cancelled");
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
             }
-        }
-        JOptionPane.showMessageDialog(null,"Background check denied. Adopt request cancelled");
-        }
-        else
-            JOptionPane.showMessageDialog(null,"Please select work request assigned to you");  
         }
     }//GEN-LAST:event_btnDenyActionPerformed
     

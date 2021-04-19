@@ -25,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class childSelectionJpanel extends javax.swing.JPanel {
+public class ChildSelectionJpanel extends javax.swing.JPanel {
 
     /**
      * Creates new form childStatusJpanel
@@ -43,22 +43,22 @@ public class childSelectionJpanel extends javax.swing.JPanel {
     ChildDirectory directory;
     ChildCareWorkRequest request;
     
-    public childSelectionJpanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, int uid, ChildDirectory directory) {
+    public ChildSelectionJpanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, int uid, ChildDirectory directory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.udirectory = udirectory;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.adopterorganization =(AdopterOrganization) organization;
+        this.adopterorganization = (AdopterOrganization) organization;
         this.uid = uid;
         this.directory = directory;
-    //if condition for enabling proceed with adoption button if BGC and fin checks are approved
-       for(Adopter a: udirectory.getAdoptersList()){
-           if(a.getUsername().equals(account.getUsername())){
-               adopter=a;
-           }
-       }
+
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                adopter = a;
+            }
+        }
         populateChildTable();
     }
 
@@ -134,19 +134,12 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         adc.setUserId(uid);
         adc.setUserName(adopter.getName());
         adc.setMessage("I want to adopt");
-          Organization org = null;
+        Organization org = null;
         for (Network network : business.getNetworkList()){
-           // getNetworkList().getOrganizationDirectory().getOrganizationList()
-            System.out.println("ye hai network: "+network);
             for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                System.out.println("ye hai enterprise: "+ent);
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                    System.out.println("ye hai org: "+organization);
-                       
+                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){       
                     if (organization instanceof ChildCareOrganization){
-
                         org = organization;
-                        System.out.println("ye hai org: "+org);
                         break;
                     } 
                 }
@@ -162,24 +155,22 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         adopter.setFlag(false);
     }//GEN-LAST:event_btnAdoptActionPerformed
     
-    public void populateChildTable(){
+    public void populateChildTable() {
 
-    DefaultTableModel dtms = (DefaultTableModel)tblChild.getModel();
-    dtms.setRowCount(0);
-    for(Child child: directory.getChildList()){
-        System.out.println("inside for");
-        if(child.getStatus().equalsIgnoreCase("Acquired") || child.getStatus().startsWith("Adopted by "+adopter.getName())){
-          Object[] row = new Object[dtms.getColumnCount()];
-            System.out.println("child"+child);
-          row[0]=child;
-          row[1]=child.getName();
-          row[2]=child.getGender();
-          row[3]=child.getChildAge();
-          row[4]=child.getStatus();
-          
-          dtms.addRow(row);
-       }
-    }
+        DefaultTableModel dtms = (DefaultTableModel) tblChild.getModel();
+        dtms.setRowCount(0);
+        for (Child child : directory.getChildList()) {
+            if ("Acquired".equalsIgnoreCase(child.getStatus()) || ("Adopted by " + adopter.getName()).startsWith(child.getStatus())) {
+                Object[] row = new Object[dtms.getColumnCount()];
+                row[0] = child;
+                row[1] = child.getName();
+                row[2] = child.getGender();
+                row[3] = child.getChildAge();
+                row[4] = child.getStatus();
+
+                dtms.addRow(row);
+            }
+        }
     
     }
 

@@ -20,53 +20,52 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     EcoSystem ecosystem;
-    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer,EcoSystem ecosystem) {
+
+    public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
         System.out.println("here");
-        this.userProcessContainer=userProcessContainer;        
-        this.ecosystem=ecosystem;
+        this.userProcessContainer = userProcessContainer;
+        this.ecosystem = ecosystem;
         manageOrganisation();
-        //populateTree();
     }
-   
-    
-    private void manageOrganisation(){
+
+    private void manageOrganisation() {
         userinterface.SystemAdminWorkArea.ManageNetworkJPanel manageNetworkPanel = new userinterface.SystemAdminWorkArea.ManageNetworkJPanel(rightSystemAdminPanel, ecosystem);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",manageNetworkPanel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", manageNetworkPanel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-     }
-    
-    private void manageEnterprise(){
+    }
+
+    private void manageEnterprise() {
         userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel manageEnterprise = new userinterface.SystemAdminWorkArea.ManageEnterpriseJPanel(rightSystemAdminPanel, ecosystem);
-        rightSystemAdminPanel.add("ManageEnterpriseJPanel",manageEnterprise);
+        rightSystemAdminPanel.add("ManageEnterpriseJPanel", manageEnterprise);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
-    private void manageEnterpriseAdmin(){
+
+    private void manageEnterpriseAdmin() {
         userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel manageEnterpriseAdmin = new userinterface.SystemAdminWorkArea.ManageEnterpriseAdminJPanel(rightSystemAdminPanel, ecosystem);
-        rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",manageEnterpriseAdmin);
+        rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel", manageEnterpriseAdmin);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
-    private void sceneDetails(){
-       
-//        userinterface.SystemAdminWorkArea.SceneDetailsGraph sceneDetailsGraph = new userinterface.SystemAdminWorkArea.SceneDetailsGraph(rightSystemAdminPanel, ecosystem);
-//        rightSystemAdminPanel.add("SceneDetailsGraph",sceneDetailsGraph);
-//        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-//        layout.next(rightSystemAdminPanel);
+
+    private void whoWeServe() {
+
+        userinterface.SystemAdminWorkArea.WhoWeServe whoWeServeGraphs = new userinterface.SystemAdminWorkArea.WhoWeServe(rightSystemAdminPanel, ecosystem);
+        rightSystemAdminPanel.add("SceneDetailsGraph", whoWeServeGraphs);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
     }
-    
-    private void noOfSceneGraph(){
+
+    private void ourServices() {
 
         userinterface.SystemAdminWorkArea.Services servicesAtGlance = new userinterface.SystemAdminWorkArea.Services(rightSystemAdminPanel, ecosystem);
-        rightSystemAdminPanel.add("ServicesAtGlance",servicesAtGlance);
+        rightSystemAdminPanel.add("ServicesAtGlance", servicesAtGlance);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -214,7 +213,7 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
         Analysis.setBackground(new java.awt.Color(255, 204, 153));
         Analysis.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        Analysis.setText("No Of Graph Scene");
+        Analysis.setText("Our Services");
         Analysis.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 AnalysisMousePressed(evt);
@@ -281,22 +280,22 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void lblGraphMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblGraphMousePressed
         // TODO add your handling code here:
-        sceneDetails();
+        whoWeServe();
     }//GEN-LAST:event_lblGraphMousePressed
 
     private void graphMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_graphMousePressed
         // TODO add your handling code here:
-        sceneDetails();
+        whoWeServe();
     }//GEN-LAST:event_graphMousePressed
 
     private void lblAnalysisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAnalysisMousePressed
         // TODO add your handling code here:
-        noOfSceneGraph();
+        ourServices();
     }//GEN-LAST:event_lblAnalysisMousePressed
 
     private void AnalysisMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AnalysisMousePressed
         // TODO add your handling code here:
-        noOfSceneGraph();
+        ourServices();
     }//GEN-LAST:event_AnalysisMousePressed
 
     private void manageEnterpriseAdminMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEnterpriseAdminMousePressed

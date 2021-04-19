@@ -17,10 +17,10 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.AdopterRole;
 
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdoptionWorkRequest;
 import Business.WorkQueue.AdopterRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
-import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -46,19 +46,15 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.enterprise = enterprise;
-        //this.network = network;
         this.business = system.getInstance();
         this.udirectory = udirectory;
-       //this.organizationDirectory = (OrganizationDirectory) organizationDirectory;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
-        this.business = system.getInstance();
-        //workRequestJTable.getTableHeader().setDefaultRenderer(new HeaderColors());
         populateTable();
     }
     
     public void populateTable() {
         
-        DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
+        DefaultTableModel model = (DefaultTableModel) adpworkRequest.getModel();
 
         model.setRowCount(0);
 
@@ -90,7 +86,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        workRequestJTable = new javax.swing.JTable();
+        adpworkRequest = new javax.swing.JTable();
         assignJButton = new javax.swing.JButton();
         processJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -101,9 +97,9 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1058, 840));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        workRequestJTable.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        workRequestJTable.setForeground(new java.awt.Color(25, 56, 82));
-        workRequestJTable.setModel(new javax.swing.table.DefaultTableModel(
+        adpworkRequest.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        adpworkRequest.setForeground(new java.awt.Color(25, 56, 82));
+        adpworkRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -129,8 +125,8 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        workRequestJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
-        jScrollPane1.setViewportView(workRequestJTable);
+        adpworkRequest.setSelectionBackground(new java.awt.Color(56, 90, 174));
+        jScrollPane1.setViewportView(adpworkRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 980, 170));
 
@@ -154,7 +150,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 120, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 120, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -168,10 +164,10 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
 
-        int selectedRow = workRequestJTable.getSelectedRow();
+        int selectedRow = adpworkRequest.getSelectedRow();
 
         if (selectedRow >= 0) {
-            WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
+            WorkRequest request = (WorkRequest) adpworkRequest.getValueAt(selectedRow, 0);
             if("Completed".equalsIgnoreCase(request.getStatus())) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
@@ -190,104 +186,79 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
 
-        int selectedRow = workRequestJTable.getSelectedRow();
-        //try{
+        int selectedRow = adpworkRequest.getSelectedRow();
+
         if (selectedRow >= 0) {
-            AdopterRegistrationRequest request = (AdopterRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            /*Employee emp = new Employee();
-            emp.setName(request.getName());*/
-            if("Completed".equalsIgnoreCase(request.getStatus())) {
+            AdopterRegistrationRequest request = (AdopterRegistrationRequest) adpworkRequest.getValueAt(selectedRow, 0);
+            if ("Completed".equalsIgnoreCase(request.getStatus())) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
             } else {
-         
-                Organization org = organizationDirectory.createOrganization(request.getName(),Organization.Type.Adopter );
+
+                Organization org = organizationDirectory.createOrganization(request.getName(), Organization.Type.Adopter);
                 Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
                 UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new AdopterRole());
-                Adopter adopter = new Adopter();//create instance of Adopter
-      int  uid = udirectory.getAdoptersList().size()+1;// user id
-        
-            adopter = this.udirectory.addAdopter();
-        //feed this input to the directory
-        //adopter.setAge(age);
-//        adopter.setAnnualIncome(Long.parseLong(request.getUserContact()));
-        adopter.setAnnualIncome(Long.parseLong(request.getAnnualIncome()));
-        //adopter.setAnnualIncome(request.getAnnualIncome());
-        adopter.setEmailId(request.getUserEmailId());
-        adopter.setGender(request.getGender());
-        adopter.setName(request.getName());
-        adopter.setSsn(request.getSsn());
-        adopter.setUserId(uid);
-        adopter.setUsername(ua1.getUsername());
-        adopter.setFlag(false);
-        adopter.setName(request.getName());
-            AdoptionWorkRequest awr = new AdoptionWorkRequest();
-            awr.setStatus("");
-            awr.setMessage("I want to adopt");
-            awr.setSender(ua1);
-            awr.setUserId(adopter.getUserId());
-            awr.setName(adopter.getName());
+                Adopter adopter = new Adopter();
+                int uid = udirectory.getAdoptersList().size() + 1;
 
-            request.setStatus("Completed");
-            JOptionPane.showMessageDialog(null, "User account has been activated successfully");
-            
-                  
-       
-        /*
-        The below set of code iterates through the network list and get the network
-        Once the network is received then it iterates over all the enterprises present in the network
-        It goes thought every organization in the enterprise.
-        
-        Once it has found the Doctor organization, it sets the organization as Doctor organization
-        
-        */
-        Organization org1 = null;
-        List<Organization> list = new ArrayList<>();
-        for (Network network : this.business.getNetworkList()){
-           // getNetworkList().getOrganizationDirectory().getOrganizationList()
-            System.out.println("ye hai network: "+network);
-            for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                System.out.println("ye hai enterprise: "+ent);
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                    System.out.println("ye hai org: "+organization);
-                       
-                    if (organization instanceof AdoptionOrganization){
+                adopter = this.udirectory.addAdopter();
 
-                        org1 = organization;
-                        System.out.println("ye hai org: "+org1);
-                        list.add(organization);
-                       org1.getWorkQueue().getWorkRequestList().add(awr);
-                       
-                    } 
+                adopter.setAge(Integer.parseInt(request.getAge()));
+                adopter.setAnnualIncome(Long.parseLong(request.getAnnualIncome()));
+                adopter.setEmailId(request.getUserEmailId());
+                adopter.setGender(request.getGender());
+                adopter.setName(request.getName());
+                adopter.setSsn(request.getSsn());
+                adopter.setUserId(uid);
+                adopter.setUsername(ua1.getUsername());
+                adopter.setFlag(false);
+                adopter.setName(request.getName());
+                AdoptionWorkRequest awr = new AdoptionWorkRequest();
+                awr.setStatus("");
+                awr.setMessage("I want to adopt");
+                awr.setSender(ua1);
+                awr.setUserId(adopter.getUserId());
+                awr.setName(adopter.getName());
+
+                Organization org1 = null;
+                List<Organization> list = new ArrayList<>();
+                for (Network network : this.business.getNetworkList()) {
+                    for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                            if (organization instanceof AdoptionOrganization) {
+
+                                org1 = organization;
+                                System.out.println("ye hai org: " + org1);
+                                list.add(organization);
+                                org1.getWorkQueue().getWorkRequestList().add(awr);
+
+                            }
+                        }
+                    }
+
                 }
-            }
-        //}
-        }
-            
-        /*The below if code checks if there is some value for org. If there is then add the work request 
-        - At the organization level, where other organization in the same enterprise can access it
-        -At the account level, so the adopter can also see see the request created
-        - At the business level, as the request has to be transferred to a different organization in a different enterprise.
-        */
-        if (!list.isEmpty() && list.size()>0){
-            ua1.getWorkQueue().getWorkRequestList().add(awr);
-            business.getWorkQueue().getWorkRequestList().add(awr);
-            populateTable();
-            } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-            return;
-            }
+
+                if (!list.isEmpty() && list.size() > 0) {
+                    ua1.getWorkQueue().getWorkRequestList().add(awr);
+                    business.getWorkQueue().getWorkRequestList().add(awr);
+                    populateTable();
+                }
+                request.setStatus("Completed");
+                String subject = "Account activation";
+                String content = "Your account has been activated. Your background check process has been initiated. You can check your status through your credentials \n Thank you";
+                CommonMail.sendEmailMessage(request.getUserEmailId(), subject, content);
+                JOptionPane.showMessageDialog(null, "User account has been activated successfully");
             }
         }
     }//GEN-LAST:event_processJButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable adpworkRequest;
     private javax.swing.JButton assignJButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processJButton;
-    private javax.swing.JTable workRequestJTable;
     // End of variables declaration//GEN-END:variables
 }

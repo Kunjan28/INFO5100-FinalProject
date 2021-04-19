@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class checkStatusJPanel extends javax.swing.JPanel {
+public class CheckStatusJPanel extends javax.swing.JPanel {
 
     /**
      * Creates new form checkStatusJPanel
@@ -41,23 +41,22 @@ public class checkStatusJPanel extends javax.swing.JPanel {
     int uid;
     ChildDirectory directory;
     
-    public checkStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory,int uid, ChildDirectory directory) {
+    public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory,int uid, ChildDirectory directory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.udirectory = udirectory;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.adopterorganization =(AdopterOrganization) organization;
+        this.adopterorganization = (AdopterOrganization) organization;
         this.uid = uid;
         this.directory = directory;
-        //if condition for enabling proceed with adoption button if BGC and fin checks are approved
-       for(Adopter a: udirectory.getAdoptersList()){
-           if(a.getUsername().equals(account.getUsername())){
-               adopter=a;
-           }
-       }
-       populateTable();
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                adopter = a;
+            }
+        }
+        populateTable();
     }
     
     private void populateTable() {
@@ -65,7 +64,6 @@ public class checkStatusJPanel extends javax.swing.JPanel {
        dtms.setRowCount(0);
        
        for(WorkRequest req: adopterorganization.getWorkQueue().getWorkRequestList()){
-           System.out.println("check status, uid, account"+req.getUserId()+" "+uid+" "+account.getUsername());
            if(req instanceof AdopterWorkRequest ) {
                if(req.getUserId()==adopter.getUserId()){
                Object[] row = new Object[dtms.getColumnCount()];
@@ -141,21 +139,16 @@ public class checkStatusJPanel extends javax.swing.JPanel {
 
     private void btnProceedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedActionPerformed
         // TODO add your handling code here:
-        if(tblReq.getRowCount()<1){
+        if (tblReq.getRowCount() < 1) {
             JOptionPane.showMessageDialog(null, "Adoption request is still in process with the Investigation team");
-        }
-        //if(bgcstatus.equals("Approved")&& financestatus.equals("Approved")){
-        else if ("Approved".equals(bgcstatus) && "Approved".equals((financestatus))) {
-        childSelectionJpanel csjp = new childSelectionJpanel(userProcessContainer, account, adopterorganization, enterprise, business, udirectory, uid, directory);
-        this.userProcessContainer.add("ChildSelectionJPanel", csjp);
-        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-        layout.next(userProcessContainer); 
-        }
-        //else if(bgcstatus.equals("Pending")|| financestatus.equals("Pending")){
-        else if("Pending".equals(bgcstatus) || "Pending".equals(financestatus)) {
+        } else if ("Approved".equals(bgcstatus) && "Approved".equals((financestatus))) {
+            ChildSelectionJpanel csjp = new ChildSelectionJpanel(userProcessContainer, account, adopterorganization, enterprise, business, udirectory, uid, directory);
+            this.userProcessContainer.add("ChildSelectionJPanel", csjp);
+            CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+            layout.next(userProcessContainer);
+        } else if ("Pending".equals(bgcstatus) || "Pending".equals(financestatus)) {
             JOptionPane.showMessageDialog(null, "Adoption request is still in process with the Investigation team");
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "Adoption request denied by Investigation Team");
     }//GEN-LAST:event_btnProceedActionPerformed
 

@@ -31,6 +31,7 @@ public class AdopterRegistrationRequest extends WorkRequest{
     private String gender;
     private String address1;
     private String address2;
+    private String age;
 
     public String getAddress1() {
         return address1;
@@ -152,6 +153,14 @@ public class AdopterRegistrationRequest extends WorkRequest{
         this.userContact = userContact;
     }
 
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+    
     @Override
     public String toString() {
         return userName;
