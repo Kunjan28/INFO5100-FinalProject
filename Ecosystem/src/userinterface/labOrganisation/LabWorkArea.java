@@ -42,7 +42,7 @@ public class LabWorkArea extends javax.swing.JPanel {
         this.userAccount = account;
         this.ecosystem = ecosystem;
         this.labOrganization = (LabOrganization)organization;
-        
+        valueLabel.setText(organization.getName());
         manageLabWorkAreaJPanel();
     }
     
@@ -72,21 +72,23 @@ public class LabWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         LabWorkArea = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 153));
         setPreferredSize(new java.awt.Dimension(1338, 840));
         setLayout(new java.awt.BorderLayout());
 
-        systemAdminPanel.setBackground(new java.awt.Color(153, 255, 255));
+        systemAdminPanel.setBackground(new java.awt.Color(255, 204, 153));
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
-        jPanel3.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
         jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
         jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        LabNetworkPanel.setBackground(new java.awt.Color(153, 255, 255));
+        LabNetworkPanel.setBackground(new java.awt.Color(255, 204, 153));
         LabNetworkPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 LabNetworkPanelMousePressed(evt);
@@ -98,7 +100,7 @@ public class LabWorkArea extends javax.swing.JPanel {
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
         LabNetworkPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 50, 40));
 
-        LabWorkArea.setBackground(new java.awt.Color(153, 255, 255));
+        LabWorkArea.setBackground(new java.awt.Color(255, 204, 153));
         LabWorkArea.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         LabWorkArea.setText("Lab Work Area");
         LabWorkArea.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -112,6 +114,13 @@ public class LabWorkArea extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/labIcon.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 160, 190));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel4.setText("Organization");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 100, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(115, 190, 100, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -150,8 +159,10 @@ public class LabWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel LabWorkArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

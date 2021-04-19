@@ -53,7 +53,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
             }
         }
     }
-        valueLabel.setText(enterprise.getName());
         btnProcess.setEnabled(false);
         populateTable();
     }
@@ -83,22 +82,16 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblLogo = new javax.swing.JLabel();
         lblPharmacist = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPharmacist = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(102, 153, 255)));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyLogo.jpeg"))); // NOI18N
-        add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 170));
 
         lblPharmacist.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         lblPharmacist.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -148,13 +141,6 @@ public class PharmacistJPanel extends javax.swing.JPanel {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 500, 460));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Enterprise");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 80, 20));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 100, 20));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
@@ -202,11 +188,8 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnProcess;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblPharmacist;
     private javax.swing.JTable tblPharmacist;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

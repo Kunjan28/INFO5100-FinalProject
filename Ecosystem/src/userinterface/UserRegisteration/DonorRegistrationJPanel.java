@@ -9,6 +9,8 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 
 import Business.Network.Network;
+import Business.Utils.CommonMail;
+import Business.Utils.ValidationHelper;
 import Business.WorkQueue.WorkQueue;
 import java.awt.Color;
 import java.util.Properties;
@@ -26,6 +28,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 
 /**
@@ -40,6 +44,9 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
     private boolean emailValid;
     private boolean contactValid;
     private boolean userUnique;
+    private boolean income;
+    private boolean age;
+    private boolean ssn;
     /**
      * Creates new form UserRegistrationJPanel
      */
@@ -47,14 +54,28 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-        //populateNetworkComboBox();
-        //populateCarrierComboBox();
         usernameExistsMessage.setVisible(false);
-        emailValidateMessage.setVisible(false);
-        emailSuccessLabel.setVisible(false);
-        userNameSuccessLabel.setVisible(false);
-
+        emailValidate.setVisible(false);
+        ageValidate.setVisible(false);
+        SSNValidate.setVisible(false);
+        numValidate.setVisible(false);
+        IncomeValidate.setVisible(false);
+        userNameTick.setVisible(false);
+        emailTick.setVisible(false);
+        ageTick.setVisible(false);
+        ssnTick.setVisible(false);
+        numTick.setVisible(false);
+        IncomeTick.setVisible(false);
+        populateNetworkComboBox();
     }
+    
+    public void populateNetworkComboBox() {
+        cmbCity.removeAllItems();
+        for (Network network : system.getNetworkList()) {
+            cmbCity.addItem(network);
+        }
+    }
+    
     public static boolean isValidEmail(String email) {
         Pattern pattern;
         Matcher matcher;
@@ -64,26 +85,6 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         return matcher.matches();
     }
     
-//
-//    public void populateNetworkComboBox() {
-//        stateCombo.removeAllItems();
-//        for (Network network : system.getNetworkList()) {
-//            stateCombo.addItem(network);
-//        }
-//    }
-//      public void populateCarrierComboBox() {
-//        contactCarrier.removeAllItems();
-//        contactCarrier.addItem("ATT");
-//        contactCarrier.addItem("Sprint");
-//        contactCarrier.addItem("TMobile");
-//        contactCarrier.addItem("Verizon");
-//    }
-    
-
-   
-    
-
-  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -94,25 +95,45 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblName = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtPwd = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        lblPwd = new javax.swing.JLabel();
+        lblEmail = new javax.swing.JLabel();
         txtAge = new javax.swing.JTextField();
         txtSSN = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        lblssn = new javax.swing.JLabel();
+        lblContact = new javax.swing.JLabel();
         txtContact = new javax.swing.JTextField();
         btnRegister = new javax.swing.JButton();
         usernameExistsMessage = new javax.swing.JLabel();
-        emailValidateMessage = new javax.swing.JLabel();
-        emailSuccessLabel = new javax.swing.JLabel();
-        userNameSuccessLabel = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        IncomeValidate = new javax.swing.JLabel();
+        emailTick = new javax.swing.JLabel();
+        IncomeTick = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
+        lblGender = new javax.swing.JLabel();
+        rdbMale = new javax.swing.JRadioButton();
+        rdbFemale = new javax.swing.JRadioButton();
+        lblStreet2 = new javax.swing.JLabel();
+        txtAdd2 = new javax.swing.JTextField();
+        lblStreet1 = new javax.swing.JLabel();
+        txtAdd1 = new javax.swing.JTextField();
+        lblcity = new javax.swing.JLabel();
+        cmbCity = new javax.swing.JComboBox<>();
+        lblAnnual = new javax.swing.JLabel();
+        txtIncome = new javax.swing.JTextField();
+        ageTick = new javax.swing.JLabel();
+        userNameTick = new javax.swing.JLabel();
+        ssnTick = new javax.swing.JLabel();
+        numTick = new javax.swing.JLabel();
+        emailValidate = new javax.swing.JLabel();
+        ageValidate = new javax.swing.JLabel();
+        SSNValidate = new javax.swing.JLabel();
+        numValidate = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1338, 900));
@@ -126,10 +147,10 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         jLabel1.setText("SPONSORER REGISTRATION FORM");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(494, 30, 470, -1));
 
-        jLabel2.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 170, -1, -1));
+        lblName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblName.setForeground(new java.awt.Color(25, 56, 82));
+        lblName.setText("Name");
+        add(lblName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, -1, -1));
 
         txtUserName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtUserName.setForeground(new java.awt.Color(25, 56, 82));
@@ -142,16 +163,19 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyPressed(evt);
             }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUserNameKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtUserNameKeyTyped(evt);
             }
         });
-        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 210, 250, 35));
+        add(txtUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 220, 40));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel3.setText("Username");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, -1, -1));
+        lblUserName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(25, 56, 82));
+        lblUserName.setText("Username");
+        add(lblUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, -1, -1));
 
         txtName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtName.setForeground(new java.awt.Color(25, 56, 82));
@@ -163,7 +187,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                 txtNameKeyTyped(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 250, 35));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 150, 220, 40));
 
         txtPwd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtPwd.setForeground(new java.awt.Color(25, 56, 82));
@@ -172,45 +196,56 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                 txtPwdKeyTyped(evt);
             }
         });
-        add(txtPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 253, 35));
+        add(txtPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 290, 220, 40));
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel4.setText("Password");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, 62, 20));
+        lblPwd.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblPwd.setForeground(new java.awt.Color(25, 56, 82));
+        lblPwd.setText("Password");
+        add(lblPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 300, 62, 20));
 
-        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel5.setText("Email Id");
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 320, -1, 20));
+        lblEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblEmail.setForeground(new java.awt.Color(25, 56, 82));
+        lblEmail.setText("Email Id");
+        add(lblEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 380, -1, 20));
 
         txtAge.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtAge.setForeground(new java.awt.Color(25, 56, 82));
         txtAge.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtAgeKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtAgeKeyTyped(evt);
             }
         });
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 250, 35));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 455, 220, 40));
 
         txtSSN.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtSSN.setForeground(new java.awt.Color(25, 56, 82));
+        txtSSN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSSNActionPerformed(evt);
+            }
+        });
         txtSSN.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSSNKeyReleased(evt);
+            }
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtSSNKeyTyped(evt);
             }
         });
-        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 410, 250, 35));
+        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 290, 230, 40));
 
-        jLabel7.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel7.setText("SSN");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 420, -1, -1));
+        lblssn.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblssn.setForeground(new java.awt.Color(25, 56, 82));
+        lblssn.setText("SSN");
+        add(lblssn, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 300, -1, -1));
 
-        jLabel9.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(25, 56, 82));
-        jLabel9.setText("Contact No");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 470, -1, 30));
+        lblContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
+        lblContact.setForeground(new java.awt.Color(25, 56, 82));
+        lblContact.setText("Contact No");
+        add(lblContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 460, -1, 30));
 
         txtContact.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtContact.setForeground(new java.awt.Color(25, 56, 82));
@@ -230,35 +265,36 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                 txtContactKeyTyped(evt);
             }
         });
-        add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 250, 35));
+        add(txtContact, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 450, 240, 40));
 
         btnRegister.setBackground(new java.awt.Color(255, 255, 255));
         btnRegister.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnRegister.setForeground(new java.awt.Color(25, 56, 82));
-        btnRegister.setText("Donate");
+        btnRegister.setText("Register");
         btnRegister.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 570, 130, -1));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 680, 160, -1));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
-        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 210, -1, -1));
+        add(usernameExistsMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, -1, -1));
 
-        emailValidateMessage.setForeground(new java.awt.Color(255, 0, 0));
-        emailValidateMessage.setText("Email format incorrect");
-        add(emailValidateMessage, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 320, -1, -1));
+        IncomeValidate.setForeground(new java.awt.Color(255, 0, 0));
+        IncomeValidate.setText("Enter numeric value");
+        add(IncomeValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 560, 140, -1));
 
-        emailSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(emailSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 310, -1, -1));
+        emailTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(emailTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 370, -1, -1));
 
-        userNameSuccessLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/tick1.4.gif"))); // NOI18N
-        add(userNameSuccessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 210, -1, -1));
+        IncomeTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(IncomeTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 550, -1, -1));
 
-        jLabel10.setText("Age");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 370, 50, -1));
+        lblAge.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblAge.setText("Age");
+        add(lblAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 470, 50, -1));
 
         txtEmail.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         txtEmail.setForeground(new java.awt.Color(25, 56, 82));
@@ -267,97 +303,115 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                 txtEmailKeyTyped(evt);
             }
         });
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 310, 250, 35));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 370, 220, 40));
+
+        lblGender.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblGender.setText("Gender");
+        add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 560, -1, -1));
+
+        rdbMale.setText("Male");
+        add(rdbMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 560, -1, -1));
+
+        rdbFemale.setText("Female");
+        add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 560, -1, -1));
+
+        lblStreet2.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblStreet2.setText("Street Address 2");
+        add(lblStreet2, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 230, -1, -1));
+        add(txtAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 220, 230, 40));
+
+        lblStreet1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblStreet1.setText("Street Address 1");
+        add(lblStreet1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 160, 120, 20));
+        add(txtAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 150, 230, 40));
+
+        lblcity.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblcity.setText("City");
+        add(lblcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 70, 20));
+
+        cmbCity.setBackground(new java.awt.Color(255, 255, 255));
+        add(cmbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 230, 30));
+
+        lblAnnual.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblAnnual.setText("Annual Income");
+        add(lblAnnual, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 560, 130, -1));
+
+        txtIncome.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtIncomeKeyReleased(evt);
+            }
+        });
+        add(txtIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 540, 240, 40));
+
+        ageTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(ageTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, -1, -1));
+
+        userNameTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(userNameTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 220, -1, -1));
+
+        ssnTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(ssnTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(1130, 300, -1, -1));
+
+        numTick.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
+        add(numTick, new org.netbeans.lib.awtextra.AbsoluteConstraints(1140, 460, -1, -1));
+
+        emailValidate.setForeground(new java.awt.Color(255, 0, 0));
+        emailValidate.setText("Email format incorrect");
+        add(emailValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 380, -1, -1));
+
+        ageValidate.setForeground(new java.awt.Color(255, 0, 0));
+        ageValidate.setText("Enter numeric value");
+        add(ageValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 140, -1));
+
+        SSNValidate.setForeground(new java.awt.Color(255, 0, 0));
+        SSNValidate.setText("Enter numeric value");
+        add(SSNValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 310, 140, -1));
+
+        numValidate.setForeground(new java.awt.Color(255, 0, 0));
+        numValidate.setText("Phone format Incorrect");
+        add(numValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 470, 160, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sponsor.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 70, 1110, 720));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-//        Network network = (Network) stateCombo.getSelectedItem();
-//        Organization.Type type = (Organization.Type) orgCombo.getSelectedItem();
-//
-//        if (network == null) {
-//            stateCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-//            stateCombo.setForeground(Color.red);
-//
-//        }
-        if (txtName.getText().isEmpty()) {
-            txtName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtName.setForeground(Color.red);
-
-        }
-        if (txtUserName.getText().isEmpty()) {
-            txtUserName.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtUserName.setForeground(Color.red);
-
-        }
-        if (txtPwd.getText().isEmpty()) {
-            txtPwd.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtPwd.setForeground(Color.red);
-
-        }
-        if (txtAge.getText().isEmpty()) {
-            txtAge.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtAge.setForeground(Color.red);
-
-        }
-        if (txtSSN.getText().isEmpty()) {
-            txtSSN.setBorder(BorderFactory.createLineBorder(Color.RED));
-            txtSSN.setForeground(Color.red);
-
-       }
-//        if (type == null) {
-//            orgCombo.setBorder(BorderFactory.createLineBorder(Color.RED));
-//            orgCombo.setForeground(Color.red);
-//
-//        }
-//        if (uContact.getText().isEmpty()) {
-//            uContact.setBorder(BorderFactory.createLineBorder(Color.RED));
-//            uContact.setForeground(Color.red);
-//
-//        }
-        
-        if (txtUserName.getText().isEmpty()
-                || txtPwd.getText().isEmpty()
-                || txtAge.getText().isEmpty()
-                || txtSSN.getText().isEmpty()
-               // || type == null
-                || txtContact.getText().isEmpty()
-                //|| locationPoint == null
+//        Network network = (Network) cmbCity.getSelectedItem();
+        if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty()||txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
+                || txtSSN.getText().isEmpty()  || txtAge.getText().isEmpty() 
+               || (!rdbMale.isSelected() && !rdbFemale.isSelected())
+                || txtIncome.getText().isEmpty()
+             || txtAdd1.getText().isEmpty() || txtAdd2.getText().isEmpty() 
                 ) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-//        } else if(!contactValidity(uContact.getText())){
-//            JOptionPane.showMessageDialog(null, "Phone format incorrect");
         } 
-        else if (isValidEmail(txtEmail.getText()) && userUnique) {
+        else if (emailValid && userUnique && contactValid && income && age && ssn) {
             DonorRegistrationRequest registrationRequest = new DonorRegistrationRequest();
-            registrationRequest.setName(txtUserName.getText());
-            registrationRequest.setUserName(txtName.getText());
+                String gender = "";
+                if(rdbMale.isSelected()){
+                    gender = "Male";
+                }
+                else if(rdbFemale.isSelected()){
+                    gender = "Female";
+                }
+        registrationRequest.setName(txtName.getText());
+            registrationRequest.setUserName(txtUserName.getText());
             registrationRequest.setUserPassword(txtPwd.getText());
             registrationRequest.setUserEmailId(txtEmail.getText());
-            //registrationRequest.setNetwork(network);
-            registrationRequest.setUserCity(txtSSN.getText());
-            //registrationRequest.setOrgType(type);
-            registrationRequest.setStatus("Requested");
-            registrationRequest.setUserContact(txtContact.getText());
+            registrationRequest.setGender(gender);
+            registrationRequest.setNetwork(network);
             registrationRequest.setSsn(txtSSN.getText());
-            //String contact = "";
-
-//            if (contactCarrier.getSelectedItem().equals("ATT")) {
-//                contact = txtContact.getText() + "@txt.att.net";
-//            } else if (contactCarrier.getSelectedItem().equals("Verizon")) {
-//                contact = txtContact.getText() + "@vmobl.com";
-//            } else if (contactCarrier.getSelectedItem().equals("Sprint")) {
-//                contact = txtContact.getText() + "@messaging.sprintpcs.com";
-//            } else if (contactCarrier.getSelectedItem().equals("TMobile")) {
-//                contact = txtContact.getText() + "@tmomail.net";
-//            }
-            //registrationRequest.setContactCarrierName(contact);
+            registrationRequest.setAddress1(txtAdd1.getText());
+            registrationRequest.setAddress2(txtAdd2.getText());
+            registrationRequest.setUserContact(txtContact.getText());
+            registrationRequest.setStatus("Request access");
+            registrationRequest.setAnnualIncome(txtIncome.getText());
             String subject = "Adopter Registeration";
-            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.";
- //EMAIL           CommonMail.sendEmailMessage(txtAge.getText(),subject,content);
-           // sendTextMessage(contact);
+            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
+            CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Funding) {
+                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Adoption) {
                         if (enterprise.getWorkQueue() == null) {
                             enterprise.setWorkQueue(new WorkQueue());
                         }
@@ -365,19 +419,37 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                     }
                 }
             }
-            JOptionPane.showMessageDialog(null, "You have been registered succesfully!");
-            txtName.setText("");
+    JOptionPane.showMessageDialog(null, "You have been registered succesfully");
             txtUserName.setText("");
+            txtName.setText("");
             txtPwd.setText("");
-            txtAge.setText("");
-            txtSSN.setText("");
-            txtContact.setText("");
             txtEmail.setText("");
+            txtSSN.setText("");
+            txtIncome.setText("");
+            txtAge.setText("");
+            txtAdd1.setText("");
+            txtAdd2.setText("");
+            txtContact.setText("");
+            rdbFemale.setSelected(false);
+            rdbMale.setSelected(false);
+            usernameExistsMessage.setVisible(false);
+            emailValidate.setVisible(false);
+            ageValidate.setVisible(false);
+            SSNValidate.setVisible(false);
+            numValidate.setVisible(false);
+            IncomeValidate.setVisible(false);
+            userNameTick.setVisible(false);
+            ageTick.setVisible(false);
+            emailTick.setVisible(false);
+            ssnTick.setVisible(false);
+            IncomeTick.setVisible(false);
+            numTick.setVisible(false);
             
-//        } else if (!emailValid || !contactValid || !userUnique) {
-//           JOptionPane.showMessageDialog(null, "Invalid credentials");
-//        }
+            
+        } else  {
+            JOptionPane.showMessageDialog(null, "Invalid credentials");
         }
+ 
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed
@@ -406,25 +478,6 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtAgeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyTyped
         // TODO add your handling code here:
-//        if (!isValidEmail(txtAge.getText())) {
-//            emailValidateMessage.setVisible(true);
-//            emailValid = false;
-//        } else {
-//            txtAge.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-//            txtAge.setForeground(Color.BLACK);
-//            emailValidateMessage.setVisible(false);
-//            emailSuccessLabel.setVisible(true);
-//            emailValid = true;
-//            int delay = 2500; //milliseconds
-//            ActionListener taskPerformer = new ActionListener() {
-//                public void actionPerformed(ActionEvent evt) {
-//                    emailSuccessLabel.setVisible(false);
-//                }
-//            };
-//            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-//            tick.setRepeats(false);
-//            tick.start();
-//        }
     }//GEN-LAST:event_txtAgeKeyTyped
 
     private void txtSSNKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSSNKeyTyped
@@ -437,18 +490,18 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if (!system.checkIfUserIsUnique(txtName.getText())) {
             usernameExistsMessage.setVisible(true);
-            userNameSuccessLabel.setVisible(false);
+            IncomeTick.setVisible(false);
             userUnique = false;
         } else {
             txtName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
             txtName.setForeground(Color.BLACK);
             usernameExistsMessage.setVisible(false);
-            userNameSuccessLabel.setVisible(true);
+            IncomeTick.setVisible(true);
             userUnique = true;
             int delay = 2500; //milliseconds
             ActionListener taskPerformer = new ActionListener() {
                 public void actionPerformed(ActionEvent evt) {
-                    userNameSuccessLabel.setVisible(false);
+                    IncomeTick.setVisible(false);
                 }
             };
             javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
@@ -459,30 +512,31 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
 
     private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
-        // TODO add your handling code here:
-        //        if(uContact.getText().trim().length() != 11){
-            //          contactFormatMessage.setVisible(true);
-            //          contactValid = false;
-            //        }
-        //        else if (!contactValidity(uContact.getText())) {
-            //            contactFormatMessage.setVisible(true);
-            //            contactValid = false;
-            //        } else {
-            //            uContact.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-            //            uContact.setForeground(Color.BLACK);
-            //            contactFormatMessage.setVisible(false);
-            //            contactSuccessLabel.setVisible(true);
-            //            contactValid = true;
-            //            int delay = 2500; //milliseconds
-            //            ActionListener taskPerformer = new ActionListener() {
-                //                public void actionPerformed(ActionEvent evt) {
-                    //                    contactSuccessLabel.setVisible(false);
-                    //                }
-                //            };
-            //            javax.swing.Timer tick = new javax.swing.Timer(delay, taskPerformer);
-            //            tick.setRepeats(false);
-            //            tick.start();
-            //        }
+        txtContact.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                if (!ValidationHelper.isValidContactNo(txtContact.getText())) {
+                    numValidate.setVisible(false);
+                    numTick.setVisible(true);
+                    contactValid = false;
+                } else {
+                    numValidate.setVisible(true);
+                    numTick.setVisible(false);
+                    contactValid = true;
+                }
+            }
+        });
     }//GEN-LAST:event_txtContactKeyReleased
 
     private void txtContactKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyPressed
@@ -499,143 +553,194 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
         // TODO add your handling code here:
+        txtEmail.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                if (!ValidationHelper.isValidEmailId(txtEmail.getText())) {
+                    emailValidate.setVisible(true);
+                    emailTick.setVisible(false);
+                    emailValid = false;
+                } else {
+                    emailValidate.setVisible(false);
+                    emailTick.setVisible(true);
+                    emailValid = true;
+                }
+            }
+        });
     }//GEN-LAST:event_txtEmailKeyTyped
 
+    private void txtSSNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSSNActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSSNActionPerformed
 
-    public static void sendEmailMessage(String emailId) {
-// Recipient's email ID needs to be mentioned.
-        String to = emailId;
-        String from = "donotreplyers@gmail.com";
-        String pass = "devhuskies";
-// Assuming you are sending email from localhost
-// String host = "192.168.0.16";
+    private void txtUserNameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyReleased
+        // TODO add your handling code here:
+        txtUserName.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
 
-// Get system properties
-        Properties properties = System.getProperties();
-        String host = "smtp.gmail.com";
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
 
-        properties.put("mail.smtp.starttls.enable", "true");
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
 
-        properties.put("mail.smtp.ssl.trust", host);
-        properties.put("mail.smtp.user", from);
-// properties.put("mail.smtp.password", pass);
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
+            public void warn() {
+                if (!system.checkIfUserIsUnique(txtUserName.getText())) {
+                    usernameExistsMessage.setVisible(true);
+                    userNameTick.setVisible(false);
+                    userUnique = false;
+                } else {
+                    usernameExistsMessage.setVisible(false);
+                    userNameTick.setVisible(true);
+                    userUnique = true;
+                }
+            }
+        });
+    }//GEN-LAST:event_txtUserNameKeyReleased
 
-// Setup mail server
-// properties.setProperty("mail.smtp.host", host);
-// properties.put("mail.smtp.starttls.enable", "true");
-// Get the default Session object.
-        Session session = Session.getDefaultInstance(properties);
+    private void txtIncomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIncomeKeyReleased
+        // TODO add your handling code here:
+        txtIncome.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
 
-        try {
-// Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
 
-// Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
 
-// Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            public void warn() {
+                if (!ValidationHelper.isNumeric(txtIncome.getText())) {
+                    IncomeValidate.setVisible(true);
+                    IncomeTick.setVisible(false);
+                    income = false;
+                } else {
+                    IncomeValidate.setVisible(true);
+                    IncomeTick.setVisible(false);
+                    income = true;
+                }
+            }
+        });
+    }//GEN-LAST:event_txtIncomeKeyReleased
 
-// Set Subject: header field
-            message.setSubject("Volunteer Registration");
-            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
-// Send message
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Invalid email id");
-        }
-    }
+    private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
+        // TODO add your handling code here:
+        txtAge.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
 
-    public static void sendTextMessage(String contact) {
-        // Recipient's email ID needs to be mentioned.
-        String to = contact;
-        System.out.println(contact);
-        String from = "donotreplyers@gmail.com";
-        String pass = "devhuskies";
-        // Assuming you are sending email from localhost
-        // String host = "192.168.0.16";
-        // Get system properties
-        Properties properties = System.getProperties();
-        String host = "smtp.gmail.com";
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.smtp.ssl.trust", host);
-        properties.put("mail.smtp.user", from);
-        // properties.put("mail.smtp.password", pass);
-        properties.put("mail.smtp.port", "587");
-        properties.put("mail.smtp.auth", "true");
-        // Setup mail server
-        // properties.setProperty("mail.smtp.host", host);
-        //  properties.put("mail.smtp.starttls.enable", "true");
-        // Get the default Session object.
-        Session session = Session.getDefaultInstance(properties);
-        //       final PasswordAuthentication auth = new PasswordAuthentication(from, pass);
-//Session session = Session.getDefaultInstance(properties, new Authenticator() {
-//    @Override
-//    protected PasswordAuthentication getPasswordAuthentication() { return auth; }
-//});
-//Session session = Session.getInstance(properties);
-        try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
 
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
 
-            // Set To: header field of the header.
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            public void warn() {
+                if (!ValidationHelper.isNumeric(txtAge.getText())) {
+                    ageValidate.setVisible(true);
+                    ageTick.setVisible(false);
+                    age = false;
+                } else {
+                    ageTick.setVisible(true);
+                    ageValidate.setVisible(false);
+                    age = true;
+                }
+            }
+        });
+    }//GEN-LAST:event_txtAgeKeyReleased
 
-            // Set Subject: header field
-            message.setSubject("Volunteer Registration");
-            message.setText("Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted in case of emergencies.");
-            // Send message
-            Transport transport = session.getTransport("smtp");
-            transport.connect(host, from, pass);
-            transport.sendMessage(message, message.getAllRecipients());
-            transport.close();
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Invalid email id");
-        }
-    }
+    private void txtSSNKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSSNKeyReleased
+        // TODO add your handling code here:
+        txtSSN.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent e) {
+                warn();
+            }
 
-    public Boolean contactValidity(String custContact) {
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        
-        Matcher matcher = pattern.matcher(custContact);
-        if(matcher.matches()){
-            return true;
-        }
-        return false;
-    }
+            public void removeUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void insertUpdate(DocumentEvent e) {
+                warn();
+            }
+
+            public void warn() {
+                if (!ValidationHelper.isNumeric(txtSSN.getText())) {
+                    SSNValidate.setVisible(true);
+                    ssnTick.setVisible(false);
+                    ssn = false;
+                } else {
+                    ssnTick.setVisible(true);
+                    SSNValidate.setVisible(false);
+                    ssn = true;
+                }
+            }
+        });
+    }//GEN-LAST:event_txtSSNKeyReleased
+
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IncomeTick;
+    private javax.swing.JLabel IncomeValidate;
+    private javax.swing.JLabel SSNValidate;
+    private javax.swing.JLabel ageTick;
+    private javax.swing.JLabel ageValidate;
     private javax.swing.JButton btnRegister;
-    private javax.swing.JLabel emailSuccessLabel;
-    private javax.swing.JLabel emailValidateMessage;
+    private javax.swing.JComboBox<Network> cmbCity;
+    private javax.swing.JLabel emailTick;
+    private javax.swing.JLabel emailValidate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblAnnual;
+    private javax.swing.JLabel lblContact;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPwd;
+    private javax.swing.JLabel lblStreet1;
+    private javax.swing.JLabel lblStreet2;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JLabel lblcity;
+    private javax.swing.JLabel lblssn;
+    private javax.swing.JLabel numTick;
+    private javax.swing.JLabel numValidate;
+    private javax.swing.JRadioButton rdbFemale;
+    private javax.swing.JRadioButton rdbMale;
+    private javax.swing.JLabel ssnTick;
+    private javax.swing.JTextField txtAdd1;
+    private javax.swing.JTextField txtAdd2;
     private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtIncome;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtPwd;
     private javax.swing.JTextField txtSSN;
     private javax.swing.JTextField txtUserName;
-    private javax.swing.JLabel userNameSuccessLabel;
+    private javax.swing.JLabel userNameTick;
     private javax.swing.JLabel usernameExistsMessage;
     // End of variables declaration//GEN-END:variables
 }

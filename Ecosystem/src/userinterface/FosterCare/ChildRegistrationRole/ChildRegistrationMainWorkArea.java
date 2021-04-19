@@ -53,7 +53,7 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
         this.business = business;
         this.directory = directory;
         this.enterprise = enterprise;
-        
+        valueLabel.setText(organization.getName());
         childRegistrationArea();
     }
     
@@ -80,6 +80,11 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         childRegistration = new javax.swing.JLabel();
         lblViewChild = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        view = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 204));
@@ -134,17 +139,32 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jPanel3.add(LabNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
+        jPanel3.add(LabNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 280, -1));
 
         lblViewChild.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblViewChild.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblViewChild.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         lblViewChild.setText("View Child Records");
         lblViewChild.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblViewChildMousePressed(evt);
             }
         });
-        jPanel3.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 56, 280, 40));
+        jPanel3.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, 230, 40));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manager.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 180, 180));
+        jPanel3.add(view, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 280, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/statusIcon.png"))); // NOI18N
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 50, 40));
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel4.setText("Organization");
+        jPanel3.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 190, 110, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 110, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -189,10 +209,15 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel LabNetworkPanel;
     private javax.swing.JLabel childRegistration;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblViewChild;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
+    private javax.swing.JLabel view;
     // End of variables declaration//GEN-END:variables
 }

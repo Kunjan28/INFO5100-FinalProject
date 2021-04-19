@@ -73,7 +73,6 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         btnSubmit = new javax.swing.JButton();
         lblHeading = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -111,9 +110,6 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
             }
         });
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 40, 30));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/doctoricon.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 170, 130));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/docChild.jpeg"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 450, 550));
@@ -201,7 +197,6 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblHeading;

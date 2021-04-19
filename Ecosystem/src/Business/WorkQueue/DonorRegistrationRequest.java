@@ -28,7 +28,43 @@ public class DonorRegistrationRequest extends WorkRequest{
     private String userContact;
     private String contactCarrierName;
     private String ssn;
+    private String address1;
+    private String address2;
+    private String gender;
+    private String annualIncome;
 
+    public String getAnnualIncome() {
+        return annualIncome;
+    }
+
+    public void setAnnualIncome(String annualIncome) {
+        this.annualIncome = annualIncome;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress1() {
+        return address1;
+    }
+
+    public void setAddress1(String address1) {
+        this.address1 = address1;
+    }
+
+    public String getAddress2() {
+        return address2;
+    }
+
+    public void setAddress2(String address2) {
+        this.address2 = address2;
+    }
+    
     public String getSsn() {
         return ssn;
     }

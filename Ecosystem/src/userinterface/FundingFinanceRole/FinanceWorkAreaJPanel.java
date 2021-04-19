@@ -55,12 +55,10 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
       this.enterprise=enterprise;
       this.directory=directory;
       this.business=business;
-            valueLabel.setText(financeOrphanageOrganization.getName());
+            
             btnProcess.setEnabled(false);
-            //processBt1.setEnabled(false);
             populateRequesttable();
             //populateDonorRequesttable();
-            
     }
 
     /**
@@ -72,23 +70,15 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        enterpriseLabel = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btnAssigToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        enterpriseLabel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        enterpriseLabel.setText("Enterprise");
-        add(enterpriseLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 127, 30));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(139, 0, 158, 30));
 
         jTable1.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -96,11 +86,11 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Results"
+                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Results", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -133,6 +123,9 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("VIEW FUND REQUESTS");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, 270, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance-png-20994.png"))); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, 630, 550));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -142,6 +135,10 @@ int selectedRow = jTable1.getSelectedRow();
             return;
         }
         EducationalHelpWorkRequest req = (EducationalHelpWorkRequest) jTable1.getValueAt(selectedRow, 0);
+        if (req.getStatus().equalsIgnoreCase("Approved")) {
+              JOptionPane.showMessageDialog(null, "Request already processed.");
+               return;
+        }
         if(this.directory!=null && this.directory.getChildList().size()>0){
         for(Child ch:this.directory.getChildList()){
             if(req.getChildId()==ch.getChildId()){
@@ -153,7 +150,7 @@ int selectedRow = jTable1.getSelectedRow();
         }
         req.setReceiver(account);
         req.setMessage("Send to donors");
-        req.setStatus("Processing");
+        req.setStatus("Approved");
         populateRequesttable();  
        // populateDonorRequesttable();
 //        FinanceOrphProcessRequest fopr = new FinanceOrphProcessRequest( userProcessContainer,  account,  financeOrphanageOrganization,  enterprise,  business,  directory, req);
@@ -161,12 +158,7 @@ int selectedRow = jTable1.getSelectedRow();
 //           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
 //            layout.next(userProcessContainer);
       
-//        
-        
-        
-        
-        
-        
+//    
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnAssigToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssigToMeActionPerformed
@@ -175,22 +167,27 @@ int selectedRow = jTable1.getSelectedRow();
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
+        
         EducationalHelpWorkRequest req = (EducationalHelpWorkRequest) jTable1.getValueAt(selectedRow, 0);
+        if (req.getStatus().equalsIgnoreCase("Approved") || req.getStatus().equalsIgnoreCase("Assigned")) {
+              JOptionPane.showMessageDialog(null, "Request already processed.");
+               return;
+        }
         req.setReceiver(account);
-        req.setTestResult("Pending with  Finance Team");
+        //req.setTestResult("Pending with  Finance Team");
+        req.setStatus("Assigned");
         populateRequesttable();
-          btnProcess.setEnabled(true);
+        btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssigToMeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssigToMe;
     private javax.swing.JButton btnProcess;
-    private javax.swing.JLabel enterpriseLabel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 
     public void populateRequesttable() {
@@ -208,6 +205,7 @@ int selectedRow = jTable1.getSelectedRow();
                 row[4]=remarks;
                 String result = ((EducationalHelpWorkRequest)req).getTestResult();
                 row[5]= result == null ? "Waiting" : result;
+                row[6] = req.getStatus();
                 
                 if(result=="Approved"){
                     countApprove++;  

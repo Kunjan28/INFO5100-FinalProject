@@ -56,7 +56,7 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.financeOrganization = (FinanceCheckOrganization)organization;
-
+        valueLabel.setText(organization.getName());
         financeRequestJPanel();
         
     }
@@ -84,6 +84,8 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         finReq = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 204));
@@ -120,10 +122,18 @@ public class FinanceWorkArea extends javax.swing.JPanel {
         });
         FinanceRequest.add(finReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 225, 36));
 
-        jPanel3.add(FinanceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 280, -1));
+        jPanel3.add(FinanceRequest, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finIcon.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 20, 200, 180));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 110, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 200, 110, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -162,8 +172,10 @@ public class FinanceWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel finReq;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

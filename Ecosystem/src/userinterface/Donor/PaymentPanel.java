@@ -135,8 +135,8 @@ public class PaymentPanel extends javax.swing.JPanel {
         add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 20, 90, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 12)); // NOI18N
-        jLabel6.setText("last 4 digits");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 200, 30));
+        jLabel6.setText("please enter your 16 digits card number");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 270, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
         add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 830, 540));
@@ -151,7 +151,7 @@ public class PaymentPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "CVV should be 3 digits");
         }
         else if(!ValidateCardNo()) {
-            JOptionPane.showMessageDialog(null, "Please enter last 4 digits of your card");
+            JOptionPane.showMessageDialog(null, "Card number should be 16 digits");
         }
         else if(!ValidatePostal()) {
             JOptionPane.showMessageDialog(null, "Zip should be 5 digits");
@@ -159,9 +159,14 @@ public class PaymentPanel extends javax.swing.JPanel {
         else {
         DonorWorkRequest adc = new DonorWorkRequest();
         adc.setChildId(ch.getChildId());
+        adc.setChildName(ch.getName());
         adc.setUserId(account.getEmployee().getId());
         adc.setUserName(donor.getName());
-        adc.setMessage("New Donation");
+        adc.setMessage("Sponsored");
+        adc.setAmount(ch.getAmt());
+        adc.setStatus("Payment Successful");
+        adc.setSender(account);
+        adc.setRemarks("Payment Completed from Sponsor");
         donororganization.getWorkQueue().getWorkRequestList().add(adc);
         if (donororganization != null) {
             // org.getWorkQueue().getWorkRequestList().add(adc);
@@ -206,7 +211,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         String card = cardNo.getText();
         Pattern pattern;
         Matcher matcher;
-        String PHONE_PATTERN = "^[0-9]{4}$";
+        String PHONE_PATTERN = "^[0-9]{16}$";
         pattern = Pattern.compile(PHONE_PATTERN);
         matcher = pattern.matcher(card);
         return matcher.matches();    

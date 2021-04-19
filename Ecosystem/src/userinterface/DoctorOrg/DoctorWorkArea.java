@@ -44,7 +44,7 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.directory = directory;
         this.userAccount = account;
-        valueLabel.setText(enterprise.getName());
+        valueLabel.setText(doctororganization.getName());
         manageDoctorWorkAreaJPanel();
         
     }
@@ -113,12 +113,14 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/doctorLogo.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, 160, 150));
 
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Enterprise");
+        jLabel3.setText("Organization");
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 90, 30));
 
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         valueLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 90, 30));
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 170, 120, 30));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));

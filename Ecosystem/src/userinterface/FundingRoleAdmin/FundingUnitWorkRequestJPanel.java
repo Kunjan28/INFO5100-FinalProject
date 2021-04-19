@@ -18,7 +18,9 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.DonorRole;
 
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.AdoptionWorkRequest;
 import Business.WorkQueue.DonorRegistrationRequest;
+import Business.WorkQueue.DonorWorkRequest;
 
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -212,11 +214,18 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
             donor = this.donorDirectory.addDonor();
             donor.setAnnualIncome(Long.parseLong(request.getUserContact()));
             donor.setEmailId(request.getUserEmailId());
-            donor.setGender("Male");
+            //donor.setGender(request.);
             donor.setName(request.getUserName());
-            donor.setSsn(request.getUserCity());
+            donor.setSsn(request.getSsn());
             donor.setUserId(uid);
             donor.setUsername(ua1.getUsername());
+            
+            DonorWorkRequest awr = new DonorWorkRequest();
+            awr.setStatus("");
+            awr.setMessage("Sponsor request");
+            awr.setSender(ua1);
+            awr.setUserId(donor.getUserId());
+            awr.setName(donor.getName());
 
             request.setStatus("Completed");
             JOptionPane.showMessageDialog(null, "User account has been activated successfully");
