@@ -59,6 +59,7 @@ public class DonorWorkArea extends javax.swing.JPanel {
         this.directory = directory;
         this.donorDirectory= donorDirectory;
         this.uDirectory = uDirectory;
+        valueLabel.setText(organization.getName());
         for(Donor a: donorDirectory.getDonorsList()) {
            if(a.getUsername().equals(account.getUsername())) {
                donor=a;
@@ -100,6 +101,8 @@ public class DonorWorkArea extends javax.swing.JPanel {
         lblViewStatus = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -123,7 +126,7 @@ public class DonorWorkArea extends javax.swing.JPanel {
         manageNetworkPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
         manageNetworkPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 36));
 
         DonorWorkArea.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -155,13 +158,21 @@ public class DonorWorkArea extends javax.swing.JPanel {
         lblViewYourStatus.add(lblViewStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 230, 40));
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/statusIcon.png"))); // NOI18N
         lblViewYourStatus.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         jPanel3.add(lblViewYourStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 290, 280, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/donateLogo.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 190, 200));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 120, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 100, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -209,6 +220,7 @@ public class DonorWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel DonorWorkArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblViewStatus;
@@ -216,5 +228,6 @@ public class DonorWorkArea extends javax.swing.JPanel {
     private javax.swing.JPanel manageNetworkPanel;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

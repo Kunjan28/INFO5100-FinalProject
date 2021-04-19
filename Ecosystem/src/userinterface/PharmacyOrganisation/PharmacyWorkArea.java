@@ -46,7 +46,7 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.childDirectory = childDirectory;
         this.userAccount = account;
-        
+        valueLabel.setText(pharmacistOrganization.getName());
         managePharmacyWorkAreaJPanel();
         
     }
@@ -75,6 +75,8 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         PharmacyWorkArea = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -111,8 +113,18 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         });
         managePharmacyPanel.add(PharmacyWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 225, 36));
 
-        jPanel3.add(managePharmacyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 280, -1));
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 210, 180));
+        jPanel3.add(managePharmacyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pharGirl.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 200, 200));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 90, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 220, 110, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -150,9 +162,11 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel PharmacyWorkArea;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel managePharmacyPanel;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

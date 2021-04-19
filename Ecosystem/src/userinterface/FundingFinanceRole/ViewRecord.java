@@ -68,6 +68,7 @@ public class ViewRecord extends javax.swing.JPanel {
         processBt1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtComments = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,11 +83,11 @@ public class ViewRecord extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Results"
+                "Message", "Sender", "Receiver", "Child ID", "Child Name", "Remarks", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, true, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -115,7 +116,12 @@ public class ViewRecord extends javax.swing.JPanel {
 
         jLabel2.setText("Comments");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, 30));
+
+        txtComments.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtComments, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 330, 220, 30));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance.png"))); // NOI18N
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 690, 620));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtn1ActionPerformed
@@ -125,11 +131,19 @@ public class ViewRecord extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
+        Object statusval =  jTable2.getValueAt(selectedRow, 6);
         DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
+        //if (statusval.equals("Approved") || statusval.equals("Processed")) {
+            if("Received".equals(statusval) || "Assigned".equals(statusval)) {
+            JOptionPane.showMessageDialog(null,"Request already processed");
+        }
+            else {
         req.setReceiver(account);
         req.setMessage("Payment processed");
+        req.setStatus("Assigned");
         populateDonorRequesttable();
         processBt1.setEnabled(true);
+            }
     }//GEN-LAST:event_assignBtn1ActionPerformed
 
     private void processBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBt1ActionPerformed
@@ -139,9 +153,15 @@ public class ViewRecord extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
+        Object statusval =  jTable2.getValueAt(selectedRow, 6);
         DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
+        //if (statusval.equals("Approved") || statusval.equals("Processed")) {
+        if("Received".equals(statusval)) {  
+        JOptionPane.showMessageDialog(null,"Request already processed");
+        }
+        else {
         req.setMessage(txtComments.getText());
-        req.setStatus("Payment recieved");
+        req.setStatus("Received");
         if(this.directory!=null && this.directory.getChildList().size()>0){
             for(Child ch:this.directory.getChildList()){
                 if(req.getChildId()==ch.getChildId()){
@@ -149,6 +169,7 @@ public class ViewRecord extends javax.swing.JPanel {
                     break;
                 }
             }
+        }
         }
         populateDonorRequesttable();
     }//GEN-LAST:event_processBt1ActionPerformed
@@ -160,25 +181,18 @@ public void populateDonorRequesttable() {
        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
             if(req instanceof DonorWorkRequest){
                 Object[] row = new Object[dtms.getColumnCount()];
+                req.setReceiver(account);
                 row[0]=req;
                 row[1]=req.getSender();
                 row[2]=req.getReceiver();
                 row[3]=req.getChildId();
+                row[4]=req.getChildName();
                 String remarks = ((DonorWorkRequest)req).getRemarks();
-                row[4]=remarks;
-                String result = "";
+                row[5]=remarks;
+//                String result = "";
                 //((DonorWorkRequest)req).getTestResult();
-                row[5]= result == null ? "Waiting" : result;
-                
-                if(result=="Approved"){
-                    countApprove++;  
-                  }
-                 else if(result=="Denied"){
-                      countDeny++;
-                  }
-                 else {
-                     countPending++;
-                 }
+                //row[6]= result == null ? "Waiting" : result;
+                row[6]=req.getStatus();
              dtms.addRow(row);
             }
         }
@@ -188,6 +202,7 @@ public void populateDonorRequesttable() {
     private javax.swing.JButton assignBtn1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
     private javax.swing.JButton processBt1;

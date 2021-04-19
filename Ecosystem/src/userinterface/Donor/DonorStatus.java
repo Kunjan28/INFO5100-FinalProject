@@ -60,17 +60,21 @@ public class DonorStatus extends javax.swing.JPanel {
      for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
             if(req instanceof DonorWorkRequest){
                DonorWorkRequest request = (DonorWorkRequest)req;
+               req.setReceiver(account);
                if(request.getUserName().equalsIgnoreCase(account.getUsername())){
                     Object[] row = new Object[dtms.getColumnCount()];
                 row[0]=req;
-                row[1]=req.getSender();
-                row[2]=req.getReceiver();
-                row[3]=req.getChildId();
-                String remarks = ((DonorWorkRequest)req).getRemarks();
-                row[4]=remarks;
-                String result = "";
+                //row[1]=req.getSender();
+                row[1]=req.getReceiver();
+                row[2]=req.getChildId();
+                row[3]=req.getChildName();
+                row[4]=((DonorWorkRequest) req).getAmount();
+//                String remarks = ((DonorWorkRequest)req).getRemarks();
+//                row[5]=remarks;
+                row[5]=req.getStatus();
+//                String result = "";
                 //((DonorWorkRequest)req).getTestResult();
-                row[5]= result == null ? "Waiting" : result;
+//                row[5]= result == null ? "Waiting" : result;
              dtms.addRow(row);
                }
             }
@@ -105,11 +109,11 @@ public class DonorStatus extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Sender", "Reciever", "Child ID", "Amount", "Result"
+                "Message", "Reciever", "Child ID", "Child Name", "Amount", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, true, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -118,7 +122,7 @@ public class DonorStatus extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(workReqTable);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, 910, 137));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, 910, 137));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 740, 480));

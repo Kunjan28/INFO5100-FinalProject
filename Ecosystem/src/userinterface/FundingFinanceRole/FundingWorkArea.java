@@ -56,7 +56,7 @@ public class FundingWorkArea extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.directory=directory;
         this.business=business;
-      
+        valueLabel.setText(organization.getName());
         manageFinance();
         
     }
@@ -94,6 +94,9 @@ public class FundingWorkArea extends javax.swing.JPanel {
         lblViewYourStatus = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         lblViewStatus = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(215, 81, 81));
@@ -114,9 +117,11 @@ public class FundingWorkArea extends javax.swing.JPanel {
                 manageNetworkPanelMousePressed(evt);
             }
         });
+        manageNetworkPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
+        manageNetworkPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 40));
 
         DonorWorkArea.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         DonorWorkArea.setText("Fund Request Work Area");
@@ -125,29 +130,9 @@ public class FundingWorkArea extends javax.swing.JPanel {
                 DonorWorkAreaMousePressed(evt);
             }
         });
+        manageNetworkPanel.add(DonorWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 0, 225, 36));
 
-        javax.swing.GroupLayout manageNetworkPanelLayout = new javax.swing.GroupLayout(manageNetworkPanel);
-        manageNetworkPanel.setLayout(manageNetworkPanelLayout);
-        manageNetworkPanelLayout.setHorizontalGroup(
-            manageNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageNetworkPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DonorWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        manageNetworkPanelLayout.setVerticalGroup(
-            manageNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(manageNetworkPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(manageNetworkPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DonorWorkArea, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        jPanel3.add(manageNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 280, -1));
+        jPanel3.add(manageNetworkPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 290, 40));
 
         lblViewYourStatus.setBackground(new java.awt.Color(255, 204, 153));
         lblViewYourStatus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -155,9 +140,11 @@ public class FundingWorkArea extends javax.swing.JPanel {
                 lblViewYourStatusMousePressed(evt);
             }
         });
+        lblViewYourStatus.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/stats.png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/statusIcon.png"))); // NOI18N
+        lblViewYourStatus.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 0, 37, 40));
 
         lblViewStatus.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblViewStatus.setText("Transaction Work Area");
@@ -166,27 +153,20 @@ public class FundingWorkArea extends javax.swing.JPanel {
                 lblViewStatusMousePressed(evt);
             }
         });
+        lblViewYourStatus.add(lblViewStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 0, 231, 38));
 
-        javax.swing.GroupLayout lblViewYourStatusLayout = new javax.swing.GroupLayout(lblViewYourStatus);
-        lblViewYourStatus.setLayout(lblViewYourStatusLayout);
-        lblViewYourStatusLayout.setHorizontalGroup(
-            lblViewYourStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, lblViewYourStatusLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblViewStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
-                .addGap(0, 0, 0))
-        );
-        lblViewYourStatusLayout.setVerticalGroup(
-            lblViewYourStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(lblViewYourStatusLayout.createSequentialGroup()
-                .addComponent(lblViewStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
-            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        jPanel3.add(lblViewYourStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 330, 280, 40));
 
-        jPanel3.add(lblViewYourStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 280, 40));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/mgr2.png"))); // NOI18N
+        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 200, 210));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 240, 90, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 240, 170, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -232,7 +212,9 @@ public class FundingWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DonorWorkArea;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lblViewStatus;
@@ -240,5 +222,6 @@ public class FundingWorkArea extends javax.swing.JPanel {
     private javax.swing.JPanel manageNetworkPanel;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

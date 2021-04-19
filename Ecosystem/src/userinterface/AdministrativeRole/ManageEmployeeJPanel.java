@@ -80,6 +80,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         organizationEmpJComboBox = new javax.swing.JComboBox();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -136,15 +137,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
                 organizationJComboBoxActionPerformed(evt);
             }
         });
-        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, 277, 35));
+        add(organizationJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, 277, 35));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel1.setText("View Organization");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 190, 30));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 190, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel2.setText("Employee Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(246, 380, 130, 34));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 130, 34));
 
         nameJTextField.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 227, 34));
@@ -159,10 +160,15 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         jLabel3.setText("Organization");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 320, 106, 35));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 320, 106, 35));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/employee.jpg"))); // NOI18N
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 690, 430));
+
+        jLabel5.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("MANAGE EMPLOYEE");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 30, 400, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void addJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addJButtonActionPerformed
@@ -196,6 +202,7 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField nameJTextField;
     private javax.swing.JComboBox organizationEmpJComboBox;

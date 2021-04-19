@@ -71,6 +71,8 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel1.setText("Enter Remarks");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 123, 25));
+
+        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 300, 127));
 
         submitBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N

@@ -48,7 +48,6 @@ public class AdopterRegistrationRequest extends WorkRequest{
         this.address2 = address2;
     }
     
-    
     public Network getNetwork() {
         return network;
     }

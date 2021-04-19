@@ -176,6 +176,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 90, -1));
 
         txtRemarks.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        txtRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 210, 70));
 
         btnApprove.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N

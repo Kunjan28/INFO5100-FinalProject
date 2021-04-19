@@ -75,6 +75,7 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblChild = new javax.swing.JTable();
         btnAdopt = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,7 +83,7 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CHILD SELECTION");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 30, 383, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 30, 383, -1));
 
         tblChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
@@ -106,7 +107,7 @@ public class childSelectionJpanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblChild);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 790, 150));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 210, 790, 120));
 
         btnAdopt.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnAdopt.setText("Adopt");
@@ -115,7 +116,10 @@ public class childSelectionJpanel extends javax.swing.JPanel {
                 btnAdoptActionPerformed(evt);
             }
         });
-        add(btnAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(392, 340, 100, -1));
+        add(btnAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 400, 100, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adopt.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, 830, 520));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed
@@ -183,6 +187,7 @@ public class childSelectionJpanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdopt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tblChild;
     // End of variables declaration//GEN-END:variables

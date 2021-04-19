@@ -12,7 +12,16 @@ package Business.WorkQueue;
 public class DonorWorkRequest extends WorkRequest {
     private String Remarks;
     private String userName;
+    private String amount;
 
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+    
     public String getRemarks() {
         return Remarks;
     }

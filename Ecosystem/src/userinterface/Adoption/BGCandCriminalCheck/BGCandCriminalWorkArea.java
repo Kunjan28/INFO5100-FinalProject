@@ -42,7 +42,7 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         this.business = business;
         this.bgcOrganization = (BackgroundAndCriminalCheckOrganization)organization;
         this.adopter = adopter;
-
+        valueLabel.setText(organization.getName());
         BGCandCriminalRequestJPanel();
     }
     
@@ -69,6 +69,8 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         BGCAndCri = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        valueLabel = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 204));
@@ -92,7 +94,7 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         bgcAndCriminal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/worldwide.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
         bgcAndCriminal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 36));
 
         BGCAndCri.setBackground(new java.awt.Color(255, 204, 204));
@@ -105,10 +107,18 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
         });
         bgcAndCriminal.add(BGCAndCri, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 6, 225, 36));
 
-        jPanel3.add(bgcAndCriminal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 240, 280, -1));
+        jPanel3.add(bgcAndCriminal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 260, 280, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/lens.png"))); // NOI18N
         jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 210, 200));
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel3.setText("Organization");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, 120, 20));
+
+        valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 130, 20));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -147,8 +157,10 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
     private javax.swing.JPanel bgcAndCriminal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
+    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }
