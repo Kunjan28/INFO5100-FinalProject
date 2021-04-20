@@ -80,6 +80,12 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         layout.next(rightSystemAdminPanel);
     }
     
+    private void ViewAdopterRequest() {
+        ViewAdoptionRequest panel = new ViewAdoptionRequest(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, directory, udirectory);
+        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -90,16 +96,19 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
     private void initComponents() {
 
         systemAdminPanel = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
+        LeftPanel = new javax.swing.JPanel();
         ChildWorkArea = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblCCIcon = new javax.swing.JLabel();
         CC = new javax.swing.JLabel();
         lblViewChild = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
+        lblIcon = new javax.swing.JLabel();
         ViewChild = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblPic = new javax.swing.JLabel();
+        lblOrg = new javax.swing.JLabel();
         valueLabel = new javax.swing.JLabel();
+        AdoptionPanel = new javax.swing.JPanel();
+        lblicon = new javax.swing.JLabel();
+        lblViewAdoption = new javax.swing.JLabel();
         rightSystemAdminPanel = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 204, 153));
@@ -109,10 +118,10 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         systemAdminPanel.setBackground(new java.awt.Color(255, 204, 153));
         systemAdminPanel.setPreferredSize(new java.awt.Dimension(1338, 840));
 
-        jPanel3.setBackground(new java.awt.Color(255, 204, 153));
-        jPanel3.setMinimumSize(new java.awt.Dimension(280, 148));
-        jPanel3.setPreferredSize(new java.awt.Dimension(280, 148));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        LeftPanel.setBackground(new java.awt.Color(255, 204, 153));
+        LeftPanel.setMinimumSize(new java.awt.Dimension(280, 148));
+        LeftPanel.setPreferredSize(new java.awt.Dimension(280, 148));
+        LeftPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         ChildWorkArea.setBackground(new java.awt.Color(255, 204, 153));
         ChildWorkArea.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -122,9 +131,9 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         });
         ChildWorkArea.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
-        ChildWorkArea.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, -1));
+        lblCCIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblCCIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/manageIcon.png"))); // NOI18N
+        ChildWorkArea.add(lblCCIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, -1));
 
         CC.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         CC.setText("Child Care Area");
@@ -135,7 +144,7 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         });
         ChildWorkArea.add(CC, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, 220, 40));
 
-        jPanel3.add(ChildWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 280, -1));
+        LeftPanel.add(ChildWorkArea, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 280, -1));
 
         lblViewChild.setBackground(new java.awt.Color(255, 204, 153));
         lblViewChild.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -145,9 +154,9 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         });
         lblViewChild.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/statusIcon.png"))); // NOI18N
-        lblViewChild.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
+        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/statusIcon.png"))); // NOI18N
+        lblViewChild.add(lblIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 40, 40));
 
         ViewChild.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         ViewChild.setText("View Child Details");
@@ -158,18 +167,58 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         });
         lblViewChild.add(ViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(49, 0, 231, 38));
 
-        jPanel3.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 280, -1));
+        LeftPanel.add(lblViewChild, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 280, 280, -1));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/childCare.png"))); // NOI18N
-        jPanel3.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 180, 170));
+        lblPic.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/childCare.png"))); // NOI18N
+        LeftPanel.add(lblPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 180, 170));
 
-        jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Organization");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 100, 20));
+        lblOrg.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
+        lblOrg.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblOrg.setText("Organization");
+        LeftPanel.add(lblOrg, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 100, 20));
 
         valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 20));
+        LeftPanel.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 180, 110, 20));
+
+        AdoptionPanel.setBackground(new java.awt.Color(255, 204, 153));
+        AdoptionPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                AdoptionPanelMousePressed(evt);
+            }
+        });
+
+        lblicon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/orgIcon.png"))); // NOI18N
+
+        lblViewAdoption.setBackground(new java.awt.Color(255, 204, 153));
+        lblViewAdoption.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblViewAdoption.setText("View Adoption Request");
+        lblViewAdoption.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblViewAdoptionMousePressed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout AdoptionPanelLayout = new javax.swing.GroupLayout(AdoptionPanel);
+        AdoptionPanel.setLayout(AdoptionPanelLayout);
+        AdoptionPanelLayout.setHorizontalGroup(
+            AdoptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdoptionPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblicon, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblViewAdoption, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE))
+        );
+        AdoptionPanelLayout.setVerticalGroup(
+            AdoptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AdoptionPanelLayout.createSequentialGroup()
+                .addComponent(lblViewAdoption, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdoptionPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(lblicon, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        LeftPanel.add(AdoptionPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 340, 280, 40));
 
         rightSystemAdminPanel.setBackground(new java.awt.Color(255, 255, 255));
         rightSystemAdminPanel.setPreferredSize(new java.awt.Dimension(1058, 840));
@@ -180,13 +229,13 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
         systemAdminPanelLayout.setHorizontalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(systemAdminPanelLayout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(LeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         systemAdminPanelLayout.setVerticalGroup(
             systemAdminPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+            .addComponent(LeftPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(rightSystemAdminPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -212,17 +261,30 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
           ViewChild();
     }//GEN-LAST:event_lblViewChildMousePressed
 
+    private void lblViewAdoptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewAdoptionMousePressed
+        // TODO add your handling code here:
+        ViewAdopterRequest();
+    }//GEN-LAST:event_lblViewAdoptionMousePressed
+
+    private void AdoptionPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdoptionPanelMousePressed
+        // TODO add your handling code here:
+        ViewAdopterRequest();
+    }//GEN-LAST:event_AdoptionPanelMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel AdoptionPanel;
     private javax.swing.JLabel CC;
     private javax.swing.JPanel ChildWorkArea;
+    private javax.swing.JPanel LeftPanel;
     private javax.swing.JLabel ViewChild;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel lblCCIcon;
+    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblOrg;
+    private javax.swing.JLabel lblPic;
+    private javax.swing.JLabel lblViewAdoption;
     private javax.swing.JPanel lblViewChild;
+    private javax.swing.JLabel lblicon;
     private javax.swing.JPanel rightSystemAdminPanel;
     private javax.swing.JPanel systemAdminPanel;
     private javax.swing.JLabel valueLabel;
