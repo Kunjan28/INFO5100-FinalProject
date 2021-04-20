@@ -197,7 +197,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         add(noBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 720, 480));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 450, 720, 350));
     }// </editor-fold>//GEN-END:initComponents
 
     private void uploadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadButtonActionPerformed
