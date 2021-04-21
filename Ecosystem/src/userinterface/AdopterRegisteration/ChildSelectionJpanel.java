@@ -135,6 +135,8 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         adc.setUserId(uid);
         adc.setUserName(adopter.getName());
         adc.setMessage("I want to adopt");
+        adc.setStatus("Adopted");
+        adc.setChildName(ch.getName());
         Organization org = null;
         for (Network network : business.getNetworkList()){
             for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
