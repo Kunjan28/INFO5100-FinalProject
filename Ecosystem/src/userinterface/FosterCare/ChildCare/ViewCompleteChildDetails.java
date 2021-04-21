@@ -43,37 +43,36 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
      */
     JPanel userProcessContainer;
     Child child;
-   UserAccount account;
+    UserAccount account;
     ChildCareOrganization organization;
-   Enterprise enterprise;
-   EcoSystem business;
-   ChildDirectory directory;
-       Network network;
+    Enterprise enterprise;
+    EcoSystem business;
+    ChildDirectory directory;
+    Network network;
 	
     ViewCompleteChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child) {
-          initComponents();
-        this.userProcessContainer=userProcessContainer;
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
         this.child = child;
-        this.account=account;
-        this.organization=(ChildCareOrganization) organization;
-        this.enterprise=enterprise;
-        this.business=business;
-        this.directory=directory;        
-          for(Network net: business.getNetworkList()){
-      for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-          if(ent.equals(enterprise)){
-              network= net;
-          }
-      }
-  }
+        this.account = account;
+        this.organization = (ChildCareOrganization) organization;
+        this.enterprise = enterprise;
+        this.business = business;
+        this.directory = directory;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
         disableInput();
-         nameTextField.setText(child.getName());
+        nameTextField.setText(child.getName());
 //        ageComboBox.setSelectedIndex(child.getChildAge());
 //pjpj        txtDOB.setText(child.getChildAge());
-        if(child.getGender().equalsIgnoreCase("Male")){
+        if (child.getGender().equalsIgnoreCase("Male")) {
             maleRDB.setSelected(true);
-        }
-        else if(child.getGender().equalsIgnoreCase("female")){
+        } else if (child.getGender().equalsIgnoreCase("female")) {
             femaleRDB.setSelected(true);
         }
         jXDatePicker1.setDate(child.getRegistrationDate());
@@ -83,32 +82,29 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         tempText.setText(String.valueOf(child.getBodytemp()));
         respRateText.setText(String.valueOf(child.getRespirationRate()));
         medicalTextArea.setText(child.getMedicalStatus());
-       // imageTextField.setText(child.getImageDetails());
+        // imageTextField.setText(child.getImageDetails());
         displayImage();
         populaterequestTable();
-     
+
         btnRequestFunds.setEnabled(!child.isFinancialHelp());
         requestMedicalHelpBtn.setEnabled(!child.isMedicalHelp());
-        
-        
-        
+
     }
-    public void displayImage(){
+
+    public void displayImage() {
         BufferedImage image = null; //Buffered image object
         String filename = child.getImageDetails(); //Getting the filepath and storing into the string
-        
-        
-        try{
+
+        try {
             image = ImageIO.read(new File(filename));  //Reading the filename and storing it in image
-        }catch(Exception e){ //Generic exception if something goes wrong while reading the image
+        } catch (Exception e) { //Generic exception if something goes wrong while reading the image
             JOptionPane.showMessageDialog(null, "File not found");
         }
-       
-  //Setting the image to the icon and then passing it ot he image JLabel    
-  
-ImageIcon icon = new ImageIcon(image);
-   lblPic.setIcon(icon);
-    
+
+        //Setting the image to the icon and then passing it ot he image JLabel    
+        ImageIcon icon = new ImageIcon(image);
+        lblPic.setIcon(icon);
+
     }
   
 
@@ -229,7 +225,7 @@ ImageIcon icon = new ImageIcon(image);
                 btnRequestFundsActionPerformed(evt);
             }
         });
-        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 740, 180, 30));
+        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 630, 180, 30));
 
         requestMedicalHelpBtn.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         requestMedicalHelpBtn.setText("Request Medical Help");
@@ -238,7 +234,7 @@ ImageIcon icon = new ImageIcon(image);
                 requestMedicalHelpBtnActionPerformed(evt);
             }
         });
-        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 740, 180, 30));
+        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 590, 180, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
@@ -280,7 +276,7 @@ ImageIcon icon = new ImageIcon(image);
         });
         jScrollPane3.setViewportView(tblRequest);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 610, 890, 104));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 890, 104));
         add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 190, 30));
         add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 190, 30));
         add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 190, 30));
@@ -365,46 +361,44 @@ ImageIcon icon = new ImageIcon(image);
     private javax.swing.JTextField txtMark;
     // End of variables declaration//GEN-END:variables
 
-    public void disableInput(){
-      txtDOB.setEnabled(false);
-    femaleRDB.setEnabled(false);
-      bpText.setEnabled(false);
-      txtMark.setEnabled(false);
-      jXDatePicker1.setEnabled(false);
-      maleRDB.setEnabled(false);
-      medicalTextArea.setEnabled(false);
-      nameTextField.setEnabled(false);
-    pulseText.setEnabled(false);
-    
-    respRateText.setEnabled(false);
-    
-    tempText.setEnabled(false);
+    public void disableInput() {
+        txtDOB.setEnabled(false);
+        femaleRDB.setEnabled(false);
+        bpText.setEnabled(false);
+        txtMark.setEnabled(false);
+        jXDatePicker1.setEnabled(false);
+        maleRDB.setEnabled(false);
+        medicalTextArea.setEnabled(false);
+        nameTextField.setEnabled(false);
+        pulseText.setEnabled(false);
+        respRateText.setEnabled(false);
+        tempText.setEnabled(false);
     }
     
     public void populaterequestTable() {
         DefaultTableModel dtms = (DefaultTableModel) tblRequest.getModel();
         dtms.setRowCount(0);
-        
-        for(WorkRequest request: account.getWorkQueue().getWorkRequestList()){
-           if(request.getChildId()==child.getChildId()){
-               System.out.println(child.getMedicalStatus());
-            Object[] row = new Object[dtms.getColumnCount()];
-           row[0]=request;
-           row[1]=request.getChildId();
-           row[2]=request.getSender();
-           row[3]=request.getReceiver();
-           if(request instanceof DoctorWorkRequest){
-             String result = ((DoctorWorkRequest) request).getTestResult();
-            String remarks = ((DoctorWorkRequest) request).getRemarks();
-             row[5]=remarks;
-            row[4] = result == null ? "Waiting" : result;
-           }
-           if(request instanceof EducationalHelpWorkRequest) {
-               row[4] = request.getStatus();
-               row[5] = ((EducationalHelpWorkRequest) request).getRemarks();
-           }
-           dtms.addRow(row);
-           }
+
+        for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
+            if (request.getChildId() == child.getChildId()) {
+                System.out.println(child.getMedicalStatus());
+                Object[] row = new Object[dtms.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getChildId();
+                row[2] = request.getSender();
+                row[3] = request.getReceiver();
+                if (request instanceof DoctorWorkRequest) {
+                    String result = ((DoctorWorkRequest) request).getTestResult();
+                    String remarks = ((DoctorWorkRequest) request).getRemarks();
+                    row[5] = remarks;
+                    row[4] = result == null ? "Waiting" : result;
+                }
+                if (request instanceof EducationalHelpWorkRequest) {
+                    row[4] = request.getStatus();
+                    row[5] = ((EducationalHelpWorkRequest) request).getRemarks();
+                }
+                dtms.addRow(row);
+            }
         }
     }
 }

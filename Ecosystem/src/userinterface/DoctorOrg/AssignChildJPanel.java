@@ -22,8 +22,8 @@ import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
-//import javax.imageio.ImageIO;
-//import javax.swing.ImageIcon;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -71,8 +71,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         }
         }
         getChildDetails();
+//        displayImage();
         populateLabTable();
         populateMedicationTable();
+        
         
         txtName.setEnabled(false);
         cmbAge.setEnabled(false);
@@ -168,6 +170,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     
     private void getChildDetails() {
        
+        displayImage();
         txtName.setText(child.getName());
         cmbAge.setSelectedIndex(child.getChildAge());
         if(child.getGender().equalsIgnoreCase("male")){
@@ -192,21 +195,21 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             btnPrescribeMedication.setEnabled(true);
             btnPrescribeMedication.setEnabled(true);
         }
-        //displayImage();
+//        displayImage();
     }
     
-//    public void displayImage(){
-//        BufferedImage image = null; //Buffered image object
-//        String filename = child.getImageDetails(); //Getting the filepath and storing into the string
-//        try{
-//            image = ImageIO.read(new File(filename));  //Reading the filename and storing it in image
-//        }catch(Exception e){ //Generic exception if something goes wrong while reading the image
-//            JOptionPane.showMessageDialog(null, "File not found");
-//        //Setting the image to the icon and then passing it ot he image JLabel  
-//        ImageIcon icon = new ImageIcon(image);
-//        lblPic.setIcon(icon);
-//        }
-//    }
+    public void displayImage(){
+        BufferedImage image = null; //Buffered image object
+        String filename = child.getImageDetails(); //Getting the filepath and storing into the string
+        try{
+            image = ImageIO.read(new File(filename));  //Reading the filename and storing it in image
+        }catch(Exception e){ //Generic exception if something goes wrong while reading the image
+            JOptionPane.showMessageDialog(null, "File not found");
+        //Setting the image to the icon and then passing it ot he image JLabel  
+        ImageIcon icon = new ImageIcon(image);
+        lblChildPic.setIcon(icon);
+        }
+    }
     
     
     /**
@@ -383,7 +386,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 860, 660));
-        add(lblChildPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 180, 180));
+        add(lblChildPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 180, 180));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
@@ -485,6 +488,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         txtPulse.setEnabled(true);
         txtBP.setEnabled(true);
         txtRR.setEnabled(true);
+        JOptionPane.showMessageDialog(this, "Vital Signs have been added.");
         btnRequestTest.setEnabled(true);
         btnPrescribeMedication.setEnabled(true);
         

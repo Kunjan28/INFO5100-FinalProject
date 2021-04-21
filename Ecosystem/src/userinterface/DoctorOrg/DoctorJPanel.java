@@ -181,8 +181,8 @@ public class DoctorJPanel extends javax.swing.JPanel {
             return;
         }
         
-        DoctorWorkRequest request = (DoctorWorkRequest)tblDoctor.getValueAt(selectedRow,0);
-        if(request.getStatus().equalsIgnoreCase("Medicine Prescribed")){
+        DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
+        if (request.getStatus().equalsIgnoreCase("Medicine Prescribed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }

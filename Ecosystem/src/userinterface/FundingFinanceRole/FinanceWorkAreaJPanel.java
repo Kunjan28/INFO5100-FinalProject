@@ -151,6 +151,7 @@ int selectedRow = jTable1.getSelectedRow();
         req.setReceiver(account);
         req.setMessage("Send to donors");
         req.setStatus("Approved");
+        JOptionPane.showMessageDialog(this, "Request is processed.");
         populateRequesttable();  
        // populateDonorRequesttable();
 //        FinanceOrphProcessRequest fopr = new FinanceOrphProcessRequest( userProcessContainer,  account,  financeOrphanageOrganization,  enterprise,  business,  directory, req);
@@ -176,6 +177,7 @@ int selectedRow = jTable1.getSelectedRow();
         req.setReceiver(account);
         //req.setTestResult("Pending with  Finance Team");
         req.setStatus("Assigned");
+        JOptionPane.showMessageDialog(this, "Request is assigned.");
         populateRequesttable();
         btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssigToMeActionPerformed

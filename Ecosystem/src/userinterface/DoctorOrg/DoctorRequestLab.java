@@ -133,6 +133,7 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         labRequest.setChildName(request.getChildName());
         
         labRequest.setStatus("Medical Test Requested");
+        JOptionPane.showMessageDialog(this, "Lab Test details added! ");
         
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){

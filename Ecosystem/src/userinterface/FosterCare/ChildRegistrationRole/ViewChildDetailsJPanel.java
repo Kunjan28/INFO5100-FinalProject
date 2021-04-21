@@ -52,6 +52,14 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         jXDatePicker1.setDate(child.getRegistrationDate());
         jTextArea1.setText(child.getIdentificationMark());
         imageTextField.setText(child.getImageDetails());
+        if (child.isIsSpecialChild()==true){
+            yesBtn.setSelected(true);
+        }
+        else noBtn.setSelected(true);
+        
+        yesBtn.setEnabled(false);
+        noBtn.setEnabled(false);
+        
         displayImage();
         disableInput();
         jXDatePicker1.getMonthView().setUpperBound(new Date());
@@ -109,6 +117,9 @@ ImageIcon icon = new ImageIcon(image);
         jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
         jLabel6 = new javax.swing.JLabel();
         cmbAge = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        yesBtn = new javax.swing.JRadioButton();
+        noBtn = new javax.swing.JRadioButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setEnabled(false);
@@ -122,30 +133,30 @@ ImageIcon icon = new ImageIcon(image);
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel2.setText("Name");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 140, 150, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 150, 30));
 
         nameTextField.setEnabled(false);
-        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 140, 210, 30));
+        add(nameTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 90, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel3.setText("Age");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 150, 30));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 150, 150, 30));
 
         buttonGroup1.add(maleRDB);
         maleRDB.setText("Male");
         maleRDB.setEnabled(false);
-        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 80, 30));
+        add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 80, 30));
 
         buttonGroup1.add(femaleRDB);
         femaleRDB.setText("Female");
         femaleRDB.setEnabled(false);
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 250, 80, 30));
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 200, 80, 30));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel4.setText("Gender");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 200, 150, 30));
 
         updateBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         updateBtn.setText("Update");
@@ -154,7 +165,7 @@ ImageIcon icon = new ImageIcon(image);
                 updateBtnActionPerformed(evt);
             }
         });
-        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 570, 133, 33));
+        add(updateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 620, 133, 33));
 
         saveBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         saveBtn.setText("Save");
@@ -164,7 +175,7 @@ ImageIcon icon = new ImageIcon(image);
                 saveBtnActionPerformed(evt);
             }
         });
-        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 570, 133, 33));
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 620, 133, 33));
 
         CancelBtn.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         CancelBtn.setText("Cancel");
@@ -174,7 +185,7 @@ ImageIcon icon = new ImageIcon(image);
                 CancelBtnActionPerformed(evt);
             }
         });
-        add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 570, 133, 33));
+        add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 133, 33));
         add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 180));
 
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
@@ -188,24 +199,24 @@ ImageIcon icon = new ImageIcon(image);
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Identification mark");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 420, 150, 30));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 150, 30));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setEnabled(false);
         jScrollPane1.setViewportView(jTextArea1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 410, 210, 80));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 360, 210, 80));
 
         jLabel11.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel11.setText("Registration Date");
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 150, 30));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 150, 30));
 
         lblPhoto.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblPhoto.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         lblPhoto.setText("Photo");
-        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 150, 33));
+        add(lblPhoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 300, 150, 33));
 
         imageTextField.setEnabled(false);
         imageTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -213,7 +224,7 @@ ImageIcon icon = new ImageIcon(image);
                 imageTextFieldActionPerformed(evt);
             }
         });
-        add(imageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 350, 210, 30));
+        add(imageTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 210, 30));
 
         uploadBtn.setText("Update Photo");
         uploadBtn.setEnabled(false);
@@ -222,16 +233,26 @@ ImageIcon icon = new ImageIcon(image);
                 uploadBtnActionPerformed(evt);
             }
         });
-        add(uploadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 350, 114, 30));
+        add(uploadBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 300, 114, 30));
 
         jXDatePicker1.setEnabled(false);
-        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 300, 210, -1));
+        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 250, 210, -1));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/kids.png"))); // NOI18N
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 430, 970, 290));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 970, 290));
 
         cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
-        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 200, 210, 30));
+        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, 210, 30));
+
+        jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
+        jLabel7.setText("Does child have special needs?");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 220, 30));
+
+        yesBtn.setText("Yes");
+        add(yesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
+
+        noBtn.setText("No");
+        add(noBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -360,15 +381,18 @@ uploadBtn.setEnabled(false);
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JLabel lblPhoto;
     private javax.swing.JRadioButton maleRDB;
     private javax.swing.JTextField nameTextField;
+    private javax.swing.JRadioButton noBtn;
     private javax.swing.JButton saveBtn;
     private javax.swing.JButton updateBtn;
     private javax.swing.JButton uploadBtn;
+    private javax.swing.JRadioButton yesBtn;
     // End of variables declaration//GEN-END:variables
 
  public boolean validation() throws ParseException {

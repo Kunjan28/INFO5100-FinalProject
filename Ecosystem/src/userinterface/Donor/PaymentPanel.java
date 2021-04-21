@@ -180,7 +180,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         txtCVV.setText("");
         txtPostal.setText("");
         txtExp.setText("");
-        }
+        
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -188,6 +188,8 @@ public class PaymentPanel extends javax.swing.JPanel {
         panel.populateChildTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        }
+        
         
        
         
