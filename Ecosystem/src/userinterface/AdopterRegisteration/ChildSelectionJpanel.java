@@ -18,6 +18,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 import Business.WorkQueue.ChildCareWorkRequest;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -153,6 +154,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         } 
         
         adopter.setFlag(false);
+        JOptionPane.showMessageDialog(null, "You have been registered succesfully");
     }//GEN-LAST:event_btnAdoptActionPerformed
     
     public void populateChildTable() {
