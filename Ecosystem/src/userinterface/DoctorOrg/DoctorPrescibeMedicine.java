@@ -139,6 +139,7 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         
         request.setStatus("Medicine Prescribed");
         request.setTestResult("Child Treated and medicines Prescribed");
+        JOptionPane.showMessageDialog(this, "Medicines prescribed! ");
         
         Organization org = null;
         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){

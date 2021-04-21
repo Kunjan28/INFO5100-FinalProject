@@ -177,10 +177,10 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
                 this.userProcessContainer.add("AdoptionCheckProcessRequestJPanel", panel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
-            } else if (!receiverval.equals(account.getUsername())) {
-                JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
-            } else if (!"Pending with Adoption Organization".equals(statusval)) {
-                JOptionPane.showMessageDialog(null, "The selected workrequest assigned to you is already processed");
+//            } else if (!receiverval.equals(account.getUsername())) {
+//                JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
+//            } else if (!"Pending with Adoption Organization".equals(statusval)) {
+//                JOptionPane.showMessageDialog(null, "The selected workrequest assigned to you is already processed");
             }
         }
     }//GEN-LAST:event_btnProcessActionPerformed

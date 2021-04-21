@@ -142,6 +142,7 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
         req.setReceiver(account);
         req.setMessage("Payment processed");
         req.setStatus("Assigned");
+        JOptionPane.showMessageDialog(null,"Request is assigned");
         populateDonorRequesttable();
         processBt1.setEnabled(true);
             }
@@ -163,6 +164,7 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
         else {
         req.setMessage(txtComments.getText());
         req.setStatus("Received");
+        JOptionPane.showMessageDialog(null,"Request is processed");
         if(this.directory!=null && this.directory.getChildList().size()>0){
             for(Child ch:this.directory.getChildList()){
                 if(req.getChildId()==ch.getChildId()){
@@ -172,7 +174,7 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
             }
         }
         String subject = "Payment Receipt";
-        String content = "We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
+        String content = "This is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
         CommonMail.sendEmailMessage(req.getEmailId(), subject, content);
         }
         populateDonorRequesttable();
