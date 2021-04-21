@@ -511,12 +511,12 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
             public void warn() {
                 if (!ValidationHelper.isValidContactNo(txtContact.getText())) {
-                    numValidate.setVisible(false);
-                    numTick.setVisible(true);
-                    contactValid = false;
-                } else {
                     numValidate.setVisible(true);
                     numTick.setVisible(false);
+                    contactValid = false;
+                } else {
+                    numValidate.setVisible(false);
+                    numTick.setVisible(true);
                     contactValid = true;
                 }
             }

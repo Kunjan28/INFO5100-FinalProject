@@ -307,6 +307,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 jXDatePicker1.getEditor().setText("");
                 txtMark.setText("");
                 photoText.setText("");
+                buttonGroup2.clearSelection();
                 JOptionPane.showMessageDialog(null, "Child registered successfully");
             }
         } catch (ParseException ex) {
