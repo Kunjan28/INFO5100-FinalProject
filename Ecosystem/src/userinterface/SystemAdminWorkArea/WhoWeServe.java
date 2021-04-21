@@ -154,26 +154,30 @@ public class WhoWeServe extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel1.setMaximumSize(new java.awt.Dimension(300, 600));
         jPanel1.setMinimumSize(new java.awt.Dimension(300, 600));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(19, 155, 320, 600));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 320, 610));
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel2.setLayout(new java.awt.BorderLayout());
-        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 310, 614));
+        add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 310, 610));
 
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jPanel3.setPreferredSize(new java.awt.Dimension(300, 600));
         jPanel3.setLayout(new java.awt.BorderLayout());
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(377, 158, 310, -1));
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 150, 310, 610));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel1.setText("                                Who We Serve");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(261, 45, 525, 54));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, 525, 54));
     }// </editor-fold>//GEN-END:initComponents
 
 

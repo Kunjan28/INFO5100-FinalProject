@@ -7,6 +7,7 @@ package userinterface.Adoption.FinanceCheck;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
+import Business.Child.Child;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceCheckOrganization;
@@ -47,8 +48,6 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         this.enterprise=enterprise;
         this.business = business;
         this.financeOrganization = (FinanceCheckOrganization)organization;
-//        valueLabel.setText(enterprise.getName());
-//        orgLabel.setText(organization.getName());
         this.adopter = adopter;
         this.financeCCWorkRequest =  financeCCWorkRequest;
         populateWorkRequest();
@@ -207,6 +206,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
         request.setStatus("Approved");
         request.setRemarks(txtRemarks.getText());
+        request.setSender(account);
         request.setUserId(adopter.getUserId());
         request.setFinanceStatus("Approved");
         populateWorkRequest();

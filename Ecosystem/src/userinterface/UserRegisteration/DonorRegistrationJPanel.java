@@ -352,7 +352,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         add(SSNValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 310, 140, -1));
 
         numValidate.setForeground(new java.awt.Color(255, 0, 0));
-        numValidate.setText("Phone format Incorrect");
+        numValidate.setText("Phone format incorrect");
         add(numValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 470, 160, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/sponsor.png"))); // NOI18N
@@ -395,7 +395,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
-                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Adoption) {
+                    if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Funding) {
                         if (enterprise.getWorkQueue() == null) {
                             enterprise.setWorkQueue(new WorkQueue());
                         }
@@ -618,8 +618,8 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                     IncomeTick.setVisible(false);
                     income = false;
                 } else {
-                    IncomeValidate.setVisible(true);
-                    IncomeTick.setVisible(false);
+                    IncomeValidate.setVisible(false);
+                    IncomeTick.setVisible(true);
                     income = true;
                 }
             }

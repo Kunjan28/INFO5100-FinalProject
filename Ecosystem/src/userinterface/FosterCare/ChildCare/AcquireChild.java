@@ -199,9 +199,10 @@ public void populateWorkRequest(){
     DefaultTableModel table = (DefaultTableModel)workTable.getModel();
        table.setRowCount(0);
     for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
-        ChildCareWorkRequest request = (ChildCareWorkRequest) req;
-       if(req instanceof ChildCareWorkRequest && request.isIsAcquiredReq()){
-                      
+       
+       if(req instanceof ChildCareWorkRequest){
+                 ChildCareWorkRequest request = (ChildCareWorkRequest) req;   
+                 if(request.isIsAcquiredReq()){
           Object[] row = new Object[table.getColumnCount()];
           row[0]=req;
           row[1]=req.getSender();
@@ -211,6 +212,7 @@ public void populateWorkRequest(){
           row[5]=req.getStatus();
           
           table.addRow(row);
+                 }
            }
         
     }

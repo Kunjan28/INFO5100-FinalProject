@@ -98,6 +98,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
         tblAdoptionReq = new javax.swing.JScrollPane();
         tblReq = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,6 +139,14 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
             }
         });
         add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 130, -1));
+
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(721, 30, 110, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -147,19 +156,32 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
              JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
-       
+        
         ChildCareAdoptionWorkRequest req = (ChildCareAdoptionWorkRequest) tblReq.getValueAt(selectedRow, 0);
+        if (req.getStatus().equalsIgnoreCase("Approved")) {
+                JOptionPane.showMessageDialog(null, "Request already completed.");
+                return;
+                } else {
         req.setStatus("Approved");
+        populateWorkRequest();
         for(Child ch: directory.getChildList()){
             if(ch.getChildId()==req.getChildId()){
                 ch.setStatus("Adopted by "+req.getUserName());
             }
         }
+        JOptionPane.showMessageDialog(null, "Child Adopted");
+        }
     }//GEN-LAST:event_btnProcessActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        populateWorkRequest();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcess;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane tblAdoptionReq;
     private javax.swing.JTable tblReq;

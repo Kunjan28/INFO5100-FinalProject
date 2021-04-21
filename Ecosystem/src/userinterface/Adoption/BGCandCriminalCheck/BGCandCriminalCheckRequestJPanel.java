@@ -105,7 +105,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblRequest);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, 1030, 170));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 930, 170));
 
         btnAssign.setBackground(new java.awt.Color(255, 255, 255));
         btnAssign.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
@@ -128,7 +128,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 570, 150, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids5.png"))); // NOI18N
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, 1040, 450));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 1040, 450));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed

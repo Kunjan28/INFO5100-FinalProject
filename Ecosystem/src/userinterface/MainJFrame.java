@@ -250,7 +250,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         loginJPanel.add(lblCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1292, 6, 40, 40));
 
-        lblAdopt.setBackground(new java.awt.Color(255, 255, 255));
+        lblAdopt.setBackground(new java.awt.Color(255, 204, 153));
         lblAdopt.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblAdopt.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblAdopt.setText("ADOPT A CHILD");
@@ -262,7 +262,7 @@ public class MainJFrame extends javax.swing.JFrame {
         });
         loginJPanel.add(lblAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 720, 150, 40));
 
-        lblSponsor.setBackground(new java.awt.Color(255, 255, 255));
+        lblSponsor.setBackground(new java.awt.Color(255, 204, 153));
         lblSponsor.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         lblSponsor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSponsor.setText("SPONSOR A CHILD");
@@ -299,6 +299,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblInfo.setBorder(null);
         lblInfo.setForeground(new java.awt.Color(255, 0, 255));
 
+        jTextPane1.setEditable(false);
         jTextPane1.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
         jTextPane1.setText("\"The world may not change if you adopt a child but for that child, their world will change.\" ");
         lblInfo.setViewportView(jTextPane1);
@@ -313,6 +314,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblInfo1.setBorder(null);
         lblInfo1.setForeground(new java.awt.Color(255, 0, 255));
 
+        jTextPane3.setEditable(false);
         jTextPane3.setFont(new java.awt.Font("SansSerif", 3, 16)); // NOI18N
         jTextPane3.setText("\"When you sponsor a child, you're helping to ensure they can grow up healthy, learning and safe – no matter where they were born. Many children around the world aren’t getting the opportunity to reach their full potential. As a sponsor, you can help change that.\"");
         lblInfo1.setViewportView(jTextPane3);
