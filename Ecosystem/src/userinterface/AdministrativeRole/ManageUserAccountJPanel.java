@@ -198,7 +198,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-        String userName = nameJTextField.getText();
+            String userName = nameJTextField.getText();
         String password = passwordJTextField.getText();
          if("".equals(userName)) {
             JOptionPane.showMessageDialog(null, "Please enter username");
