@@ -15,6 +15,7 @@ import Business.Organization.AdoptionOrganization;
 import Business.Organization.BackgroundAndCriminalCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdopterStatusCheckWorkRequest;
 import Business.WorkQueue.AdoptionProcessWorkRequest;
 import Business.WorkQueue.BGVProcessWorkRequest;
@@ -312,7 +313,9 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                     account.getWorkQueue().getWorkRequestList().add(wrk);
                     business.getWorkQueue().getWorkRequestList().add(wrk);
                 }
-
+                String subject = "Background check pocess initiated";
+                String content = "Your background check process has been initiated and has sent to respective team. You can check your status through your credentials \n Thank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "BGC check initialized successfully!");
             } else if (!receiverval.equals(account.getUsername())) {
                 JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
