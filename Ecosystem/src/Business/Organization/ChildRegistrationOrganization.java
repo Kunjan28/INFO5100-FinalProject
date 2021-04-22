@@ -16,7 +16,7 @@ import java.util.ArrayList;
  */
 public class ChildRegistrationOrganization extends Organization {
 
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     String name;
 
     public ChildRegistrationOrganization(String name) {

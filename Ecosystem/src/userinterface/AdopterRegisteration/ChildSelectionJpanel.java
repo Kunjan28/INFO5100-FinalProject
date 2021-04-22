@@ -16,7 +16,6 @@ import Business.Organization.AdopterOrganization;
 import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.Utils.CommonMail;
 import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 import Business.WorkQueue.ChildCareWorkRequest;
 import javax.swing.JOptionPane;
@@ -37,25 +36,25 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdopterOrganization adopterorganization;
     Adopter adopter;
     String bgcstatus,financestatus;
     int uid;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     ChildCareWorkRequest request;
     
-    public ChildSelectionJpanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, int uid, ChildDirectory directory) {
+    public ChildSelectionJpanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, int uid, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
         this.adopterorganization = (AdopterOrganization) organization;
         this.uid = uid;
-        this.directory = directory;
-        for (Adopter a : udirectory.getAdoptersList()) {
+        this.childdirectory = childdirectory;
+        for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
             }
@@ -161,7 +160,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
     public void populateChildTable() {
         DefaultTableModel dtms = (DefaultTableModel) tblChild.getModel();
         dtms.setRowCount(0);
-        for (Child child : directory.getChildList()) {
+        for (Child child : childdirectory.getChildList()) {
             if ("Acquired".equalsIgnoreCase(child.getStatus()) || ("Adopted by " + adopter.getName()).startsWith(child.getStatus())) {
                 Object[] row = new Object[dtms.getColumnCount()];
                 row[0] = child;

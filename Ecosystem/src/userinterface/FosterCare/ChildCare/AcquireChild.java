@@ -37,23 +37,23 @@ public class AcquireChild extends javax.swing.JPanel {
     Organization organization;
     UserAccount account;
     ChildCareOrganization childCareOrganization;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     EcoSystem business;
     AcquireChild panel;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     Adopter adopter;
     Role roler;
     Network network;
       
-    public AcquireChild(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
+    public AcquireChild(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
         this.childCareOrganization = (ChildCareOrganization) organization;
-        this.directory = directory;
-        this.udirectory = udirectory;
+        this.childdirectory = childdirectory;
+        this.adopterdirectory = adopterdirectory;
         this.enterprise = enterprise;
         processBtn.setEnabled(false);
         for (Network net : business.getNetworkList()) {
@@ -153,13 +153,13 @@ public class AcquireChild extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         } else {
-            for (Child ch : directory.getChildList()) {
+            for (Child ch : childdirectory.getChildList()) {
                 if (ch.getChildId() == re.getChildId()) {
                     child = ch;
                 }
             }
         }
-        ProcessAcquireChild pccwr = new ProcessAcquireChild(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
+        ProcessAcquireChild pccwr = new ProcessAcquireChild(userProcessContainer, organization, (ChildCareWorkRequest) re, childdirectory, child, account, business);
         this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);

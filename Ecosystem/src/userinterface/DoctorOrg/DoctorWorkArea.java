@@ -29,10 +29,10 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     Enterprise enterprise;
     Child child;
     private UserAccount userAccount;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     
     
-    public DoctorWorkArea(JPanel userProcessContainer, UserAccount account, DoctorOrganization doctororganization, Enterprise enterprise ,EcoSystem ecosystem, ChildDirectory directory) {
+    public DoctorWorkArea(JPanel userProcessContainer, UserAccount account, DoctorOrganization doctororganization, Enterprise enterprise ,EcoSystem ecosystem, ChildDirectory childdirectory) {
         initComponents();
         System.out.println("here");
         this.userProcessContainer=userProcessContainer;   
@@ -41,14 +41,14 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         this.ecosystem=ecosystem;
         this.doctororganization = (DoctorOrganization)doctororganization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.userAccount = account;
         valueLabel.setText(doctororganization.getName());
         manageDoctorWorkAreaJPanel();
     }
     
     private void manageDoctorWorkAreaJPanel(){
-        DoctorJPanel panel = new DoctorJPanel(rightSystemAdminPanel, userAccount, doctororganization, enterprise, ecosystem, directory);
+        DoctorJPanel panel = new DoctorJPanel(rightSystemAdminPanel, userAccount, doctororganization, enterprise, ecosystem, childdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

@@ -29,23 +29,23 @@ public class AdopterWorkArea extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdopterOrganization adopterorganization;
     Adopter adopter;
     String bgcstatus,financestatus;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     
     
-    public AdopterWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory) {
+    public AdopterWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
         this.adopterorganization = (AdopterOrganization) organization;
-        this.directory = directory;
-        for (Adopter a : udirectory.getAdoptersList()) {
+        this.childdirectory = childdirectory;
+        for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
             }
@@ -58,7 +58,7 @@ public class AdopterWorkArea extends javax.swing.JPanel {
    
     
     private void goToCheckStatusJPanel() {
-        CheckStatusJPanel panel = new CheckStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, udirectory, adopter.getUserId(), directory);
+        CheckStatusJPanel panel = new CheckStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, adopterdirectory, adopter.getUserId(), childdirectory);
         rightSystemAdminPanel.add("CheckStatusJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

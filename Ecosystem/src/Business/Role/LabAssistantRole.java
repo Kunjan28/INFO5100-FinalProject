@@ -22,7 +22,7 @@ import userinterface.labOrganisation.LabWorkArea;
 public class LabAssistantRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory, DonorDirectory donorDirectory) {
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
         return new LabWorkArea(userProcessContainer, account, organization, business);
     }
     

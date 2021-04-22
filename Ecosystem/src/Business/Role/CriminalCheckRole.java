@@ -23,11 +23,11 @@ import userinterface.Adoption.BGCandCriminalCheck.BGCandCriminalWorkArea;
  */
 public class CriminalCheckRole extends Role {
 
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
-        return new BGCandCriminalWorkArea(userProcessContainer,account, organization, enterprise,  business,  udirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
+        return new BGCandCriminalWorkArea(userProcessContainer,account, organization, enterprise,  business,  adopterdirectory);
     }
     @Override
     public String toString(){

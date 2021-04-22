@@ -33,14 +33,14 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
     
-    public AdoptionRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public AdoptionRequestJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -163,7 +163,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         WorkRequest req = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
         Object receiverval = tblAdoptersRequest.getValueAt(selectedRow, 2);
         Object statusval = tblAdoptersRequest.getValueAt(selectedRow, 4);
-        for (Adopter a : udirectory.getAdoptersList()) {
+        for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUserId() == req.getUserId()) {
                 adopter = a;
             }
@@ -172,7 +172,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
         } else {
             if (receiverval.equals(account.getUsername()) && "Pending with Adoption Organization".equals(statusval)) {
-                AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer, account, adoptionOrganization, enterprise, business, udirectory, (AdoptionProcessWorkRequest) req, adopter);
+                AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer, account, adoptionOrganization, enterprise, business, adopterdirectory, (AdoptionProcessWorkRequest) req, adopter);
                 this.userProcessContainer.add("AdoptionCheckProcessRequestJPanel", panel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);

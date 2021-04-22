@@ -34,16 +34,16 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     FinanceCheckOrganization financeOrganization;
     Adopter adopter;
     FinanceCheckProcessWorkRequest financeCCWorkRequest;
     
-    public FinanceCheckProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, FinanceCheckProcessWorkRequest financeCCWorkRequest, Adopter adopter) {
+    public FinanceCheckProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, FinanceCheckProcessWorkRequest financeCCWorkRequest, Adopter adopter) {
         initComponents();
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;

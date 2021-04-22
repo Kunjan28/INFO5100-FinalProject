@@ -28,15 +28,15 @@ public class AdoptionMainWorkArea extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
     
     
-    public AdoptionMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public AdoptionMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
@@ -46,7 +46,7 @@ public class AdoptionMainWorkArea extends javax.swing.JPanel {
     }
 
     private void adoptionRequest() {
-        AdoptionRequestJPanel panel = new AdoptionRequestJPanel(rightSystemAdminPanel, account, adoptionOrganization, enterprise, business, udirectory);
+        AdoptionRequestJPanel panel = new AdoptionRequestJPanel(rightSystemAdminPanel, account, adoptionOrganization, enterprise, business, adopterdirectory);
         rightSystemAdminPanel.add("AdoptionRequestJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

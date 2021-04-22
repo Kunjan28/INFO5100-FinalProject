@@ -41,10 +41,10 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
     ChildCareOrganization organization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Network network;
 	
-    ViewCompleteChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child) {
+    ViewCompleteChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.child = child;
@@ -52,7 +52,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         this.organization = (ChildCareOrganization) organization;
         this.enterprise = enterprise;
         this.business = business;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -281,7 +281,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void requestMedicalHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedicalHelpBtnActionPerformed
-        RequestMedicalHelp panel = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, directory, child);
+        RequestMedicalHelp panel = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
         this.userProcessContainer.add("RequestMedicalHelp", panel);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -289,7 +289,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
 
     private void btnRequestFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestFundsActionPerformed
         String data = "";
-        RequestFinanceHelp panel = new RequestFinanceHelp(userProcessContainer, account, organization, enterprise, business, directory, child, data);
+        RequestFinanceHelp panel = new RequestFinanceHelp(userProcessContainer, account, organization, enterprise, business, childdirectory, child, data);
         this.userProcessContainer.add("RequestFinanceHelp", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

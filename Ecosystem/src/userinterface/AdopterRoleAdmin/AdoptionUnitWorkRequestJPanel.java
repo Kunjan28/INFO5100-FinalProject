@@ -38,15 +38,15 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Network network;
     private OrganizationDirectory organizationDirectory;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
 
-    public AdoptionUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory udirectory) {
+    public AdoptionUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.enterprise = enterprise;
         this.business = system.getInstance();
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
         populateTable();
     }
@@ -198,8 +198,8 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
                 UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new AdopterRole());
                 Adopter adopter = new Adopter();
-                int uid = udirectory.getAdoptersList().size() + 1;
-                adopter = this.udirectory.addAdopter();
+                int uid = adopterdirectory.getAdoptersList().size() + 1;
+                adopter = this.adopterdirectory.addAdopter();
                 adopter.setAge(Integer.parseInt(request.getAge()));
                 adopter.setAnnualIncome(Long.parseLong(request.getAnnualIncome()));
                 adopter.setEmailId(request.getUserEmailId());

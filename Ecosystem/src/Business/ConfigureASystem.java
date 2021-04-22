@@ -1,8 +1,7 @@
 package Business;
 
 
-import Business.Adopter.AdopterDirectory;
-import Business.Child.ChildDirectory;
+
 import Business.Employee.Employee;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
@@ -29,17 +28,6 @@ public class ConfigureASystem {
         UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
         
         return system;
-    }
-    
-        public static ChildDirectory configureDirectory(){
-        ChildDirectory directory = ChildDirectory.getInstance();
-        return directory;
-    }
-    
-    
-    public static AdopterDirectory configureUserDirectory(){
-        AdopterDirectory directory = AdopterDirectory.getInstance();
-        return directory;
     }
     
 }

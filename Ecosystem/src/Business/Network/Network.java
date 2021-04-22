@@ -5,8 +5,7 @@
  */
 package Business.Network;
 
-import Business.Adopter.AdopterDirectory;
-import Business.Child.ChildDirectory;
+
 import Business.Enterprise.EnterpriseDirectory;
 
 /**

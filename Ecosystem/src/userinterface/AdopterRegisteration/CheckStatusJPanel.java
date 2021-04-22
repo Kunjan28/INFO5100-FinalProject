@@ -34,24 +34,24 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdopterOrganization adopterorganization;
     Adopter adopter;
     String bgcstatus,financestatus;
     int uid;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     
-    public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, int uid, ChildDirectory directory) {
+    public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, int uid, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
         this.adopterorganization = (AdopterOrganization) organization;
         this.uid = uid;
-        this.directory = directory;
-        for (Adopter a : udirectory.getAdoptersList()) {
+        this.childdirectory = childdirectory;
+        for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
             }
@@ -142,7 +142,7 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
         if (tblReq.getRowCount() < 1) {
             JOptionPane.showMessageDialog(null, "Adoption request is still in process with the Investigation team");
         } else if ("Approved".equals(bgcstatus) && "Approved".equals((financestatus))) {
-            ChildSelectionJpanel csjp = new ChildSelectionJpanel(userProcessContainer, account, adopterorganization, enterprise, business, udirectory, uid, directory);
+            ChildSelectionJpanel csjp = new ChildSelectionJpanel(userProcessContainer, account, adopterorganization, enterprise, business, adopterdirectory, uid, childdirectory);
             this.userProcessContainer.add("ChildSelectionJPanel", csjp);
             CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
             layout.next(userProcessContainer);

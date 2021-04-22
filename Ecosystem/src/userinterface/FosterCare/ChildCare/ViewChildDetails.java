@@ -37,23 +37,23 @@ public class ViewChildDetails extends javax.swing.JPanel {
     Organization organization;
     UserAccount account;
     ChildCareOrganization childCareOrganization;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     EcoSystem business;
     AcquireChild panel;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     Adopter adopter;
     Role roler;
     Network network;
     
-    public ViewChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
+    public ViewChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
         this.childCareOrganization = (ChildCareOrganization) organization;
-        this.directory = directory;
-        this.udirectory = udirectory;
+        this.childdirectory = childdirectory;
+        this.adopterdirectory = adopterdirectory;
         this.enterprise = enterprise;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -68,7 +68,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
     public void populateChildTable() {
         DefaultTableModel table = (DefaultTableModel) tblChild.getModel();
         table.setRowCount(0);
-        for (Child ch : directory.getChildList()) {
+        for (Child ch : childdirectory.getChildList()) {
             if (ch.getStatus().equalsIgnoreCase("Acquired") || ch.getStatus().startsWith("Adopted by")) {
                 Object[] row = new Object[table.getColumnCount()];
                 row[0] = ch;
@@ -142,7 +142,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
             return;
         }
         Child child = (Child) tblChild.getValueAt(selectedRow, 0);
-        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
+        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", completeJapanel);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);

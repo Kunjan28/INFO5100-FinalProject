@@ -32,17 +32,17 @@ public class FinanceWorkAreaJPanel extends javax.swing.JPanel {
     FinanceOrganization financeOrphanageOrganization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     int countApprove=0, countDeny=0, countPending=0; 
     
    
-public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.financeOrphanageOrganization = (FinanceOrganization) organization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.business = business;
         btnProcess.setEnabled(false);
         populateRequesttable();
@@ -127,8 +127,8 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
             JOptionPane.showMessageDialog(null, "Request already processed.");
             return;
         }
-        if (this.directory != null && this.directory.getChildList().size() > 0) {
-            for (Child ch : this.directory.getChildList()) {
+        if (this.childdirectory != null && this.childdirectory.getChildList().size() > 0) {
+            for (Child ch : this.childdirectory.getChildList()) {
                 if (req.getChildId() == ch.getChildId()) {
                     ch.setFinancialHelp(true);
                     ch.setAmt(req.getAmt());

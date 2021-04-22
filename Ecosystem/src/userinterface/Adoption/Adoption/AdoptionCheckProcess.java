@@ -37,16 +37,16 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
     AdoptionProcessWorkRequest adoptionWorkRequest;
     
-    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, AdoptionProcessWorkRequest adoptionWorkRequest, Adopter adopter) {
+    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, AdoptionProcessWorkRequest adoptionWorkRequest, Adopter adopter) {
         initComponents();
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
