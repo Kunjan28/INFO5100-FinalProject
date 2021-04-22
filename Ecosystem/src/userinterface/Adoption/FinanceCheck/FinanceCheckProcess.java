@@ -13,8 +13,8 @@ import Business.Organization.FinanceCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
-import Business.WorkQueue.AdopterWorkRequest;
-import Business.WorkQueue.FinanceAdoptionWorkRequest;
+import Business.WorkQueue.AdopterStatusCheckWorkRequest;
+import Business.WorkQueue.FinanceCheckProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -34,16 +34,16 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     FinanceCheckOrganization financeOrganization;
     Adopter adopter;
-    FinanceAdoptionWorkRequest financeCCWorkRequest;
+    FinanceCheckProcessWorkRequest financeCCWorkRequest;
     
-    public FinanceCheckProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, FinanceAdoptionWorkRequest financeCCWorkRequest, Adopter adopter) {
+    public FinanceCheckProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, FinanceCheckProcessWorkRequest financeCCWorkRequest, Adopter adopter) {
         initComponents();
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -202,7 +202,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request already processed");
         } else {
             if (receiverval.equals(account.getUsername())) {
-                FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+                FinanceCheckProcessWorkRequest request = (FinanceCheckProcessWorkRequest) tblRequest.getValueAt(selectedRow, 0);
 
                 request.setStatus("Approved");
                 request.setRemarks(txtRemarks.getText());
@@ -213,10 +213,10 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
                 for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
                     if (req.getUserId() == adopter.getUserId()) {
-                        if (req instanceof AdopterWorkRequest) {
+                        if (req instanceof AdopterStatusCheckWorkRequest) {
 
-                            ((AdopterWorkRequest) req).setFinanceStatus("Approved");
-                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                            ((AdopterStatusCheckWorkRequest) req).setFinanceStatus("Approved");
+                            ((AdopterStatusCheckWorkRequest) req).setBgcStatus("Approved");
                         }
                     }
                 }
@@ -247,7 +247,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
             if (receiverval.equals(account.getUsername())) {
 
-                FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+                FinanceCheckProcessWorkRequest request = (FinanceCheckProcessWorkRequest) tblRequest.getValueAt(selectedRow, 0);
 
                 request.setStatus("Denied");
                 request.setRemarks(txtRemarks.getText());
@@ -257,9 +257,9 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
 
                 for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
                     if (req.getUserId() == adopter.getUserId()) {
-                        if (req instanceof AdopterWorkRequest) {
-                            ((AdopterWorkRequest) req).setFinanceStatus("Denied");
-                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                        if (req instanceof AdopterStatusCheckWorkRequest) {
+                            ((AdopterStatusCheckWorkRequest) req).setFinanceStatus("Denied");
+                            ((AdopterStatusCheckWorkRequest) req).setBgcStatus("Approved");
                         }
                     }
                 }
@@ -280,7 +280,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
         for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
-            if (request instanceof FinanceAdoptionWorkRequest) {
+            if (request instanceof FinanceCheckProcessWorkRequest) {
                 if (request.getUserId() == financeCCWorkRequest.getUserId()) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = request;

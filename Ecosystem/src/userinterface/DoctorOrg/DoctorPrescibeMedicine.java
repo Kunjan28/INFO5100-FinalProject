@@ -13,7 +13,7 @@ import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.PharmacistWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -34,12 +34,12 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
     private UserAccount userAccount;
     private ChildDirectory childdirectory;
     private Child child;
-    private  DoctorWorkRequest request;
+    private  MedicalHelpWorkRequest request;
     private  EcoSystem business;
     Network network;
     
     
-    public DoctorPrescibeMedicine(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory childdirectory, DoctorWorkRequest request, EcoSystem business) {
+    public DoctorPrescibeMedicine(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory childdirectory, MedicalHelpWorkRequest request, EcoSystem business) {
         initComponents();
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -132,7 +132,7 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
             pharrequest.setChildId(request.getChildId());
             pharrequest.setChildName(request.getChildName());
             pharrequest.setStatus("Prescription Sent");
-            pharrequest.setMedicinePrescribed(prescription);
+            pharrequest.setPrescription(prescription);
             request.setStatus("Medicine Prescribed");
             request.setTestResult("Child Treated and medicines Prescribed");
             JOptionPane.showMessageDialog(this, "Medicines prescribed! ");

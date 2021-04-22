@@ -33,17 +33,17 @@ public class PaymentPanel extends javax.swing.JPanel {
     EcoSystem business;
     DonorOrganization donororganization;
     Donor donor;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child ch;
   
-    public PaymentPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ChildDirectory directory,Child ch,Donor donor) { 
+    public PaymentPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business,ChildDirectory childdirectory,Child ch,Donor donor) { 
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
         this.donororganization =(DonorOrganization) organization;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.donor = donor;
         this.ch = ch;
     }

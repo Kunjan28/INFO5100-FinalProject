@@ -13,7 +13,7 @@ import Business.Network.Network;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -31,16 +31,16 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     Network network;
     
-    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.doctororganization = (DoctorOrganization) organization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.userAccount = account;
         this.business = business;
         for (Network net : business.getNetworkList()) {
@@ -60,7 +60,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         model.setRowCount(0);
         for (WorkRequest request : doctororganization.getWorkQueue().getWorkRequestList()) {
             business.getWorkQueue().getWorkRequestList();
-            if (request instanceof DoctorWorkRequest) {
+            if (request instanceof MedicalHelpWorkRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = request;
                 row[1] = request.getChildId();
@@ -68,7 +68,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
                 row[3] = request.getStatus();
                 row[4] = request.getSender().getEmployee().getName();
                 row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-                String result = ((DoctorWorkRequest) request).getTestResult();
+                String result = ((MedicalHelpWorkRequest) request).getTestResult();
                 row[6] = result == null ? "Waiting" : result;
                 model.addRow(row);
             }
@@ -151,7 +151,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a child from table");
             return;
         }
-        DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
+        MedicalHelpWorkRequest request = (MedicalHelpWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
         if (request.getReceiver() != null) {
             JOptionPane.showMessageDialog(null, "Request already assigned.");
             return;
@@ -176,18 +176,18 @@ public class DoctorJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
             return;
         }
-        DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
+        MedicalHelpWorkRequest request = (MedicalHelpWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
         if (request.getStatus().equalsIgnoreCase("Medicine Prescribed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
         request.setTestResult("Under Examination");
-        for (Child c : directory.getChildList()) {
+        for (Child c : childdirectory.getChildList()) {
             if (c.getChildId() == request.getChildId()) {
                 child = c;
             }
         }
-        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer, request, child, userAccount, doctororganization, enterprise, business, directory);
+        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer, request, child, userAccount, doctororganization, enterprise, business, childdirectory);
         userProcessContainer.add("AssignedChildJPanel", assignedChildJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

@@ -13,8 +13,8 @@ import Business.Network.Network;
 import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
-import Business.WorkQueue.LabWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
+import Business.WorkQueue.LabProcessWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -31,12 +31,12 @@ public class DoctorRequestLab extends javax.swing.JPanel {
     private UserAccount userAccount;
     private ChildDirectory childdirectory;
     private Child child;
-    private  DoctorWorkRequest request;
+    private  MedicalHelpWorkRequest request;
     private  EcoSystem business;
     Network network;
     
     
-    public DoctorRequestLab(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory childdirectory, DoctorWorkRequest request, EcoSystem business) {
+    public DoctorRequestLab(JPanel userProcessContainer, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory childdirectory, MedicalHelpWorkRequest request, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
@@ -122,7 +122,7 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         if (message.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter test name");
         } else {
-            LabWorkRequest labRequest = new LabWorkRequest();
+            LabProcessWorkRequest labRequest = new LabProcessWorkRequest();
             labRequest.setMessage(message);
             labRequest.setSender(userAccount);
             labRequest.setStatus("Sent");

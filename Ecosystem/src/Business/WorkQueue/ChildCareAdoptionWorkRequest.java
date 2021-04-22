@@ -10,15 +10,16 @@ package Business.WorkQueue;
  * @author 12013
  */
 public class ChildCareAdoptionWorkRequest extends WorkRequest {
-   private String userName;
-   private String emailId;
 
-    public String getUserName() {
-        return userName;
+    private String adopterName;
+    private String emailId;
+
+    public String getAdopterName() {
+        return adopterName;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAdopterName(String adopterName) {
+        this.adopterName = adopterName;
     }
 
     public String getEmailId() {
@@ -28,7 +29,5 @@ public class ChildCareAdoptionWorkRequest extends WorkRequest {
     public void setEmailId(String emailId) {
         this.emailId = emailId;
     }
-    
-    
-   
+
 }

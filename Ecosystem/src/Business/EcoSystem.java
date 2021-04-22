@@ -24,8 +24,8 @@ public class EcoSystem extends Organization{
     
     private static EcoSystem business;
     private ArrayList<Network> networkList;
-    private ChildDirectory directory;
-    private AdopterDirectory udirectory;
+    private ChildDirectory childdirectory;
+    private AdopterDirectory adopterdirectory;
     private DonorDirectory donorDirectory;
     public static EcoSystem getInstance(){
         if(business==null){
@@ -48,8 +48,8 @@ public class EcoSystem extends Organization{
     private EcoSystem(){
         super(null);
         networkList=new ArrayList<Network>();
-        directory = new ChildDirectory();
-        udirectory = new AdopterDirectory();
+        childdirectory = new ChildDirectory();
+        adopterdirectory = new AdopterDirectory();
         donorDirectory = new DonorDirectory();
       
     }
@@ -100,20 +100,20 @@ public class EcoSystem extends Organization{
         business = system;
     }
     
-        public ChildDirectory getDirectory() {
-        return directory;
+        public ChildDirectory getChilddirectory() {
+        return childdirectory;
     }
 
-    public void setDirectory(ChildDirectory directory) {
-        this.directory = directory;
+    public void setChilddirectory(ChildDirectory childdirectory) {
+        this.childdirectory = childdirectory;
     }
 
-    public AdopterDirectory getUdirectory() {
-        return udirectory;
+    public AdopterDirectory getAdopterdirectory() {
+        return adopterdirectory;
     }
 
-    public void setUdirectory(AdopterDirectory udirectory) {
-        this.udirectory = udirectory;
+    public void setAdopterdirectory(AdopterDirectory adopterdirectory) {
+        this.adopterdirectory = adopterdirectory;
     }
     
     public DonorDirectory getDonorDirectory() {

@@ -32,17 +32,17 @@ public class SponsorRequestTable extends javax.swing.JPanel {
     EcoSystem business;
     DonorOrganization donororganization;
     Donor donor;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     DonorDirectory donorDirectory;
   
-    public SponsorRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
+    public SponsorRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, ChildDirectory childdirectory, DonorDirectory donorDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
         this.donororganization = (DonorOrganization) organization;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.donorDirectory = donorDirectory;
         for (Donor a : donorDirectory.getDonorsList()) {
             if (a.getUsername().equals(account.getUsername())) {
@@ -114,7 +114,7 @@ public class SponsorRequestTable extends javax.swing.JPanel {
             return;
         }
         Child ch = (Child) childTable.getValueAt(selectedRow, 0);
-        PaymentPanel paymentJpanel = new PaymentPanel(userProcessContainer, account, donororganization, enterprise, business, directory, ch, donor);
+        PaymentPanel paymentJpanel = new PaymentPanel(userProcessContainer, account, donororganization, enterprise, business, childdirectory, ch, donor);
         this.userProcessContainer.add("PaymentPanel", paymentJpanel);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -123,7 +123,7 @@ public class SponsorRequestTable extends javax.swing.JPanel {
     public void populateChildTable() {
         DefaultTableModel dtms = (DefaultTableModel) childTable.getModel();
         dtms.setRowCount(0);
-        for (Child child : directory.getChildList()) {
+        for (Child child : childdirectory.getChildList()) {
             if (child.isFinancialHelp()) {
                 Object[] row = new Object[dtms.getColumnCount()];
                 row[0] = child;

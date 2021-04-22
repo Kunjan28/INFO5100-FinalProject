@@ -14,7 +14,7 @@ import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Utils.ValidationHelper;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -43,15 +43,15 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     ChildRegistrationOrganization organization;
     Network network;
     Random rand;
 
-    public RegisterNewChildJPanel(JPanel userProcessContainer, ChildDirectory directory, UserAccount account, Enterprise enterprise, EcoSystem business, Organization organization) {
+    public RegisterNewChildJPanel(JPanel userProcessContainer, ChildDirectory childdirectory, UserAccount account, Enterprise enterprise, EcoSystem business, Organization organization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
@@ -226,7 +226,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 String identificationMark = txtMark.getText();
                 Child child = new Child();
                 int childId = rand.nextInt(100);
-                child = directory.addChild();
+                child = childdirectory.addChild();
                 child.setChildAge(childAge);
                 child.setChildId(childId);
                 child.setName(childName);
@@ -241,7 +241,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                     child.setIsSpecialChild(false);
                 }
                 child.setMedicalStatus((child.getMedicalStatus() == null ? "" : child.getMedicalStatus()) + "Sent to Doctor");
-                DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
+                MedicalHelpWorkRequest docwrkreq = new MedicalHelpWorkRequest();
                 docwrkreq.setStatus("Sent to Doctor");
                 docwrkreq.setMessage("Please medically examine the newly registered child");
                 docwrkreq.setSender(account);

@@ -36,8 +36,8 @@ public class MainJFrame extends javax.swing.JFrame {
     Enterprise inEnterprise;
     Organization inOrganization;
     Network networkEmergency;
-    private ChildDirectory directory;
-    private AdopterDirectory udirectory;
+    private ChildDirectory childdirectory;
+    private AdopterDirectory adopterdirectory;
     private DonorDirectory donorDirectory;
     
 
@@ -51,8 +51,8 @@ public class MainJFrame extends javax.swing.JFrame {
         UpperPanel.setVisible(false);
         this.setSize(1250, 800);
         getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-        udirectory = system.getUdirectory();
-        directory = system.getDirectory();
+        adopterdirectory = system.getAdopterdirectory();
+        childdirectory = system.getChilddirectory();
         donorDirectory = system.getDonorDirectory();
 
     }
@@ -399,7 +399,7 @@ public class MainJFrame extends javax.swing.JFrame {
             lblPasswrd.setText("");
             if (userAccount != null && userAccount.getRole() != null) {
             
-            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system, directory, udirectory,donorDirectory));
+            container.add("workArea",userAccount.getRole().createWorkArea(container, userAccount, inOrganization, inEnterprise, system, childdirectory, adopterdirectory,donorDirectory));
             
             CardLayout layout = (CardLayout) container.getLayout();
             layout.next(container);

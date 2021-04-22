@@ -15,9 +15,9 @@ import Business.Organization.FinanceCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
-import Business.WorkQueue.AdopterWorkRequest;
-import Business.WorkQueue.BGCWorkRequest;
-import Business.WorkQueue.FinanceAdoptionWorkRequest;
+import Business.WorkQueue.AdopterStatusCheckWorkRequest;
+import Business.WorkQueue.BGVProcessWorkRequest;
+import Business.WorkQueue.FinanceCheckProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -36,15 +36,15 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     BackgroundAndCriminalCheckOrganization bgcOrganization;
     Adopter adopter;
-    BGCWorkRequest bgcWorkRequest;
+    BGVProcessWorkRequest bgcWorkRequest;
     
-    public BGCandCriminalProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, BGCWorkRequest bgcWorkRequest, Adopter adopter) {
+    public BGCandCriminalProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, BGVProcessWorkRequest bgcWorkRequest, Adopter adopter) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -221,13 +221,13 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
 
             if (receiverval.equals(account.getUsername())) {
 
-                BGCWorkRequest request = (BGCWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+                BGVProcessWorkRequest request = (BGVProcessWorkRequest) tblRequest.getValueAt(selectedRow, 0);
                 request.setStatus("Approved");
-                request.setRemarks(txtRemarks.getText());
+                request.setComment(txtRemarks.getText());
                 request.setUserId(adopter.getUserId());
                 request.setBgcStatus("Approved");
                 populateWorkRequest();
-                FinanceAdoptionWorkRequest fcwreq = new FinanceAdoptionWorkRequest();
+                FinanceCheckProcessWorkRequest fcwreq = new FinanceCheckProcessWorkRequest();
                 fcwreq.setMessage("Please initiate Finance check");
                 fcwreq.setStatus("Pending with Finance organization");
                 fcwreq.setSender(account);
@@ -254,10 +254,10 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
 
                 for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
                     if (req.getUserId() == adopter.getUserId()) {
-                        if (req instanceof AdopterWorkRequest) {
-                            ((AdopterWorkRequest) req).setFinanceStatus("Pending");
-                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
-                            ((AdopterWorkRequest) req).setMessage("Finance check initialized");
+                        if (req instanceof AdopterStatusCheckWorkRequest) {
+                            ((AdopterStatusCheckWorkRequest) req).setFinanceStatus("Pending");
+                            ((AdopterStatusCheckWorkRequest) req).setBgcStatus("Approved");
+                            ((AdopterStatusCheckWorkRequest) req).setMessage("Finance check initialized");
                         }
                     }
                 }
@@ -287,10 +287,10 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         } else {
             if (receiverval.equals(account.getUsername())) {
 
-                BGCWorkRequest request = (BGCWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+                BGVProcessWorkRequest request = (BGVProcessWorkRequest) tblRequest.getValueAt(selectedRow, 0);
 
                 request.setStatus("Denied");
-                request.setRemarks(txtRemarks.getText());
+                request.setComment(txtRemarks.getText());
                 request.setSender(account);
                 request.setUserId(adopter.getUserId());
                 request.setBgcStatus("Denied");
@@ -298,11 +298,11 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
 
                 for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
                     if (req.getUserId() == adopter.getUserId()) {
-                        if (req instanceof AdopterWorkRequest) {
-                            if (((AdopterWorkRequest) req).getFinanceStatus().equals("Pending")) {
-                                ((AdopterWorkRequest) req).setFinanceStatus("Cancelled");
-                                ((AdopterWorkRequest) req).setBgcStatus("Denied");
-                                ((AdopterWorkRequest) req).setMessage("BGC Failed.Request cancelled");
+                        if (req instanceof AdopterStatusCheckWorkRequest) {
+                            if (((AdopterStatusCheckWorkRequest) req).getFinanceStatus().equals("Pending")) {
+                                ((AdopterStatusCheckWorkRequest) req).setFinanceStatus("Cancelled");
+                                ((AdopterStatusCheckWorkRequest) req).setBgcStatus("Denied");
+                                ((AdopterStatusCheckWorkRequest) req).setMessage("BGC Failed.Request cancelled");
 
                             }
                         }
@@ -323,7 +323,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
         for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()) {
-            if (request instanceof BGCWorkRequest) {
+            if (request instanceof BGVProcessWorkRequest) {
                 if (request.getUserId() == bgcWorkRequest.getUserId()) {
                     Object[] row = new Object[dtm.getColumnCount()];
                     row[0] = request;

@@ -13,7 +13,7 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.ChildCareWorkRequest;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -34,12 +34,12 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     JPanel userProcessContainer;
     ChildCareWorkRequest request;
     Child child;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     ChildCareOrganization childCareOrganization;
     UserAccount account;
     EcoSystem business;
 
-    public ProcessAcquireChild(JPanel userProcessContainer, Organization organization, ChildCareWorkRequest request, ChildDirectory directory, Child child, UserAccount account, EcoSystem business) {
+    public ProcessAcquireChild(JPanel userProcessContainer, Organization organization, ChildCareWorkRequest request, ChildDirectory childdirectory, Child child, UserAccount account, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.childCareOrganization = (ChildCareOrganization) organization;
@@ -115,11 +115,11 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
 
         for (WorkRequest req : account.getWorkQueue().getWorkRequestList()) {
             if (request.getSender().getRole().equals(Role.RoleType.Pharmacist.getValue())) {
-                if (req instanceof DoctorWorkRequest) {
+                if (req instanceof MedicalHelpWorkRequest) {
                     if (req.getChildId() == child.getChildId()) {
-                        String result = ((DoctorWorkRequest) req).getTestResult();
-                        if (((DoctorWorkRequest) req).getTestResult().equalsIgnoreCase("Under Examination")) {
-                            ((DoctorWorkRequest) req).setTestResult("test and medicine comepleted");
+                        String result = ((MedicalHelpWorkRequest) req).getTestResult();
+                        if (((MedicalHelpWorkRequest) req).getTestResult().equalsIgnoreCase("Under Examination")) {
+                            ((MedicalHelpWorkRequest) req).setTestResult("test and medicine comepleted");
                         }
                     }
                 }

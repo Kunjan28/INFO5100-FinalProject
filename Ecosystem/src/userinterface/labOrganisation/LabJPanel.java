@@ -9,7 +9,7 @@ import Business.EcoSystem;
 import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabWorkRequest;
+import Business.WorkQueue.LabProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -159,7 +159,7 @@ public class LabJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select child from table");
             return;
         }
-        LabWorkRequest request = (LabWorkRequest) tblLab.getValueAt(selectedRow, 5);
+        LabProcessWorkRequest request = (LabProcessWorkRequest) tblLab.getValueAt(selectedRow, 5);
         //if (request.getStatus().equalsIgnoreCase("Completed")) {
         if ("Completed".equalsIgnoreCase(request.getStatus())) {
             JOptionPane.showMessageDialog(null, "Request already completed.");

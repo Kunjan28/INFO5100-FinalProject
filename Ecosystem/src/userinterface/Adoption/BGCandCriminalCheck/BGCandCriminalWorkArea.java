@@ -28,15 +28,15 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     BackgroundAndCriminalCheckOrganization bgcOrganization;
     Adopter adopter;
     
     
-    public BGCandCriminalWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public BGCandCriminalWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -47,7 +47,7 @@ public class BGCandCriminalWorkArea extends javax.swing.JPanel {
     }
     
     private void BGCandCriminalRequestJPanel(){
-        BGCandCriminalCheckRequestJPanel panel = new BGCandCriminalCheckRequestJPanel(rightSystemAdminPanel, account, bgcOrganization, enterprise, business, udirectory);
+        BGCandCriminalCheckRequestJPanel panel = new BGCandCriminalCheckRequestJPanel(rightSystemAdminPanel, account, bgcOrganization, enterprise, business, adopterdirectory);
         rightSystemAdminPanel.add("BGCandCriminalCheckRequestTable",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

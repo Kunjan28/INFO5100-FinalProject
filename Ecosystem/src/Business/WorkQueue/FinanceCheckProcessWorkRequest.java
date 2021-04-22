@@ -9,16 +9,26 @@ package Business.WorkQueue;
  *
  * @author snehaswaroop
  */
-public class AdopterWorkRequest extends WorkRequest {
-     private String bgcStatus;
-     private String financeStatus;
+public class FinanceCheckProcessWorkRequest extends WorkRequest {
 
-    public String getBgcStatus() {
-        return bgcStatus;
+    private String result;
+    private String financeStatus;
+    private String remarks;
+
+    public String getResult() {
+        return result;
     }
 
-    public void setBgcStatus(String bgcStatus) {
-        this.bgcStatus = bgcStatus;
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public String getRemarks() {
+        return remarks;
+    }
+
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
     }
 
     public String getFinanceStatus() {
@@ -28,5 +38,5 @@ public class AdopterWorkRequest extends WorkRequest {
     public void setFinanceStatus(String financeStatus) {
         this.financeStatus = financeStatus;
     }
-    
+
 }

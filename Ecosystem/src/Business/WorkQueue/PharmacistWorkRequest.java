@@ -11,23 +11,23 @@ package Business.WorkQueue;
  */
 public class PharmacistWorkRequest extends WorkRequest {
     
-    private String testResult;
-    private String medicinePrescribed;
+    private String result;
+    private String prescription;
 
-    public String getMedicinePrescribed() {
-        return medicinePrescribed;
+    public String getPrescription() {
+        return prescription;
     }
 
-    public void setMedicinePrescribed(String medicinePrescribed) {
-        this.medicinePrescribed = medicinePrescribed;
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
     }
 
-    public String getTestResult() {
-        return testResult;
+    public String getResult() {
+        return result;
     }
 
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
+    public void setResult(String result) {
+        this.result = result;
     }
     
 }

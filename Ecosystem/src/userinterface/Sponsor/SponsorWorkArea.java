@@ -32,20 +32,20 @@ public class SponsorWorkArea extends javax.swing.JPanel {
     EcoSystem business;
     DonorOrganization donororganization;
     Donor donor;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     DonorDirectory donorDirectory;
-    AdopterDirectory uDirectory;
+    AdopterDirectory adopterdirectory;
     
-    public SponsorWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
+    public SponsorWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, ChildDirectory childdirectory, DonorDirectory donorDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.enterprise = enterprise;
         this.business = business;
         this.donororganization = (DonorOrganization) organization;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.donorDirectory = donorDirectory;
-        this.uDirectory = uDirectory;
+        this.adopterdirectory = adopterdirectory;
         valueLabel.setText(organization.getName());
         for (Donor a : donorDirectory.getDonorsList()) {
             if (a.getUsername().equals(account.getUsername())) {
@@ -56,14 +56,14 @@ public class SponsorWorkArea extends javax.swing.JPanel {
     }
     
     private void manageDonorWorkAreaJPanel() {
-        SponsorRequestTable panel = new SponsorRequestTable(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
+        SponsorRequestTable panel = new SponsorRequestTable(rightSystemAdminPanel, account, donororganization, enterprise, business, adopterdirectory, childdirectory, donorDirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
 
     private void TrackStatus() {
-        SponsorStatus panel = new SponsorStatus(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
+        SponsorStatus panel = new SponsorStatus(rightSystemAdminPanel, account, donororganization, enterprise, business, adopterdirectory, childdirectory, donorDirectory);
         rightSystemAdminPanel.add("SceneDetailsGraph", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

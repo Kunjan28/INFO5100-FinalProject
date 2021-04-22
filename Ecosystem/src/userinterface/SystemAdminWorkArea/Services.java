@@ -6,8 +6,8 @@
 package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
-import Business.WorkQueue.AdoptionWorkRequest;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.AdoptionProcessWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
 
 import Business.WorkQueue.WorkRequest;
@@ -46,15 +46,15 @@ public class Services extends javax.swing.JPanel {
     }
     
     public void populateBarGraph() {
-        ArrayList<AdoptionWorkRequest> adpReqList = new ArrayList<>();
-        ArrayList<DoctorWorkRequest> medReqList = new ArrayList<>();
+        ArrayList<AdoptionProcessWorkRequest> adpReqList = new ArrayList<>();
+        ArrayList<MedicalHelpWorkRequest> medReqList = new ArrayList<>();
         ArrayList<EducationalHelpWorkRequest> finReqList = new ArrayList<>();
         Map<String, Integer> workReqMap = new HashMap<>();
         for (WorkRequest workQue : system.getWorkQueue().getWorkRequestList()) {
-            if (workQue instanceof AdoptionWorkRequest) {
-                adpReqList.add((AdoptionWorkRequest) workQue);
-            } else if (workQue instanceof DoctorWorkRequest) {
-                medReqList.add((DoctorWorkRequest) workQue);
+            if (workQue instanceof AdoptionProcessWorkRequest) {
+                adpReqList.add((AdoptionProcessWorkRequest) workQue);
+            } else if (workQue instanceof MedicalHelpWorkRequest) {
+                medReqList.add((MedicalHelpWorkRequest) workQue);
             } else if (workQue instanceof EducationalHelpWorkRequest) {
                 finReqList.add((EducationalHelpWorkRequest) workQue);
             }

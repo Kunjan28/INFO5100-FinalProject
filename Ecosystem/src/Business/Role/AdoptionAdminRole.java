@@ -22,8 +22,8 @@ import userinterface.AdministrativeRole.AdminWorkAreaJPanel;
 public class AdoptionAdminRole extends Role{
     
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return new AdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business, directory, udirectory,donorDirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+        return new AdminWorkAreaJPanel(userProcessContainer, account, organization, enterprise, business, childdirectory, adopterdirectory,donorDirectory);
     }
     
     @Override

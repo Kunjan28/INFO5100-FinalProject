@@ -28,16 +28,16 @@ public class FundingWorkArea extends javax.swing.JPanel {
     FinanceOrganization financeOrphanageOrganization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     int countApprove=0, countDeny=0, countPending=0;
     
-    public FundingWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public FundingWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
         this.financeOrphanageOrganization=(FinanceOrganization) organization;
         this.enterprise=enterprise;
-        this.directory=directory;
+        this.childdirectory=childdirectory;
         this.business=business;
         valueLabel.setText(organization.getName());
         manageFinance();
@@ -45,14 +45,14 @@ public class FundingWorkArea extends javax.swing.JPanel {
   
     
     private void manageFinance(){
-        FinanceWorkAreaJPanel panel = new FinanceWorkAreaJPanel(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, directory);
+        FinanceWorkAreaJPanel panel = new FinanceWorkAreaJPanel(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, childdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
      }
     
     private void TrackStatus(){
-        ViewAndProcessTransactionRecord panel = new ViewAndProcessTransactionRecord(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, directory);
+        ViewAndProcessTransactionRecord panel = new ViewAndProcessTransactionRecord(rightSystemAdminPanel, account, financeOrphanageOrganization, enterprise, business, childdirectory);
         rightSystemAdminPanel.add("SceneDetailsGraph",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

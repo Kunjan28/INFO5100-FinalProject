@@ -14,8 +14,8 @@ import Business.Organization.DoctorOrganization;
 import Business.Organization.LabOrganization;
 import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
-import Business.WorkQueue.LabWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
+import Business.WorkQueue.LabProcessWorkRequest;
 import Business.WorkQueue.PharmacistWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -40,7 +40,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private PharmacistOrganization pharmacistOrganization;
     private DoctorOrganization doctororganization;
     private EcoSystem business;
-    DoctorWorkRequest request;
+    MedicalHelpWorkRequest request;
     private ChildDirectory childdirectory;
     private Child child;
     private LabOrganization labOrganization;
@@ -51,13 +51,13 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     Network network;
     
     
-    public AssignChildJPanel(JPanel userProcessContainer, DoctorWorkRequest request, Child child, UserAccount userAccount, DoctorOrganization doctororganization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public AssignChildJPanel(JPanel userProcessContainer, MedicalHelpWorkRequest request, Child child, UserAccount userAccount, DoctorOrganization doctororganization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.enterprise = enterprise;
         this.userAccount = userAccount;
-        this.childdirectory = directory;
+        this.childdirectory = childdirectory;
         this.child = child;
         this.doctororganization = doctororganization;
         this.business = business;
@@ -87,7 +87,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
         model.setRowCount(0);
         for (WorkRequest labrequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (labrequest instanceof DoctorWorkRequest || labrequest instanceof LabWorkRequest) {
+            if (labrequest instanceof MedicalHelpWorkRequest || labrequest instanceof LabProcessWorkRequest) {
                 if (labrequest.getChildId() == child.getChildId()) {
                     Object[] row = new Object[model.getColumnCount()];
                     row[0] = labrequest;
@@ -95,11 +95,11 @@ public class AssignChildJPanel extends javax.swing.JPanel {
                     row[2] = labrequest.getChildName();
                     row[3] = labrequest.getReceiver();
                     row[4] = labrequest.getStatus();
-                    if (labrequest instanceof DoctorWorkRequest) {
-                        String result = ((DoctorWorkRequest) labrequest).getTestResult();
+                    if (labrequest instanceof MedicalHelpWorkRequest) {
+                        String result = ((MedicalHelpWorkRequest) labrequest).getTestResult();
                         row[5] = result == null ? "Waiting" : result;
-                    } else if (labrequest instanceof LabWorkRequest) {
-                        String result = ((LabWorkRequest) labrequest).getTestResult();
+                    } else if (labrequest instanceof LabProcessWorkRequest) {
+                        String result = ((LabProcessWorkRequest) labrequest).getResult();
                         row[5] = result == null ? "Waiting" : result;
                     }
                     model.addRow(row);
@@ -112,25 +112,25 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblMedication.getModel();
         model.setRowCount(0);
         for (WorkRequest pharrequest : userAccount.getWorkQueue().getWorkRequestList()) {
-            if (pharrequest instanceof DoctorWorkRequest || pharrequest instanceof PharmacistWorkRequest) {
+            if (pharrequest instanceof MedicalHelpWorkRequest || pharrequest instanceof PharmacistWorkRequest) {
                 if (pharrequest.getChildId() == child.getChildId()) {
                     Object[] row = new Object[model.getColumnCount()];
                     row[0] = pharrequest;
                     row[1] = request.getChildId();
                     row[2] = request.getChildName();
                     row[3] = pharrequest.getReceiver();
-                    if (pharrequest instanceof DoctorWorkRequest) {
-                        String result = ((DoctorWorkRequest) pharrequest).getTestResult();
+                    if (pharrequest instanceof MedicalHelpWorkRequest) {
+                        String result = ((MedicalHelpWorkRequest) pharrequest).getTestResult();
                         row[4] = result == null ? "Prescribed Medicine" : result;
                     } else if (pharrequest instanceof PharmacistWorkRequest) {
-                        String result = ((PharmacistWorkRequest) pharrequest).getTestResult();
+                        String result = ((PharmacistWorkRequest) pharrequest).getResult();
                         row[4] = result == null ? "Waiting" : result;
                     }
-                    if (pharrequest instanceof DoctorWorkRequest) {
-                        String medicalPrescription = ((DoctorWorkRequest) pharrequest).getMedicinePrescribed();
+                    if (pharrequest instanceof MedicalHelpWorkRequest) {
+                        String medicalPrescription = ((MedicalHelpWorkRequest) pharrequest).getPrescription();
                         row[5] = medicalPrescription == null ? "" : medicalPrescription;
                     } else if (pharrequest instanceof PharmacistWorkRequest) {
-                        String medicalPrescription = ((PharmacistWorkRequest) pharrequest).getMedicinePrescribed();
+                        String medicalPrescription = ((PharmacistWorkRequest) pharrequest).getPrescription();
                         row[5] = medicalPrescription == null ? "" : medicalPrescription;
                     }
                     model.addRow(row);

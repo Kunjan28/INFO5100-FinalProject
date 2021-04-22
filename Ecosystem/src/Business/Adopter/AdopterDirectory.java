@@ -14,14 +14,14 @@ import java.util.List;
  */
 public class AdopterDirectory {
     List<Adopter> adoptersList;
-    private static AdopterDirectory udirectory;
+    private static AdopterDirectory adopterdirectory;
     
     public static AdopterDirectory getInstance(){
        
-        if(udirectory==null){
-            udirectory=new AdopterDirectory();
+        if(adopterdirectory==null){
+            adopterdirectory=new AdopterDirectory();
         }
-        return udirectory;  
+        return adopterdirectory;  
     }
 
     public List<Adopter> getAdoptersList() {
@@ -30,14 +30,6 @@ public class AdopterDirectory {
 
     public void setAdoptersList(List<Adopter> adoptersList) {
         this.adoptersList = adoptersList;
-    }
-
-    public static AdopterDirectory getDirectory() {
-        return udirectory;
-    }
-
-    public static void setDirectory(AdopterDirectory directory) {
-        AdopterDirectory.udirectory = directory;
     }
     
     public AdopterDirectory() {

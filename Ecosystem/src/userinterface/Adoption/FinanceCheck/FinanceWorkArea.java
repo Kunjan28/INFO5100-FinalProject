@@ -28,15 +28,15 @@ public class FinanceWorkArea extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     FinanceCheckOrganization financeOrganization;
     Adopter adopter;
     
     
-    public FinanceWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
+    public FinanceWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -47,7 +47,7 @@ public class FinanceWorkArea extends javax.swing.JPanel {
     }
     
     private void financeRequestJPanel(){
-        FinanceCheckRequestJPanel panel = new FinanceCheckRequestJPanel(rightSystemAdminPanel, account, financeOrganization, enterprise, business, udirectory);
+        FinanceCheckRequestJPanel panel = new FinanceCheckRequestJPanel(rightSystemAdminPanel, account, financeOrganization, enterprise, business, adopterdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

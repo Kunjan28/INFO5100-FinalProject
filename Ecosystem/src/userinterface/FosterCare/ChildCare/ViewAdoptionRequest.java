@@ -38,24 +38,23 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
     Organization organization;
     UserAccount account;
     ChildCareOrganization childCareOrganization;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     Adopter adopter;
     Role roler;
     Network network;
     
     
-    public ViewAdoptionRequest(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
+    public ViewAdoptionRequest(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.business = business;
         this.childCareOrganization = (ChildCareOrganization) organization;
-        this.directory = directory;
-        this.udirectory = udirectory;
-        System.out.println("directory; " + directory.toString());
+        this.childdirectory = childdirectory;
+        this.adopterdirectory = adopterdirectory;
         this.enterprise = enterprise;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -76,7 +75,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
                 row[0] = req;
                 row[1] = req.getChildId();
                 row[2] = req.getChildName();
-                row[3] = ((ChildCareAdoptionWorkRequest) req).getUserName();
+                row[3] = ((ChildCareAdoptionWorkRequest) req).getAdopterName();
                 row[4] = req.getStatus();
                 dtms.addRow(row);
             }
@@ -163,10 +162,10 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
             req.setStatus("Approved");
             populateWorkRequest();
             String name="";
-            for (Child ch : directory.getChildList()) {
+            for (Child ch : childdirectory.getChildList()) {
                 if (ch.getChildId() == req.getChildId()) {
                     name= ch.getName();
-                    ch.setStatus("Adopted by " + req.getUserName());
+                    ch.setStatus("Adopted by " + req.getAdopterName());
                 }
             }
             String subject = "Congratulations! Your adoption request is approved";

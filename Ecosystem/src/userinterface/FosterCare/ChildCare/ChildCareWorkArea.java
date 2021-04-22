@@ -33,45 +33,45 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
     Organization organization;
     UserAccount account;
     ChildCareOrganization childCareOrganization;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     EcoSystem business;
     AcquireChild panel;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     Adopter adopter;
     Role roler;
     Network network;
     
     
-    public ChildCareWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
+    public ChildCareWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
         this.account=account;
         this.business = business;
         this.childCareOrganization=(ChildCareOrganization)organization;
-        this.directory = directory;
-        this.udirectory = udirectory;
+        this.childdirectory = childdirectory;
+        this.adopterdirectory = adopterdirectory;
         valueLabel.setText(organization.getName());
         manageChildAreaJPanel();
         
     }
     
     private void manageChildAreaJPanel(){
-        AcquireChild panel = new AcquireChild(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, directory, udirectory);
+        AcquireChild panel = new AcquireChild(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
      }
     
     private void ViewChild(){
-        ViewChildDetails panel = new ViewChildDetails(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, directory, udirectory);
+        ViewChildDetails panel = new ViewChildDetails(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
     
     private void ViewAdopterRequest() {
-        ViewAdoptionRequest panel = new ViewAdoptionRequest(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, directory, udirectory);
+        ViewAdoptionRequest panel = new ViewAdoptionRequest(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

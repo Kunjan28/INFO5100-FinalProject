@@ -1,6 +1,5 @@
 package Business.DB4OUtil;
 
-import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
 import Business.ConfigureASystem;
 import Business.EcoSystem;
@@ -61,21 +60,7 @@ public class DB4OUtil {
         conn.commit();
         conn.close();
     }
-      public synchronized void storeDirectory(ChildDirectory directory) {
-        ObjectContainer conn = createConnection();
-        conn.store(directory);
-        conn.commit();
-        conn.close();
-    }
-      
-      //store user directory -MainJFrame calls this method
-      public synchronized void storeUserDirectory(AdopterDirectory udirectory) {
-        ObjectContainer conn = createConnection();
-        conn.store(udirectory);
-        conn.commit();
-        conn.close();
-    }
-    
+
     public EcoSystem retrieveSystem(){
         
         ObjectContainer conn = createConnection();

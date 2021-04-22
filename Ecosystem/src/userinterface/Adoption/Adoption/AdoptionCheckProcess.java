@@ -15,9 +15,9 @@ import Business.Organization.AdoptionOrganization;
 import Business.Organization.BackgroundAndCriminalCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.AdopterWorkRequest;
-import Business.WorkQueue.AdoptionWorkRequest;
-import Business.WorkQueue.BGCWorkRequest;
+import Business.WorkQueue.AdopterStatusCheckWorkRequest;
+import Business.WorkQueue.AdoptionProcessWorkRequest;
+import Business.WorkQueue.BGVProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -37,16 +37,16 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
-    AdoptionWorkRequest adoptionWorkRequest;
+    AdoptionProcessWorkRequest adoptionWorkRequest;
     
-    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, AdoptionWorkRequest adoptionWorkRequest, Adopter adopter) {
+    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, AdoptionProcessWorkRequest adoptionWorkRequest, Adopter adopter) {
         initComponents();
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -84,7 +84,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
 
         for (WorkRequest request : adoptionOrganization.getWorkQueue().getWorkRequestList()) {
 
-            if (request instanceof AdoptionWorkRequest) {
+            if (request instanceof AdoptionProcessWorkRequest) {
                 if (request.getUserId() == adoptionWorkRequest.getUserId()) {
                     Object[] row = new Object[model.getColumnCount()];
                     row[0] = request;
@@ -249,7 +249,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
 
         Object receiverval = tblInitiateBCG.getValueAt(selectedRow, 2);
         Object statusval = tblInitiateBCG.getValueAt(selectedRow, 4);
-        AdoptionWorkRequest request = (AdoptionWorkRequest) tblInitiateBCG.getValueAt(selectedRow, 0);
+        AdoptionProcessWorkRequest request = (AdoptionProcessWorkRequest) tblInitiateBCG.getValueAt(selectedRow, 0);
 
         if ("Initialized BGC".equalsIgnoreCase(request.getStatus())) {
             JOptionPane.showMessageDialog(null, "BGC already initiated");
@@ -261,7 +261,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                 request.setName(adopter.getName());
 
                 //populateWorkRequest();
-                BGCWorkRequest bgcreq = new BGCWorkRequest();
+                BGVProcessWorkRequest bgcreq = new BGVProcessWorkRequest();
                 bgcreq.setMessage("Please initiate BGC");
                 bgcreq.setStatus("Pending with BGC organization");
                 bgcreq.setSender(account);
@@ -287,7 +287,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                     business.getWorkQueue().getWorkRequestList().add(bgcreq);
                 }
 
-                AdopterWorkRequest wrk = new AdopterWorkRequest();
+                AdopterStatusCheckWorkRequest wrk = new AdopterStatusCheckWorkRequest();
                 wrk.setUserId(adopter.getUserId());
                 wrk.setBgcStatus("Pending");
                 wrk.setFinanceStatus("Pending");

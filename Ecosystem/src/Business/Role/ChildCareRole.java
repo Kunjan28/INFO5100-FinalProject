@@ -22,8 +22,8 @@ import userinterface.FosterCare.ChildCare.ChildCareWorkArea;
 public class ChildCareRole extends Role {
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return new ChildCareWorkArea(userProcessContainer, account, organization, enterprise, business, directory, udirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+        return new ChildCareWorkArea(userProcessContainer, account, organization, enterprise, business, childdirectory, adopterdirectory);
     }
 
     @Override

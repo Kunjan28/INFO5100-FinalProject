@@ -30,21 +30,21 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem business;
     private UserAccount userAccount;
-    private ChildDirectory directory;
+    private ChildDirectory childdirectory;
     private Child child;
     Network network;
 
     /**
      * Creates new form PharmacistJPanel
      */
-    public PharmacistJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization pharmacistOrganization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public PharmacistJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization pharmacistOrganization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.pharmacistOrganization = (PharmacistOrganization) pharmacistOrganization;
         this.enterprise = enterprise;
         this.business = business;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         for (Network net : business.getNetworkList()) {
             for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (e.equals(enterprise)) {
@@ -177,7 +177,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         } else {
             request.setStatus("Processing");
         }
-        PharmacistProcessJPanel processWorkRequestJPanel = new PharmacistProcessJPanel(userProcessContainer, request, userAccount, enterprise, child, directory, business, pharmacistOrganization);
+        PharmacistProcessJPanel processWorkRequestJPanel = new PharmacistProcessJPanel(userProcessContainer, request, userAccount, enterprise, child, childdirectory, business, pharmacistOrganization);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

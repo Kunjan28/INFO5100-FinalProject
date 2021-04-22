@@ -33,18 +33,18 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem business;
     PharmacistWorkRequest request ;
-    private ChildDirectory directory;
+    private ChildDirectory childdirectory;
     private Child child;
     Network network;
     
-    public PharmacistProcessJPanel(JPanel userProcessContainer, PharmacistWorkRequest request, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory directory, EcoSystem business, PharmacistOrganization pharmacistOrganization) {
+    public PharmacistProcessJPanel(JPanel userProcessContainer, PharmacistWorkRequest request, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory childdirectory, EcoSystem business, PharmacistOrganization pharmacistOrganization) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.child = child;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.business = business;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -136,17 +136,17 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         if (txtComments.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter message");
         } else {
-            request.setTestResult(txtComments.getText());
+            request.setResult(txtComments.getText());
             request.setStatus("Delivered");
             ChildCareWorkRequest temp = new ChildCareWorkRequest();
             temp.setStatus("Medically Fit");
             temp.setMessage("Child has been medicated");
             temp.setSender(userAccount);
-            temp.setTestResult("Completed");
+            temp.setResult("Completed");
             temp.setChildId(request.getChildId());
             temp.setChildName(request.getChildName());
-            if (this.directory != null && this.directory.getChildList().size() > 0) {
-                for (Child ch : this.directory.getChildList()) {
+            if (this.childdirectory != null && this.childdirectory.getChildList().size() > 0) {
+                for (Child ch : this.childdirectory.getChildList()) {
                     if (request.getChildId() == ch.getChildId()) {
                         if ("Acquired".equalsIgnoreCase(ch.getStatus())) {
                             ch.setMedicalHelp(false);
