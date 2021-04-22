@@ -16,6 +16,7 @@ import Business.Organization.AdopterOrganization;
 import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 import Business.WorkQueue.ChildCareWorkRequest;
 import javax.swing.JOptionPane;
@@ -136,6 +137,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         adc.setMessage("I want to adopt");
         adc.setStatus("Adopted");
         adc.setChildName(ch.getName());
+        adc.setEmailId(adopter.getEmailId());
         Organization org = null;
         for (Network network : business.getNetworkList()) {
             for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -153,7 +155,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
             business.getWorkQueue().getWorkRequestList().add(adc);
         }
         adopter.setFlag(false);
-        JOptionPane.showMessageDialog(null, "You have been registered succesfully");
+        JOptionPane.showMessageDialog(null, "Request has been sent to Child Care");
     }//GEN-LAST:event_btnAdoptActionPerformed
 
     public void populateChildTable() {
