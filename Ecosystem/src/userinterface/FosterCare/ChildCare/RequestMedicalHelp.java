@@ -71,7 +71,6 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         txtSymptoms = new javax.swing.JTextArea();
         btnSubmit = new javax.swing.JButton();
         lblHeading = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -101,14 +100,6 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         lblHeading.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblHeading.setText("REQUEST MEDICAL HELP");
         add(lblHeading, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 50, 460, 30));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 10, 40, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/docChild.jpeg"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 450, 550));
@@ -145,26 +136,14 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
             account.getWorkQueue().getWorkRequestList().add(docwrkreq);
             business.getWorkQueue().getWorkRequestList().add(docwrkreq);
         }
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child,true);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnSubmitActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ViewCompleteChildDetails panel = (ViewCompleteChildDetails) component;
-        panel.populaterequestTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSubmit;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;

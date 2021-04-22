@@ -23,6 +23,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import userinterface.DoctorOrg.DoctorJPanel;
 
 /**
  *
@@ -237,13 +238,13 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel7.setText("Does child have special needs?");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 220, 30));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 460, 220, 30));
 
         yesBtn.setText("Yes");
-        add(yesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 450, -1, -1));
+        add(yesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 460, -1, -1));
 
         noBtn.setText("No");
-        add(noBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 450, -1, -1));
+        add(noBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
@@ -293,10 +294,7 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
                 child.setImageDetails(imageTextField.getText());
                 child.setRegistrationDate(regDate);
                 child.setGender(gender);
-                ViewChildDetailsJPanel viewChildJpanel = new ViewChildDetailsJPanel(userProcessContainer, child);
-                this.userProcessContainer.add("ViewChildDetailsJPanel", viewChildJpanel);
-                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-                layout.next(userProcessContainer);
+                JOptionPane.showMessageDialog(null, "Child Details Updated");
             }
         }   catch (ParseException ex) {
             Logger.getLogger(ViewChildDetailsJPanel.class.getName()).log(Level.SEVERE, null, ex);

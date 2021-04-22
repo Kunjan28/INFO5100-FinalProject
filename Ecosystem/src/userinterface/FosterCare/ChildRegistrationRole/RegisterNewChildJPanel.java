@@ -174,7 +174,7 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 130, 35));
         add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 310, 190, 30));
 
-        cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
+        cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
         add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 180, 190, -1));
 
         jLabel7.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N

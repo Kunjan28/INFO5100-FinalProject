@@ -27,7 +27,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author Kunjan
  */
-public class DonorRegistrationJPanel extends javax.swing.JPanel {
+public class SponsorRegistrationJPanel extends javax.swing.JPanel {
 
     private JPanel userProcessContainer;
     private EcoSystem system;
@@ -41,7 +41,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
     /**
      * Creates new form UserRegistrationJPanel
      */
-    public DonorRegistrationJPanel(JPanel userProcessContainer, EcoSystem system) {
+    public SponsorRegistrationJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
@@ -346,7 +346,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
         add(ageValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 470, 140, -1));
 
         SSNValidate.setForeground(new java.awt.Color(255, 0, 0));
-        SSNValidate.setText("Enter numeric value");
+        SSNValidate.setText("Enter valid SSN");
         add(SSNValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 310, 140, -1));
 
         numValidate.setForeground(new java.awt.Color(255, 0, 0));
@@ -664,7 +664,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             }
 
             public void warn() {
-                if (!ValidationHelper.isNumeric(txtSSN.getText())) {
+                if (!ValidationHelper.isValidSSN(txtSSN.getText())) {
                     SSNValidate.setVisible(true);
                     ssnTick.setVisible(false);
                     ssn = false;

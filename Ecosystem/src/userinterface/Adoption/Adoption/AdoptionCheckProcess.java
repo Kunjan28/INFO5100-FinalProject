@@ -166,19 +166,19 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, 70, -1));
 
         txtEmail.setEditable(false);
-        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 170, -1));
+        add(txtEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 200, -1));
 
         txtName.setEditable(false);
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 170, -1));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, 210, -1));
 
         txtAge.setEditable(false);
-        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 170, 30));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 190, 210, 30));
 
         txtSSN.setEditable(false);
-        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 170, -1));
+        add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 270, 200, -1));
 
         txtIncome.setEditable(false);
-        add(txtIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 170, -1));
+        add(txtIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 310, 200, -1));
 
         rdbMale.setText("Male");
         rdbMale.addActionListener(new java.awt.event.ActionListener() {
@@ -189,7 +189,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         add(rdbMale, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, -1, -1));
 
         rdbFemale.setText("Female");
-        add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 230, -1, -1));
+        add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 230, -1, -1));
 
         tblInitiateBCG.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblInitiateBCG.setModel(new javax.swing.table.DefaultTableModel(
@@ -313,14 +313,14 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                     account.getWorkQueue().getWorkRequestList().add(wrk);
                     business.getWorkQueue().getWorkRequestList().add(wrk);
                 }
-                String subject = "Background check pocess initiated";
-                String content = "Your background check process has been initiated and has sent to respective team. You can check your status through your credentials \n Thank you";
+                String subject = "Background check process initiated";
+                String content = "Your background check process has been initiated and sent to respective team. You can check your status through your credentials. \nThank you.";
                 CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "BGC check initialized successfully!");
             } else if (!receiverval.equals(account.getUsername())) {
                 JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
             } else if (!"Pending with Adoption Organization".equals(statusval)) {
-                JOptionPane.showMessageDialog(null, "The selected workrequest assigned to you is already processed");
+                JOptionPane.showMessageDialog(null, "The selected work request assigned to you is already processed");
             }
         }
     }//GEN-LAST:event_btnInitiateBCGActionPerformed

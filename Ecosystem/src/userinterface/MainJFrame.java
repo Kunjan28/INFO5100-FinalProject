@@ -13,7 +13,7 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import userinterface.UserRegisteration.DonorRegistrationJPanel;
+import userinterface.UserRegisteration.SponsorRegistrationJPanel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -50,7 +50,7 @@ public class MainJFrame extends javax.swing.JFrame {
         container.setVisible(false);
         UpperPanel.setVisible(false);
         this.setSize(1250, 800);
-        getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+        //getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         adopterdirectory = system.getAdopterdirectory();
         childdirectory = system.getChilddirectory();
         donorDirectory = system.getDonorDirectory();
@@ -68,7 +68,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         UpperPanel = new javax.swing.JPanel();
         btnLogoutLabel = new javax.swing.JLabel();
-        back = new javax.swing.JButton();
+        lblBack = new javax.swing.JLabel();
         container = new javax.swing.JPanel();
         loginJPanel = new javax.swing.JPanel();
         upperPanel = new javax.swing.JPanel();
@@ -114,15 +114,15 @@ public class MainJFrame extends javax.swing.JFrame {
                 btnLogoutLabelMousePressed(evt);
             }
         });
-        UpperPanel.add(btnLogoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1270, 20, 60, 50));
+        UpperPanel.add(btnLogoutLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1260, 20, 60, 50));
 
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        back.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backActionPerformed(evt);
+        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblBackMousePressed(evt);
             }
         });
-        UpperPanel.add(back, new org.netbeans.lib.awtextra.AbsoluteConstraints(1290, 20, 30, 30));
+        UpperPanel.add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 20, 50, 40));
 
         getContentPane().add(UpperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -168,8 +168,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblUserName.setToolTipText("");
         lblUserName.setBorder(null);
         lblUserName.setCaretColor(new java.awt.Color(255, 255, 255));
-        lblUserName.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
-        lblUserName.setDisabledTextColor(new java.awt.Color(16, 10, 55));
+        lblUserName.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         lblUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lblUserNameActionPerformed(evt);
@@ -204,6 +203,7 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPasswrd.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         lblPasswrd.setBorder(null);
         lblPasswrd.setCaretColor(new java.awt.Color(255, 255, 255));
+        lblPasswrd.setDisabledTextColor(new java.awt.Color(0, 0, 0));
         lblPasswrd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 lblPasswrdActionPerformed(evt);
@@ -431,7 +431,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void lblSponsorMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblSponsorMousePressed
         // TODO add your handling code here:
-        DonorRegistrationJPanel panel = new DonorRegistrationJPanel(container, system);
+        SponsorRegistrationJPanel panel = new SponsorRegistrationJPanel(container, system);
         //greetingUserLabel.setText("DONOR REGISTRATION FORM!!!");
         loginJPanel.setVisible(false);
         container.setVisible(true);
@@ -444,10 +444,10 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.next(container);
     }//GEN-LAST:event_lblSponsorMousePressed
 
-    private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+    private void lblBackMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMousePressed
         // TODO add your handling code here:
         logout();
-    }//GEN-LAST:event_backActionPerformed
+    }//GEN-LAST:event_lblBackMousePressed
 
     private void logout() {
         container.removeAll();
@@ -495,7 +495,6 @@ public class MainJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel UpperPanel;
     private javax.swing.JPanel UserPanel;
-    private javax.swing.JButton back;
     private javax.swing.JPanel bottomPanel;
     private javax.swing.JLabel btnLogoutLabel;
     private javax.swing.JPanel container;
@@ -504,6 +503,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JLabel lblAdopt;
+    private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblBottom;
     private javax.swing.JLabel lblCancel;
     private javax.swing.JScrollPane lblInfo;

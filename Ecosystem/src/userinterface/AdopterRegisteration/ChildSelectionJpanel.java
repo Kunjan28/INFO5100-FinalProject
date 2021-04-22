@@ -88,17 +88,17 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         tblChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Child ID", "Child Name", "Gender", "Age", "Status"
+                "Child ID", "Child Name", "Gender", "Age", "Message", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true, false
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -137,6 +137,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         adc.setStatus("Adopted");
         adc.setChildName(ch.getName());
         adc.setEmailId(adopter.getEmailId());
+        //adc.s
         Organization org = null;
         for (Network network : business.getNetworkList()) {
             for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -168,6 +169,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
                 row[2] = child.getGender();
                 row[3] = child.getChildAge();
                 row[4] = child.getStatus();
+                row[5] = child.getStatus();
                 dtms.addRow(row);
             }
         }

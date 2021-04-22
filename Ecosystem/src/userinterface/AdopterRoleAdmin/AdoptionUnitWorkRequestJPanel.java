@@ -124,7 +124,6 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        adpworkRequest.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(adpworkRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, 980, 170));
@@ -237,7 +236,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 }
                 request.setStatus("Completed");
                 String subject = "Account activation";
-                String content = "Your account has been activated. Your request has been sent to Adoption team. You can check your status through your credentials \n Thank you";
+                String content = "Dear Adopter, your account has been activated. Your request has been sent to Adoption team. You can check your status through your credentials. \nThank you.";
                 CommonMail.sendEmailMessage(request.getUserEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "User account has been activated successfully");
             }

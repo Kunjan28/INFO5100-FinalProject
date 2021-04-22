@@ -39,7 +39,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         lblLab = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         lblResult = new javax.swing.JLabel();
         txtResult = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
@@ -52,14 +51,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         lblLab.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblLab.setText("LAB PROCESS");
         add(lblLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 60, 480, 20));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 20, 70, 30));
 
         lblResult.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblResult.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -79,17 +70,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 720, 370));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        LabJPanel panel = (LabJPanel) component;
-        panel.populateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
@@ -111,7 +91,6 @@ public class LabProcessJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lblLab;

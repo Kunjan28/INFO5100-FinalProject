@@ -69,7 +69,6 @@ public class LabJPanel extends javax.swing.JPanel {
         tblLab = new javax.swing.JTable();
         btnAssignToMe = new javax.swing.JButton();
         btnProcess = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -122,10 +121,6 @@ public class LabJPanel extends javax.swing.JPanel {
         });
         add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 150, 30));
 
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/refreshIcon.png"))); // NOI18N
-        btnRefresh.setText("Refresh");
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 20, 110, -1));
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 760, 540));
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +172,6 @@ public class LabJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssignToMe;
     private javax.swing.JButton btnProcess;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;

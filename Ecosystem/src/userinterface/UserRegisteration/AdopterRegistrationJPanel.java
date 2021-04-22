@@ -151,7 +151,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
                 txtNameKeyTyped(evt);
             }
         });
-        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 250, 35));
+        add(txtName, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 250, 40));
 
         lblUserName.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         lblUserName.setForeground(new java.awt.Color(25, 56, 82));
@@ -211,11 +211,11 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         usernameExistsMsg.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMsg.setText("Username already exists");
-        add(usernameExistsMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 230, -1, -1));
+        add(usernameExistsMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 240, -1, -1));
 
         emailValidateMsg.setForeground(new java.awt.Color(255, 0, 0));
         emailValidateMsg.setText("Email format incorrect");
-        add(emailValidateMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
+        add(emailValidateMsg, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, -1));
 
         emailCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(emailCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 380, -1, -1));
@@ -244,8 +244,8 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 460, -1, -1));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adp.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 350, 810, 480));
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids11.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, 940, 470));
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel4.setText("Street Address Line1");
@@ -314,28 +314,28 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         contactNoValidate.setForeground(new java.awt.Color(255, 0, 0));
         contactNoValidate.setText("Phone format incorrect");
-        add(contactNoValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 300, -1, -1));
+        add(contactNoValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 310, -1, -1));
 
         annualIncomeCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(annualIncomeCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 530, -1, 30));
 
         AnnualIncomeValidate.setForeground(new java.awt.Color(255, 0, 0));
         AnnualIncomeValidate.setText("Enter numeric value");
-        add(AnnualIncomeValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 530, -1, -1));
+        add(AnnualIncomeValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 540, -1, -1));
 
         ageCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(ageCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, -1, -1));
 
         ageValidate.setForeground(new java.awt.Color(255, 0, 0));
         ageValidate.setText("Enter numeric value");
-        add(ageValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 550, -1, -1));
+        add(ageValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 550, -1, -1));
 
         ssnCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(ssnCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 450, -1, -1));
 
         ssnValidate.setForeground(new java.awt.Color(255, 0, 0));
-        ssnValidate.setText("Enter numeric value");
-        add(ssnValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 450, -1, -1));
+        ssnValidate.setText("Enter valid SSN");
+        add(ssnValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
@@ -367,8 +367,8 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setStatus("Request access");
             registrationRequest.setAnnualIncome(txtIncome.getText());
             registrationRequest.setAge(txtAge.getText());
-            String subject = "Adopter Registeration";
-            String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
+            String subject = "Adopter Registration";
+            String content = "Dear Adopter, thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
             CommonMail.sendEmailMessage(txtEmail.getText(), subject, content);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
@@ -601,7 +601,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             }
 
             public void warn() {
-                if (!ValidationHelper.isNumeric(txtSSN.getText())) {
+                if (!ValidationHelper.isValidSSN(txtSSN.getText())) {
                     ssnValidate.setVisible(true);
                     ssnCorrect.setVisible(false);
                     ssn = false;

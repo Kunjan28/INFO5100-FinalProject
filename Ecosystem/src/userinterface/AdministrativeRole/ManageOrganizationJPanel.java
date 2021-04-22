@@ -50,14 +50,14 @@ public class ManageOrganizationJPanel extends javax.swing.JPanel {
                organizationJComboBox.addItem(Type.ChildRegistration);
         }
         if(enterprise instanceof AdoptionEnterprise){
-           organizationJComboBox.addItem(Type.Adopter);
+           //organizationJComboBox.addItem(Type.Adopter);
                organizationJComboBox.addItem(Type.Adoption);
                organizationJComboBox.addItem(Type.FinanceCheck); 
                  organizationJComboBox.addItem(Type.CriminalCheck); 
         }
         if(enterprise instanceof FundingEnterprise){
            organizationJComboBox.addItem(Type.FinanceOrganization);
-               organizationJComboBox.addItem(Type.Donor);
+               //organizationJComboBox.addItem(Type.Donor);
                
         }
     }

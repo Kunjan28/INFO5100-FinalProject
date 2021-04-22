@@ -61,7 +61,6 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         txtRemarks = new javax.swing.JTextField();
         submitBtn = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
@@ -83,15 +82,6 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
             }
         });
         add(submitBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, 110, 33));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.setToolTipText("");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, 50, 30));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel2.setText("PROCESS CHILD CARE REQUEST");
@@ -134,20 +124,8 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_submitBtnActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        AcquireChild dwjp = (AcquireChild) component;
-        dwjp.populateWorkRequest();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

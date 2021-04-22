@@ -155,8 +155,8 @@ public class SponsorWorkArea extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Organization");
-        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 210, 120, 20));
+        jLabel3.setText("Hello");
+        jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 50, 20));
 
         valueLabel.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         jPanel3.add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 210, 100, 20));

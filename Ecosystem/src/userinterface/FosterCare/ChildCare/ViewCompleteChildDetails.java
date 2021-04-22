@@ -44,7 +44,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
     ChildDirectory childdirectory;
     Network network;
 	
-    ViewCompleteChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child) {
+    ViewCompleteChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child,boolean flag) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.child = child;
@@ -74,9 +74,10 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         tempText.setText(String.valueOf(child.getBodytemp()));
         respRateText.setText(String.valueOf(child.getRespirationRate()));
         medicalTextArea.setText(child.getMedicalStatus());
+        txtDOB.setText(String.valueOf(child.getChildAge()));
         displayImage();
         populaterequestTable();
-        btnRequestFunds.setEnabled(!child.isFinancialHelp());
+        btnRequestFunds.setEnabled(!child.isFinancialHelp() && flag);
         requestMedicalHelpBtn.setEnabled(!child.isMedicalHelp());
     }
 
@@ -125,7 +126,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         lblIdenMark = new javax.swing.JLabel();
         btnRequestFunds = new javax.swing.JButton();
         requestMedicalHelpBtn = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         lblBP = new javax.swing.JLabel();
         bpText = new javax.swing.JTextField();
         lblPulse = new javax.swing.JLabel();
@@ -221,15 +221,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         });
         add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 600, 180, 30));
 
-        btnBack.setBackground(new java.awt.Color(255, 255, 255));
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(990, 10, 40, 30));
-
         lblBP.setText("Blood Pressure");
         add(lblBP, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 340, 100, 30));
 
@@ -270,16 +261,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 290, 1010, 480));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ViewChildDetails panel = (ViewChildDetails) component;
-        panel.populateChildTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void requestMedicalHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedicalHelpBtnActionPerformed
         RequestMedicalHelp panel = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
         this.userProcessContainer.add("RequestMedicalHelp", panel);
@@ -302,7 +283,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField bpText;
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnRequestFunds;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JRadioButton femaleRDB;

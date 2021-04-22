@@ -69,7 +69,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             }
         }
         getChildDetails();
-//        displayImage();
+        displayImage();
         populateLabTable();
         populateMedicationTable();
         txtName.setEnabled(false);
@@ -157,10 +157,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             btnRequestTest.setEnabled(false);
             btnPrescribeMedication.setEnabled(false);
         } else {
-            btnPrescribeMedication.setEnabled(true);
+            btnRequestTest.setEnabled(true);
             btnPrescribeMedication.setEnabled(true);
         }
-//        displayImage();
+        displayImage();
     }
     
     public void displayImage() {
@@ -171,9 +171,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         } catch (Exception e) { //Generic exception if something goes wrong while reading the image
             JOptionPane.showMessageDialog(null, "File not found");
             //Setting the image to the icon and then passing it ot he image JLabel  
+        }
             ImageIcon icon = new ImageIcon(image);
             lblChildPic.setIcon(icon);
-        }
+        
     }
     
     
