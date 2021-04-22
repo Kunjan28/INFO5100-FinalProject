@@ -26,8 +26,8 @@ import userinterface.Adoption.Adoption.AdoptionMainWorkArea;
 public class AdoptionRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
-        return new AdoptionMainWorkArea(userProcessContainer, account, organization, enterprise,business, udirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
+        return new AdoptionMainWorkArea(userProcessContainer, account, organization, enterprise,business, adopterdirectory);
     }
     @Override
     public String toString(){

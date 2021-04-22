@@ -36,15 +36,15 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     BackgroundAndCriminalCheckOrganization bgcOrganization;
     Adopter adopter;
     BGVProcessWorkRequest bgcWorkRequest;
     
-    public BGCandCriminalProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, BGVProcessWorkRequest bgcWorkRequest, Adopter adopter) {
+    public BGCandCriminalProcess(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, BGVProcessWorkRequest bgcWorkRequest, Adopter adopter) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;

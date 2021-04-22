@@ -35,19 +35,19 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
     ChildCareOrganization organization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     String data;
     Network network;
 
-   public RequestFinanceHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child, String data) {
+   public RequestFinanceHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child, String data) {
        initComponents();
        this.userProcessContainer = userProcessContainer;
        this.account = account;
        this.organization = (ChildCareOrganization) organization;
        this.enterprise = enterprise;
        this.business = business;
-       this.directory = directory;
+       this.childdirectory = childdirectory;
        this.child = child;
 
        for (Network net : business.getNetworkList()) {
@@ -168,7 +168,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
             business.getWorkQueue().getWorkRequestList().add(fccwr);
         }
         JOptionPane.showMessageDialog(null, "Request raised to Funding team");
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

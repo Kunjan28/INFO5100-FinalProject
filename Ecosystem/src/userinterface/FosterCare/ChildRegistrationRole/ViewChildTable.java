@@ -37,17 +37,17 @@ public class ViewChildTable extends javax.swing.JPanel {
     ChildRegistrationOrganization childRegistrationOrganization;
     Enterprise enterprise;
     Child child;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     EcoSystem business;
     Network network;
 
-    public ViewChildTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public ViewChildTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.childRegistrationOrganization = (ChildRegistrationOrganization) organization;
         this.business = business;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.enterprise = enterprise;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
@@ -150,7 +150,7 @@ public class ViewChildTable extends javax.swing.JPanel {
         Child ch = (Child) tblNewChild.getValueAt(selectedRow, 0);
         int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
         if (result == 0) {
-            directory.removeChild(ch);
+            childdirectory.removeChild(ch);
             List<Organization> list = new ArrayList<>();
             for (Network network : business.getNetworkList()) {
                 for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -176,8 +176,8 @@ public class ViewChildTable extends javax.swing.JPanel {
     public void poplulateTable() {
         DefaultTableModel dtms = (DefaultTableModel) tblNewChild.getModel();
         dtms.setRowCount(0);
-        if (directory != null && directory.getChildList() != null && directory.getChildList().size() > 0) {
-            for (Child child : directory.getChildList()) {
+        if (childdirectory != null && childdirectory.getChildList() != null && childdirectory.getChildList().size() > 0) {
+            for (Child child : childdirectory.getChildList()) {
                 Object[] row = new Object[dtms.getColumnCount()];
                 row[0] = child;
                 row[1] = child.getName();

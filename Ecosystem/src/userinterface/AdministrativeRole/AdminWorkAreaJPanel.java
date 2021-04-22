@@ -33,19 +33,19 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     Network network;
     UserAccount account;
     Organization organization;
-    AdopterDirectory udirectory;
-    ChildDirectory directory;
+    AdopterDirectory adopterdirectory;
+    ChildDirectory childdirectory;
     DonorDirectory donorDirectory;
    
     
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
         initComponents();
         System.out.println("here");
         this.userProcessContainer = userProcessContainer;
         this.enterprise = enterprise;
         this.business = business;
-        this.udirectory = udirectory;
-        this.directory = directory;
+        this.adopterdirectory = adopterdirectory;
+        this.childdirectory = childdirectory;
         this.donorDirectory = donorDirectory;
         manageRequestPanel.setVisible(false);
         if ("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue()) || "Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())) {
@@ -80,11 +80,11 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     
     private void manageRequests(){
          if("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
-               AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,udirectory);
+               AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,adopterdirectory);
         rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
          }
          else if("Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
-             FundingUnitWorkRequestJPanel vOUWRJP = new FundingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,udirectory,donorDirectory);
+             FundingUnitWorkRequestJPanel vOUWRJP = new FundingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,adopterdirectory,donorDirectory);
         rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
          }
         

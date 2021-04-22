@@ -31,16 +31,16 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private UserAccount userAccount;
     private EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Child child;
     Network network;
     
-    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.doctororganization = (DoctorOrganization) organization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.userAccount = account;
         this.business = business;
         for (Network net : business.getNetworkList()) {
@@ -182,12 +182,12 @@ public class DoctorJPanel extends javax.swing.JPanel {
             return;
         }
         request.setTestResult("Under Examination");
-        for (Child c : directory.getChildList()) {
+        for (Child c : childdirectory.getChildList()) {
             if (c.getChildId() == request.getChildId()) {
                 child = c;
             }
         }
-        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer, request, child, userAccount, doctororganization, enterprise, business, directory);
+        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer, request, child, userAccount, doctororganization, enterprise, business, childdirectory);
         userProcessContainer.add("AssignedChildJPanel", assignedChildJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

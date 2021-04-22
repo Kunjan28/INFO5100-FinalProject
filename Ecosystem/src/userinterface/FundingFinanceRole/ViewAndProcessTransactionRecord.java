@@ -34,16 +34,16 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
     FinanceOrganization financeOrphanageOrganization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     int countApprove=0, countDeny=0, countPending=0; 
     
-    public ViewAndProcessTransactionRecord(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public ViewAndProcessTransactionRecord(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.financeOrphanageOrganization = (FinanceOrganization) organization;
         this.enterprise = enterprise;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.business = business;
         processBt1.setEnabled(false);
         populateDonorRequesttable();
@@ -157,8 +157,8 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
             req.setMessage(txtComments.getText());
             req.setStatus("Received");
             JOptionPane.showMessageDialog(null, "Request is processed");
-            if (this.directory != null && this.directory.getChildList().size() > 0) {
-                for (Child ch : this.directory.getChildList()) {
+            if (this.childdirectory != null && this.childdirectory.getChildList().size() > 0) {
+                for (Child ch : this.childdirectory.getChildList()) {
                     if (req.getChildId() == ch.getChildId()) {
                         ch.setFinancialHelp(false);
                         break;

@@ -39,16 +39,16 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Network network;
     private OrganizationDirectory organizationDirectory;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     DonorDirectory donorDirectory;
 
-    public FundingUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
+    public FundingUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.enterprise = enterprise;
         this.business = system.getInstance();
-        this.udirectory = udirectory;
+        this.adopterdirectory = adopterdirectory;
         this.donorDirectory = donorDirectory;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
         this.business = system.getInstance();

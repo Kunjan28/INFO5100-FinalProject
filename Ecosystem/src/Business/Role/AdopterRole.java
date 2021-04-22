@@ -23,8 +23,8 @@ import userinterface.AdopterRegisteration.AdopterWorkArea;
  */
 public class AdopterRole extends Role {
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
-        return new AdopterWorkArea(userProcessContainer, account, organization, enterprise, business, udirectory, directory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
+        return new AdopterWorkArea(userProcessContainer, account, organization, enterprise, business, adopterdirectory, childdirectory);
     }
     
     @Override

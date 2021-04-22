@@ -26,8 +26,8 @@ import userinterface.FundingFinanceRole.FundingWorkArea;
 public class FundingFinanceRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return new FundingWorkArea(userProcessContainer, account, organization, enterprise, business, directory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+        return new FundingWorkArea(userProcessContainer, account, organization, enterprise, business, childdirectory);
     }
      @Override
     public String toString(){

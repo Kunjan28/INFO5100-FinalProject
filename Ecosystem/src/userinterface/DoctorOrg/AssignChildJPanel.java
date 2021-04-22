@@ -51,13 +51,13 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     Network network;
     
     
-    public AssignChildJPanel(JPanel userProcessContainer, MedicalHelpWorkRequest request, Child child, UserAccount userAccount, DoctorOrganization doctororganization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public AssignChildJPanel(JPanel userProcessContainer, MedicalHelpWorkRequest request, Child child, UserAccount userAccount, DoctorOrganization doctororganization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
         this.enterprise = enterprise;
         this.userAccount = userAccount;
-        this.childdirectory = directory;
+        this.childdirectory = childdirectory;
         this.child = child;
         this.doctororganization = doctororganization;
         this.business = business;

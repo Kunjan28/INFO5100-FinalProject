@@ -15,13 +15,13 @@ import java.util.List;
 public class ChildDirectory {
 
     List<Child> childList;
-    private static ChildDirectory directory;
+    private static ChildDirectory childdirectory;
 
     public static ChildDirectory getInstance() {
-        if (directory == null) {
-            directory = new ChildDirectory();
+        if (childdirectory == null) {
+            childdirectory = new ChildDirectory();
         }
-        return directory;
+        return childdirectory;
     }
 
     public List<Child> getChildList() {

@@ -25,8 +25,8 @@ import userinterface.Adoption.FinanceCheck.FinanceWorkArea;
 public class FinanceRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return new FinanceWorkArea(userProcessContainer,account, organization, enterprise,  business,  udirectory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+        return new FinanceWorkArea(userProcessContainer,account, organization, enterprise,  business,  adopterdirectory);
     }
     
     @Override

@@ -30,25 +30,25 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
     ChildRegistrationOrganization childRegistrationOrganization;
     Enterprise enterprise;
     Child child;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     EcoSystem business;
     Network network;
     
     
-    public ChildRegistrationMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
+    public ChildRegistrationMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.account = account;
         this.childRegistrationOrganization = (ChildRegistrationOrganization) organization;
         this.business = business;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         this.enterprise = enterprise;
         valueLabel.setText(organization.getName());
         childRegistrationArea();
     }
     
     private void childRegistrationArea() {
-        RegisterNewChildJPanel panel = new RegisterNewChildJPanel(rightSystemAdminPanel, directory, account, enterprise, business, childRegistrationOrganization);
+        RegisterNewChildJPanel panel = new RegisterNewChildJPanel(rightSystemAdminPanel, childdirectory, account, enterprise, business, childRegistrationOrganization);
         rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
@@ -189,7 +189,7 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
 
     private void lblViewChildMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewChildMousePressed
         // TODO add your handling code here:
-        ViewChildTable panel = new ViewChildTable(rightSystemAdminPanel, account, childRegistrationOrganization, enterprise, business, directory);
+        ViewChildTable panel = new ViewChildTable(rightSystemAdminPanel, account, childRegistrationOrganization, enterprise, business, childdirectory);
         rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);

@@ -22,8 +22,8 @@ import userinterface.DoctorOrg.DoctorWorkArea;
 public class DoctorRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory, DonorDirectory donorDirectory) {
-        return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization) organization, enterprise, business, directory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
+        return new DoctorWorkArea(userProcessContainer, account, (DoctorOrganization) organization, enterprise, business, childdirectory);
     }
     
     @Override

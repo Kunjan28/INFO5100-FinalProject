@@ -15,6 +15,7 @@ import Business.Organization.AdoptionOrganization;
 import Business.Organization.BackgroundAndCriminalCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdopterStatusCheckWorkRequest;
 import Business.WorkQueue.AdoptionProcessWorkRequest;
 import Business.WorkQueue.BGVProcessWorkRequest;
@@ -37,16 +38,16 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-    AdopterDirectory udirectory;
+    AdopterDirectory adopterdirectory;
     AdoptionOrganization adoptionOrganization;
     Adopter adopter;
     AdoptionProcessWorkRequest adoptionWorkRequest;
     
-    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, AdoptionProcessWorkRequest adoptionWorkRequest, Adopter adopter) {
+    public AdoptionCheckProcess(JPanel userProcessContainer,UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory adopterdirectory, AdoptionProcessWorkRequest adoptionWorkRequest, Adopter adopter) {
         initComponents();
         initComponents();
         this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
+        this.adopterdirectory=adopterdirectory;
         this.account=account;
         this.enterprise=enterprise;
         this.business = business;
@@ -312,7 +313,9 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                     account.getWorkQueue().getWorkRequestList().add(wrk);
                     business.getWorkQueue().getWorkRequestList().add(wrk);
                 }
-
+                String subject = "Background check pocess initiated";
+                String content = "Your background check process has been initiated and has sent to respective team. You can check your status through your credentials \n Thank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "BGC check initialized successfully!");
             } else if (!receiverval.equals(account.getUsername())) {
                 JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");

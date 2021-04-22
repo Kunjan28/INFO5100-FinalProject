@@ -34,12 +34,12 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     JPanel userProcessContainer;
     ChildCareWorkRequest request;
     Child child;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     ChildCareOrganization childCareOrganization;
     UserAccount account;
     EcoSystem business;
 
-    public ProcessAcquireChild(JPanel userProcessContainer, Organization organization, ChildCareWorkRequest request, ChildDirectory directory, Child child, UserAccount account, EcoSystem business) {
+    public ProcessAcquireChild(JPanel userProcessContainer, Organization organization, ChildCareWorkRequest request, ChildDirectory childdirectory, Child child, UserAccount account, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.childCareOrganization = (ChildCareOrganization) organization;

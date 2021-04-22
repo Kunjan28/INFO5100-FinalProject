@@ -36,10 +36,10 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
     ChildCareOrganization organization;
     Enterprise enterprise;
     EcoSystem business;
-    ChildDirectory directory;
+    ChildDirectory childdirectory;
     Network network;
 
-    public RequestMedicalHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child) {
+    public RequestMedicalHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.child = child;
@@ -47,7 +47,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         this.organization = (ChildCareOrganization) organization;
         this.enterprise = enterprise;
         this.business = business;
-        this.directory = directory;
+        this.childdirectory = childdirectory;
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -145,7 +145,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
             account.getWorkQueue().getWorkRequestList().add(docwrkreq);
             business.getWorkQueue().getWorkRequestList().add(docwrkreq);
         }
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

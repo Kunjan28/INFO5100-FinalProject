@@ -23,8 +23,8 @@ import userinterface.FosterCare.ChildRegistrationRole.ChildRegistrationMainWorkA
 public class ChildRegistrationRole extends Role{
 
     @Override
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory,DonorDirectory donorDirectory) {
-        return new ChildRegistrationMainWorkArea(userProcessContainer, account, organization, enterprise, business, directory);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+        return new ChildRegistrationMainWorkArea(userProcessContainer, account, organization, enterprise, business, childdirectory);
     }
     
     @Override
