@@ -237,7 +237,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 }
                 request.setStatus("Completed");
                 String subject = "Account activation";
-                String content = "Your account has been activated. Your background check process has been initiated. You can check your status through your credentials \n Thank you";
+                String content = "Your account has been activated. Your request has been sent to Adoption team. You can check your status through your credentials \n Thank you";
                 CommonMail.sendEmailMessage(request.getUserEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "User account has been activated successfully");
             }
