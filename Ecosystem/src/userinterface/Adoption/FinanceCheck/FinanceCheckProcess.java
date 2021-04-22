@@ -12,6 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdopterWorkRequest;
 import Business.WorkQueue.FinanceAdoptionWorkRequest;
 import Business.WorkQueue.WorkRequest;
@@ -219,6 +220,10 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                         }
                     }
                 }
+                String subject = "Finance Check Approved For Adoption";
+                String content = "Your finance check process has been completed and approved. You can confirm your status through portal. You will shortly recieve for final confirmation mail on your adoption . \nThank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
+                JOptionPane.showMessageDialog(null, "Finance check initialized successfully!");
                 JOptionPane.showMessageDialog(null, "Checks cleared, User is good to proceed with Adoption!");
             } else {
                 JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
@@ -258,6 +263,9 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                         }
                     }
                 }
+                String subject = "Finance Check Verification failed";
+                String content = "We are sorry to inform you that your finance check has been failed and cannot proceed with adoption procedure .You can confirm your status through portal. \nThank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
             }
         }
     }//GEN-LAST:event_btnDenyActionPerformed

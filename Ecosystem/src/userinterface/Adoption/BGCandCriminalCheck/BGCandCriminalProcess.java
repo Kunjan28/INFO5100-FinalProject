@@ -14,6 +14,7 @@ import Business.Organization.BackgroundAndCriminalCheckOrganization;
 import Business.Organization.FinanceCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
+import Business.Utils.CommonMail;
 import Business.WorkQueue.AdopterWorkRequest;
 import Business.WorkQueue.BGCWorkRequest;
 import Business.WorkQueue.FinanceAdoptionWorkRequest;
@@ -260,7 +261,9 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
                         }
                     }
                 }
-
+                String subject = "Background Check Approved";
+                String content = "Your background check has been completed and approved. The request is further sent to Finance check team .You can confirm your status through portal. \nThank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "Finance check initialized successfully!");
 
             } else {
@@ -305,6 +308,9 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
                         }
                     }
                 }
+                String subject = "Background Verification failed";
+                String content = "We are sorry to inform you that your background check has been failed and cannot proceed with adoption procedure .You can confirm your status through portal. \nThank you";
+                CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "Background check denied. Adopt request cancelled");
             } else {
                 JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
