@@ -11,23 +11,12 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceOrganization;
 import Business.Organization.Organization;
-
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DonorWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
 import Business.WorkQueue.WorkRequest;
-import java.awt.BorderLayout;
-import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.ChartPanel;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.plot.PlotOrientation;
-import org.jfree.chart.renderer.category.BarRenderer;
-import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
@@ -46,19 +35,17 @@ public class FinanceWorkAreaJPanel extends javax.swing.JPanel {
     ChildDirectory directory;
     int countApprove=0, countDeny=0, countPending=0; 
     
-   //FinanceOrphProcessRequest orph;
+   
 public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
-      initComponents();
-      this.userProcessContainer=userProcessContainer;
-      this.account=account;
-      this.financeOrphanageOrganization=(FinanceOrganization) organization;
-      this.enterprise=enterprise;
-      this.directory=directory;
-      this.business=business;
-            
-            btnProcess.setEnabled(false);
-            populateRequesttable();
-            //populateDonorRequesttable();
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.financeOrphanageOrganization = (FinanceOrganization) organization;
+        this.enterprise = enterprise;
+        this.directory = directory;
+        this.business = business;
+        btnProcess.setEnabled(false);
+        populateRequesttable();
     }
 
     /**
@@ -129,53 +116,46 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
-int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow<0){
+        int selectedRow = jTable1.getSelectedRow();
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
         EducationalHelpWorkRequest req = (EducationalHelpWorkRequest) jTable1.getValueAt(selectedRow, 0);
-        if (req.getStatus().equalsIgnoreCase("Approved")) {
-              JOptionPane.showMessageDialog(null, "Request already processed.");
-               return;
+        //if (req.getStatus().equalsIgnoreCase("Approved")) {
+        if ("Approved".equalsIgnoreCase(req.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already processed.");
+            return;
         }
-        if(this.directory!=null && this.directory.getChildList().size()>0){
-        for(Child ch:this.directory.getChildList()){
-            if(req.getChildId()==ch.getChildId()){
-                ch.setFinancialHelp(true);
-                ch.setAmt(req.getAmt());
-                break;
+        if (this.directory != null && this.directory.getChildList().size() > 0) {
+            for (Child ch : this.directory.getChildList()) {
+                if (req.getChildId() == ch.getChildId()) {
+                    ch.setFinancialHelp(true);
+                    ch.setAmt(req.getAmt());
+                    break;
+                }
             }
-        }
         }
         req.setReceiver(account);
         req.setMessage("Send to donors");
         req.setStatus("Approved");
         JOptionPane.showMessageDialog(this, "Request is processed.");
-        populateRequesttable();  
-       // populateDonorRequesttable();
-//        FinanceOrphProcessRequest fopr = new FinanceOrphProcessRequest( userProcessContainer,  account,  financeOrphanageOrganization,  enterprise,  business,  directory, req);
-//           userProcessContainer.add("FinanceOrphProcessRequest", fopr);
-//           CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-//            layout.next(userProcessContainer);
-      
-//    
+        populateRequesttable();
     }//GEN-LAST:event_btnProcessActionPerformed
 
     private void btnAssigToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssigToMeActionPerformed
         int selectedRow = jTable1.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
-        
         EducationalHelpWorkRequest req = (EducationalHelpWorkRequest) jTable1.getValueAt(selectedRow, 0);
-        if (req.getStatus().equalsIgnoreCase("Approved") || req.getStatus().equalsIgnoreCase("Assigned")) {
-              JOptionPane.showMessageDialog(null, "Request already processed.");
-               return;
+        //if (req.getStatus().equalsIgnoreCase("Approved") || req.getStatus().equalsIgnoreCase("Assigned")) {
+        if (("Approved".equalsIgnoreCase(req.getStatus())) || ("Assigned".equalsIgnoreCase(req.getStatus()))) {
+            JOptionPane.showMessageDialog(null, "Request already processed.");
+            return;
         }
         req.setReceiver(account);
-        //req.setTestResult("Pending with  Finance Team");
         req.setStatus("Assigned");
         JOptionPane.showMessageDialog(this, "Request is assigned.");
         populateRequesttable();
@@ -193,98 +173,31 @@ int selectedRow = jTable1.getSelectedRow();
     // End of variables declaration//GEN-END:variables
 
     public void populateRequesttable() {
-        DefaultTableModel dtms =(DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtms = (DefaultTableModel) jTable1.getModel();
         dtms.setRowCount(0);
-        
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof EducationalHelpWorkRequest){
+        for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof EducationalHelpWorkRequest) {
                 Object[] row = new Object[dtms.getColumnCount()];
-                row[0]=req;
-                row[1]=req.getSender();
-                row[2]=req.getReceiver();
-                row[3]=req.getChildId();
-                String remarks = ((EducationalHelpWorkRequest)req).getRemarks();
-                row[4]=remarks;
-                String result = ((EducationalHelpWorkRequest)req).getTestResult();
-                row[5]= result == null ? "Waiting" : result;
+                row[0] = req;
+                row[1] = req.getSender();
+                row[2] = req.getReceiver();
+                row[3] = req.getChildId();
+                String remarks = ((EducationalHelpWorkRequest) req).getRemarks();
+                row[4] = remarks;
+                String result = ((EducationalHelpWorkRequest) req).getTestResult();
+                row[5] = result == null ? "Waiting" : result;
                 row[6] = req.getStatus();
-                
-                if(result=="Approved"){
-                    countApprove++;  
-                  }
-                 else if(result=="Denied"){
-                      countDeny++;
-                  }
-                 else {
-                     countPending++;
-                 }
-             dtms.addRow(row);
-//                
-                  
-                 
+                if (result == "Approved") {
+                    countApprove++;
+                } else if (result == "Denied") {
+                    countDeny++;
+                } else {
+                    countPending++;
+                }
+                dtms.addRow(row);
             }
-          
+
         }
-      //  populateFreeChart();
-            }
-    
-//    public void populateDonorRequesttable() {
-//        DefaultTableModel dtms =(DefaultTableModel) jTable2.getModel();
-//        dtms.setRowCount(0);
-//        
-//       for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-//            if(req instanceof DonorWorkRequest){
-//                Object[] row = new Object[dtms.getColumnCount()];
-//                row[0]=req;
-//                row[1]=req.getSender();
-//                row[2]=req.getReceiver();
-//                row[3]=req.getChildId();
-//                String remarks = ((DonorWorkRequest)req).getRemarks();
-//                row[4]=remarks;
-//                String result = "";
-//                //((DonorWorkRequest)req).getTestResult();
-//                row[5]= result == null ? "Waiting" : result;
-//                
-//                if(result=="Approved"){
-//                    countApprove++;  
-//                  }
-//                 else if(result=="Denied"){
-//                      countDeny++;
-//                  }
-//                 else {
-//                     countPending++;
-//                 }
-//             dtms.addRow(row);
-////                
-//                  
-//                 
-//            }
-//          
-//        }
-//        
-//        
-//        //populateFreeChart();
-//            }
 
-
-//    public void populateFreeChart() {
-//        
-//        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-//        dataset.setValue(countApprove, "Workqueue", "Approved");
-//        dataset.setValue(countDeny, "Workqueue", "Denied");
-//        dataset.setValue(countPending, "Workqueue", "Pending");
-//        
-//        JFreeChart free = ChartFactory.createBarChart("Finance Organization contribution", "Workqueue", "Count", dataset, PlotOrientation.VERTICAL, false, false, false);
-//        CategoryPlot plot = free.getCategoryPlot();
-//        plot.setRangeGridlinePaint(Color.BLUE);
-//        BarRenderer br = (BarRenderer) plot.getRenderer();
-//        br.setMaximumBarWidth(.05);
-//        ChartPanel chartPanel = new ChartPanel(free);
-//       
-//        freechartpanel.removeAll();
-//        freechartpanel.add(chartPanel, BorderLayout.CENTER);
-//       
-//        freechartpanel.validate();
-//                
-//    }
+    }
 }

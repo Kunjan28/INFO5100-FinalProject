@@ -19,8 +19,6 @@ import javax.swing.JPanel;
 import Business.WorkQueue.DonorRegistrationRequest;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -361,24 +359,21 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
         Network network = (Network) cmbCity.getSelectedItem();
-        if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty()||txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
-                || txtSSN.getText().isEmpty()  || txtAge.getText().isEmpty() 
-               || (!rdbMale.isSelected() && !rdbFemale.isSelected())
+        if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty() || txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
+                || txtSSN.getText().isEmpty() || txtAge.getText().isEmpty()
+                || (!rdbMale.isSelected() && !rdbFemale.isSelected())
                 || txtIncome.getText().isEmpty()
-             || txtAdd1.getText().isEmpty() || txtAdd2.getText().isEmpty() 
-                ) {
+                || txtAdd1.getText().isEmpty() || txtAdd2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
-        else if (emailValid && userUnique && contactValid && income && age && ssn) {
+        } else if (emailValid && userUnique && contactValid && income && age && ssn) {
             DonorRegistrationRequest registrationRequest = new DonorRegistrationRequest();
-                String gender = "";
-                if(rdbMale.isSelected()){
-                    gender = "Male";
-                }
-                else if(rdbFemale.isSelected()){
-                    gender = "Female";
-                }
-        registrationRequest.setName(txtName.getText());
+            String gender = "";
+            if (rdbMale.isSelected()) {
+                gender = "Male";
+            } else if (rdbFemale.isSelected()) {
+                gender = "Female";
+            }
+            registrationRequest.setName(txtName.getText());
             registrationRequest.setUserName(txtUserName.getText());
             registrationRequest.setUserPassword(txtPwd.getText());
             registrationRequest.setUserEmailId(txtEmail.getText());
@@ -392,7 +387,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setAnnualIncome(txtIncome.getText());
             String subject = "Sponsorer Registeration";
             String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
-            CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
+            CommonMail.sendEmailMessage(txtEmail.getText(), subject, content);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
                     if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Funding) {
@@ -403,7 +398,7 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
                     }
                 }
             }
-    JOptionPane.showMessageDialog(null, "You have been registered succesfully");
+            JOptionPane.showMessageDialog(null, "You have been registered succesfully");
             txtUserName.setText("");
             txtName.setText("");
             txtPwd.setText("");
@@ -428,12 +423,10 @@ public class DonorRegistrationJPanel extends javax.swing.JPanel {
             ssnTick.setVisible(false);
             IncomeTick.setVisible(false);
             numTick.setVisible(false);
-            
-            
-        } else  {
+
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
         }
- 
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserNameActionPerformed

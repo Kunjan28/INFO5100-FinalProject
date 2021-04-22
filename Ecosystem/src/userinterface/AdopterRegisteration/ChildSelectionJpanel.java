@@ -54,7 +54,6 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         this.adopterorganization = (AdopterOrganization) organization;
         this.uid = uid;
         this.directory = directory;
-
         for (Adopter a : udirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
@@ -126,7 +125,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
     private void btnAdoptActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdoptActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblChild.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             return;
         }
         Child ch = (Child) tblChild.getValueAt(selectedRow, 0);
@@ -138,29 +137,26 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         adc.setStatus("Adopted");
         adc.setChildName(ch.getName());
         Organization org = null;
-        for (Network network : business.getNetworkList()){
-            for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){       
-                    if (organization instanceof ChildCareOrganization){
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof ChildCareOrganization) {
                         org = organization;
                         break;
-                    } 
+                    }
                 }
             }
         }
-        
-        if (org!=null){
+        if (org != null) {
             org.getWorkQueue().getWorkRequestList().add(adc);
             account.getWorkQueue().getWorkRequestList().add(adc);
             business.getWorkQueue().getWorkRequestList().add(adc);
-        } 
-        
+        }
         adopter.setFlag(false);
         JOptionPane.showMessageDialog(null, "You have been registered succesfully");
     }//GEN-LAST:event_btnAdoptActionPerformed
-    
-    public void populateChildTable() {
 
+    public void populateChildTable() {
         DefaultTableModel dtms = (DefaultTableModel) tblChild.getModel();
         dtms.setRowCount(0);
         for (Child child : directory.getChildList()) {
@@ -171,11 +167,9 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
                 row[2] = child.getGender();
                 row[3] = child.getChildAge();
                 row[4] = child.getStatus();
-
                 dtms.addRow(row);
             }
         }
-    
     }
 
 

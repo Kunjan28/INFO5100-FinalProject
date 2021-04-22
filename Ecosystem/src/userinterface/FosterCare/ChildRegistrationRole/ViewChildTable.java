@@ -16,11 +16,7 @@ import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
 import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -36,7 +32,6 @@ public class ViewChildTable extends javax.swing.JPanel {
     /**
      * Creates new form ChildRegistrationWorkAreaPanel
      */
-    //Attributes though which the data will flow
     JPanel userProcessContainer;
     UserAccount account;
     ChildRegistrationOrganization childRegistrationOrganization;
@@ -45,7 +40,6 @@ public class ViewChildTable extends javax.swing.JPanel {
     ChildDirectory directory;
     EcoSystem business;
     Network network;
-    //ChildDirectory anewdir =  this.business.getChildDirectory();
 
     public ViewChildTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
@@ -55,9 +49,6 @@ public class ViewChildTable extends javax.swing.JPanel {
         this.business = business;
         this.directory = directory;
         this.enterprise = enterprise;
-        //valueLabel.setText(enterprise.getName());
-        //valueLabel1.setText(childRegistrationOrganization.getName());
-
         for (Network net : business.getNetworkList()) {
             for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
                 if (ent.equals(enterprise)) {
@@ -65,9 +56,7 @@ public class ViewChildTable extends javax.swing.JPanel {
                 }
             }
         }
-
         poplulateTable();
-//        populateChildRequestTable();
     }
 
 
@@ -142,46 +131,38 @@ public class ViewChildTable extends javax.swing.JPanel {
         
         /*This set of code will take the UI to the vie child details*/
         int selectedRow = tblNewChild.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a child to view details");
             return;
         }
-        
-        child = (Child)tblNewChild.getValueAt(selectedRow, 0);
-             
-        ViewChildDetailsJPanel viewChildJpanel = new ViewChildDetailsJPanel(userProcessContainer, child);
-       this.userProcessContainer.add("ViewChildDetailsJPanel", viewChildJpanel);
-       CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        child = (Child) tblNewChild.getValueAt(selectedRow, 0);
+        ViewChildDetailsJPanel panel = new ViewChildDetailsJPanel(userProcessContainer, child);
+        this.userProcessContainer.add("ViewChildDetailsJPanel", panel);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewChildActionPerformed
 
     private void btnDeleteChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteChildActionPerformed
-    int selectedRow = tblNewChild.getSelectedRow();
-       if(selectedRow<0){
-           JOptionPane.showMessageDialog(null, "Please select a child to delete");
-       }
-       Child ch = (Child) tblNewChild.getValueAt(selectedRow, 0);
-       int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
+        int selectedRow = tblNewChild.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child to delete");
+        }
+        Child ch = (Child) tblNewChild.getValueAt(selectedRow, 0);
+        int result = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the child?", "Alert", JOptionPane.YES_NO_CANCEL_OPTION);
         if (result == 0) {
             directory.removeChild(ch);
             List<Organization> list = new ArrayList<>();
             for (Network network : business.getNetworkList()) {
-                // getNetworkList().getOrganizationDirectory().getOrganizationList()
-                System.out.println("network: " + network);
                 for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
                     if (this.network.equals(network)) {
                         for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
-
                             if (organization instanceof DoctorOrganization || organization instanceof PharmacistOrganization || organization instanceof LabOrganization) {
-
                                 list.add(organization);
                             }
                         }
                     }
-
                 }
             }
-            
             for (Organization org : list) {
                 org.getWorkQueue().delete(ch.getChildId());
             }
@@ -189,32 +170,25 @@ public class ViewChildTable extends javax.swing.JPanel {
             business.getWorkQueue().delete(ch.getChildId());
         }
         poplulateTable();
-       
     }//GEN-LAST:event_btnDeleteChildActionPerformed
 
-/*Method to populate the table of with child details*/    
-    public void poplulateTable(){
-      
-        DefaultTableModel dtms = (DefaultTableModel)tblNewChild.getModel();
-           dtms.setRowCount(0);
-       if(directory!=null && directory.getChildList()!=null && directory.getChildList().size()>0){
-           for(Child child : directory.getChildList()){
-            Object[] row = new Object[dtms.getColumnCount()];
-            row[0] = child;
-            row[1]=child.getName();
-            row[2]=child.getGender();
-            row[3]=child.getChildAge();
-            row[4]=child.getStatus();
-            row[5]=child.getMedicalStatus();
-            
-            dtms.addRow(row);
-        
+ 
+    public void poplulateTable() {
+        DefaultTableModel dtms = (DefaultTableModel) tblNewChild.getModel();
+        dtms.setRowCount(0);
+        if (directory != null && directory.getChildList() != null && directory.getChildList().size() > 0) {
+            for (Child child : directory.getChildList()) {
+                Object[] row = new Object[dtms.getColumnCount()];
+                row[0] = child;
+                row[1] = child.getName();
+                row[2] = child.getGender();
+                row[3] = child.getChildAge();
+                row[4] = child.getStatus();
+                row[5] = child.getMedicalStatus();
+                dtms.addRow(row);
+            }
         }
-       }
-        
     }
-    /*Method to populate the table with work request that has been created for the doctor*/
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDeleteChild;

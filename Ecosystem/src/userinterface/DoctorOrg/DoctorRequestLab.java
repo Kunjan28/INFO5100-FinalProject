@@ -42,17 +42,17 @@ public class DoctorRequestLab extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.userAccount = userAccount;
         this.child = child;
-        this.childdirectory=childdirectory;
+        this.childdirectory = childdirectory;
         this.business = business;
         this.request = request;
-        for(Network net: business.getNetworkList()){
-        for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-            if(ent.equals(enterprise)){
-            network= net;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
             }
         }
-    }
-        
+
     }
 
     /**
@@ -119,42 +119,35 @@ public class DoctorRequestLab extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
         String message = txtTest.getText();
-        if(message.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter test name");
-        }
-        else
-        {
-        LabWorkRequest labRequest = new LabWorkRequest();
-        labRequest.setMessage(message);
-        labRequest.setSender(userAccount);
-        labRequest.setStatus("Sent");
-        labRequest.setChildId(request.getChildId());
-        labRequest.setChildName(request.getChildName());
-        
-        labRequest.setStatus("Medical Test Requested");
-        JOptionPane.showMessageDialog(this, "Lab Test details added! ");
-        
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-           // if(this.network.equals(network)){
-                if (organization instanceof LabOrganization){
-                org = organization;
-                break;
+        if (message.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter test name");
+        } else {
+            LabWorkRequest labRequest = new LabWorkRequest();
+            labRequest.setMessage(message);
+            labRequest.setSender(userAccount);
+            labRequest.setStatus("Sent");
+            labRequest.setChildId(request.getChildId());
+            labRequest.setChildName(request.getChildName());
+            labRequest.setStatus("Medical Test Requested");
+            JOptionPane.showMessageDialog(this, "Lab Test details added! ");
+            Organization org = null;
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof LabOrganization) {
+                    org = organization;
+                    break;
                 }
-      //        }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(labRequest);
-            userAccount.getWorkQueue().getWorkRequestList().add(labRequest);
-        }  
+            }
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(labRequest);
+                userAccount.getWorkQueue().getWorkRequestList().add(labRequest);
+            }
         }
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         AssignChildJPanel panel = (AssignChildJPanel) component;
         panel.populateLabTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnSaveActionPerformed
 

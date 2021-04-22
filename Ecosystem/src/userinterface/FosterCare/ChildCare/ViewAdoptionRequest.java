@@ -48,41 +48,38 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
     
     public ViewAdoptionRequest(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
         this.business = business;
-        this.childCareOrganization=(ChildCareOrganization)organization;
+        this.childCareOrganization = (ChildCareOrganization) organization;
         this.directory = directory;
         this.udirectory = udirectory;
-        System.out.println("directory; "+directory.toString());
-        this.enterprise=enterprise;
-        //processBtn.setEnabled(false);
-    
-        for(Network net: business.getNetworkList()){
-        for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-          if(ent.equals(enterprise)){
-              network= net;
-          }
+        System.out.println("directory; " + directory.toString());
+        this.enterprise = enterprise;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
         }
-    }
-
-         populateWorkRequest();
+        populateWorkRequest();
     }
     
     public void populateWorkRequest(){
-    DefaultTableModel dtms = (DefaultTableModel) tblReq.getModel();
+        DefaultTableModel dtms = (DefaultTableModel) tblReq.getModel();
         dtms.setRowCount(0);
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof ChildCareAdoptionWorkRequest){
-                    Object[] row = new Object[dtms.getColumnCount()];
-                    row[0]=req;
-                    row[1]=req.getChildId();
-                    row[2]=req.getChildName();
-                    row[3]= ((ChildCareAdoptionWorkRequest) req).getUserName();
-                    row[4]= req.getStatus();
-                    dtms.addRow(row);
-                }
-    }
+        for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof ChildCareAdoptionWorkRequest) {
+                Object[] row = new Object[dtms.getColumnCount()];
+                row[0] = req;
+                row[1] = req.getChildId();
+                row[2] = req.getChildName();
+                row[3] = ((ChildCareAdoptionWorkRequest) req).getUserName();
+                row[4] = req.getStatus();
+                dtms.addRow(row);
+            }
+        }
     }
 
     /**
@@ -152,24 +149,24 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblReq.getSelectedRow();
-        if(selectedRow<0){
-             JOptionPane.showMessageDialog(null, "Please select a request");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
-        
         ChildCareAdoptionWorkRequest req = (ChildCareAdoptionWorkRequest) tblReq.getValueAt(selectedRow, 0);
-        if (req.getStatus().equalsIgnoreCase("Approved")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-                } else {
-        req.setStatus("Approved");
-        populateWorkRequest();
-        for(Child ch: directory.getChildList()){
-            if(ch.getChildId()==req.getChildId()){
-                ch.setStatus("Adopted by "+req.getUserName());
+        //if (req.getStatus().equalsIgnoreCase("Approved")) {
+        if("Approved".equalsIgnoreCase(req.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            req.setStatus("Approved");
+            populateWorkRequest();
+            for (Child ch : directory.getChildList()) {
+                if (ch.getChildId() == req.getChildId()) {
+                    ch.setStatus("Adopted by " + req.getUserName());
+                }
             }
-        }
-        JOptionPane.showMessageDialog(null, "Child Adopted");
+            JOptionPane.showMessageDialog(null, "Child Adopted");
         }
     }//GEN-LAST:event_btnProcessActionPerformed
 

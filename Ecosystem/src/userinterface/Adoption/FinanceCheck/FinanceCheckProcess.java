@@ -7,7 +7,6 @@ package userinterface.Adoption.FinanceCheck;
 
 import Business.Adopter.Adopter;
 import Business.Adopter.AdopterDirectory;
-import Business.Child.Child;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceCheckOrganization;
@@ -191,74 +190,75 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if (selectedRow < 0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the request to proceed.");
             return;
         }
-        
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
-            JOptionPane.showMessageDialog(null,"Request already processed");
-        } else {
-        if(receiverval.equals(account.getUsername())){
-        FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest)tblRequest.getValueAt(selectedRow,0);
 
-        request.setStatus("Approved");
-        request.setRemarks(txtRemarks.getText());
-        request.setSender(account);
-        request.setUserId(adopter.getUserId());
-        request.setFinanceStatus("Approved");
-        populateWorkRequest();
-        
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req.getUserId()==adopter.getUserId()){
-                if(req instanceof AdopterWorkRequest){
-                    
-                    ((AdopterWorkRequest) req).setFinanceStatus("Approved");
-                    ((AdopterWorkRequest) req).setBgcStatus("Approved");
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+            JOptionPane.showMessageDialog(null, "Request already processed");
+        } else {
+            if (receiverval.equals(account.getUsername())) {
+                FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+
+                request.setStatus("Approved");
+                request.setRemarks(txtRemarks.getText());
+                request.setSender(account);
+                request.setUserId(adopter.getUserId());
+                request.setFinanceStatus("Approved");
+                populateWorkRequest();
+
+                for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+                    if (req.getUserId() == adopter.getUserId()) {
+                        if (req instanceof AdopterWorkRequest) {
+
+                            ((AdopterWorkRequest) req).setFinanceStatus("Approved");
+                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                        }
+                    }
                 }
+                JOptionPane.showMessageDialog(null, "Checks cleared, User is good to proceed with Adoption!");
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
             }
-        }
-        JOptionPane.showMessageDialog(null,"Checks cleared, User is good to proceed with Adoption!");
-        }
-        else
-            JOptionPane.showMessageDialog(null,"Please select work request assigned to you");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if (selectedRow < 0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the request to proceed.");
             return;
         }
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+
         if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
-            JOptionPane.showMessageDialog(null,"Request already processed");
+            JOptionPane.showMessageDialog(null, "Request already processed");
         } else {
-        
-        if(receiverval.equals(account.getUsername())){
 
-        FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest)tblRequest.getValueAt(selectedRow,0);
+            if (receiverval.equals(account.getUsername())) {
 
-        request.setStatus("Denied");
-        request.setRemarks(txtRemarks.getText());
-        request.setUserId(adopter.getUserId());
-        request.setFinanceStatus("Denied");
-        populateWorkRequest();
-        
-        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req.getUserId()==adopter.getUserId()){
-                if(req instanceof AdopterWorkRequest){
-                    ((AdopterWorkRequest) req).setFinanceStatus("Denied");
-                    ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                FinanceAdoptionWorkRequest request = (FinanceAdoptionWorkRequest) tblRequest.getValueAt(selectedRow, 0);
+
+                request.setStatus("Denied");
+                request.setRemarks(txtRemarks.getText());
+                request.setUserId(adopter.getUserId());
+                request.setFinanceStatus("Denied");
+                populateWorkRequest();
+
+                for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+                    if (req.getUserId() == adopter.getUserId()) {
+                        if (req instanceof AdopterWorkRequest) {
+                            ((AdopterWorkRequest) req).setFinanceStatus("Denied");
+                            ((AdopterWorkRequest) req).setBgcStatus("Approved");
+                        }
+                    }
                 }
             }
-        }}
         }
     }//GEN-LAST:event_btnDenyActionPerformed
 
@@ -267,31 +267,32 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         populateWorkRequest();
     }//GEN-LAST:event_btnRefreshActionPerformed
     
-    public void populateWorkRequest(){
-      
-        DefaultTableModel dtm = (DefaultTableModel)tblRequest.getModel();
+    public void populateWorkRequest() {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
-        for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()){
-            if(request instanceof FinanceAdoptionWorkRequest){
-                if(request.getUserId() == financeCCWorkRequest.getUserId()){
-                Object[] row = new Object[dtm.getColumnCount()];
-                row[0]=request;
-                row[1]=request.getSender().getEmployee().getName();
-                row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-                row[3] = request.getUserId();
-                row[4] = request.getName();
-                row[5] = request.getStatus();
-                 dtm.addRow(row);
-            }}}
+        for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof FinanceAdoptionWorkRequest) {
+                if (request.getUserId() == financeCCWorkRequest.getUserId()) {
+                    Object[] row = new Object[dtm.getColumnCount()];
+                    row[0] = request;
+                    row[1] = request.getSender().getEmployee().getName();
+                    row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                    row[3] = request.getUserId();
+                    row[4] = request.getName();
+                    row[5] = request.getStatus();
+                    dtm.addRow(row);
+                }
+            }
+        }
     }
-    public void setUserDetailsField(){
+
+    public void setUserDetailsField() {
         txtAge.setText(String.valueOf(adopter.getAge()));
         txtEmail.setText(adopter.getEmailId());
-        if(adopter.getGender().equalsIgnoreCase("male")){
+        if (adopter.getGender().equalsIgnoreCase("male")) {
             rdbMale.setSelected(true);
-        }
-        else
-        {
+        } else {
             rdbFemale.setSelected(true);
         }
         txtIncome.setText(String.valueOf(adopter.getAnnualIncome()));

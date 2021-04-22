@@ -49,20 +49,20 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         populateWorkRequest();
     }
     
-    public void populateWorkRequest(){
-      
-        DefaultTableModel dtm = (DefaultTableModel)tblRequest.getModel();
-            dtm.setRowCount(0);
-        for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()){
-            if(request instanceof BGCWorkRequest){
-           Object[] row = new Object[dtm.getColumnCount()];
-           row[0]= request;
-           row[1]= request.getSender().getEmployee().getName();
-           row[2]= request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-           row[3] = request.getUserId();
-           row[4] = request.getName();
-           row[5] = request.getStatus();
-            dtm.addRow(row);
+    public void populateWorkRequest() {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
+        dtm.setRowCount(0);
+        for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof BGCWorkRequest) {
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getSender().getEmployee().getName();
+                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                row[3] = request.getUserId();
+                row[4] = request.getName();
+                row[5] = request.getStatus();
+                dtm.addRow(row);
             }
         }
     }
@@ -134,28 +134,27 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        
-        
-        if("Pending with BGC organization".equals(statusval) || receiverval==null){
-        WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
-        re.setReceiver(account);
-        re.setStatus("BGC organization processing");
-        populateWorkRequest();
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+
+        if ("Pending with BGC organization".equals(statusval) || receiverval == null) {
+            WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
+            re.setReceiver(account);
+            re.setStatus("BGC organization processing");
+            populateWorkRequest();
+        } else {
+            if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+                JOptionPane.showMessageDialog(null, "Please select some other request,this work request is already processed");
+            } else if (!receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Work request is assigned to someone else");
+            } else if (receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Work request is already assigned to you");
+            }
         }
-        else{
-        if("Approved".equals(statusval) || "Denied".equals(statusval))
-            JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-        else if(receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
-        } 
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

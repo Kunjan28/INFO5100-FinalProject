@@ -12,22 +12,16 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
-//pjpjp import Business.Organization.Orphanage.ChildCareOrganization;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DoctorWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
-//pjpj import Business.WorkQueue.DoctorWorkRequest;
-//pjpj import Business.WorkQueue.FinanceCCWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -68,8 +62,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         }
         disableInput();
         nameTextField.setText(child.getName());
-//        ageComboBox.setSelectedIndex(child.getChildAge());
-//pjpj        txtDOB.setText(child.getChildAge());
         if (child.getGender().equalsIgnoreCase("Male")) {
             maleRDB.setSelected(true);
         } else if (child.getGender().equalsIgnoreCase("female")) {
@@ -82,29 +74,22 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         tempText.setText(String.valueOf(child.getBodytemp()));
         respRateText.setText(String.valueOf(child.getRespirationRate()));
         medicalTextArea.setText(child.getMedicalStatus());
-        // imageTextField.setText(child.getImageDetails());
         displayImage();
         populaterequestTable();
-
         btnRequestFunds.setEnabled(!child.isFinancialHelp());
         requestMedicalHelpBtn.setEnabled(!child.isMedicalHelp());
-
     }
 
     public void displayImage() {
-        BufferedImage image = null; //Buffered image object
-        String filename = child.getImageDetails(); //Getting the filepath and storing into the string
-
+        BufferedImage image = null; 
+        String filename = child.getImageDetails(); 
         try {
-            image = ImageIO.read(new File(filename));  //Reading the filename and storing it in image
-        } catch (Exception e) { //Generic exception if something goes wrong while reading the image
+            image = ImageIO.read(new File(filename));  
+        } catch (Exception e) { 
             JOptionPane.showMessageDialog(null, "File not found");
         }
-
-        //Setting the image to the icon and then passing it ot he image JLabel    
         ImageIcon icon = new ImageIcon(image);
         lblPic.setIcon(icon);
-
     }
   
 
@@ -225,7 +210,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
                 btnRequestFundsActionPerformed(evt);
             }
         });
-        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 630, 180, 30));
+        add(btnRequestFunds, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 660, 180, 30));
 
         requestMedicalHelpBtn.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         requestMedicalHelpBtn.setText("Request Medical Help");
@@ -234,7 +219,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
                 requestMedicalHelpBtnActionPerformed(evt);
             }
         });
-        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 590, 180, 30));
+        add(requestMedicalHelpBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 600, 180, 30));
 
         btnBack.setBackground(new java.awt.Color(255, 255, 255));
         btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
@@ -276,7 +261,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         });
         jScrollPane3.setViewportView(tblRequest);
 
-        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 590, 890, 104));
+        add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 590, 800, 104));
         add(txtDOB, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 190, 30));
         add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 220, 190, 30));
         add(txtMark, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 160, 190, 30));
@@ -289,34 +274,25 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ViewChildDetails dwjp = (ViewChildDetails) component;
-        dwjp.populateChildTable();
-        //dwjp.populateWorkRequest();
-
+        ViewChildDetails panel = (ViewChildDetails) component;
+        panel.populateChildTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void requestMedicalHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestMedicalHelpBtnActionPerformed
-     RequestMedicalHelp rqmh = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, directory, child);
-     this.userProcessContainer.add("RequestMedicalHelp", rqmh);
-     CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
-     layout.next(userProcessContainer);
+        RequestMedicalHelp panel = new RequestMedicalHelp(userProcessContainer, account, organization, enterprise, business, directory, child);
+        this.userProcessContainer.add("RequestMedicalHelp", panel);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_requestMedicalHelpBtnActionPerformed
 
     private void btnRequestFundsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestFundsActionPerformed
-         
-       String data = "";
-       
-       
-        //System.out.println("date:"+data);
-        RequestFinanceHelp rfhp = new RequestFinanceHelp(userProcessContainer,  account,  organization,  enterprise,  business,  directory, child, data);
-       this.userProcessContainer.add("RequestFinanceHelp", rfhp);
-       CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
-       
-       
-       
+        String data = "";
+        RequestFinanceHelp panel = new RequestFinanceHelp(userProcessContainer, account, organization, enterprise, business, directory, child, data);
+        this.userProcessContainer.add("RequestFinanceHelp", panel);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnRequestFundsActionPerformed
 
     private void maleRDBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maleRDBActionPerformed
@@ -378,7 +354,6 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
     public void populaterequestTable() {
         DefaultTableModel dtms = (DefaultTableModel) tblRequest.getModel();
         dtms.setRowCount(0);
-
         for (WorkRequest request : account.getWorkQueue().getWorkRequestList()) {
             if (request.getChildId() == child.getChildId()) {
                 System.out.println(child.getMedicalStatus());

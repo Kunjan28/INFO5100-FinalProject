@@ -64,37 +64,36 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         txtSSN.setEnabled(false);
     }
     
-    public void setUserDetailsField(){
+    public void setUserDetailsField() {
         txtAge.setText(String.valueOf(adopter.getAge()));
         txtEmail.setText(adopter.getEmailId());
         txtIncome.setText(String.valueOf(adopter.getAnnualIncome()));
         txtName.setText(adopter.getName());
         txtSSN.setText(adopter.getSsn());
-        if(adopter.getGender().equalsIgnoreCase("Male")){
+        if (adopter.getGender().equalsIgnoreCase("Male")) {
             rdbMale.setSelected(true);
-        }
-        else {
+        } else {
             rdbFemale.setSelected(true);
         }
     }
-     
-    public void populateWorkRequest(){
-      
-        DefaultTableModel model = (DefaultTableModel)tblInitiateBCG.getModel();
-            model.setRowCount(0);
-         
-        for (WorkRequest request : adoptionOrganization.getWorkQueue().getWorkRequestList()){
-         
-            if(request instanceof AdoptionWorkRequest  ){
-                if(request.getUserId() == adoptionWorkRequest.getUserId()){
-           Object[] row = new Object[model.getColumnCount()];
-           row[0]=request;
-           row[1]=request.getName();
-           row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-           row[3] = request.getUserId();
-           row[4] = request.getStatus();
-            model.addRow(row);
-            }
+
+    public void populateWorkRequest() {
+
+        DefaultTableModel model = (DefaultTableModel) tblInitiateBCG.getModel();
+        model.setRowCount(0);
+
+        for (WorkRequest request : adoptionOrganization.getWorkQueue().getWorkRequestList()) {
+
+            if (request instanceof AdoptionWorkRequest) {
+                if (request.getUserId() == adoptionWorkRequest.getUserId()) {
+                    Object[] row = new Object[model.getColumnCount()];
+                    row[0] = request;
+                    row[1] = request.getName();
+                    row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                    row[3] = request.getUserId();
+                    row[4] = request.getStatus();
+                    model.addRow(row);
+                }
             }
         }
     }

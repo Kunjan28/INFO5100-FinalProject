@@ -7,7 +7,6 @@ package userinterface.AdministrativeRole;
 import Business.Employee.Employee;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -33,16 +32,16 @@ public class ManageEmployeeJPanel extends javax.swing.JPanel {
         populateOrganizationEmpComboBox();
     }
     
-    public void populateOrganizationComboBox(){
+    public void populateOrganizationComboBox() {
         organizationJComboBox.removeAllItems();
-        
-        for (Organization organization : organizationDir.getOrganizationList()){
+
+        for (Organization organization : organizationDir.getOrganizationList()) {
             organizationJComboBox.addItem(organization);
         }
     }
-    
-    public void populateOrganizationEmpComboBox(){
-       organizationEmpJComboBox.removeAllItems();
+
+    public void populateOrganizationEmpComboBox() {
+        organizationEmpJComboBox.removeAllItems();
 
         for (Organization organization : organizationDir.getOrganizationList()) {
             organizationEmpJComboBox.addItem(organization);

@@ -10,8 +10,6 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Role.AdminRole;
 import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +19,6 @@ import javax.swing.table.DefaultTableModel;
  * @author raunak
  */
 public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
-
     private JPanel userProcessContainer;
     private EcoSystem system;
 
@@ -30,10 +27,8 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
      */
     public ManageEnterpriseAdminJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
         populateTable();
         populateNetworkComboBox();
     }
@@ -49,28 +44,24 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
                     row[0] = enterprise.getName();
                     row[1] = network.getName();
                     row[2] = userAccount.getUsername();
-
                     model.addRow(row);
                 }
             }
         }
     }
 
-    private void populateNetworkComboBox(){
+    private void populateNetworkComboBox() {
         networkJComboBox.removeAllItems();
-        
-        for (Network network : system.getNetworkList()){
+        for (Network network : system.getNetworkList()) {
             networkJComboBox.addItem(network);
         }
     }
-    
-    private void populateEnterpriseComboBox(Network network){
+
+    private void populateEnterpriseComboBox(Network network) {
         enterpriseJComboBox.removeAllItems();
-        
-        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
+        for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
             enterpriseJComboBox.addItem(enterprise);
         }
-        
     }
     
     /**
@@ -194,11 +185,9 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
     private void networkJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_networkJComboBoxActionPerformed
 
         Network network = (Network) networkJComboBox.getSelectedItem();
-        if (network != null){
+        if (network != null) {
             populateEnterpriseComboBox(network);
         }
-        
-        
     }//GEN-LAST:event_networkJComboBoxActionPerformed
 
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
@@ -212,7 +201,6 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         } else {
             if (system.checkIfUserIsUnique(username)) {
                 Employee employee = enterprise.getEmployeeDirectory().createEmployee(name);
-
                 UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
                 usernameJTextField.setText("");
                 passwordJPasswordField.setText("");
@@ -222,9 +210,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
-
         }
-        
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

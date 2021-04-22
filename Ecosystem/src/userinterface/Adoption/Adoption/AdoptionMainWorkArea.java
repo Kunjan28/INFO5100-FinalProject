@@ -35,24 +35,23 @@ public class AdoptionMainWorkArea extends javax.swing.JPanel {
     
     public AdoptionMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.udirectory = udirectory;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.adoptionOrganization = (AdoptionOrganization)organization;
+        this.adoptionOrganization = (AdoptionOrganization) organization;
         valueLabel.setText(organization.getName());
         adoptionRequest();
     }
-    
-    
-    private void adoptionRequest(){
+
+    private void adoptionRequest() {
         AdoptionRequestJPanel panel = new AdoptionRequestJPanel(rightSystemAdminPanel, account, adoptionOrganization, enterprise, business, udirectory);
-        rightSystemAdminPanel.add("AdoptionRequestJPanel",panel);
+        rightSystemAdminPanel.add("AdoptionRequestJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-     }
-    
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.

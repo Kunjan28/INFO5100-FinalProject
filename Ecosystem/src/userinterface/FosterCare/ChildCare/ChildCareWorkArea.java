@@ -10,24 +10,14 @@ import Business.Adopter.AdopterDirectory;
 import Business.Child.Child;
 import Business.Child.ChildDirectory;
 import Business.EcoSystem;
-import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.FosterCareEnterprise;
-import Business.Enterprise.HospitalEnterprise;
 import Business.Network.Network;
 import Business.Organization.ChildCareOrganization;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -258,7 +248,7 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
 
     private void lblViewChildMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewChildMousePressed
         // TODO add your handling code here:
-          ViewChild();
+        ViewChild();
     }//GEN-LAST:event_lblViewChildMousePressed
 
     private void lblViewAdoptionMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewAdoptionMousePressed

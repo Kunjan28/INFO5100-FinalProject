@@ -93,15 +93,12 @@ public class LabProcessJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(txtResult.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter the test result");
-        }
-        else
-        {
+        if (txtResult.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the test result");
+        } else {
             request.setTestResult(txtResult.getText());
             request.setStatus("Completed");
-            JOptionPane.showMessageDialog(null,"Results saved!");
+            JOptionPane.showMessageDialog(null, "Results saved!");
         }
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();

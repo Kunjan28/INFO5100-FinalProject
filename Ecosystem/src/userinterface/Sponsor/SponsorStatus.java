@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Donor;
+package userinterface.Sponsor;
 
 import Business.Adopter.AdopterDirectory;
 import Business.Child.ChildDirectory;
@@ -23,7 +23,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author snehaswaroop
  */
-public class DonorStatus extends javax.swing.JPanel {
+public class SponsorStatus extends javax.swing.JPanel {
 
     /**
      * Creates new form DonorStatus
@@ -37,46 +37,40 @@ public class DonorStatus extends javax.swing.JPanel {
     ChildDirectory directory;
     DonorDirectory donorDirectory;
     
-    public DonorStatus(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
+    public SponsorStatus(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.donororganization =(DonorOrganization) organization;
+        this.donororganization = (DonorOrganization) organization;
         this.directory = directory;
         this.donorDirectory = donorDirectory;
-       for(Donor a: donorDirectory.getDonorsList()){
-           if(a.getUsername().equals(account.getUsername())){
-               donor=a;
-           }
-       }
-       populateWorkRequestTable();
+        for (Donor a : donorDirectory.getDonorsList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                donor = a;
+            }
+        }
+        populateWorkRequestTable();
     }
     
     public void populateWorkRequestTable(){
-    DefaultTableModel dtms = (DefaultTableModel)workReqTable.getModel();
-    dtms.setRowCount(0);
-     for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof DonorWorkRequest){
-               DonorWorkRequest request = (DonorWorkRequest)req;
-               req.setReceiver(account);
-               if(request.getUserName().equalsIgnoreCase(account.getUsername())){
-                    Object[] row = new Object[dtms.getColumnCount()];
-                row[0]=req;
-                //row[1]=req.getSender();
-                row[1]=req.getReceiver();
-                row[2]=req.getChildId();
-                row[3]=req.getChildName();
-                row[4]=((DonorWorkRequest) req).getAmount();
-//                String remarks = ((DonorWorkRequest)req).getRemarks();
-//                row[5]=remarks;
-                row[5]=req.getStatus();
-//                String result = "";
-                //((DonorWorkRequest)req).getTestResult();
-//                row[5]= result == null ? "Waiting" : result;
-             dtms.addRow(row);
-               }
+        DefaultTableModel table = (DefaultTableModel) workReqTable.getModel();
+        table.setRowCount(0);
+        for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof DonorWorkRequest) {
+                DonorWorkRequest request = (DonorWorkRequest) req;
+                req.setReceiver(account);
+                if (request.getUserName().equalsIgnoreCase(account.getUsername())) {
+                    Object[] row = new Object[table.getColumnCount()];
+                    row[0] = req;
+                    row[1] = req.getReceiver();
+                    row[2] = req.getChildId();
+                    row[3] = req.getChildName();
+                    row[4] = ((DonorWorkRequest) req).getAmount();
+                    row[5] = req.getStatus();
+                    table.addRow(row);
+                }
             }
         }
     }

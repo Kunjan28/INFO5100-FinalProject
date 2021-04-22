@@ -23,7 +23,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
 
     public SystemAdminWorkAreaJPanel(JPanel userProcessContainer, EcoSystem ecosystem) {
         initComponents();
-        System.out.println("here");
         this.userProcessContainer = userProcessContainer;
         this.ecosystem = ecosystem;
         manageOrganisation();
@@ -51,7 +50,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     private void whoWeServe() {
-
         userinterface.SystemAdminWorkArea.WhoWeServe whoWeServeGraphs = new userinterface.SystemAdminWorkArea.WhoWeServe(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("SceneDetailsGraph", whoWeServeGraphs);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
@@ -59,7 +57,6 @@ public class SystemAdminWorkAreaJPanel extends javax.swing.JPanel {
     }
 
     private void ourServices() {
-
         userinterface.SystemAdminWorkArea.Services servicesAtGlance = new userinterface.SystemAdminWorkArea.Services(rightSystemAdminPanel, ecosystem);
         rightSystemAdminPanel.add("ServicesAtGlance", servicesAtGlance);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();

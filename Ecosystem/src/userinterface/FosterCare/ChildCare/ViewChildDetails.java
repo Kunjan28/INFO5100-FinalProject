@@ -48,39 +48,35 @@ public class ViewChildDetails extends javax.swing.JPanel {
     
     public ViewChildDetails(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
         this.business = business;
-        this.childCareOrganization=(ChildCareOrganization)organization;
+        this.childCareOrganization = (ChildCareOrganization) organization;
         this.directory = directory;
         this.udirectory = udirectory;
-        this.enterprise=enterprise;
-        
-        for(Network net: business.getNetworkList()){
-            for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-                if(ent.equals(enterprise)){
-                    network= net;
+        this.enterprise = enterprise;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
                 }
             }
         }
         populateChildTable();
     }
-    
-    public void populateChildTable(){
 
-    DefaultTableModel table = (DefaultTableModel)tblChild.getModel();
-    table.setRowCount(0);
-    for(Child ch : directory.getChildList()){
-        
-    if(ch.getStatus().equalsIgnoreCase("Acquired") || ch.getStatus().startsWith("Adopted by")){
-            Object[] row = new Object[table.getColumnCount()];
-            row[0]=ch;
-            row[1]=ch.getName();
-            row[2]=ch.getChildAge();
-            row[3]=ch.getGender();
-            row[4]=ch.getStatus();
-            
-            table.addRow(row);
+    public void populateChildTable() {
+        DefaultTableModel table = (DefaultTableModel) tblChild.getModel();
+        table.setRowCount(0);
+        for (Child ch : directory.getChildList()) {
+            if (ch.getStatus().equalsIgnoreCase("Acquired") || ch.getStatus().startsWith("Adopted by")) {
+                Object[] row = new Object[table.getColumnCount()];
+                row[0] = ch;
+                row[1] = ch.getName();
+                row[2] = ch.getChildAge();
+                row[3] = ch.getGender();
+                row[4] = ch.getStatus();
+                table.addRow(row);
             }
         }
     }
@@ -141,14 +137,14 @@ public class ViewChildDetails extends javax.swing.JPanel {
     private void btnViewActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblChild.getSelectedRow();
-        if(selectedRow<0){
-           JOptionPane.showMessageDialog(null, "Please select a child");
-          return;
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child");
+            return;
         }
-        Child child = (Child) tblChild.getValueAt(selectedRow, 0); 
-        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer,account,organization,enterprise,business,directory, child);
+        Child child = (Child) tblChild.getValueAt(selectedRow, 0);
+        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", completeJapanel);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnViewActionPerformed
 

@@ -312,42 +312,39 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDenyActionPerformed
     
-    public void populateWorkRequest(){
-      
-        DefaultTableModel dtm = (DefaultTableModel)tblRequest.getModel();
+    public void populateWorkRequest() {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
-        for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()){
-            if(request instanceof BGCWorkRequest){
-                if(request.getUserId() == bgcWorkRequest.getUserId()){
-                //if((request.getStatus()).equals("BGC organization processing")){
-                Object[] row = new Object[dtm.getColumnCount()];
-                row[0]= request;
-                row[1]= request.getSender().getEmployee().getName();
-                //row[1] = request.getName();
-                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-                row[3] = request.getUserId();
-                row[4] = request.getName();
-                row[5] = request.getStatus();
-                 dtm.addRow(row);
-            }}}
-        //}
+        for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof BGCWorkRequest) {
+                if (request.getUserId() == bgcWorkRequest.getUserId()) {
+                    Object[] row = new Object[dtm.getColumnCount()];
+                    row[0] = request;
+                    row[1] = request.getSender().getEmployee().getName();
+                    row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                    row[3] = request.getUserId();
+                    row[4] = request.getName();
+                    row[5] = request.getStatus();
+                    dtm.addRow(row);
+                }
+            }
+        }
     }
-public void setUserDetailsField(){
+
+    public void setUserDetailsField() {
         txtAge.setText(String.valueOf(adopter.getAge()));
         txtEmail.setText(adopter.getEmailId());
-        //txtGender.setText(adopter.getGender());
         txtIncome.setText(String.valueOf(adopter.getAnnualIncome()));
         txtName.setText(adopter.getName());
         txtSSN.setText(adopter.getSsn());
-        if(adopter.getGender().equalsIgnoreCase("male")){
+        if (adopter.getGender().equalsIgnoreCase("male")) {
             rdbMale.setSelected(true);
-        }
-        else
-        {
+        } else {
             rdbFemale.setSelected(true);
         }
     }
-    
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
