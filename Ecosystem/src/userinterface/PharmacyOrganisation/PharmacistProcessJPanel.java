@@ -136,13 +136,13 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         if (txtComments.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter message");
         } else {
-            request.setTestResult(txtComments.getText());
+            request.setResult(txtComments.getText());
             request.setStatus("Delivered");
             ChildCareWorkRequest temp = new ChildCareWorkRequest();
             temp.setStatus("Medically Fit");
             temp.setMessage("Child has been medicated");
             temp.setSender(userAccount);
-            temp.setTestResult("Completed");
+            temp.setResult("Completed");
             temp.setChildId(request.getChildId());
             temp.setChildName(request.getChildName());
             if (this.directory != null && this.directory.getChildList().size() > 0) {

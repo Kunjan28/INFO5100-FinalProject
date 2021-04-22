@@ -13,7 +13,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.AdopterOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.AdopterWorkRequest;
+import Business.WorkQueue.AdopterStatusCheckWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -64,16 +64,16 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
         dtms.setRowCount(0);
 
         for (WorkRequest req : adopterorganization.getWorkQueue().getWorkRequestList()) {
-            if (req instanceof AdopterWorkRequest) {
+            if (req instanceof AdopterStatusCheckWorkRequest) {
                 if (req.getUserId() == adopter.getUserId()) {
                     Object[] row = new Object[dtms.getColumnCount()];
                     row[0] = req;
-                    row[1] = ((AdopterWorkRequest) req).getBgcStatus();
-                    row[2] = ((AdopterWorkRequest) req).getFinanceStatus();
+                    row[1] = ((AdopterStatusCheckWorkRequest) req).getBgcStatus();
+                    row[2] = ((AdopterStatusCheckWorkRequest) req).getFinanceStatus();
                     dtms.addRow(row);
 
-                    bgcstatus = ((AdopterWorkRequest) req).getBgcStatus();
-                    financestatus = ((AdopterWorkRequest) req).getFinanceStatus();
+                    bgcstatus = ((AdopterStatusCheckWorkRequest) req).getBgcStatus();
+                    financestatus = ((AdopterStatusCheckWorkRequest) req).getFinanceStatus();
                 }
             }
         }

@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.BackgroundAndCriminalCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.BGCWorkRequest;
+import Business.WorkQueue.BGVProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -54,7 +54,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
         for (WorkRequest request : bgcOrganization.getWorkQueue().getWorkRequestList()) {
-            if (request instanceof BGCWorkRequest) {
+            if (request instanceof BGVProcessWorkRequest) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = request;
                 row[1] = request.getSender().getEmployee().getName();
@@ -176,7 +176,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
         } else {
             if (receiverval.equals(account.getUsername()) && statusval.equals("BGC organization processing")) {
-                BGCandCriminalProcess panel = new BGCandCriminalProcess(userProcessContainer, account, bgcOrganization, enterprise, business, udirectory, (BGCWorkRequest) req, adopter);
+                BGCandCriminalProcess panel = new BGCandCriminalProcess(userProcessContainer, account, bgcOrganization, enterprise, business, udirectory, (BGVProcessWorkRequest) req, adopter);
                 this.userProcessContainer.add("BackgroundAndCriminalCheckProcessRequestJPanel", panel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);

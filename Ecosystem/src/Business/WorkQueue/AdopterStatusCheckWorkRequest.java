@@ -9,24 +9,16 @@ package Business.WorkQueue;
  *
  * @author snehaswaroop
  */
-public class FinanceAdoptionWorkRequest extends WorkRequest {
-     private String testResult;
+public class AdopterStatusCheckWorkRequest extends WorkRequest {
+     private String bgcStatus;
      private String financeStatus;
-    public String getTestResult() {
-        return testResult;
+
+    public String getBgcStatus() {
+        return bgcStatus;
     }
 
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
-    }
-     private String remarks;
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
+    public void setBgcStatus(String bgcStatus) {
+        this.bgcStatus = bgcStatus;
     }
 
     public String getFinanceStatus() {
@@ -36,6 +28,5 @@ public class FinanceAdoptionWorkRequest extends WorkRequest {
     public void setFinanceStatus(String financeStatus) {
         this.financeStatus = financeStatus;
     }
-    
     
 }

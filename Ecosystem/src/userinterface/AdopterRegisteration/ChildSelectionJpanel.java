@@ -133,7 +133,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         ChildCareAdoptionWorkRequest adc = new ChildCareAdoptionWorkRequest();
         adc.setChildId(ch.getChildId());
         adc.setUserId(uid);
-        adc.setUserName(adopter.getName());
+        adc.setAdopterName(adopter.getName());
         adc.setMessage("I want to adopt");
         adc.setStatus("Adopted");
         adc.setChildName(ch.getName());

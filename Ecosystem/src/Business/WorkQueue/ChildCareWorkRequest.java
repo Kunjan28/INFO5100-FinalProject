@@ -11,16 +11,16 @@ package Business.WorkQueue;
  */
 public class ChildCareWorkRequest extends WorkRequest {
     
-    private String testResult;
+    private String result;
     
     private boolean isAcquiredReq;
 
-    public String getTestResult() {
-        return testResult;
+    public String getResult() {
+        return result;
     }
 
-    public void setTestResult(String testResult) {
-        this.testResult = testResult;
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public boolean isIsAcquiredReq() {

@@ -17,7 +17,7 @@ import Business.Organization.OrganizationDirectory;
 import Business.Role.AdopterRole;
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
-import Business.WorkQueue.AdoptionWorkRequest;
+import Business.WorkQueue.AdoptionProcessWorkRequest;
 import Business.WorkQueue.AdopterRegistrationRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
@@ -210,7 +210,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 adopter.setUsername(ua1.getUsername());
                 adopter.setFlag(false);
                 adopter.setName(request.getName());
-                AdoptionWorkRequest awr = new AdoptionWorkRequest();
+                AdoptionProcessWorkRequest awr = new AdoptionProcessWorkRequest();
                 awr.setStatus("");
                 awr.setMessage("I want to adopt");
                 awr.setSender(ua1);

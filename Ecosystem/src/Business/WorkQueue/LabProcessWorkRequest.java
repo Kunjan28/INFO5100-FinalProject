@@ -9,15 +9,16 @@ package Business.WorkQueue;
  *
  * @author snehaswaroop
  */
-public class AdoptionWorkRequest extends WorkRequest {
-    private String Remarks;
+public class LabProcessWorkRequest extends WorkRequest {
 
-    public String getRemarks() {
-        return Remarks;
+    private String result;
+
+    public String getResult() {
+        return result;
     }
 
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
+    public void setResult(String result) {
+        this.result = result;
     }
-    
+
 }

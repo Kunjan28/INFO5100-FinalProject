@@ -13,7 +13,7 @@ import Business.Network.Network;
 import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
@@ -362,9 +362,9 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
                 row[1] = request.getChildId();
                 row[2] = request.getSender();
                 row[3] = request.getReceiver();
-                if (request instanceof DoctorWorkRequest) {
-                    String result = ((DoctorWorkRequest) request).getTestResult();
-                    String remarks = ((DoctorWorkRequest) request).getRemarks();
+                if (request instanceof MedicalHelpWorkRequest) {
+                    String result = ((MedicalHelpWorkRequest) request).getTestResult();
+                    String remarks = ((MedicalHelpWorkRequest) request).getRemark();
                     row[5] = remarks;
                     row[4] = result == null ? "Waiting" : result;
                 }
