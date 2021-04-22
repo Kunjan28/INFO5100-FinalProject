@@ -16,10 +16,7 @@ import Business.Organization.ChildCareOrganization;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 import Business.WorkQueue.ChildCareWorkRequest;
-//import Business.WorkQueue.ChildCareAdoptionWorkRequest;
-//import Business.WorkQueue.ChildCareWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -50,31 +47,23 @@ public class AcquireChild extends javax.swing.JPanel {
     Network network;
       
     public AcquireChild(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectory) {
-     initComponents();
-    this.userProcessContainer=userProcessContainer;
-    this.account=account;
-    this.business = business;
-    this.childCareOrganization=(ChildCareOrganization)organization;
-    this.directory = directory;
-    this.udirectory = udirectory;
-    
-         System.out.println("directory; "+directory.toString());
-    this.enterprise=enterprise;
-//         valueLabel.setText(enterprise.getName());
-//         orgLabel.setText(childCareOrganization.getName());
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.business = business;
+        this.childCareOrganization = (ChildCareOrganization) organization;
+        this.directory = directory;
+        this.udirectory = udirectory;
+        this.enterprise = enterprise;
         processBtn.setEnabled(false);
-    
-        for(Network net: business.getNetworkList()){
-      for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-          if(ent.equals(enterprise)){
-              network= net;
-          }
-      }
-  }
-        
-//         populateAdopterTable();
-//         populateChildTable();
-         populateWorkRequest();
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
+        populateWorkRequest();
     }
 
     /**
@@ -154,69 +143,68 @@ public class AcquireChild extends javax.swing.JPanel {
 
     private void processBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBtnActionPerformed
         int selectedRow = workTable.getSelectedRow();
-       if(selectedRow<0){
-           JOptionPane.showMessageDialog(null, "Please select a request"); 
-           return;
-       }
-       WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
-       if (re.getStatus().equalsIgnoreCase("Acquired")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-       } else {
-       for(Child ch : directory.getChildList()){
-           if(ch.getChildId()==re.getChildId()){
-               child=ch;
-           }
-       } }
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a request");
+            return;
+        }
+        WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
+        //if (re.getStatus().equalsIgnoreCase("Acquired")) {
+        if("Acquired".equalsIgnoreCase(re.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            for (Child ch : directory.getChildList()) {
+                if (ch.getChildId() == re.getChildId()) {
+                    child = ch;
+                }
+            }
+        }
         ProcessAcquireChild pccwr = new ProcessAcquireChild(userProcessContainer, organization, (ChildCareWorkRequest) re, directory, child, account, business);
         this.userProcessContainer.add("ProcessChildCareWorkRequest", pccwr);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_processBtnActionPerformed
 
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
-       int selectedRow = workTable.getSelectedRow();
-       if(selectedRow<0){
-           JOptionPane.showMessageDialog(null, "Please select a request");
-           return;
-       }
-       WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
-       
-       if (re.getStatus().equalsIgnoreCase("Acquired")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-       } else {
+        int selectedRow = workTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a request");
+            return;
+        }
+        WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
+        //if (re.getStatus().equalsIgnoreCase("Acquired")) {
+        if ("Acquired".equalsIgnoreCase(re.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
             re.setReceiver(account);
             re.setStatus("Pending with child care");
             populateWorkRequest();
             processBtn.setEnabled(true);
             JOptionPane.showMessageDialog(null, "Request Assigned");
-       }
+        }
     }//GEN-LAST:event_btnAssignActionPerformed
 
 
-public void populateWorkRequest(){
-    DefaultTableModel table = (DefaultTableModel)workTable.getModel();
-       table.setRowCount(0);
-    for(WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()){
-       
-       if(req instanceof ChildCareWorkRequest){
-                 ChildCareWorkRequest request = (ChildCareWorkRequest) req;   
-                 if(request.isIsAcquiredReq()){
-          Object[] row = new Object[table.getColumnCount()];
-          row[0]=req;
-          row[1]=req.getSender();
-          row[2]=req.getReceiver();
-          row[3]=req.getChildId();
-          row[4]=req.getChildName();
-          row[5]=req.getStatus();
-          
-          table.addRow(row);
-                 }
-           }
-        
+    public void populateWorkRequest() {
+        DefaultTableModel table = (DefaultTableModel) workTable.getModel();
+        table.setRowCount(0);
+        for (WorkRequest req : childCareOrganization.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof ChildCareWorkRequest) {
+                ChildCareWorkRequest request = (ChildCareWorkRequest) req;
+                if (request.isIsAcquiredReq()) {
+                    Object[] row = new Object[table.getColumnCount()];
+                    row[0] = req;
+                    row[1] = req.getSender();
+                    row[2] = req.getReceiver();
+                    row[3] = req.getChildId();
+                    row[4] = req.getChildName();
+                    row[5] = req.getStatus();
+                    table.addRow(row);
+                }
+            }
+        }
     }
-}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAssign;
@@ -228,26 +216,5 @@ public void populateWorkRequest(){
     private javax.swing.JButton processBtn;
     private javax.swing.JTable workTable;
     // End of variables declaration//GEN-END:variables
-
-//    public void populateAdopterTable(){
-//        DefaultTableModel dtms = (DefaultTableModel) jTable1.getModel();
-//        dtms.setRowCount(0);
-//        for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-//            if(req instanceof ChildCareAdoptionWorkRequest){
-//
-//                
-//                    Object[] row = new Object[dtms.getColumnCount()];
-//                    row[0]=req;
-//                    row[1]=req.getChildId();
-//                    row[2]= ((ChildCareAdoptionWorkRequest) req).getUserName();
-//                    row[3]= req.getStatus();
-//                    dtms.addRow(row);
-//                }
-//            
-//        }
-//        
-//    }
-    
-    
 
 }

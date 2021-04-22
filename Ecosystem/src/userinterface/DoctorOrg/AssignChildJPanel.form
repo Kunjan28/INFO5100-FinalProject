@@ -460,7 +460,7 @@
     <Component class="javax.swing.JLabel" name="lblChildPic">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="120" width="180" height="180"/>
+          <AbsoluteConstraints x="10" y="30" width="180" height="180"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -14,7 +14,6 @@ import Business.Organization.PharmacistOrganization;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-import userinterface.PharmacyOrganisation.PharmacistJPanel;
 
 /**
  *
@@ -48,7 +47,6 @@ public class PharmacyWorkArea extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(pharmacistOrganization.getName());
         managePharmacyWorkAreaJPanel();
-        
     }
     
     

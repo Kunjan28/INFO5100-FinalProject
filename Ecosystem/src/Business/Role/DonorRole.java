@@ -15,8 +15,8 @@ import Business.Organization.Organization;
 
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
-import userinterface.Donor.DonorRequestTable;
-import userinterface.Donor.DonorWorkArea;
+import userinterface.Sponsor.SponsorRequestTable;
+import userinterface.Sponsor.SponsorWorkArea;
 ;
 
 /**
@@ -27,7 +27,7 @@ public class DonorRole extends Role{
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, AdopterDirectory udirectorDirectory,DonorDirectory donorDirectory) {
-        return new DonorWorkArea(userProcessContainer, account, organization,enterprise, business,udirectorDirectory,directory,donorDirectory);
+        return new SponsorWorkArea(userProcessContainer, account, organization,enterprise, business,udirectorDirectory,directory,donorDirectory);
     }
     
 }

@@ -342,16 +342,16 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_ManageOrgMousePressed
 
     private void manageEmployeeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmployeeMousePressed
-      manageEmployee();
+        manageEmployee();
     }//GEN-LAST:event_manageEmployeeMousePressed
 
     private void manageEmpMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageEmpMousePressed
         // TODO add your handling code here:
-      manageEmployee();
+        manageEmployee();
     }//GEN-LAST:event_manageEmpMousePressed
 
     private void manageUserPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageUserPanelMousePressed
-       manageUser();
+        manageUser();
     }//GEN-LAST:event_manageUserPanelMousePressed
 
     private void ManageRequestMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ManageRequestMousePressed
@@ -361,7 +361,7 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
 
     private void manageRequestPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_manageRequestPanelMousePressed
         // TODO add your handling code here:
-          manageRequests();
+        manageRequests();
     }//GEN-LAST:event_manageRequestPanelMousePressed
 
 

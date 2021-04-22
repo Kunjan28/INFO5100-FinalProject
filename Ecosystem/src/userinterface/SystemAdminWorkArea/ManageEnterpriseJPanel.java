@@ -7,8 +7,6 @@ package userinterface.SystemAdminWorkArea;
 import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -18,7 +16,6 @@ import javax.swing.table.DefaultTableModel;
  * @author raunak
  */
 public class ManageEnterpriseJPanel extends javax.swing.JPanel {
-
     private JPanel userProcessContainer;
     private EcoSystem system;
 
@@ -29,14 +26,12 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
         populateTable();
         populateComboBox();
     }
 
     private void populateTable() {
         DefaultTableModel model = (DefaultTableModel) enterpriseJTable.getModel();
-
         model.setRowCount(0);
         for (Network network : system.getNetworkList()) {
             for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
@@ -44,7 +39,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
                 row[0] = enterprise.getName();
                 row[1] = network.getName();
                 row[2] = enterprise.getEnterpriseType().getValue();
-
                 model.addRow(row);
             }
         }
@@ -53,7 +47,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
     private void populateComboBox() {
         networkJComboBox.removeAllItems();
         enterpriseTypeJComboBox.removeAllItems();
-
         for (Network network : system.getNetworkList()) {
             networkJComboBox.addItem(network);
         }
@@ -61,7 +54,6 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
         for (Enterprise.EnterpriseType type : Enterprise.EnterpriseType.values()) {
             enterpriseTypeJComboBox.addItem(type);
         }
-
     }
 
     /**
@@ -163,12 +155,10 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
 
         Network network = (Network) networkJComboBox.getSelectedItem();
         Enterprise.EnterpriseType type = (Enterprise.EnterpriseType) enterpriseTypeJComboBox.getSelectedItem();
-
         if (network == null || type == null) {
             JOptionPane.showMessageDialog(null, "Invalid Input!");
             return;
         }
-
         String name = nameJTextField.getText();
         if (!name.isEmpty()) {
             if (network.getEnterpriseDirectory().isUnique(name)) {
@@ -179,11 +169,9 @@ public class ManageEnterpriseJPanel extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Enterprise already exists!");
             }
-
         } else {
             JOptionPane.showMessageDialog(null, "Enter enterprise name");
         }
-
     }//GEN-LAST:event_submitJButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

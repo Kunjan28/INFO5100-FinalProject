@@ -12,17 +12,13 @@ import Business.EcoSystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
-
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.DonorRole;
-
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
-import Business.WorkQueue.AdoptionWorkRequest;
 import Business.WorkQueue.DonorRegistrationRequest;
 import Business.WorkQueue.DonorWorkRequest;
-
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -44,48 +40,36 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
     private Network network;
     private OrganizationDirectory organizationDirectory;
     AdopterDirectory udirectory;
-    DonorDirectory donorDirectory ;
-    public FundingUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system,AdopterDirectory udirectory,DonorDirectory donorDirectory) {
+    DonorDirectory donorDirectory;
+
+    public FundingUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory udirectory, DonorDirectory donorDirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.enterprise = enterprise;
-        //this.network = network;
         this.business = system.getInstance();
         this.udirectory = udirectory;
-       this.donorDirectory = donorDirectory;
+        this.donorDirectory = donorDirectory;
         this.organizationDirectory = enterprise.getOrganizationDirectory();
         this.business = system.getInstance();
-         
         populateTable();
     }
     
     public void populateTable() {
-       
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
-
         model.setRowCount(0);
-
         for (WorkRequest workRequest : enterprise.getWorkQueue().getWorkRequestList()) {
-
             if (workRequest instanceof DonorRegistrationRequest) {
                 Object[] row = new Object[model.getColumnCount()];
                 row[0] = workRequest;
-                //row[0] = ((DonorRegistrationRequest) workRequest).getStatus();
-                //row[0] = ((DonorRegistrationRequest) workRequest).getUserName();
                 row[1] = ((DonorRegistrationRequest) workRequest).getName();
-                
                 row[2] = ((DonorRegistrationRequest) workRequest).getUserEmailId();
                 row[3] = ((DonorRegistrationRequest) workRequest).getUserContact();
                 row[4] = ((DonorRegistrationRequest) workRequest).getSsn();
                 row[5] = ((DonorRegistrationRequest) workRequest).getStatus();
-                //row[6] = ((DonorRegistrationRequest) workRequest).getOrgType();
-                
-
                 model.addRow(row);
             }
         }
-
     }
 
     /**
@@ -175,20 +159,19 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
-
         int selectedRow = workRequestJTable.getSelectedRow();
-
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Completed")) {
-              JOptionPane.showMessageDialog(null, "Request already processed.");
-               return;
-           } else {
+            //if (request.getStatus().equalsIgnoreCase("Completed")) {
+            if ("Completed".equalsIgnoreCase(request.getStatus())) {
+                JOptionPane.showMessageDialog(null, "Request already processed.");
+                return;
+            } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request has successfully assigned");
-           }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Choose a request to process.");
             return;
@@ -196,51 +179,45 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_assignJButtonActionPerformed
 
     private void processJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processJButtonActionPerformed
-
         int selectedRow = workRequestJTable.getSelectedRow();
-        try{
-        if (selectedRow >= 0) {
-            DonorRegistrationRequest request = (DonorRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
-            if (request.getStatus().equalsIgnoreCase("Completed")) {
-              JOptionPane.showMessageDialog(null, "Request already processed.");
-               return;
+        try {
+            if (selectedRow >= 0) {
+                DonorRegistrationRequest request = (DonorRegistrationRequest) workRequestJTable.getValueAt(selectedRow, 0);
+                //if (request.getStatus().equalsIgnoreCase("Completed")) {
+                if ("Completed".equalsIgnoreCase(request.getStatus())) {
+                    JOptionPane.showMessageDialog(null, "Request already processed.");
+                    return;
+                }
+                Organization org = organizationDirectory.createOrganization(request.getName(), Organization.Type.Donor);
+                Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
+                UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorRole());
+                Donor donor = new Donor();
+                int uid = donorDirectory.getDonorsList().size() + 1;
+                donor = this.donorDirectory.addDonor();
+                donor.setAnnualIncome(Long.parseLong(request.getUserContact()));
+                donor.setEmailId(request.getUserEmailId());
+                donor.setName(request.getUserName());
+                donor.setSsn(request.getSsn());
+                donor.setUserId(uid);
+                donor.setUsername(ua1.getUsername());
+                DonorWorkRequest awr = new DonorWorkRequest();
+                awr.setStatus("");
+                awr.setMessage("Sponsor request");
+                awr.setSender(ua1);
+                awr.setUserId(donor.getUserId());
+                awr.setName(donor.getName());
+                request.setStatus("Completed");
+                String subject = "Account activation";
+                String content = "Your account has been activated. You may proceed with further process of funding. \n Thank you";
+                CommonMail.sendEmailMessage(request.getUserEmailId(), subject, content);
+                JOptionPane.showMessageDialog(null, "User account has been activated successfully");
+                populateTable();
+            } else {
+                JOptionPane.showMessageDialog(null, "Please select a request message to process.");
+                return;
             }
-            
-            Organization org = organizationDirectory.createOrganization(request.getName(), Organization.Type.Donor);
-            Employee emp = org.getEmployeeDirectory().createEmployee(request.getName());
-            UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new DonorRole());
-            Donor donor = new Donor();
-            int uid = donorDirectory.getDonorsList().size() + 1;// user id
-
-            donor = this.donorDirectory.addDonor();
-            donor.setAnnualIncome(Long.parseLong(request.getUserContact()));
-            donor.setEmailId(request.getUserEmailId());
-            //donor.setGender(request.);
-            donor.setName(request.getUserName());
-            donor.setSsn(request.getSsn());
-            donor.setUserId(uid);
-            donor.setUsername(ua1.getUsername());
-            
-            DonorWorkRequest awr = new DonorWorkRequest();
-            awr.setStatus("");
-            awr.setMessage("Sponsor request");
-            awr.setSender(ua1);
-            awr.setUserId(donor.getUserId());
-            awr.setName(donor.getName());
-
-            request.setStatus("Completed");
-            String subject = "Account activation";
-            String content = "Your account has been activated. You may proceed with further process of funding. \n Thank you";
-            CommonMail.sendEmailMessage(request.getUserEmailId(),subject,content);
-            JOptionPane.showMessageDialog(null, "User account has been activated successfully");
-
-            populateTable();
-        } else {
-            JOptionPane.showMessageDialog(null, "Please select a request message to process.");
-            return;
-        }}
-        catch(Exception e){
-            System.out.println("Error");
+        } catch (Exception e) {
+            //System.out.println("Error");
         }
     }//GEN-LAST:event_processJButtonActionPerformed
 

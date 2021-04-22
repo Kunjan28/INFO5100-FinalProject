@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Donor;
+package userinterface.Sponsor;
 
 import Business.Child.Child;
 import Business.Child.ChildDirectory;
@@ -20,7 +20,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.DoctorOrg.DoctorJPanel;
 
 /**
  *
@@ -170,13 +169,12 @@ public class PaymentPanel extends javax.swing.JPanel {
         adc.setRemarks("Payment Completed from Sponsor");
         donororganization.getWorkQueue().getWorkRequestList().add(adc);
         if (donororganization != null) {
-            // org.getWorkQueue().getWorkRequestList().add(adc);
             account.getWorkQueue().getWorkRequestList().add(adc);
             business.getWorkQueue().getWorkRequestList().add(adc);
         } 
         JOptionPane.showMessageDialog(null, "Thank you! Payment Initiated");
-         btnPay.setEnabled(false);
-         cardNo.setText("");
+        btnPay.setEnabled(false);
+        cardNo.setText("");
         txtCVV.setText("");
         txtPostal.setText("");
         txtExp.setText("");
@@ -184,15 +182,11 @@ public class PaymentPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DonorRequestTable panel = (DonorRequestTable) component;
+        SponsorRequestTable panel = (SponsorRequestTable) component;
         panel.populateChildTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
         }
-        
-        
-       
-        
         
     }//GEN-LAST:event_btnPayActionPerformed
     
@@ -204,10 +198,6 @@ public class PaymentPanel extends javax.swing.JPanel {
         pattern = Pattern.compile(PHONE_PATTERN);
         matcher = pattern.matcher(cvv);
         return matcher.matches();
-//        if((cvv.matches("^[0-9]")) && (cvv.length()==3)) {
-//            return true;
-//            }
-//        return false;
     }
     
     private boolean ValidateCardNo() {
@@ -241,7 +231,7 @@ public class PaymentPanel extends javax.swing.JPanel {
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        DonorRequestTable panel = (DonorRequestTable) component;
+        SponsorRequestTable panel = (SponsorRequestTable) component;
         panel.populateChildTable();
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);

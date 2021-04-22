@@ -48,13 +48,13 @@ public class LabWorkArea extends javax.swing.JPanel {
     
     
     
-    private void manageLabWorkAreaJPanel(){
+    private void manageLabWorkAreaJPanel() {
         LabJPanel panel = new LabJPanel(rightSystemAdminPanel, userAccount, labOrganization, ecosystem);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-     }
-    
+    }
+
    
 
     /**

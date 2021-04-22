@@ -339,24 +339,21 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
-         Network network = (Network) cmbCity.getSelectedItem();
-        if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty()||txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
-                || txtSSN.getText().isEmpty()  || txtAge.getText().isEmpty() 
-               || (!rdbMale.isSelected() && !rdbFemale.isSelected())
+        Network network = (Network) cmbCity.getSelectedItem();
+        if (txtName.getText().isEmpty() || txtUserName.getText().isEmpty() || txtPwd.getText().isEmpty() || txtEmail.getText().isEmpty()
+                || txtSSN.getText().isEmpty() || txtAge.getText().isEmpty()
+                || (!rdbMale.isSelected() && !rdbFemale.isSelected())
                 || txtIncome.getText().isEmpty()
-             || txtAdd1.getText().isEmpty() || txtAdd2.getText().isEmpty() 
-                ) {
+                || txtAdd1.getText().isEmpty() || txtAdd2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Enter all fields");
-        } 
-        else if (emailValid && userUnique && contactValid && income && age && ssn) {
+        } else if (emailValid && userUnique && contactValid && income && age && ssn) {
             AdopterRegistrationRequest registrationRequest = new AdopterRegistrationRequest();
-                String gender = "";
-                if(rdbMale.isSelected()){
-                    gender = "Male";
-                }
-                else if(rdbFemale.isSelected()){
-                    gender = "Female";
-                }
+            String gender = "";
+            if (rdbMale.isSelected()) {
+                gender = "Male";
+            } else if (rdbFemale.isSelected()) {
+                gender = "Female";
+            }
             registrationRequest.setName(txtName.getText());
             registrationRequest.setUserName(txtUserName.getText());
             registrationRequest.setUserPassword(txtPwd.getText());
@@ -372,7 +369,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             registrationRequest.setAge(txtAge.getText());
             String subject = "Adopter Registeration";
             String content = "Thank you for registering with us. Your account will be activated within 24 hours. We will keep you posted with your status.";
-            CommonMail.sendEmailMessage(txtEmail.getText(),subject,content);
+            CommonMail.sendEmailMessage(txtEmail.getText(), subject, content);
             for (Network network1 : system.getNetworkList()) {
                 for (Enterprise enterprise : network1.getEnterpriseDirectory().getEnterpriseList()) {
                     if (enterprise.getEnterpriseType() == Enterprise.EnterpriseType.Adoption) {
@@ -408,12 +405,11 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             ageValidate.setVisible(false);
             ssnCorrect.setVisible(false);
             ssnValidate.setVisible(false);
-            
-            
-        } else  {
+
+        } else {
             JOptionPane.showMessageDialog(null, "Invalid credentials");
         }
-        
+
     }//GEN-LAST:event_btnRegisterActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -426,8 +422,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
-        txtName.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        txtName.setForeground(Color.BLACK);
+        
     }//GEN-LAST:event_txtNameKeyTyped
 
     private void txtUserNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserNameKeyTyped
@@ -436,8 +431,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtPwdKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPwdKeyTyped
         // TODO add your handling code here:
-        txtPwd.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        txtPwd.setForeground(Color.BLACK);
+        
     }//GEN-LAST:event_txtPwdKeyTyped
 
     private void txtEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEmailKeyTyped
@@ -502,7 +496,6 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtContactKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtContactKeyReleased
         // TODO add your handling code here:
-          // TODO add your handling code here:
         txtContact.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 warn();
@@ -532,7 +525,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtIncomeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIncomeKeyReleased
         // TODO add your handling code here:
-         txtIncome.getDocument().addDocumentListener(new DocumentListener() {
+        txtIncome.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 warn();
             }
@@ -548,7 +541,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             public void warn() {
                 if (!ValidationHelper.isNumeric(txtIncome.getText())) {
                     AnnualIncomeValidate.setVisible(true);
-                     annualIncomeCorrect.setVisible(false);
+                    annualIncomeCorrect.setVisible(false);
                     income = false;
                 } else {
                     annualIncomeCorrect.setVisible(true);
@@ -561,7 +554,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
     private void txtAgeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtAgeKeyReleased
         // TODO add your handling code here:
-         txtAge.getDocument().addDocumentListener(new DocumentListener() {
+        txtAge.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 warn();
             }
@@ -577,7 +570,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             public void warn() {
                 if (!ValidationHelper.isNumeric(txtAge.getText())) {
                     ageValidate.setVisible(true);
-                     ageCorrect.setVisible(false);
+                    ageCorrect.setVisible(false);
                     age = false;
                 } else {
                     ageCorrect.setVisible(true);
@@ -610,7 +603,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
             public void warn() {
                 if (!ValidationHelper.isNumeric(txtSSN.getText())) {
                     ssnValidate.setVisible(true);
-                     ssnCorrect.setVisible(false);
+                    ssnCorrect.setVisible(false);
                     ssn = false;
                 } else {
                     ssnCorrect.setVisible(true);

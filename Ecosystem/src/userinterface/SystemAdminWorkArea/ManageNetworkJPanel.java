@@ -6,8 +6,6 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.Network.Network;
-import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -17,7 +15,6 @@ import javax.swing.table.DefaultTableModel;
  * @author raunak
  */
 public class ManageNetworkJPanel extends javax.swing.JPanel {
-
     private JPanel userProcessContainer;
     private EcoSystem system;
 
@@ -27,16 +24,13 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
      */
     public ManageNetworkJPanel(JPanel userProcessContainer, EcoSystem system) {
         initComponents();
-
         this.userProcessContainer = userProcessContainer;
         this.system = system;
-
         populateNetworkTable();
     }
 
     private void populateNetworkTable() {
         DefaultTableModel model = (DefaultTableModel) networkJTable.getModel();
-
         model.setRowCount(0);
         for (Network network : system.getNetworkList()) {
             Object[] row = new Object[1];
@@ -131,20 +125,18 @@ public class ManageNetworkJPanel extends javax.swing.JPanel {
     private void submitJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitJButtonActionPerformed
 
         String name = nameJTextField.getText().trim();
-        if(!name.isEmpty()){
-            if(system.isUnique(name)){
+        if (!name.isEmpty()) {
+            if (system.isUnique(name)) {
                 Network network = system.createAndAddNetwork();
                 network.setName(name);
                 JOptionPane.showMessageDialog(null, "Network Successfully Created");
                 nameJTextField.setText("");
-            } else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Network Already Exits");
             }
-        } else{
+        } else {
             JOptionPane.showMessageDialog(null, "Enter network name");
         }
-        
-        
         populateNetworkTable();
     }//GEN-LAST:event_submitJButtonActionPerformed
 

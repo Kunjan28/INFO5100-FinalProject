@@ -30,32 +30,31 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
     /**
      * Creates new form RequestMedicalHelp
      */
-  JPanel userProcessContainer;
-    Child child; 
-   
+    JPanel userProcessContainer;
+    Child child;
     UserAccount account;
     ChildCareOrganization organization;
     Enterprise enterprise;
     EcoSystem business;
     ChildDirectory directory;
-        Network network;
+    Network network;
+
     public RequestMedicalHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.child=child;
-        this.account=account;
+        this.userProcessContainer = userProcessContainer;
+        this.child = child;
+        this.account = account;
         this.organization = (ChildCareOrganization) organization;
-        this.enterprise=enterprise;
-        this.business=business;
-        this.directory=directory;
-         for(Network net: business.getNetworkList()){
-      for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-          if(ent.equals(enterprise)){
-              network= net;
-          }
-      }
-  }
-        
+        this.enterprise = enterprise;
+        this.business = business;
+        this.directory = directory;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
     }
 
     /**
@@ -116,13 +115,12 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
-        if(txtSymptoms.getText().isEmpty()){
+        if (txtSymptoms.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the symptoms");
             return;
         }
-        
         String symptoms = txtSymptoms.getText();
-        child.setMedicalStatus(child.getMedicalStatus()+"\n"+symptoms+" on date "+new Date());
+        child.setMedicalStatus(child.getMedicalStatus() + "\n" + symptoms + " on date " + new Date());
         child.setMedicalHelp(true);
         DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
         docwrkreq.setStatus("Medically Unfit");
@@ -131,54 +129,26 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         docwrkreq.setChildId(child.getChildId());
         docwrkreq.setRemarks("Request for Doctor");
         docwrkreq.setChildName(child.getName());
-     
-        /*
-        The below set of code iterates through the network list and get the network
-        Once the network is received then it iterates over all the enterprises present in the network
-        It goes thought every organization in the enterprise.
-        
-        Once it has found the Doctor organization, it sets the organization as Doctor organization
-        
-        */
         Organization org = null;
-        for (Network network : business.getNetworkList()){
-           // getNetworkList().getOrganizationDirectory().getOrganizationList()
-            System.out.println("network: "+network);
-            for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                
-                for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                   
-                
-              //if(this.network.equals(network)){
-                            if (organization instanceof DoctorOrganization){
-                                
-                                org = organization;
-                                break;
-                            }
-                        //    }
-            
-        }
+        for (Network network : business.getNetworkList()) {
+            for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                    if (organization instanceof DoctorOrganization) {
+                        org = organization;
+                        break;
+                    }
+                }
             }
         }
-/*The below if code checks if there is some value for org. If there is then add the work request 
-        - At the organization level, where other organization in the same enterprise can access it
-        -At the account level, so the child registration can also see the request created
-        - At the business level, as the request has to be transferred to a different organization in a different enterprise.
-        */
-        if (org!=null){
+        if (org != null) {
             org.getWorkQueue().getWorkRequestList().add(docwrkreq);
-          
             account.getWorkQueue().getWorkRequestList().add(docwrkreq);
-             business.getWorkQueue().getWorkRequestList().add(docwrkreq);
-    
+            business.getWorkQueue().getWorkRequestList().add(docwrkreq);
         }
-        
         ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

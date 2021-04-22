@@ -46,56 +46,43 @@ public class Services extends javax.swing.JPanel {
     }
     
     public void populateBarGraph() {
-        
         ArrayList<AdoptionWorkRequest> adpReqList = new ArrayList<>();
         ArrayList<DoctorWorkRequest> medReqList = new ArrayList<>();
         ArrayList<EducationalHelpWorkRequest> finReqList = new ArrayList<>();
         Map<String, Integer> workReqMap = new HashMap<>();
-        
-        
-        for(WorkRequest workQue:system.getWorkQueue().getWorkRequestList()) {
-           if(workQue instanceof AdoptionWorkRequest){
-               adpReqList.add((AdoptionWorkRequest)workQue);
+        for (WorkRequest workQue : system.getWorkQueue().getWorkRequestList()) {
+            if (workQue instanceof AdoptionWorkRequest) {
+                adpReqList.add((AdoptionWorkRequest) workQue);
+            } else if (workQue instanceof DoctorWorkRequest) {
+                medReqList.add((DoctorWorkRequest) workQue);
+            } else if (workQue instanceof EducationalHelpWorkRequest) {
+                finReqList.add((EducationalHelpWorkRequest) workQue);
             }
-           else if(workQue instanceof DoctorWorkRequest){
-               medReqList.add((DoctorWorkRequest)workQue);
-           }
-           else if(workQue instanceof EducationalHelpWorkRequest){
-               finReqList.add((EducationalHelpWorkRequest)workQue);
-           }
-            
+
         }
-            workReqMap.put("Adoption Services", adpReqList.size());
-            workReqMap.put("Medical Help Services", medReqList.size());
-            workReqMap.put("Financial Services", finReqList.size());
-                    
-        
-      
+        workReqMap.put("Adoption Services", adpReqList.size());
+        workReqMap.put("Medical Help Services", medReqList.size());
+        workReqMap.put("Financial Services", finReqList.size());
+
         barChart = ChartFactory.createPieChart(
-         "Services At a Glance",                     
-         createDataset(workReqMap),          
-         true, true, false);
-         
-        ChartPanel chartPanel = new ChartPanel( barChart );   
+                "Services At a Glance",
+                createDataset(workReqMap),
+                true, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
         jPanel1.removeAll();
         jPanel1.add(chartPanel, BorderLayout.CENTER);
         jPanel1.validate();
-        /*chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
-        setContentPane( chartPanel );*/ 
-        
     }
     
     private PieDataset createDataset(Map<String, Integer> workReqMap) {
-       
-        final DefaultPieDataset dataset = new DefaultPieDataset();  
-
-        for(String r : workReqMap.keySet()) {
+        final DefaultPieDataset dataset = new DefaultPieDataset();
+        for (String r : workReqMap.keySet()) {
             dataset.setValue(r, workReqMap.get(r));
-        }               
+        }
+        return dataset;
+    }
 
-        return dataset; 
-   }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -127,21 +114,23 @@ public class Services extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, -1, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("SERVICES AT A GLANCE");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(161, 16, 594, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 594, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
-            int width = 640;    /* Width of the image */
-            int height = 480;   /* Height of the image */
-            File BarChart = new File( "BarChart.jpeg" );
-            ChartUtilities.saveChartAsJPEG( BarChart , barChart , width , height );
+            int width = 640;
+            /* Width of the image */
+            int height = 480;
+            /* Height of the image */
+            File BarChart = new File("BarChart.jpeg");
+            ChartUtilities.saveChartAsJPEG(BarChart, barChart, width, height);
             JOptionPane.showMessageDialog(null, "A JPEG image file named BarChart.jpeg is downloaded in your current directory.");
         } catch (IOException ex) {
             Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);

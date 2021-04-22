@@ -48,8 +48,8 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         populateWorkRequest();
     }
     
-    public void populateWorkRequest(){
-      
+    public void populateWorkRequest() {
+
         DefaultTableModel dtm = (DefaultTableModel) tblAdoptersRequest.getModel();
         dtm.setRowCount(0);
         for (WorkRequest request : this.business.getWorkQueue().getWorkRequestList()) {
@@ -133,24 +133,23 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblAdoptersRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest to process");
             return;
         }
-        Object receiverval =  tblAdoptersRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblAdoptersRequest.getValueAt(selectedRow, 4);
-        if(receiverval == null && ( statusval==null ||"".equalsIgnoreCase((String)statusval))){
-        WorkRequest re = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
-        re.setReceiver(account);
-        re.setStatus("Pending with Adoption Organization");
-        populateWorkRequest();
-        }
-        else if( "Initialized BGC".equals(statusval))
-            JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-        else if(receiverval.equals(account.getUsername())){
-            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
+        Object receiverval = tblAdoptersRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblAdoptersRequest.getValueAt(selectedRow, 4);
+        if (receiverval == null && (statusval == null || "".equalsIgnoreCase((String) statusval))) {
+            WorkRequest re = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
+            re.setReceiver(account);
+            re.setStatus("Pending with Adoption Organization");
+            populateWorkRequest();
+        } else if ("Initialized BGC".equals(statusval))
+            JOptionPane.showMessageDialog(null, "Please select some other request,this work request is already processed");
+        else if (!receiverval.equals(account.getUsername()))
+            JOptionPane.showMessageDialog(null, "Work request is assigned to someone else");
+        else if (receiverval.equals(account.getUsername())) {
+            JOptionPane.showMessageDialog(null, "Work request is already assigned to you");
         }
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 

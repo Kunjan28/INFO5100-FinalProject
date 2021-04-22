@@ -35,46 +35,44 @@ public class DoctorJPanel extends javax.swing.JPanel {
     Child child;
     Network network;
     
-    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise , EcoSystem business, ChildDirectory directory) {
+    public DoctorJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
-        this.doctororganization = (DoctorOrganization)organization;
+        this.doctororganization = (DoctorOrganization) organization;
         this.enterprise = enterprise;
         this.directory = directory;
         this.userAccount = account;
         this.business = business;
-        
-        for(Network net: business.getNetworkList()){
-        for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-            if(ent.equals(enterprise)){
-              network= net;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
             }
         }
-        }
         populateRequestTable();
-        System.out.println("this is " + enterprise.getName());
         btnProcess.setEnabled(false);
     }
     
     
-    public void populateRequestTable(){
+    public void populateRequestTable() {
         DefaultTableModel model = (DefaultTableModel) tblDoctor.getModel();
         model.setRowCount(0);
-        for (WorkRequest request : doctororganization.getWorkQueue().getWorkRequestList()){
-        business.getWorkQueue().getWorkRequestList();
-        if(request instanceof DoctorWorkRequest){
-            Object[] row = new Object[model.getColumnCount()];
-            row[0] = request;
-            row[1] = request.getChildId();
-            row[2] = request.getChildName();
-            row[3] = request.getStatus();
-            row[4] = request.getSender().getEmployee().getName();
-            row[5] = request.getReceiver() == null ? null: request.getReceiver().getEmployee().getName();
-            String result = ((DoctorWorkRequest) request).getTestResult();
-            row[6] = result == null ? "Waiting" : result;
-            model.addRow(row);
-            }   
-       }
+        for (WorkRequest request : doctororganization.getWorkQueue().getWorkRequestList()) {
+            business.getWorkQueue().getWorkRequestList();
+            if (request instanceof DoctorWorkRequest) {
+                Object[] row = new Object[model.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getChildId();
+                row[2] = request.getChildName();
+                row[3] = request.getStatus();
+                row[4] = request.getSender().getEmployee().getName();
+                row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                String result = ((DoctorWorkRequest) request).getTestResult();
+                row[6] = result == null ? "Waiting" : result;
+                model.addRow(row);
+            }
+        }
     }
 
     /**
@@ -149,26 +147,24 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblDoctor.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table");
             return;
-            }
+        }
         DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
-//        request.setReceiver(userAccount);
-//        request.setStatus("Under Examination");
-                if(request.getReceiver()!=null){
-                     JOptionPane.showMessageDialog(null, "Request already assigned.");
-                return;
-                }
-                if (request.getStatus().equalsIgnoreCase("Under Examination") || request.getStatus().equalsIgnoreCase("Pending") || request.getStatus().equalsIgnoreCase("Medicine Prescribed") || request.getStatus().equalsIgnoreCase("Medical Test Requested")) {
-                JOptionPane.showMessageDialog(null, "Request already processed.");
-                return;
-                } else {
-                request.setReceiver(userAccount);
-                request.setStatus("Pending");
-                }
-                populateRequestTable();
-                JOptionPane.showMessageDialog(null, "Request has been assigned");
+        if (request.getReceiver() != null) {
+            JOptionPane.showMessageDialog(null, "Request already assigned.");
+            return;
+        }
+        if (request.getStatus().equalsIgnoreCase("Under Examination") || request.getStatus().equalsIgnoreCase("Pending") || request.getStatus().equalsIgnoreCase("Medicine Prescribed") || request.getStatus().equalsIgnoreCase("Medical Test Requested")) {
+            JOptionPane.showMessageDialog(null, "Request already processed.");
+            return;
+        } else {
+            request.setReceiver(userAccount);
+            request.setStatus("Pending");
+        }
+        populateRequestTable();
+        JOptionPane.showMessageDialog(null, "Request has been assigned");
         populateRequestTable();
         btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssignToMeActionPerformed
@@ -176,29 +172,24 @@ public class DoctorJPanel extends javax.swing.JPanel {
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblDoctor.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table before proceeding");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
             return;
         }
-        
         DoctorWorkRequest request = (DoctorWorkRequest) tblDoctor.getValueAt(selectedRow, 0);
         if (request.getStatus().equalsIgnoreCase("Medicine Prescribed")) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         }
-        
         request.setTestResult("Under Examination");
-        System.out.println("Requesting child ID: " + request.getChildId());
-        for(Child c: directory.getChildList()){
-            System.out.println("inside for loop: "+directory);
-            if(c.getChildId()==request.getChildId()){
+        for (Child c : directory.getChildList()) {
+            if (c.getChildId() == request.getChildId()) {
                 child = c;
             }
         }
-        
-        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer ,request, child ,userAccount, doctororganization,enterprise , business, directory);
+        AssignChildJPanel assignedChildJPanel = new AssignChildJPanel(userProcessContainer, request, child, userAccount, doctororganization, enterprise, business, directory);
         userProcessContainer.add("AssignedChildJPanel", assignedChildJPanel);
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();        
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
     }//GEN-LAST:event_btnProcessActionPerformed
 

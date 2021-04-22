@@ -12,11 +12,9 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-//import userinterface.DoctorOrg.PharmacyWorkArea;
 
 /**
  *
@@ -37,15 +35,15 @@ public class LabJPanel extends javax.swing.JPanel {
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
         this.business = business;
-        this.labOrganization = (LabOrganization)organization;
+        this.labOrganization = (LabOrganization) organization;
         populateTable();
-         btnProcess.setEnabled(false);
+        btnProcess.setEnabled(false);
     }
     
-    public void populateTable(){
-        DefaultTableModel model = (DefaultTableModel)tblLab.getModel();
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblLab.getModel();
         model.setRowCount(0);
-        for(WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()){
+        for (WorkRequest request : labOrganization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[6];
             row[0] = request.getChildId();
             row[1] = request.getChildName();
@@ -135,41 +133,40 @@ public class LabJPanel extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblLab.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table");
             return;
         }
-        WorkRequest request = (WorkRequest)tblLab.getValueAt(selectedRow, 5);
-//        request.setReceiver(userAccount);
-//        request.setStatus("Pending");
-        if (request.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed");
-                return;
-                } else {
-                request.setReceiver(userAccount);
-                request.setStatus("Processing");
-                JOptionPane.showMessageDialog(null, "Request assigned");
-                btnProcess.setEnabled(true);
-                }
+        WorkRequest request = (WorkRequest) tblLab.getValueAt(selectedRow, 5);
+        //if (request.getStatus().equalsIgnoreCase("Completed")) {
+        if ("Completed".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed");
+            return;
+        } else {
+            request.setReceiver(userAccount);
+            request.setStatus("Processing");
+            JOptionPane.showMessageDialog(null, "Request assigned");
+            btnProcess.setEnabled(true);
+        }
         populateTable();
-       
+
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblLab.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select child from table");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select child from table");
             return;
         }
-        LabWorkRequest request = (LabWorkRequest)tblLab.getValueAt(selectedRow, 5);
-        if (request.getStatus().equalsIgnoreCase("Completed")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-                } else {
-        request.setStatus("Processing");
+        LabWorkRequest request = (LabWorkRequest) tblLab.getValueAt(selectedRow, 5);
+        //if (request.getStatus().equalsIgnoreCase("Completed")) {
+        if ("Completed".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            request.setStatus("Processing");
         }
-        //request.setTestResult("Lab test request recieved");
         LabProcessJPanel panel = new LabProcessJPanel(userProcessContainer, request);
         userProcessContainer.add("processWorkRequestJPanel", panel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();

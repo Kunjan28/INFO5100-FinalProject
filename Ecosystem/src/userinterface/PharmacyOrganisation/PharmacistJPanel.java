@@ -15,7 +15,6 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.PharmacistWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -38,29 +37,29 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PharmacistJPanel
      */
-    public PharmacistJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization pharmacistOrganization, Enterprise enterprise, EcoSystem business,ChildDirectory directory) {
+    public PharmacistJPanel(JPanel userProcessContainer, UserAccount account, PharmacistOrganization pharmacistOrganization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
-        this.pharmacistOrganization = (PharmacistOrganization)pharmacistOrganization;
-        this.enterprise= enterprise;
+        this.pharmacistOrganization = (PharmacistOrganization) pharmacistOrganization;
+        this.enterprise = enterprise;
         this.business = business;
         this.directory = directory;
-	for(Network net: business.getNetworkList()){
-        for(Enterprise e: net.getEnterpriseDirectory().getEnterpriseList()){
-            if(e.equals(enterprise)){
-            network = net;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise e : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (e.equals(enterprise)) {
+                    network = net;
+                }
             }
         }
-    }
         btnProcess.setEnabled(false);
         populateTable();
     }
     
     public void populateTable() {
-        DefaultTableModel model = (DefaultTableModel)tblPharmacist.getModel();
+        DefaultTableModel model = (DefaultTableModel) tblPharmacist.getModel();
         model.setRowCount(0);
-        for(WorkRequest request : pharmacistOrganization.getWorkQueue().getWorkRequestList()){
+        for (WorkRequest request : pharmacistOrganization.getWorkQueue().getWorkRequestList()) {
             Object[] row = new Object[model.getColumnCount()];
             row[0] = request;
             row[1] = request.getChildId();
@@ -146,38 +145,39 @@ public class PharmacistJPanel extends javax.swing.JPanel {
     private void btnAssignToMeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignToMeActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblPharmacist.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table to assign");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table to assign");
             return;
         }
-        WorkRequest request = (WorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
-        if (request.getStatus().equalsIgnoreCase("Delivered")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-                } else {
-                request.setReceiver(userAccount);
-                request.setStatus("Pending");
-                btnProcess.setEnabled(true);
-                }
+        WorkRequest request = (WorkRequest) tblPharmacist.getValueAt(selectedRow, 0);
+        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
+        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            request.setReceiver(userAccount);
+            request.setStatus("Pending");
+            btnProcess.setEnabled(true);
+        }
         populateTable();
-        //btnProcess.setEnabled(true);
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblPharmacist.getSelectedRow();
-        if (selectedRow < 0){
-            JOptionPane.showMessageDialog(null,"Please select a child from table before proceeding");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a child from table before proceeding");
             return;
         }
-        PharmacistWorkRequest request = (PharmacistWorkRequest)tblPharmacist.getValueAt(selectedRow, 0);
-        if (request.getStatus().equalsIgnoreCase("Delivered")) {
-                JOptionPane.showMessageDialog(null, "Request already completed.");
-                return;
-                } else {
-        request.setStatus("Processing");
+        PharmacistWorkRequest request = (PharmacistWorkRequest) tblPharmacist.getValueAt(selectedRow, 0);
+        //if (request.getStatus().equalsIgnoreCase("Delivered")) {
+        if ("Delivered".equalsIgnoreCase(request.getStatus())) {
+            JOptionPane.showMessageDialog(null, "Request already completed.");
+            return;
+        } else {
+            request.setStatus("Processing");
         }
-        PharmacistProcessJPanel processWorkRequestJPanel = new PharmacistProcessJPanel(userProcessContainer, request, userAccount, enterprise,child, directory,business,pharmacistOrganization);
+        PharmacistProcessJPanel processWorkRequestJPanel = new PharmacistProcessJPanel(userProcessContainer, request, userAccount, enterprise, child, directory, business, pharmacistOrganization);
         userProcessContainer.add("processWorkRequestJPanel", processWorkRequestJPanel);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

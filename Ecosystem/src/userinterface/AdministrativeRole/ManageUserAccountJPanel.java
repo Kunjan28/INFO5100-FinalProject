@@ -10,7 +10,6 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
-import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -198,33 +197,33 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void createUserJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createUserJButtonActionPerformed
-            String userName = nameJTextField.getText();
+        String userName = nameJTextField.getText();
         String password = passwordJTextField.getText();
-         if("".equals(userName)) {
+        if ("".equals(userName)) {
             JOptionPane.showMessageDialog(null, "Please enter username");
-        }else if(!ecosystem.checkIfUserIsUnique(userName)) {
+        } else if (!ecosystem.checkIfUserIsUnique(userName)) {
             JOptionPane.showMessageDialog(null, "Please enter unique username");
-        }else if("".equals(password)) {
+        } else if ("".equals(password)) {
             JOptionPane.showMessageDialog(null, "Please enter password");
-        }else{
-        Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        Employee employee = (Employee) employeeJComboBox.getSelectedItem();
-        Role role = (Role) roleJComboBox.getSelectedItem();
-        organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
-       JOptionPane.showMessageDialog(null,"User Account Created");
-        nameJTextField.setText("");
-        passwordJTextField.setText("");
-        popData();
+        } else {
+            Organization organization = (Organization) organizationJComboBox.getSelectedItem();
+            Employee employee = (Employee) employeeJComboBox.getSelectedItem();
+            Role role = (Role) roleJComboBox.getSelectedItem();
+            organization.getUserAccountDirectory().createUserAccount(userName, password, employee, role);
+            JOptionPane.showMessageDialog(null, "User Account Created");
+            nameJTextField.setText("");
+            passwordJTextField.setText("");
+            popData();
         }
     }//GEN-LAST:event_createUserJButtonActionPerformed
 
     private void organizationJComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_organizationJComboBoxActionPerformed
         Organization organization = (Organization) organizationJComboBox.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateEmployeeComboBox(organization);
             populateRoleComboBox(organization);
-             nameJTextField.setText("");
-             passwordJTextField.setText("");
+            nameJTextField.setText("");
+            passwordJTextField.setText("");
         }
     }//GEN-LAST:event_organizationJComboBoxActionPerformed
 

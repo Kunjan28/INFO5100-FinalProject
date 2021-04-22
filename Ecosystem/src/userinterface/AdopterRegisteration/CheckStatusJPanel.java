@@ -41,7 +41,7 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
     int uid;
     ChildDirectory directory;
     
-    public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory,int uid, ChildDirectory directory) {
+    public CheckStatusJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, int uid, ChildDirectory directory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.udirectory = udirectory;
@@ -60,23 +60,23 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
     }
     
     private void populateTable() {
-       DefaultTableModel dtms = (DefaultTableModel) tblReq.getModel();
-       dtms.setRowCount(0);
-       
-       for(WorkRequest req: adopterorganization.getWorkQueue().getWorkRequestList()){
-           if(req instanceof AdopterWorkRequest ) {
-               if(req.getUserId()==adopter.getUserId()){
-               Object[] row = new Object[dtms.getColumnCount()];
-               row[0]=req;
-               row[1]=((AdopterWorkRequest) req).getBgcStatus();
-               row[2]=((AdopterWorkRequest) req).getFinanceStatus();
-               dtms.addRow(row);
-               
-               bgcstatus = ((AdopterWorkRequest) req).getBgcStatus();
-               financestatus = ((AdopterWorkRequest) req).getFinanceStatus();
-               }
-           }
-       }
+        DefaultTableModel dtms = (DefaultTableModel) tblReq.getModel();
+        dtms.setRowCount(0);
+
+        for (WorkRequest req : adopterorganization.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof AdopterWorkRequest) {
+                if (req.getUserId() == adopter.getUserId()) {
+                    Object[] row = new Object[dtms.getColumnCount()];
+                    row[0] = req;
+                    row[1] = ((AdopterWorkRequest) req).getBgcStatus();
+                    row[2] = ((AdopterWorkRequest) req).getFinanceStatus();
+                    dtms.addRow(row);
+
+                    bgcstatus = ((AdopterWorkRequest) req).getBgcStatus();
+                    financestatus = ((AdopterWorkRequest) req).getFinanceStatus();
+                }
+            }
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

@@ -3,36 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Donor;
+package userinterface.Sponsor;
 
 import Business.Adopter.AdopterDirectory;
-import Business.Child.Child;
 import Business.Child.ChildDirectory;
 import Business.Donor.Donor;
 import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
-import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.FosterCareEnterprise;
-import Business.Enterprise.HospitalEnterprise;
-import Business.Network.Network;
-import Business.Organization.DoctorOrganization;
 import Business.Organization.DonorOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
  * @author snehaswaroop
  */
-public class DonorWorkArea extends javax.swing.JPanel {
+public class SponsorWorkArea extends javax.swing.JPanel {
 
     /**
      * Creates new form SystemAdminWorkAreaJPanel
@@ -47,37 +36,35 @@ public class DonorWorkArea extends javax.swing.JPanel {
     DonorDirectory donorDirectory;
     AdopterDirectory uDirectory;
     
-    
-    
-    public DonorWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory,ChildDirectory directory, DonorDirectory donorDirectory) {
+    public SponsorWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.donororganization =(DonorOrganization) organization;
+        this.donororganization = (DonorOrganization) organization;
         this.directory = directory;
-        this.donorDirectory= donorDirectory;
+        this.donorDirectory = donorDirectory;
         this.uDirectory = uDirectory;
         valueLabel.setText(organization.getName());
-        for(Donor a: donorDirectory.getDonorsList()) {
-           if(a.getUsername().equals(account.getUsername())) {
-               donor=a;
-           }
+        for (Donor a : donorDirectory.getDonorsList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                donor = a;
+            }
         }
         manageDonorWorkAreaJPanel();
     }
     
-    private void manageDonorWorkAreaJPanel(){
-        DonorRequestTable panel = new DonorRequestTable(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+    private void manageDonorWorkAreaJPanel() {
+        SponsorRequestTable panel = new SponsorRequestTable(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-     }
-    
+    }
+
     private void TrackStatus() {
-        DonorStatus panel = new DonorStatus(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
-        rightSystemAdminPanel.add("SceneDetailsGraph",panel);
+        SponsorStatus panel = new SponsorStatus(rightSystemAdminPanel, account, donororganization, enterprise, business, uDirectory, directory, donorDirectory);
+        rightSystemAdminPanel.add("SceneDetailsGraph", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
@@ -130,7 +117,7 @@ public class DonorWorkArea extends javax.swing.JPanel {
         manageNetworkPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 6, 37, 36));
 
         DonorWorkArea.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        DonorWorkArea.setText("Donor Work Area");
+        DonorWorkArea.setText("Sponsor Work Area");
         DonorWorkArea.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 DonorWorkAreaMousePressed(evt);
@@ -212,7 +199,7 @@ public class DonorWorkArea extends javax.swing.JPanel {
 
     private void lblViewYourStatusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewYourStatusMousePressed
         // TODO add your handling code here:
-          TrackStatus();
+        TrackStatus();
     }//GEN-LAST:event_lblViewYourStatusMousePressed
 
 

@@ -46,17 +46,17 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.child = child;
-        this.childdirectory=childdirectory;
+        this.childdirectory = childdirectory;
         this.business = business;
         this.request = request;
-        for(Network net: business.getNetworkList()){
-        for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-            if(ent.equals(enterprise)){
-            network= net;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
             }
         }
-    } 
-      
+
     }
 
     /**
@@ -123,45 +123,37 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         // TODO add your handling code here:
         String prescription = txtPrescription.getText();
-        if(prescription.isEmpty())
-        {
-            JOptionPane.showMessageDialog(null,"Please enter medicines to be prescribed");
-        }
-        else{
-        PharmacistWorkRequest pharrequest = new PharmacistWorkRequest();
-        pharrequest.setMessage("Medicine Prescribed");
-        pharrequest.setSender(userAccount);
-        pharrequest.setChildId(request.getChildId());
-        pharrequest.setChildName(request.getChildName());
-        System.out.println(request.getChildId());
-        pharrequest.setStatus("Prescription Sent");
-        pharrequest.setMedicinePrescribed(prescription);
-        
-        request.setStatus("Medicine Prescribed");
-        request.setTestResult("Child Treated and medicines Prescribed");
-        JOptionPane.showMessageDialog(this, "Medicines prescribed! ");
-        
-        Organization org = null;
-        for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()){
-             //if(this.network.equals(network)){
-                            if (organization instanceof PharmacistOrganization){
-                                
-                                org = organization;
-                                break;
-                            }
-                          //  }
-        }
-        if (org!=null){
-            org.getWorkQueue().getWorkRequestList().add(pharrequest);
-            userAccount.getWorkQueue().getWorkRequestList().add(pharrequest);
-        } 
+        if (prescription.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter medicines to be prescribed");
+        } else {
+            PharmacistWorkRequest pharrequest = new PharmacistWorkRequest();
+            pharrequest.setMessage("Medicine Prescribed");
+            pharrequest.setSender(userAccount);
+            pharrequest.setChildId(request.getChildId());
+            pharrequest.setChildName(request.getChildName());
+            pharrequest.setStatus("Prescription Sent");
+            pharrequest.setMedicinePrescribed(prescription);
+            request.setStatus("Medicine Prescribed");
+            request.setTestResult("Child Treated and medicines Prescribed");
+            JOptionPane.showMessageDialog(this, "Medicines prescribed! ");
+            Organization org = null;
+            for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
+                if (organization instanceof PharmacistOrganization) {
+                    org = organization;
+                    break;
+                }
+            }
+            if (org != null) {
+                org.getWorkQueue().getWorkRequestList().add(pharrequest);
+                userAccount.getWorkQueue().getWorkRequestList().add(pharrequest);
+            }
         }
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         AssignChildJPanel panel = (AssignChildJPanel) component;
         panel.populateMedicationTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_SaveActionPerformed
 

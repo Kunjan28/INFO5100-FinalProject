@@ -15,7 +15,6 @@ import Business.Organization.AdoptionOrganization;
 import Business.Organization.Organization;
 import Business.Organization.OrganizationDirectory;
 import Business.Role.AdopterRole;
-
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
 import Business.WorkQueue.AdoptionWorkRequest;
@@ -33,7 +32,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
-    
     private JPanel userProcessContainer;
     private EcoSystem business;
     private UserAccount userAccount;
@@ -41,7 +39,8 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
     private Network network;
     private OrganizationDirectory organizationDirectory;
     AdopterDirectory udirectory;
-    public AdoptionUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system,AdopterDirectory udirectory) {
+
+    public AdoptionUnitWorkRequestJPanel(JPanel userProcessContainer, UserAccount account, Enterprise enterprise, EcoSystem system, AdopterDirectory udirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.userAccount = account;
@@ -53,7 +52,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
     }
     
     public void populateTable() {
-        
+
         DefaultTableModel model = (DefaultTableModel) adpworkRequest.getModel();
 
         model.setRowCount(0);
@@ -150,7 +149,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 processJButtonActionPerformed(evt);
             }
         });
-        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, 120, -1));
+        add(processJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, 120, -1));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 20)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(25, 56, 82));
@@ -159,7 +158,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 41, 431, -1));
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/funds.png"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 420, 870, 300));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 870, 300));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -168,16 +167,16 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
         if (selectedRow >= 0) {
             WorkRequest request = (WorkRequest) adpworkRequest.getValueAt(selectedRow, 0);
-            if("Completed".equalsIgnoreCase(request.getStatus())) {
+            if ("Completed".equalsIgnoreCase(request.getStatus())) {
                 JOptionPane.showMessageDialog(null, "Request already processed.");
                 return;
             } else {
                 request.setReceiver(userAccount);
                 request.setStatus("Pending");
-                
+
                 populateTable();
                 JOptionPane.showMessageDialog(null, "Request has successfully assigned");
-           }
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Choose a request to process.");
             return;
@@ -200,9 +199,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                 UserAccount ua1 = org.getUserAccountDirectory().createUserAccount(request.getUserName(), request.getUserPassword(), emp, new AdopterRole());
                 Adopter adopter = new Adopter();
                 int uid = udirectory.getAdoptersList().size() + 1;
-
                 adopter = this.udirectory.addAdopter();
-
                 adopter.setAge(Integer.parseInt(request.getAge()));
                 adopter.setAnnualIncome(Long.parseLong(request.getAnnualIncome()));
                 adopter.setEmailId(request.getUserEmailId());
@@ -226,18 +223,13 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
                     for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
                         for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
                             if (organization instanceof AdoptionOrganization) {
-
                                 org1 = organization;
-                                System.out.println("ye hai org: " + org1);
                                 list.add(organization);
                                 org1.getWorkQueue().getWorkRequestList().add(awr);
-
                             }
                         }
                     }
-
                 }
-
                 if (!list.isEmpty() && list.size() > 0) {
                     ua1.getWorkQueue().getWorkRequestList().add(awr);
                     business.getWorkQueue().getWorkRequestList().add(awr);

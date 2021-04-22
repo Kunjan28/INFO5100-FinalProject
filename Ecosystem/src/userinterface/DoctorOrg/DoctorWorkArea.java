@@ -26,7 +26,6 @@ public class DoctorWorkArea extends javax.swing.JPanel {
     JPanel userProcessContainer;
     EcoSystem ecosystem;
     private DoctorOrganization doctororganization;
-    //private OrganizationDirectory directory;
     Enterprise enterprise;
     Child child;
     private UserAccount userAccount;
@@ -46,7 +45,6 @@ public class DoctorWorkArea extends javax.swing.JPanel {
         this.userAccount = account;
         valueLabel.setText(doctororganization.getName());
         manageDoctorWorkAreaJPanel();
-        
     }
     
     private void manageDoctorWorkAreaJPanel(){

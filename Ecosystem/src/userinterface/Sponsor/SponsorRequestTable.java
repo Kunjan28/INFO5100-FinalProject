@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package userinterface.Donor;
+package userinterface.Sponsor;
 
 
 import Business.Adopter.AdopterDirectory;
@@ -15,10 +15,7 @@ import Business.EcoSystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.DonorOrganization;
 import Business.Organization.Organization;
-
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DonorWorkRequest;
-import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -28,7 +25,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Kunjan
  */
-public class DonorRequestTable extends javax.swing.JPanel {
+public class SponsorRequestTable extends javax.swing.JPanel {
     JPanel userProcessContainer;
     UserAccount account;
     Enterprise enterprise;
@@ -38,26 +35,22 @@ public class DonorRequestTable extends javax.swing.JPanel {
     ChildDirectory directory;
     DonorDirectory donorDirectory;
   
-    public DonorRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory,ChildDirectory directory,DonorDirectory donorDirectory) {
+    public SponsorRequestTable(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory, DonorDirectory donorDirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.donororganization =(DonorOrganization) organization;
+        this.donororganization = (DonorOrganization) organization;
         this.directory = directory;
-        this.donorDirectory= donorDirectory;
-       for(Donor a: donorDirectory.getDonorsList()){
-           if(a.getUsername().equals(account.getUsername())){
-               donor=a;
-           }
-       }
+        this.donorDirectory = donorDirectory;
+        for (Donor a : donorDirectory.getDonorsList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                donor = a;
+            }
+        }
         populateChildTable();
-        //populateWorkRequestTable();
-       
     }
-
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,69 +109,32 @@ public class DonorRequestTable extends javax.swing.JPanel {
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         int selectedRow = childTable.getSelectedRow();
-        if(selectedRow<0){
-            JOptionPane.showMessageDialog(null,"Please select a row from table");
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from table");
             return;
         }
         Child ch = (Child) childTable.getValueAt(selectedRow, 0);
-        PaymentPanel paymentJpanel = new PaymentPanel(userProcessContainer,account,donororganization,enterprise,business,directory, ch,donor);
-       this.userProcessContainer.add("PaymentPanel", paymentJpanel);
-       CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-       layout.next(userProcessContainer);
-       
+        PaymentPanel paymentJpanel = new PaymentPanel(userProcessContainer, account, donororganization, enterprise, business, directory, ch, donor);
+        this.userProcessContainer.add("PaymentPanel", paymentJpanel);
+        CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+        layout.next(userProcessContainer);
     }//GEN-LAST:event_btnPayActionPerformed
-    public void populateChildTable(){
 
-    DefaultTableModel dtms = (DefaultTableModel)childTable.getModel();
-    dtms.setRowCount(0);
-    for(Child child: directory.getChildList()){
-        System.out.println("inside for");
-        if(child.isFinancialHelp()){
-          Object[] row = new Object[dtms.getColumnCount()];
-            System.out.println("child"+child);
-          row[0]=child;
-          row[1]=child.getName();
-          row[2]=child.getGender();
-          row[3]=child.getChildAge();
-          row[4]=child.getAmt();
-          
-          dtms.addRow(row);
-       }
+    public void populateChildTable() {
+        DefaultTableModel dtms = (DefaultTableModel) childTable.getModel();
+        dtms.setRowCount(0);
+        for (Child child : directory.getChildList()) {
+            if (child.isFinancialHelp()) {
+                Object[] row = new Object[dtms.getColumnCount()];
+                row[0] = child;
+                row[1] = child.getName();
+                row[2] = child.getGender();
+                row[3] = child.getChildAge();
+                row[4] = child.getAmt();
+                dtms.addRow(row);
+            }
+        }
     }
-    
-    }
-//    public void populateWorkRequestTable(){
-//
-//    DefaultTableModel dtms = (DefaultTableModel)workReqTable.getModel();
-//    dtms.setRowCount(0);
-//     for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-//            if(req instanceof DonorWorkRequest){
-//               DonorWorkRequest request = (DonorWorkRequest)req;
-//               if(request.getUserName().equalsIgnoreCase(account.getUsername())){
-//                    Object[] row = new Object[dtms.getColumnCount()];
-//                row[0]=req;
-//                row[1]=req.getSender();
-//                row[2]=req.getReceiver();
-//                row[3]=req.getChildId();
-//                String remarks = ((DonorWorkRequest)req).getRemarks();
-//                row[4]=remarks;
-//                String result = "";
-//                //((DonorWorkRequest)req).getTestResult();
-//                row[5]= result == null ? "Waiting" : result;
-//                
-//   
-//             dtms.addRow(row);
-////                
-//               }
-//               
-//                  
-//                 
-//            }
-//          
-//        }
-//    
-//    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnPay;

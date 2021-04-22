@@ -114,76 +114,76 @@ public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
     private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
-        
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        
-        if(receiverval == null) {
-        WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
-        re.setReceiver(account);
-        re.setStatus("Finance organization processing");
-        populateWorkRequest();
+
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+
+        if (receiverval == null) {
+            WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
+            re.setReceiver(account);
+            re.setStatus("Finance organization processing");
+            populateWorkRequest();
+        } else {
+            if (statusval.equals("Approved") || statusval.equals("Denied")) {
+                JOptionPane.showMessageDialog(null, "Please select some other request,this work request is already processed");
+            } else if (!receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Work request is assigned to someone else");
+            } else if (receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Work request is already assigned to you");
+            }
         }
-        else{
-        if(statusval.equals("Approved")||statusval.equals("Denied"))
-            JOptionPane.showMessageDialog(null,"Please select some other request,this work request is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is assigned to someone else");
-        else if(receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Work request is already assigned to you");
-        } 
     }//GEN-LAST:event_btnAssignActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a workrequest");
             return;
         }
         WorkRequest req = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
-        Object receiverval =  tblRequest.getValueAt(selectedRow, 2);
-        Object statusval =  tblRequest.getValueAt(selectedRow, 5);
-        for(Adopter a: udirectory.getAdoptersList()){
-            if(a.getUserId()==req.getUserId()){
-                adopter=a;
+        Object receiverval = tblRequest.getValueAt(selectedRow, 2);
+        Object statusval = tblRequest.getValueAt(selectedRow, 5);
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUserId() == req.getUserId()) {
+                adopter = a;
             }
         }
-        if(receiverval==null){
-            JOptionPane.showMessageDialog(null,"Please first assign it to yourself");
+        if (receiverval == null) {
+            JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
+        } else {
+            if (receiverval.equals(account.getUsername()) && statusval.equals("Finance organization processing")) {
+
+                FinanceCheckProcess panel = new FinanceCheckProcess(userProcessContainer, account, financeOrganization, enterprise, business, udirectory, (FinanceAdoptionWorkRequest) req, adopter);
+                this.userProcessContainer.add("FinanceCheckProcessRequestJPanel", panel);
+                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
+                layout.next(userProcessContainer);
+            } else if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
+                JOptionPane.showMessageDialog(null, "The selected work request is already processed");
+            } else if (!receiverval.equals(account.getUsername())) {
+                JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
+            }
         }
-        else{
-        if( receiverval.equals(account.getUsername()) && statusval.equals("Finance organization processing")){
-            
-        FinanceCheckProcess panel = new FinanceCheckProcess(userProcessContainer,account, financeOrganization, enterprise, business, udirectory,(FinanceAdoptionWorkRequest) req, adopter);
-        this.userProcessContainer.add("FinanceCheckProcessRequestJPanel", panel);
-        CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
-        layout.next(userProcessContainer);}
-        else if("Approved".equals(statusval)|| "Denied".equals(statusval))
-            JOptionPane.showMessageDialog(null,"The selected work request is already processed");
-        else if(!receiverval.equals(account.getUsername()))
-            JOptionPane.showMessageDialog(null,"Please select the work request assigned to you to proceed");
-        } 
     }//GEN-LAST:event_btnProcessActionPerformed
-    
-    public void populateWorkRequest(){
-      
-        DefaultTableModel dtm = (DefaultTableModel)tblRequest.getModel();
-            dtm.setRowCount(0);
-        for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()){
-            if(request instanceof FinanceAdoptionWorkRequest){
-           Object[] row = new Object[dtm.getColumnCount()];
-           row[0]=request;
-           row[1]=request.getSender().getEmployee().getName();
-           row[2]=request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-           row[3] = request.getUserId();
-           row[4] = request.getName();
-           row[5] = request.getStatus();
-            dtm.addRow(row);
+
+    public void populateWorkRequest() {
+
+        DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
+        dtm.setRowCount(0);
+        for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
+            if (request instanceof FinanceAdoptionWorkRequest) {
+                Object[] row = new Object[dtm.getColumnCount()];
+                row[0] = request;
+                row[1] = request.getSender().getEmployee().getName();
+                row[2] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+                row[3] = request.getUserId();
+                row[4] = request.getName();
+                row[5] = request.getStatus();
+                dtm.addRow(row);
             }
         }
     }

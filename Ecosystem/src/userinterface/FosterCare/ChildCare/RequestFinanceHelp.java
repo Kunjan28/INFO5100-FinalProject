@@ -30,39 +30,33 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
     /**
      * Creates new form RequestFinanceHelp
      */
-  JPanel userProcessContainer;
-  UserAccount account;
-  ChildCareOrganization organization;
-  Enterprise enterprise;
-  EcoSystem business;
-  ChildDirectory directory;
-  Child child;
-  String data;
+    JPanel userProcessContainer;
+    UserAccount account;
+    ChildCareOrganization organization;
+    Enterprise enterprise;
+    EcoSystem business;
+    ChildDirectory directory;
+    Child child;
+    String data;
     Network network;
 
    public RequestFinanceHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory, Child child, String data) {
-     initComponents();
-     this.userProcessContainer=userProcessContainer;
-     this.account=account;
-     this.organization = (ChildCareOrganization) organization;
-     this.enterprise=enterprise;
-     this.business=business;
-     this.directory=directory;
-     this.child=child;
-     
-     	
-	 for(Network net: business.getNetworkList()){
-      for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-          if(ent.equals(enterprise)){
-              network= net;
-          }
-      }
-  }
-  
-     
-//     jTextArea1.removeAll();;
-//     jTextArea1.setText("Amentities requested: "+data);
-     
+       initComponents();
+       this.userProcessContainer = userProcessContainer;
+       this.account = account;
+       this.organization = (ChildCareOrganization) organization;
+       this.enterprise = enterprise;
+       this.business = business;
+       this.directory = directory;
+       this.child = child;
+
+       for (Network net : business.getNetworkList()) {
+           for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+               if (ent.equals(enterprise)) {
+                   network = net;
+               }
+           }
+       }
     }
 
     /**
@@ -145,55 +139,39 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
         }
         EducationalHelpWorkRequest fccwr = new EducationalHelpWorkRequest();
         try {
-            Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText())  + Long.parseLong(txtFundsLiving.getText())
+            Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText()) + Long.parseLong(txtFundsLiving.getText())
                     + Long.parseLong(txtFundsMisc.getText());
             fccwr.setAmt(amt.toString());
-        } catch (Exception e) {
+        }   catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please enter numeric amount");
             return;
         }
         fccwr.setMessage("Requesting funds");
         fccwr.setStatus("Initiated");
-        //fccwr.setAmt(data);
         fccwr.setSender(account);
         fccwr.setChildId(child.getChildId());
-
         fccwr.setRemarks("Request for Finance Team");
-
         List<Organization> org = new ArrayList<>();
         for (Network network : business.getNetworkList()) {
-            // getNetworkList().getOrganizationDirectory().getOrganizationList()
-            System.out.println("network: " + network);
             for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
-
                 for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
-
-                    // if(this.network.equals(network)){
                     if (organization instanceof FinanceOrganization) {
                         org.add(organization);
                         organization.getWorkQueue().getWorkRequestList().add(fccwr);
                     }
-                    //}
-
                 }
             }
         }
 
         if (org.size() > 0) {
-
             account.getWorkQueue().getWorkRequestList().add(fccwr);
             business.getWorkQueue().getWorkRequestList().add(fccwr);
-
         }
-
         JOptionPane.showMessageDialog(null, "Request raised to Funding team");
-
         ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, directory, child);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
-        
-        
     }//GEN-LAST:event_btnSubmitActionPerformed
 
     private void txtFundsMedExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFundsMedExpActionPerformed

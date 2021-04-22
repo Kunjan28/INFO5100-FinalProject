@@ -11,13 +11,10 @@ import Business.Enterprise.Enterprise;
 import Business.Network.Network;
 import Business.Organization.ChildRegistrationOrganization;
 import Business.Organization.DoctorOrganization;
-import Business.Organization.LabOrganization;
 import Business.Organization.Organization;
-
 import Business.UserAccount.UserAccount;
 import Business.Utils.ValidationHelper;
 import Business.WorkQueue.DoctorWorkRequest;
-import java.awt.CardLayout;
 import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -26,11 +23,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -49,7 +43,6 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     UserAccount account;
     Enterprise enterprise;
     EcoSystem business;
-//  Child child;
     ChildDirectory directory;
     ChildRegistrationOrganization organization;
     Network network;
@@ -207,18 +200,17 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jXDatePicker1ActionPerformed
-/*Upon click the method would regoster the child and would send the details to the doctor for medical examination*/
+
     private void btnRegisterChildActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterChildActionPerformed
         try {
-            if(!validation()){
+            if (!validation()) {
                 String childName = txtName.getText();
                 String ageString = cmbAge.getSelectedItem().toString();
                 int childAge = Integer.parseInt(ageString);
                 String gender = "";
-                if(maleRDB.isSelected()){
+                if (maleRDB.isSelected()) {
                     gender = "Male";
-                }
-                else if(femaleRDB.isSelected()){
+                } else if (femaleRDB.isSelected()) {
                     gender = "Female";
                 }
                 Date date = jXDatePicker1.getDate();
@@ -229,11 +221,11 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                     temp = formatit.format(date);
                     regDate = formatit.parse(temp);
                 } catch (Exception ex) {
-                  JOptionPane.showMessageDialog(null, "Please select the registration date");
+                    JOptionPane.showMessageDialog(null, "Please select the registration date");
                 }
                 String identificationMark = txtMark.getText();
                 Child child = new Child();
-                int childId =  rand.nextInt(100);
+                int childId = rand.nextInt(100);
                 child = directory.addChild();
                 child.setChildAge(childAge);
                 child.setChildId(childId);
@@ -243,64 +235,37 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
                 child.setRegistrationDate(regDate);
                 child.setGender(gender);
                 child.setStatus("Newly Registered");
-                if(yesBtn.isSelected()){
+                if (yesBtn.isSelected()) {
                     child.setIsSpecialChild(true);
-                }
-                else if(noBtn.isSelected()){
+                } else if (noBtn.isSelected()) {
                     child.setIsSpecialChild(false);
                 }
-                child.setMedicalStatus((child.getMedicalStatus()==null ? "" :child.getMedicalStatus()) +"Sent to Doctor");
-                /*Creating a work request for the child object created*/
+                child.setMedicalStatus((child.getMedicalStatus() == null ? "" : child.getMedicalStatus()) + "Sent to Doctor");
                 DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
                 docwrkreq.setStatus("Sent to Doctor");
                 docwrkreq.setMessage("Please medically examine the newly registered child");
                 docwrkreq.setSender(account);
                 docwrkreq.setChildId(child.getChildId());
                 docwrkreq.setChildName(child.getName());
-                
-                /*
-                The below set of code iterates through the network list and get the network
-                Once the network is received then it iterates over all the enterprises present in the network
-                It goes thought every organization in the enterprise.
-                
-                Once it has found the Doctor organization, it sets the organization as Doctor organization
-                
-                */
                 List<DoctorOrganization> list = new ArrayList<>();
-                for (Network network : business.getNetworkList()){
-                    // getNetworkList().getOrganizationDirectory().getOrganizationList()
-                    System.out.println("network: "+network);
-                    for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                        if(this.network.equals(network)){
-                            for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                          
-                            if (organization instanceof DoctorOrganization){
-                               
-                                list.add((DoctorOrganization)organization);
+                for (Network network : business.getNetworkList()) {
+                    for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                        if (this.network.equals(network)) {
+                            for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                                if (organization instanceof DoctorOrganization) {
+                                    list.add((DoctorOrganization) organization);
+                                }
                             }
-                          
-                            
                         }
-                        }
-                        
-                        
                     }
                 }
-                for(DoctorOrganization org:list){
+                for (DoctorOrganization org : list) {
                     org.getWorkQueue().getWorkRequestList().add(docwrkreq);
                 }
-                /*The below if code checks if there is some value for org. If there is then add the work request
-                - At the organization level, where other organization in the same enterprise can access it
-                -At the account level, so the child registration can also see the request created
-                - At the business level, as the request has to be transferred to a different organization in a different enterprise.
-                */
-                if(list!=null && list.size()>0){
+                if (list != null && list.size() > 0) {
                     account.getWorkQueue().getWorkRequestList().add(docwrkreq);
                     business.getWorkQueue().getWorkRequestList().add(docwrkreq);
-                    
                 }
-                
-                System.out.println("Child registered successfully");
                 txtName.setText("");
                 buttonGroup1.clearSelection();
                 cmbAge.getModel().setSelectedItem(0);

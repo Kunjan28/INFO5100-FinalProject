@@ -32,113 +32,98 @@ public class WhoWeServe extends javax.swing.JPanel {
         this.system = system;
         populateBarGraphByGender();
         populateBarGraphByAge();
-         populateBarGraphBySpecialNeed();
+        populateBarGraphBySpecialNeed();
     }
 
-     public void populateBarGraphByGender() {
- 
+    public void populateBarGraphByGender() {
+
         Map<String, Integer> hMap = new HashMap<>();
-        
+
         int femaleCount = 0;
         int maleCount = 0;
-        for(Child child:system.getDirectory().getChildList()) {
-            if("Female".equalsIgnoreCase(child.getGender())){
-                hMap.put("Female",femaleCount+1);
-            }
-            else{
-                hMap.put("Male",maleCount+1);
+        for (Child child : system.getDirectory().getChildList()) {
+            if ("Female".equalsIgnoreCase(child.getGender())) {
+                hMap.put("Female", femaleCount + 1);
+            } else {
+                hMap.put("Male", maleCount + 1);
             }
         }
-
         barChart = ChartFactory.createPieChart(
-         "By Gender",                     
-         createDataset(hMap),          
-         true, true, false);
-         
-        ChartPanel chartPanel = new ChartPanel( barChart );   
+                "By Gender",
+                createDataset(hMap),
+                true, true, false);
+        ChartPanel chartPanel = new ChartPanel(barChart);
         jPanel1.removeAll();
         jPanel1.add(chartPanel, BorderLayout.CENTER);
         jPanel1.validate();
         /*chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
-        setContentPane( chartPanel );*/ 
-        
+        setContentPane( chartPanel );*/
     }
      
-     public void populateBarGraphByAge() {
+    public void populateBarGraphByAge() {
         Map<String, Integer> hMap = new HashMap<>();
-        
+
         int ageGrp1 = 0;
         int ageGrp2 = 0;
         int ageGrp3 = 0;
-        for(Child child:system.getDirectory().getChildList()) {
-            if(child.getChildAge()>=0 && child.getChildAge()<=5){
-                hMap.put("AGES 0-5",ageGrp1+1);
-            }
-            else if(child.getChildAge()>5 && child.getChildAge()<=13){
-                hMap.put("AGES 6-13",ageGrp2+1);
-            }
-            else {
-                hMap.put("AGES 14-18",ageGrp3+1);
+        for (Child child : system.getDirectory().getChildList()) {
+            if (child.getChildAge() >= 0 && child.getChildAge() <= 5) {
+                hMap.put("AGES 0-5", ageGrp1 + 1);
+            } else if (child.getChildAge() > 5 && child.getChildAge() <= 13) {
+                hMap.put("AGES 6-13", ageGrp2 + 1);
+            } else {
+                hMap.put("AGES 14-18", ageGrp3 + 1);
             }
         }
-           
-        
-      
+
         barChart = ChartFactory.createPieChart(
-         "By Age",                     
-         createDataset(hMap),          
-         true, true, false);
-         
-        ChartPanel chartPanel = new ChartPanel( barChart );   
+                "By Age",
+                createDataset(hMap),
+                true, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
         jPanel3.removeAll();
         jPanel3.add(chartPanel, BorderLayout.CENTER);
         jPanel3.validate();
         /*chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
-        setContentPane( chartPanel );*/ 
-        
+        setContentPane( chartPanel );*/
+
     }
      
     public void populateBarGraphBySpecialNeed() {
- 
+
         Map<String, Integer> hMap = new HashMap<>();
-        
+
         int yes = 0;
         int no = 0;
-        for(Child child:system.getDirectory().getChildList()) {
-            if(child.isIsSpecialChild()){
-                hMap.put("Special Child",yes+1);
-            }
-            else{
-                hMap.put("Normal Child",no+1);
+        for (Child child : system.getDirectory().getChildList()) {
+            if (child.isIsSpecialChild()) {
+                hMap.put("Special Child", yes + 1);
+            } else {
+                hMap.put("Normal Child", no + 1);
             }
         }
-           
-        
-      
+
         barChart = ChartFactory.createPieChart(
-         "By Special Needs",                     
-         createDataset(hMap),          
-         true, true, false);
-         
-        ChartPanel chartPanel = new ChartPanel( barChart );   
+                "By Special Needs",
+                createDataset(hMap),
+                true, true, false);
+
+        ChartPanel chartPanel = new ChartPanel(barChart);
         jPanel2.removeAll();
         jPanel2.add(chartPanel, BorderLayout.CENTER);
         jPanel2.validate();
         /*chartPanel.setPreferredSize(new java.awt.Dimension( 560 , 367 ) );        
-        setContentPane( chartPanel );*/ 
-        
+        setContentPane( chartPanel );*/
     }
     
     private PieDataset createDataset(Map<String, Integer> workReqMap) {
-       
-        final DefaultPieDataset dataset = new DefaultPieDataset();  
-
-        for(String r : workReqMap.keySet()) {
+        final DefaultPieDataset dataset = new DefaultPieDataset();
+        for (String r : workReqMap.keySet()) {
             dataset.setValue(r, workReqMap.get(r));
-        }               
-
-        return dataset; 
-   }
+        }
+        return dataset;
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.

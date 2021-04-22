@@ -36,34 +36,34 @@ public class AdopterWorkArea extends javax.swing.JPanel {
     ChildDirectory directory;
     
     
-    public AdopterWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise ,EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory) {
+    public AdopterWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, AdopterDirectory udirectory, ChildDirectory directory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.udirectory=udirectory;
-        this.account=account;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.udirectory = udirectory;
+        this.account = account;
+        this.enterprise = enterprise;
         this.business = business;
-        this.adopterorganization =(AdopterOrganization) organization;
+        this.adopterorganization = (AdopterOrganization) organization;
         this.directory = directory;
-       for(Adopter a: udirectory.getAdoptersList()){
-           if(a.getUsername().equals(account.getUsername())){
-               adopter=a;
-           }
-       }
+        for (Adopter a : udirectory.getAdoptersList()) {
+            if (a.getUsername().equals(account.getUsername())) {
+                adopter = a;
+            }
+        }
         valueLabel.setText(organization.getName());
         goToCheckStatusJPanel();
-        
+
     }
-    
+
    
     
-    private void goToCheckStatusJPanel(){
-        CheckStatusJPanel panel = new CheckStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, udirectory, adopter.getUserId(),directory);
-        rightSystemAdminPanel.add("CheckStatusJPanel",panel);
+    private void goToCheckStatusJPanel() {
+        CheckStatusJPanel panel = new CheckStatusJPanel(rightSystemAdminPanel, account, adopterorganization, enterprise, business, udirectory, adopter.getUserId(), directory);
+        rightSystemAdminPanel.add("CheckStatusJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        
-     }
+
+    }
     
     
     /**

@@ -37,20 +37,16 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
     ChildDirectory directory;
     int countApprove=0, countDeny=0, countPending=0; 
     
-    
     public ViewAndProcessTransactionRecord(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.financeOrphanageOrganization=(FinanceOrganization) organization;
-        this.enterprise=enterprise;
-        this.directory=directory;
-         this.business=business;
-            //valueLabel.setText(financeOrphanageOrganization.getName());
-            //processBt.setEnabled(false);
-            processBt1.setEnabled(false);
-            //populateRequesttable();
-            populateDonorRequesttable();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.financeOrphanageOrganization = (FinanceOrganization) organization;
+        this.enterprise = enterprise;
+        this.directory = directory;
+        this.business = business;
+        processBt1.setEnabled(false);
+        populateDonorRequesttable();
     }
 
     /**
@@ -128,81 +124,74 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
     private void assignBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtn1ActionPerformed
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
-        Object statusval =  jTable2.getValueAt(selectedRow, 6);
+        Object statusval = jTable2.getValueAt(selectedRow, 6);
         DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
-        //if (statusval.equals("Approved") || statusval.equals("Processed")) {
-            if("Received".equals(statusval) || "Assigned".equals(statusval)) {
-            JOptionPane.showMessageDialog(null,"Request already processed");
+        if ("Received".equals(statusval) || "Assigned".equals(statusval)) {
+            JOptionPane.showMessageDialog(null, "Request already processed");
+        } else {
+            req.setReceiver(account);
+            req.setMessage("Payment processed");
+            req.setStatus("Assigned");
+            JOptionPane.showMessageDialog(null, "Request is assigned");
+            populateDonorRequesttable();
+            processBt1.setEnabled(true);
         }
-            else {
-        req.setReceiver(account);
-        req.setMessage("Payment processed");
-        req.setStatus("Assigned");
-        JOptionPane.showMessageDialog(null,"Request is assigned");
-        populateDonorRequesttable();
-        processBt1.setEnabled(true);
-            }
     }//GEN-LAST:event_assignBtn1ActionPerformed
 
     private void processBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBt1ActionPerformed
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
-        if(selectedRow<0){
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select a request");
             return;
         }
-        Object statusval =  jTable2.getValueAt(selectedRow, 6);
+        Object statusval = jTable2.getValueAt(selectedRow, 6);
         DonorWorkRequest req = (DonorWorkRequest) jTable2.getValueAt(selectedRow, 0);
-        //if (statusval.equals("Approved") || statusval.equals("Processed")) {
-        if("Received".equals(statusval)) {  
-        JOptionPane.showMessageDialog(null,"Request already processed");
-        }
-        else {
-        req.setMessage(txtComments.getText());
-        req.setStatus("Received");
-        JOptionPane.showMessageDialog(null,"Request is processed");
-        if(this.directory!=null && this.directory.getChildList().size()>0){
-            for(Child ch:this.directory.getChildList()){
-                if(req.getChildId()==ch.getChildId()){
-                    ch.setFinancialHelp(false);
-                    break;
+        if ("Received".equals(statusval)) {
+            JOptionPane.showMessageDialog(null, "Request already processed");
+        } else {
+            req.setMessage(txtComments.getText());
+            req.setStatus("Received");
+            JOptionPane.showMessageDialog(null, "Request is processed");
+            if (this.directory != null && this.directory.getChildList().size() > 0) {
+                for (Child ch : this.directory.getChildList()) {
+                    if (req.getChildId() == ch.getChildId()) {
+                        ch.setFinancialHelp(false);
+                        break;
+                    }
                 }
             }
-        }
-        String subject = "Payment Receipt";
-        String content = "This is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
-        CommonMail.sendEmailMessage(req.getEmailId(), subject, content);
+            String subject = "Payment Receipt";
+            String content = "This is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
+            CommonMail.sendEmailMessage(req.getEmailId(), subject, content);
         }
         populateDonorRequesttable();
     }//GEN-LAST:event_processBt1ActionPerformed
 
-public void populateDonorRequesttable() {
-        DefaultTableModel dtms =(DefaultTableModel) jTable2.getModel();
+    public void populateDonorRequesttable() {
+        DefaultTableModel dtms = (DefaultTableModel) jTable2.getModel();
         dtms.setRowCount(0);
-        
-       for(WorkRequest req: business.getWorkQueue().getWorkRequestList()){
-            if(req instanceof DonorWorkRequest){
+
+        for (WorkRequest req : business.getWorkQueue().getWorkRequestList()) {
+            if (req instanceof DonorWorkRequest) {
                 Object[] row = new Object[dtms.getColumnCount()];
                 req.setReceiver(account);
-                row[0]=req;
-                row[1]=req.getSender();
-                row[2]=req.getReceiver();
-                row[3]=req.getChildId();
-                row[4]=req.getChildName();
-                String remarks = ((DonorWorkRequest)req).getRemarks();
-                row[5]=remarks;
-//                String result = "";
-                //((DonorWorkRequest)req).getTestResult();
-                //row[6]= result == null ? "Waiting" : result;
-                row[6]=req.getStatus();
-             dtms.addRow(row);
+                row[0] = req;
+                row[1] = req.getSender();
+                row[2] = req.getReceiver();
+                row[3] = req.getChildId();
+                row[4] = req.getChildName();
+                String remarks = ((DonorWorkRequest) req).getRemarks();
+                row[5] = remarks;
+                row[6] = req.getStatus();
+                dtms.addRow(row);
             }
         }
-            }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton assignBtn1;

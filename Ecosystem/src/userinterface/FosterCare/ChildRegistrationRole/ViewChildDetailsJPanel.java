@@ -23,8 +23,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import userinterface.FosterCare.ChildRegistrationRole.ViewChildTable;
-import userinterface.FosterCare.ChildCare.AcquireChild;
 
 /**
  *
@@ -52,36 +50,29 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         jXDatePicker1.setDate(child.getRegistrationDate());
         jTextArea1.setText(child.getIdentificationMark());
         imageTextField.setText(child.getImageDetails());
-        if (child.isIsSpecialChild()==true){
+        if (child.isIsSpecialChild() == true) {
             yesBtn.setSelected(true);
+        } else {
+            noBtn.setSelected(true);
         }
-        else noBtn.setSelected(true);
-        
         yesBtn.setEnabled(false);
         noBtn.setEnabled(false);
-        
         displayImage();
         disableInput();
         jXDatePicker1.getMonthView().setUpperBound(new Date());
     }
 
     
-    public void displayImage(){
-        BufferedImage image = null; //Buffered image object
-        String filename = child.getImageDetails(); //Getting the filepath and storing into the string
-        
-        
-        try{
-            image = ImageIO.read(new File(filename));  //Reading the filename and storing it in image
-        }catch(Exception e){ //Generic exception if something goes wrong while reading the image
+    public void displayImage() {
+        BufferedImage image = null;
+        String filename = child.getImageDetails();
+        try {
+            image = ImageIO.read(new File(filename));
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "File not found");
         }
-       
-  //Setting the image to the icon and then passing it ot he image JLabel    
-  
-ImageIcon icon = new ImageIcon(image);
-   imageLable.setIcon(icon);
-    
+        ImageIcon icon = new ImageIcon(image);
+        imageLable.setIcon(icon);
     }
   
 
@@ -259,8 +250,8 @@ ImageIcon icon = new ImageIcon(image);
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ViewChildTable dwjp = (ViewChildTable) component;
-        dwjp.poplulateTable();
+        ViewChildTable panel = (ViewChildTable) component;
+        panel.poplulateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_btnBackActionPerformed
@@ -275,15 +266,14 @@ ImageIcon icon = new ImageIcon(image);
 
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         try {
-            if(!validation()){
+            if (!validation()) {
                 String childName = nameTextField.getText();
                 String ageString = cmbAge.getSelectedItem().toString();
                 int childAge = Integer.parseInt(ageString);
                 String gender = "";
-                if(maleRDB.isSelected()){
+                if (maleRDB.isSelected()) {
                     gender = "Male";
-                }
-                else if(femaleRDB.isSelected()){
+                } else if (femaleRDB.isSelected()) {
                     gender = "Female";
                 }
                 Date date = jXDatePicker1.getDate();
@@ -296,27 +286,25 @@ ImageIcon icon = new ImageIcon(image);
                     Logger.getLogger(ViewChildDetailsJPanel.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 String identificationMark = jTextArea1.getText();
-                
-                 child.setChildAge(childAge);
+                child.setChildAge(childAge);
                 child.setChildId(child.getChildId());
                 child.setName(childName);
                 child.setIdentificationMark(identificationMark);
                 child.setImageDetails(imageTextField.getText());
                 child.setRegistrationDate(regDate);
                 child.setGender(gender);
-                
-                
                 ViewChildDetailsJPanel viewChildJpanel = new ViewChildDetailsJPanel(userProcessContainer, child);
                 this.userProcessContainer.add("ViewChildDetailsJPanel", viewChildJpanel);
-                CardLayout layout = (CardLayout)this.userProcessContainer.getLayout();
+                CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
-            } } catch (ParseException ex) {
+            }
+        }   catch (ParseException ex) {
             Logger.getLogger(ViewChildDetailsJPanel.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_saveBtnActionPerformed
 
     private void uploadBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_uploadBtnActionPerformed
-   imageTextField.setEnabled(true);
+        imageTextField.setEnabled(true);
         browseImageFile();
     }//GEN-LAST:event_uploadBtnActionPerformed
 
@@ -324,41 +312,39 @@ ImageIcon icon = new ImageIcon(image);
         // TODO add your handling code here:
     }//GEN-LAST:event_imageTextFieldActionPerformed
 
-private void enableInput(){
-CancelBtn.setEnabled(true);
-//nameTextField2.setEnabled(true);
-femaleRDB.setEnabled(true);
-imageLable.setEnabled(true);
-cmbAge.setEnabled(true);
-btnBack.setEnabled(true);
-jScrollPane1.setEnabled(true);
-jTextArea1.setEnabled(true);
-jXDatePicker1.setEnabled(true);
-maleRDB.setEnabled(true);
-nameTextField.setEnabled(true);
-saveBtn.setEnabled(true);
-updateBtn.setEnabled(true);
-uploadBtn.setEnabled(true);
-}
-private void disableInput(){
-    CancelBtn.setEnabled(false);
-//nameTextField2.setEnabled(false);
-femaleRDB.setEnabled(false);
-cmbAge.setEnabled(false);
-imageTextField.setEnabled(false);
+    private void enableInput() {
+        CancelBtn.setEnabled(true);
+        femaleRDB.setEnabled(true);
+        imageLable.setEnabled(true);
+        cmbAge.setEnabled(true);
+        btnBack.setEnabled(true);
+        jScrollPane1.setEnabled(true);
+        jTextArea1.setEnabled(true);
+        jXDatePicker1.setEnabled(true);
+        maleRDB.setEnabled(true);
+        nameTextField.setEnabled(true);
+        saveBtn.setEnabled(true);
+        updateBtn.setEnabled(true);
+        uploadBtn.setEnabled(true);
+    }
 
-jScrollPane1.setEnabled(false);
-jTextArea1.setEnabled(false);
-jXDatePicker1.setEnabled(false);
-maleRDB.setEnabled(false);
-nameTextField.setEnabled(false);
-saveBtn.setEnabled(false);
-updateBtn.setEnabled(true);
-uploadBtn.setEnabled(false);
-}
+    private void disableInput() {
+        CancelBtn.setEnabled(false);
+        femaleRDB.setEnabled(false);
+        cmbAge.setEnabled(false);
+        imageTextField.setEnabled(false);
+        jScrollPane1.setEnabled(false);
+        jTextArea1.setEnabled(false);
+        jXDatePicker1.setEnabled(false);
+        maleRDB.setEnabled(false);
+        nameTextField.setEnabled(false);
+        saveBtn.setEnabled(false);
+        updateBtn.setEnabled(true);
+        uploadBtn.setEnabled(false);
+    }
 
-   private String browseImageFile() {
-           JFileChooser chooseFile = new JFileChooser();
+    private String browseImageFile() {
+        JFileChooser chooseFile = new JFileChooser();
         chooseFile.showOpenDialog(null);
         File file = chooseFile.getSelectedFile();
         String filePath = file.getPath();

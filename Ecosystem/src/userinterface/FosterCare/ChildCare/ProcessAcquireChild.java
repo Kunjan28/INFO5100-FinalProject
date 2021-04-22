@@ -38,15 +38,15 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     ChildCareOrganization childCareOrganization;
     UserAccount account;
     EcoSystem business;
+
     public ProcessAcquireChild(JPanel userProcessContainer, Organization organization, ChildCareWorkRequest request, ChildDirectory directory, Child child, UserAccount account, EcoSystem business) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.childCareOrganization = (ChildCareOrganization) organization;
-        this.request= request;
-        this.business=business;
-//  pjpj      this.directory = childCareOrganization.ge
+        this.request = request;
+        this.business = business;
         this.child = child;
-        this.account=account;
+        this.account = account;
     }
 
     /**
@@ -59,7 +59,7 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtRemarks = new javax.swing.JTextField();
         submitBtn = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -72,8 +72,8 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
         jLabel1.setText("Enter Remarks");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 123, 25));
 
-        jTextField1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 300, 127));
+        txtRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 300, 127));
 
         submitBtn.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         submitBtn.setText("Save");
@@ -103,53 +103,46 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
 
     private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
-        if(jTextField1.getText().isEmpty()){
+        if (txtRemarks.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the remarks");
             return;
         }
-        String remarks = jTextField1.getText();
-        
+        String remarks = txtRemarks.getText();
         request.setMessage(remarks);
         request.setStatus("Acquired");
-     child.setStatus("Acquired");
-     child.setMedicalStatus(child.getMedicalStatus()+"\n"+"Medically Fit on date"+new Date());
-     
-     for(WorkRequest req: account.getWorkQueue().getWorkRequestList()){
-          if(request.getSender().getRole().equals(Role.RoleType.Pharmacist.getValue())){
-         if(req instanceof DoctorWorkRequest){
-             if(req.getChildId()==child.getChildId()){
-                 String result = ((DoctorWorkRequest)req).getTestResult();
-                 if(((DoctorWorkRequest)req).getTestResult().equalsIgnoreCase("Under Examination")){
-                    ((DoctorWorkRequest)req).setTestResult("test and medicine comepleted"); 
-                 }
-             }
-         }
-     }
-     }
-            userProcessContainer.remove(this);
+        child.setStatus("Acquired");
+        child.setMedicalStatus(child.getMedicalStatus() + "\n" + "Medically Fit on date" + new Date());
+
+        for (WorkRequest req : account.getWorkQueue().getWorkRequestList()) {
+            if (request.getSender().getRole().equals(Role.RoleType.Pharmacist.getValue())) {
+                if (req instanceof DoctorWorkRequest) {
+                    if (req.getChildId() == child.getChildId()) {
+                        String result = ((DoctorWorkRequest) req).getTestResult();
+                        if (((DoctorWorkRequest) req).getTestResult().equalsIgnoreCase("Under Examination")) {
+                            ((DoctorWorkRequest) req).setTestResult("test and medicine comepleted");
+                        }
+                    }
+                }
+            }
+        }
+        userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        AcquireChild dwjp = (AcquireChild) component;
-//        dwjp.populateChildTable();
-        dwjp.populateWorkRequest();
+        AcquireChild panel = (AcquireChild) component;
+        panel.populateWorkRequest();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
- 
-        
     }//GEN-LAST:event_submitBtnActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
-                userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         AcquireChild dwjp = (AcquireChild) component;
-        //dwjp.populateChildTable();
         dwjp.populateWorkRequest();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-       
-        
     }//GEN-LAST:event_btnBackActionPerformed
 
 
@@ -158,7 +151,7 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton submitBtn;
+    private javax.swing.JTextField txtRemarks;
     // End of variables declaration//GEN-END:variables
 }

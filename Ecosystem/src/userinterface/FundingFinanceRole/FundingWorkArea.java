@@ -5,29 +5,14 @@
  */
 package userinterface.FundingFinanceRole;
 
-import Business.Adopter.AdopterDirectory;
-import Business.Child.Child;
 import Business.Child.ChildDirectory;
-import Business.Donor.Donor;
-import Business.Donor.DonorDirectory;
 import Business.EcoSystem;
-import Business.Enterprise.AdoptionEnterprise;
 import Business.Enterprise.Enterprise;
-import Business.Enterprise.FosterCareEnterprise;
-import Business.Enterprise.HospitalEnterprise;
-import Business.Network.Network;
-import Business.Organization.DoctorOrganization;
-import Business.Organization.DonorOrganization;
 import Business.Organization.FinanceOrganization;
 import Business.Organization.Organization;
-import Business.Organization.OrganizationDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.util.ArrayList;
 import javax.swing.JPanel;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -46,8 +31,6 @@ public class FundingWorkArea extends javax.swing.JPanel {
     ChildDirectory directory;
     int countApprove=0, countDeny=0, countPending=0;
     
-    
-    
     public FundingWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory directory) {
         initComponents();
         this.userProcessContainer=userProcessContainer;
@@ -58,7 +41,6 @@ public class FundingWorkArea extends javax.swing.JPanel {
         this.business=business;
         valueLabel.setText(organization.getName());
         manageFinance();
-        
     }
   
     
@@ -206,7 +188,7 @@ public class FundingWorkArea extends javax.swing.JPanel {
 
     private void lblViewYourStatusMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewYourStatusMousePressed
         // TODO add your handling code here:
-          TrackStatus();
+        TrackStatus();
     }//GEN-LAST:event_lblViewYourStatusMousePressed
 
 

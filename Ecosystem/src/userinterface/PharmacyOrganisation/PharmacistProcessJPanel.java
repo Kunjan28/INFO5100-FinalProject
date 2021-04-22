@@ -39,20 +39,20 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
     
     public PharmacistProcessJPanel(JPanel userProcessContainer, PharmacistWorkRequest request, UserAccount userAccount, Enterprise enterprise, Child child, ChildDirectory directory, EcoSystem business, PharmacistOrganization pharmacistOrganization) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.request= request;
+        this.userProcessContainer = userProcessContainer;
+        this.request = request;
         this.userAccount = userAccount;
         this.enterprise = enterprise;
         this.child = child;
-        this.directory=directory;
+        this.directory = directory;
         this.business = business;
-        for(Network net: business.getNetworkList()){
-        for(Enterprise ent: net.getEnterpriseDirectory().getEnterpriseList()){
-        if(ent.equals(enterprise)){
-            network= net;
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
         }
-      }
-    }
         valueLabel.setText(enterprise.getName());
     }
 
@@ -133,11 +133,9 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if( txtComments.getText().isEmpty() )
-        {
-            JOptionPane.showMessageDialog(null,"Please enter message");
-        }
-        else {
+        if (txtComments.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter message");
+        } else {
             request.setTestResult(txtComments.getText());
             request.setStatus("Delivered");
             ChildCareWorkRequest temp = new ChildCareWorkRequest();
@@ -147,42 +145,36 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
             temp.setTestResult("Completed");
             temp.setChildId(request.getChildId());
             temp.setChildName(request.getChildName());
-             if(this.directory!=null && this.directory.getChildList().size()>0){
-            for(Child ch:this.directory.getChildList()){
-                if(request.getChildId()==ch.getChildId()){
-                   
-                    if("Acquired".equalsIgnoreCase(ch.getStatus())){
-                         ch.setMedicalHelp(false);
-                          temp.setIsAcquiredReq(false);
-                    }
-                    else{
-                        temp.setIsAcquiredReq(true);
-                    }
-                    break;
-                }
-            }
-        }
-        
-        Organization org = null;
-            for (Network network : business.getNetworkList()){
-                // getNetworkList().getOrganizationDirectory().getOrganizationList()
-                for(Enterprise ent: network.getEnterpriseDirectory().getEnterpriseList()){
-                    for(Organization organization: ent.getOrganizationDirectory().getOrganizationList()){
-                      // if(this.network.equals(network)){
-                            if (organization instanceof ChildCareOrganization){
-				org = organization;
-				break;
-				}
+            if (this.directory != null && this.directory.getChildList().size() > 0) {
+                for (Child ch : this.directory.getChildList()) {
+                    if (request.getChildId() == ch.getChildId()) {
+                        if ("Acquired".equalsIgnoreCase(ch.getStatus())) {
+                            ch.setMedicalHelp(false);
+                            temp.setIsAcquiredReq(false);
+                        } else {
+                            temp.setIsAcquiredReq(true);
+                        }
+                        break;
                     }
                 }
             }
-            if (org!=null){
+            Organization org = null;
+            for (Network network : business.getNetworkList()) {
+                for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
+                    for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
+                        if (organization instanceof ChildCareOrganization) {
+                            org = organization;
+                            break;
+                        }
+                    }
+                }
+            }
+            if (org != null) {
                 org.getWorkQueue().getWorkRequestList().add(temp);
                 userAccount.getWorkQueue().getWorkRequestList().add(temp);
                 business.getWorkQueue().getWorkRequestList().add(temp);
             }
         }
-        
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
@@ -190,7 +182,6 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         panel.populateTable();
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
-        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
