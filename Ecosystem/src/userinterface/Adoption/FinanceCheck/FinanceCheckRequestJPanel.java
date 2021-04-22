@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.FinanceCheckOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.FinanceAdoptionWorkRequest;
+import Business.WorkQueue.FinanceCheckProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -158,7 +158,7 @@ public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
         } else {
             if (receiverval.equals(account.getUsername()) && statusval.equals("Finance organization processing")) {
 
-                FinanceCheckProcess panel = new FinanceCheckProcess(userProcessContainer, account, financeOrganization, enterprise, business, udirectory, (FinanceAdoptionWorkRequest) req, adopter);
+                FinanceCheckProcess panel = new FinanceCheckProcess(userProcessContainer, account, financeOrganization, enterprise, business, udirectory, (FinanceCheckProcessWorkRequest) req, adopter);
                 this.userProcessContainer.add("FinanceCheckProcessRequestJPanel", panel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
@@ -175,7 +175,7 @@ public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
         DefaultTableModel dtm = (DefaultTableModel) tblRequest.getModel();
         dtm.setRowCount(0);
         for (WorkRequest request : financeOrganization.getWorkQueue().getWorkRequestList()) {
-            if (request instanceof FinanceAdoptionWorkRequest) {
+            if (request instanceof FinanceCheckProcessWorkRequest) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = request;
                 row[1] = request.getSender().getEmployee().getName();

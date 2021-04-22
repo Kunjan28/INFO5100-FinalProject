@@ -41,7 +41,7 @@ public class WhoWeServe extends javax.swing.JPanel {
 
         int femaleCount = 0;
         int maleCount = 0;
-        for (Child child : system.getDirectory().getChildList()) {
+        for (Child child : system.getChilddirectory().getChildList()) {
             if ("Female".equalsIgnoreCase(child.getGender())) {
                 hMap.put("Female", femaleCount + 1);
             } else {
@@ -66,7 +66,7 @@ public class WhoWeServe extends javax.swing.JPanel {
         int ageGrp1 = 0;
         int ageGrp2 = 0;
         int ageGrp3 = 0;
-        for (Child child : system.getDirectory().getChildList()) {
+        for (Child child : system.getChilddirectory().getChildList()) {
             if (child.getChildAge() >= 0 && child.getChildAge() <= 5) {
                 hMap.put("AGES 0-5", ageGrp1 + 1);
             } else if (child.getChildAge() > 5 && child.getChildAge() <= 13) {
@@ -96,7 +96,7 @@ public class WhoWeServe extends javax.swing.JPanel {
 
         int yes = 0;
         int no = 0;
-        for (Child child : system.getDirectory().getChildList()) {
+        for (Child child : system.getChilddirectory().getChildList()) {
             if (child.isIsSpecialChild()) {
                 hMap.put("Special Child", yes + 1);
             } else {

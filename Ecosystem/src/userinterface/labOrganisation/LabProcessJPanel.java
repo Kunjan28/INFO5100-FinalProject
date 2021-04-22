@@ -5,7 +5,7 @@
  */
 package userinterface.labOrganisation;
 
-import Business.WorkQueue.LabWorkRequest;
+import Business.WorkQueue.LabProcessWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JOptionPane;
@@ -18,12 +18,12 @@ import javax.swing.JPanel;
 public class LabProcessJPanel extends javax.swing.JPanel {
     
     JPanel userProcessContainer;
-    LabWorkRequest request;
+    LabProcessWorkRequest request;
 
     /**
      * Creates new form LabProcessJPanel
      */
-    public LabProcessJPanel(JPanel userProcessContainer, LabWorkRequest request) {
+    public LabProcessJPanel(JPanel userProcessContainer, LabProcessWorkRequest request) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
         this.request = request;
@@ -96,7 +96,7 @@ public class LabProcessJPanel extends javax.swing.JPanel {
         if (txtResult.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter the test result");
         } else {
-            request.setTestResult(txtResult.getText());
+            request.setResult(txtResult.getText());
             request.setStatus("Completed");
             JOptionPane.showMessageDialog(null, "Results saved!");
         }

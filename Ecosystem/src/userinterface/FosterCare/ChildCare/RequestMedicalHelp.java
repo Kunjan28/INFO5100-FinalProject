@@ -14,7 +14,7 @@ import Business.Organization.ChildCareOrganization;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.DoctorWorkRequest;
+import Business.WorkQueue.MedicalHelpWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.Date;
@@ -122,12 +122,12 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
         String symptoms = txtSymptoms.getText();
         child.setMedicalStatus(child.getMedicalStatus() + "\n" + symptoms + " on date " + new Date());
         child.setMedicalHelp(true);
-        DoctorWorkRequest docwrkreq = new DoctorWorkRequest();
+        MedicalHelpWorkRequest docwrkreq = new MedicalHelpWorkRequest();
         docwrkreq.setStatus("Medically Unfit");
         docwrkreq.setMessage(symptoms);
         docwrkreq.setSender(account);
         docwrkreq.setChildId(child.getChildId());
-        docwrkreq.setRemarks("Request for Doctor");
+        docwrkreq.setRemark("Request for Doctor");
         docwrkreq.setChildName(child.getName());
         Organization org = null;
         for (Network network : business.getNetworkList()) {

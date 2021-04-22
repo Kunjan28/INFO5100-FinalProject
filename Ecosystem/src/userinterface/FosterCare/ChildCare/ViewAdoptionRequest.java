@@ -76,7 +76,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
                 row[0] = req;
                 row[1] = req.getChildId();
                 row[2] = req.getChildName();
-                row[3] = ((ChildCareAdoptionWorkRequest) req).getUserName();
+                row[3] = ((ChildCareAdoptionWorkRequest) req).getAdopterName();
                 row[4] = req.getStatus();
                 dtms.addRow(row);
             }
@@ -166,7 +166,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
             for (Child ch : directory.getChildList()) {
                 if (ch.getChildId() == req.getChildId()) {
                     name= ch.getName();
-                    ch.setStatus("Adopted by " + req.getUserName());
+                    ch.setStatus("Adopted by " + req.getAdopterName());
                 }
             }
             String subject = "Congratulations! Your adoption request is approved";

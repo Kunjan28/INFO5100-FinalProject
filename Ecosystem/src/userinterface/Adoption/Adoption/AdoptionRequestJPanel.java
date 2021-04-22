@@ -12,7 +12,7 @@ import Business.Enterprise.Enterprise;
 import Business.Organization.AdoptionOrganization;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.AdoptionWorkRequest;
+import Business.WorkQueue.AdoptionProcessWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
@@ -54,7 +54,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         dtm.setRowCount(0);
         for (WorkRequest request : this.business.getWorkQueue().getWorkRequestList()) {
 
-            if (request instanceof AdoptionWorkRequest) {
+            if (request instanceof AdoptionProcessWorkRequest) {
                 Object[] row = new Object[dtm.getColumnCount()];
                 row[0] = request;
                 row[1] = request.getName();
@@ -172,7 +172,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please first assign it to yourself");
         } else {
             if (receiverval.equals(account.getUsername()) && "Pending with Adoption Organization".equals(statusval)) {
-                AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer, account, adoptionOrganization, enterprise, business, udirectory, (AdoptionWorkRequest) req, adopter);
+                AdoptionCheckProcess panel = new AdoptionCheckProcess(userProcessContainer, account, adoptionOrganization, enterprise, business, udirectory, (AdoptionProcessWorkRequest) req, adopter);
                 this.userProcessContainer.add("AdoptionCheckProcessRequestJPanel", panel);
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);

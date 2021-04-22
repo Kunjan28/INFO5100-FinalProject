@@ -9,15 +9,15 @@ package Business.WorkQueue;
  *
  * @author snehaswaroop
  */
-public class BGCWorkRequest extends WorkRequest{
-    private String Remarks;
+public class BGVProcessWorkRequest extends WorkRequest{
+    private String comment;
     private String bgcStatus;
-    public String getRemarks() {
-        return Remarks;
+    public String getComment() {
+        return comment;
     }
 
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
+    public void setComment(String comment) {
+        this.comment = comment;
  
     }
 

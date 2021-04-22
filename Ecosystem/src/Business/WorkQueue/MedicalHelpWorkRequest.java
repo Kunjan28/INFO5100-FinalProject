@@ -9,17 +9,17 @@ package Business.WorkQueue;
  *
  * @author snehaswaroop
  */
-public class DoctorWorkRequest extends WorkRequest {
+public class MedicalHelpWorkRequest extends WorkRequest {
     
     private String testResult;
-    private String medicinePrescribed;
-    private String Remarks;
-    public String getMedicinePrescribed() {
-        return medicinePrescribed;
+    private String prescription;
+    private String remark;
+    public String getPrescription() {
+        return prescription;
     }
 
-    public void setMedicinePrescribed(String medicinePrescribed) {
-        this.medicinePrescribed = medicinePrescribed;
+    public void setPrescription(String prescription) {
+        this.prescription = prescription;
     }
 
     public String getTestResult() {
@@ -30,12 +30,12 @@ public class DoctorWorkRequest extends WorkRequest {
         this.testResult = testResult;
     }
 
-    public String getRemarks() {
-        return Remarks;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setRemarks(String Remarks) {
-        this.Remarks = Remarks;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
     
 }
