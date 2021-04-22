@@ -135,7 +135,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a workrequest");
+            JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
         Object receiverval = tblRequest.getValueAt(selectedRow, 2);
@@ -145,6 +145,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
             WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
             re.setReceiver(account);
             re.setStatus("BGC organization processing");
+            JOptionPane.showMessageDialog(null, "Work request has been assigned to you");
             populateWorkRequest();
         } else {
             if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
@@ -161,7 +162,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblRequest.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a workrequest");
+            JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
         WorkRequest req = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
@@ -181,7 +182,7 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
                 CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
                 layout.next(userProcessContainer);
             } else if ("Approved".equals(statusval) || "Denied".equals(statusval)) {
-                JOptionPane.showMessageDialog(null, "The selected workrerequest is already processed");
+                JOptionPane.showMessageDialog(null, "The selected work request is already processed");
             } else if (!receiverval.equals(account.getUsername())) {
                 JOptionPane.showMessageDialog(null, "Please select the work request assigned to you to proceed");
             }

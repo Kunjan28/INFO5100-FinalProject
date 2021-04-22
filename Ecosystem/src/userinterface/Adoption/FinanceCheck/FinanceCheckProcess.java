@@ -221,14 +221,15 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                     }
                 }
                 String subject = "Finance Check Approved For Adoption";
-                String content = "Your finance check process has been completed and approved. You can confirm your status through portal. You will shortly recieve for final confirmation mail on your adoption . \nThank you";
+                String content = "Congratulations! Your finance check process has been completed and approved. You can confirm your status through portal. You will shortly recieve final confirmation mail on your adoption procedure. \nThank you.";
                 CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
-                JOptionPane.showMessageDialog(null, "Finance check initialized successfully!");
+                JOptionPane.showMessageDialog(null, "Finance check completed successfully!");
                 JOptionPane.showMessageDialog(null, "Checks cleared, User is good to proceed with Adoption!");
             } else {
                 JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
             }
         }
+        txtRemarks.setText("");
     }//GEN-LAST:event_btnApproveActionPerformed
 
     private void btnDenyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDenyActionPerformed
@@ -264,10 +265,11 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
                     }
                 }
                 String subject = "Finance Check Verification failed";
-                String content = "We are sorry to inform you that your finance check has been failed and cannot proceed with adoption procedure .You can confirm your status through portal. \nThank you";
+                String content = "We are sorry to inform you that your finance check has been failed and you cannot proceed further with adoption procedure. You can confirm your status through portal. \nThank you.";
                 CommonMail.sendEmailMessage(adopter.getEmailId(), subject, content);
             }
         }
+        txtRemarks.setText("");
     }//GEN-LAST:event_btnDenyActionPerformed
 
     private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed

@@ -53,7 +53,6 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
                 }
             }
         }
-        valueLabel.setText(enterprise.getName());
     }
 
     /**
@@ -66,14 +65,10 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         lblComments = new javax.swing.JLabel();
         txtComments = new javax.swing.JTextField();
         btnSave = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        valueLabel = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -82,17 +77,6 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("PHARMACIST PROCESS");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 378, -1));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyLogo.jpeg"))); // NOI18N
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 180, 170));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 10, 60, 50));
 
         lblComments.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         lblComments.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -111,25 +95,7 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, 590, 470));
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("Enterprise");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 100, -1));
-
-        valueLabel.setText("<value>");
-        add(valueLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 110, 20));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        PharmacistJPanel panel = (PharmacistJPanel) component;
-        panel.populateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
@@ -186,14 +152,10 @@ public class PharmacistProcessJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel lblComments;
     private javax.swing.JTextField txtComments;
-    private javax.swing.JLabel valueLabel;
     // End of variables declaration//GEN-END:variables
 }

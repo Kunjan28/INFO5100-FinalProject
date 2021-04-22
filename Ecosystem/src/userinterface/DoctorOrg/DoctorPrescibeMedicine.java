@@ -72,7 +72,6 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         lblPrescription = new javax.swing.JLabel();
         txtPrescription = new javax.swing.JTextField();
         Save = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -97,28 +96,9 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         });
         add(Save, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 120, 30));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 40, 40));
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/prescribtion.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 100, 550, 570));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        AssignChildJPanel panel = (AssignChildJPanel) component;
-        panel.populateMedicationTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         // TODO add your handling code here:
@@ -160,7 +140,6 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Save;
-    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPrescription;

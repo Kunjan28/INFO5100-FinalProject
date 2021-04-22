@@ -12,18 +12,12 @@ import Business.WorkQueue.EducationalHelpWorkRequest;
 
 import Business.WorkQueue.WorkRequest;
 import java.awt.BorderLayout;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
-import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
@@ -62,7 +56,7 @@ public class Services extends javax.swing.JPanel {
         }
         workReqMap.put("Adoption Services", adpReqList.size());
         workReqMap.put("Medical Help Services", medReqList.size());
-        workReqMap.put("Financial Services", finReqList.size());
+        workReqMap.put("Financial Help Services", finReqList.size());
 
         barChart = ChartFactory.createPieChart(
                 "Services At a Glance",
@@ -93,7 +87,6 @@ public class Services extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -105,17 +98,6 @@ public class Services extends javax.swing.JPanel {
         jPanel1.setLayout(new java.awt.BorderLayout());
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 170, 860, 600));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(25, 56, 82));
-        jButton1.setText("Download Graph");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 110, -1, -1));
-
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(25, 56, 82));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -123,23 +105,8 @@ public class Services extends javax.swing.JPanel {
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 20, 594, -1));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        try {
-            int width = 640;
-            /* Width of the image */
-            int height = 480;
-            /* Height of the image */
-            File BarChart = new File("BarChart.jpeg");
-            ChartUtilities.saveChartAsJPEG(BarChart, barChart, width, height);
-            JOptionPane.showMessageDialog(null, "A JPEG image file named BarChart.jpeg is downloaded in your current directory.");
-        } catch (IOException ex) {
-            Logger.getLogger(Services.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

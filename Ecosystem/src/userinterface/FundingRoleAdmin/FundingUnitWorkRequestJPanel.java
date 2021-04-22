@@ -121,7 +121,6 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        workRequestJTable.setSelectionBackground(new java.awt.Color(56, 90, 174));
         jScrollPane1.setViewportView(workRequestJTable);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 200, 870, 170));
@@ -208,7 +207,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
                 awr.setName(donor.getName());
                 request.setStatus("Completed");
                 String subject = "Account activation";
-                String content = "Your account has been activated. You may proceed with further process of funding. \n Thank you";
+                String content = "Dear Sponsor, your account has been activated. You may proceed with further process of funding. \n Thank you";
                 CommonMail.sendEmailMessage(request.getUserEmailId(), subject, content);
                 JOptionPane.showMessageDialog(null, "User account has been activated successfully");
                 populateTable();

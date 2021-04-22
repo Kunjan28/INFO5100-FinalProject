@@ -113,7 +113,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         });
         add(createUserJButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 590, 133, 33));
 
-        nameJTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nameJTextField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         add(nameJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 450, 200, 35));
 
         jLabel1.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -156,7 +156,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel2.setText("Password");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 89, 35));
 
-        passwordJTextField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        passwordJTextField.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         add(passwordJTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 500, 200, 35));
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -164,6 +164,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 105, 35));
 
         employeeJComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        employeeJComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 200, 30));
 
         jLabel5.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -171,6 +172,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 105, 34));
 
         organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
+        organizationJComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 organizationJComboBoxActionPerformed(evt);

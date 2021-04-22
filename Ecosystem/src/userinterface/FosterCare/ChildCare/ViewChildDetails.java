@@ -142,7 +142,7 @@ public class ViewChildDetails extends javax.swing.JPanel {
             return;
         }
         Child child = (Child) tblChild.getValueAt(selectedRow, 0);
-        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
+        ViewCompleteChildDetails completeJapanel = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child,true);
         this.userProcessContainer.add("ViewCompleteChildDetails", completeJapanel);
         CardLayout layout = (CardLayout) this.userProcessContainer.getLayout();
         layout.next(userProcessContainer);

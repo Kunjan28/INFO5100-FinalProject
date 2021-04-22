@@ -60,14 +60,18 @@ public class PharmacistJPanel extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tblPharmacist.getModel();
         model.setRowCount(0);
         for (WorkRequest request : pharmacistOrganization.getWorkQueue().getWorkRequestList()) {
+            if(request instanceof PharmacistWorkRequest){
+            PharmacistWorkRequest pharrequest =(PharmacistWorkRequest)request;
             Object[] row = new Object[model.getColumnCount()];
             row[0] = request;
             row[1] = request.getChildId();
             row[2] = request.getChildName();
             row[3] = request.getSender().getEmployee().getName();
-            row[4] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
-            row[5] = request.getStatus();
+            row[4] = pharrequest.getPrescription();
+            row[5] = request.getReceiver() == null ? null : request.getReceiver().getEmployee().getName();
+            row[6] = request.getStatus();
             model.addRow(row);
+            }
         }
     }
     
@@ -99,17 +103,17 @@ public class PharmacistJPanel extends javax.swing.JPanel {
 
         tblPharmacist.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Message", "Patient's ID", "Patients Name", "Doctor", "Receiver", "Status"
+                "Message", "Patient's ID", "Patients Name", "Doctor", "Prescription", "Receiver", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

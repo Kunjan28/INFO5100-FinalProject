@@ -134,7 +134,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblAdoptersRequest.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a workrequest to process");
+            JOptionPane.showMessageDialog(null, "Please select a work request to process");
             return;
         }
         Object receiverval = tblAdoptersRequest.getValueAt(selectedRow, 2);
@@ -143,9 +143,10 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             WorkRequest re = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);
             re.setReceiver(account);
             re.setStatus("Pending with Adoption Organization");
+            JOptionPane.showMessageDialog(null, "Request has been assigned to you");
             populateWorkRequest();
         } else if ("Initialized BGC".equals(statusval))
-            JOptionPane.showMessageDialog(null, "Please select some other request,this work request is already processed");
+            JOptionPane.showMessageDialog(null, "Please select some other request, this work request is already processed");
         else if (!receiverval.equals(account.getUsername()))
             JOptionPane.showMessageDialog(null, "Work request is assigned to someone else");
         else if (receiverval.equals(account.getUsername())) {
@@ -157,7 +158,7 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         int selectedRow = tblAdoptersRequest.getSelectedRow();
         if (selectedRow < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a workrequest");
+            JOptionPane.showMessageDialog(null, "Please select a work request");
             return;
         }
         WorkRequest req = (WorkRequest) tblAdoptersRequest.getValueAt(selectedRow, 0);

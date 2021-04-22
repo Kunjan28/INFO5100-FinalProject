@@ -19,6 +19,12 @@ public class ValidationHelper {
         Matcher matcher = pattern.matcher(contactNo);
         return matcher.matches();
     }
+    
+    public static Boolean isValidSSN(String ssn) {
+        Pattern pattern = Pattern.compile("^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{2})[-.\\s]?([0-9]{4})$");
+        Matcher matcher = pattern.matcher(ssn);
+        return matcher.matches();
+    }
 
     public static boolean isValidEmailId(String email) {
         Pattern pattern = Pattern.compile("^[\\w!#$%&‘*+/=?`{|}~^-]+(?:\\.[\\w!#$%&‘*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");

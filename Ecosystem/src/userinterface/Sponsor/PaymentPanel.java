@@ -16,6 +16,9 @@ import Business.UserAccount.UserAccount;
 import Business.WorkQueue.DonorWorkRequest;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -46,6 +49,8 @@ public class PaymentPanel extends javax.swing.JPanel {
         this.childdirectory = childdirectory;
         this.donor = donor;
         this.ch = ch;
+         jXDatePicker1.getMonthView().setLowerBound(new Date());
+         
     }
 
     /**
@@ -64,12 +69,11 @@ public class PaymentPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         cardNo = new javax.swing.JTextField();
         txtCVV = new javax.swing.JTextField();
-        txtExp = new javax.swing.JTextField();
         txtPostal = new javax.swing.JTextField();
         btnPay = new javax.swing.JButton();
-        btnBack = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jXDatePicker1 = new org.jdesktop.swingx.JXDatePicker();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -107,8 +111,7 @@ public class PaymentPanel extends javax.swing.JPanel {
                 txtCVVActionPerformed(evt);
             }
         });
-        add(txtCVV, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 180, -1));
-        add(txtExp, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 310, 180, -1));
+        add(txtCVV, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 220, 180, -1));
 
         txtPostal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,25 +128,25 @@ public class PaymentPanel extends javax.swing.JPanel {
         });
         add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 110, -1));
 
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 20, 90, -1));
-
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 12)); // NOI18N
         jLabel6.setText("please enter your 16 digits card number");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 270, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 30, 830, 540));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 820, 510));
+
+        jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jXDatePicker1ActionPerformed(evt);
+            }
+        });
+        add(jXDatePicker1, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 300, 190, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnPayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPayActionPerformed
         // TODO add your handling code here:
-        if(cardNo.getText().isEmpty() || txtCVV.getText().isEmpty() || txtPostal.getText().isEmpty() || txtExp.getText().isEmpty()) {
+         
+        if(cardNo.getText().isEmpty() || txtCVV.getText().isEmpty() || txtPostal.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please enter all the fields");
         }
         else if(!ValidateCVV()) {
@@ -156,6 +159,17 @@ public class PaymentPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Zip should be 5 digits");
         }
         else {
+            Date date = jXDatePicker1.getDate();
+                DateFormat formatit = new SimpleDateFormat("yyyy-MM-dd");
+                String temp = "";
+                Date regDate = new Date();
+                try {
+                    temp = formatit.format(date);
+                    regDate = formatit.parse(temp);
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Please select the registration date");
+                    return;
+                }
         DonorWorkRequest adc = new DonorWorkRequest();
         adc.setChildId(ch.getChildId());
         adc.setChildName(ch.getName());
@@ -177,19 +191,33 @@ public class PaymentPanel extends javax.swing.JPanel {
         cardNo.setText("");
         txtCVV.setText("");
         txtPostal.setText("");
-        txtExp.setText("");
+        
         
         userProcessContainer.remove(this);
         Component[] componentArray = userProcessContainer.getComponents();
         Component component = componentArray[componentArray.length - 1];
         SponsorRequestTable panel = (SponsorRequestTable) component;
         panel.populateChildTable();
+        panel.getComponent(2).setEnabled(false);
         CardLayout layout = (CardLayout)userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
+        
         }
         
     }//GEN-LAST:event_btnPayActionPerformed
     
+    private boolean validateExpDate(){
+        String selectedFormaString = "";
+         DateFormat format = new SimpleDateFormat("yyyy/MM/dd");
+        try {
+            Date selected = jXDatePicker1.getDate();
+            selectedFormaString = format.format(selected);
+            return true;
+        } catch (Exception e) {
+           // JOptionPane.showMessageDialog(null, "Please select the registration date");
+            return false;
+        }
+    }
     private boolean ValidateCVV() {
         String cvv = txtCVV.getText();
         Pattern pattern;
@@ -226,17 +254,6 @@ public class PaymentPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtCVVActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SponsorRequestTable panel = (SponsorRequestTable) component;
-        panel.populateChildTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
     private void cardNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cardNoActionPerformed
         // TODO add your handling code here:
         
@@ -247,9 +264,12 @@ public class PaymentPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_txtPostalActionPerformed
 
+    private void jXDatePicker1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jXDatePicker1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jXDatePicker1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPay;
     private javax.swing.JTextField cardNo;
     private javax.swing.JLabel jLabel1;
@@ -259,8 +279,8 @@ public class PaymentPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
+    private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
     private javax.swing.JTextField txtCVV;
-    private javax.swing.JTextField txtExp;
     private javax.swing.JTextField txtPostal;
     // End of variables declaration//GEN-END:variables
 

@@ -126,6 +126,7 @@ public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
             WorkRequest re = (WorkRequest) tblRequest.getValueAt(selectedRow, 0);
             re.setReceiver(account);
             re.setStatus("Finance organization processing");
+            JOptionPane.showMessageDialog(null, "Work request has been assigned to you");
             populateWorkRequest();
         } else {
             if (statusval.equals("Approved") || statusval.equals("Denied")) {

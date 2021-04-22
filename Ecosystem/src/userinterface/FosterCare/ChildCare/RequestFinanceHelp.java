@@ -168,7 +168,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
             business.getWorkQueue().getWorkRequestList().add(fccwr);
         }
         JOptionPane.showMessageDialog(null, "Request raised to Funding team");
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child,false);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);

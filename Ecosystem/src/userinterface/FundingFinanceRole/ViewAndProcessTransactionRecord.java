@@ -45,7 +45,7 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
         this.enterprise = enterprise;
         this.childdirectory = childdirectory;
         this.business = business;
-        processBt1.setEnabled(false);
+        btnProcess.setEnabled(false);
         populateDonorRequesttable();
     }
 
@@ -61,8 +61,8 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
-        assignBtn1 = new javax.swing.JButton();
-        processBt1 = new javax.swing.JButton();
+        btnAssign = new javax.swing.JButton();
+        btnProcess = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         txtComments = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -95,21 +95,21 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, 870, 110));
 
-        assignBtn1.setText("Assign To Me");
-        assignBtn1.addActionListener(new java.awt.event.ActionListener() {
+        btnAssign.setText("Assign To Me");
+        btnAssign.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                assignBtn1ActionPerformed(evt);
+                btnAssignActionPerformed(evt);
             }
         });
-        add(assignBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 133, 33));
+        add(btnAssign, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, 133, 33));
 
-        processBt1.setText("Process");
-        processBt1.addActionListener(new java.awt.event.ActionListener() {
+        btnProcess.setText("Process");
+        btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                processBt1ActionPerformed(evt);
+                btnProcessActionPerformed(evt);
             }
         });
-        add(processBt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 133, 33));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 330, 133, 33));
 
         jLabel2.setText("Comments");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 330, -1, 30));
@@ -121,7 +121,7 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 690, 620));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void assignBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignBtn1ActionPerformed
+    private void btnAssignActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAssignActionPerformed
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
         if (selectedRow < 0) {
@@ -138,11 +138,11 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
             req.setStatus("Assigned");
             JOptionPane.showMessageDialog(null, "Request is assigned");
             populateDonorRequesttable();
-            processBt1.setEnabled(true);
+            btnProcess.setEnabled(true);
         }
-    }//GEN-LAST:event_assignBtn1ActionPerformed
+    }//GEN-LAST:event_btnAssignActionPerformed
 
-    private void processBt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_processBt1ActionPerformed
+    private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
         // TODO add your handling code here:
         int selectedRow = jTable2.getSelectedRow();
         if (selectedRow < 0) {
@@ -166,11 +166,12 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
                 }
             }
             String subject = "Payment Receipt";
-            String content = "This is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving more such chidren";
+            String content = "Dear Sponsor, this is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving and make world a better place for children.";
             CommonMail.sendEmailMessage(req.getEmailId(), subject, content);
         }
         populateDonorRequesttable();
-    }//GEN-LAST:event_processBt1ActionPerformed
+        txtComments.setText("");
+    }//GEN-LAST:event_btnProcessActionPerformed
 
     public void populateDonorRequesttable() {
         DefaultTableModel dtms = (DefaultTableModel) jTable2.getModel();
@@ -194,13 +195,13 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton assignBtn1;
+    private javax.swing.JButton btnAssign;
+    private javax.swing.JButton btnProcess;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable2;
-    private javax.swing.JButton processBt1;
     private javax.swing.JTextField txtComments;
     // End of variables declaration//GEN-END:variables
 }
