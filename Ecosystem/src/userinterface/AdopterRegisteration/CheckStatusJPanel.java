@@ -109,7 +109,7 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
                 {null, null, null}
             },
             new String [] {
-                "Message", "BGC Status", "Criminal Check Status"
+                "Message", "BGC Status", "Finance Check Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {

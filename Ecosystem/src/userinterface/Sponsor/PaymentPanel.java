@@ -120,20 +120,21 @@ public class PaymentPanel extends javax.swing.JPanel {
         });
         add(txtPostal, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 390, 180, -1));
 
+        btnPay.setFont(new java.awt.Font("Lucida Grande", 1, 16)); // NOI18N
         btnPay.setText("Pay");
         btnPay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPayActionPerformed(evt);
             }
         });
-        add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 110, -1));
+        add(btnPay, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 500, 150, 40));
 
         jLabel6.setFont(new java.awt.Font("Lucida Grande", 2, 12)); // NOI18N
         jLabel6.setText("please enter your 16 digits card number");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 150, 270, 30));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/ccard.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 60, 820, 510));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 30, 720, 420));
 
         jXDatePicker1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

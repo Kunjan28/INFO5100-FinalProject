@@ -241,7 +241,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 lblLoginMousePressed(evt);
             }
         });
-        loginJPanel.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 690, 300, 40));
+        loginJPanel.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 680, 300, 40));
 
         lblAdopt.setBackground(new java.awt.Color(255, 204, 153));
         lblAdopt.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N

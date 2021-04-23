@@ -309,11 +309,16 @@ public class RegisterNewChildJPanel extends javax.swing.JPanel {
     private String browseImageFile() {
         JFileChooser chooseFile = new JFileChooser();
         chooseFile.showOpenDialog(null);
-        File file = chooseFile.getSelectedFile();
-        String filePath = file.getPath();
-        System.out.println(filePath);
-        photoText.setText(filePath);
-        return filePath;
+        try {
+            File file = chooseFile.getSelectedFile();
+            String filePath = file.getPath();
+            System.out.println(filePath);
+            photoText.setText(filePath);
+            return filePath;
+        } catch (Exception e) {
+            return "";
+        }
+         
     }
 
     public boolean validation() throws ParseException {

@@ -332,7 +332,7 @@
                 <Column editable="false" title="Child Id" type="java.lang.Object"/>
                 <Column editable="false" title="Sender" type="java.lang.Object"/>
                 <Column editable="false" title="Receiver" type="java.lang.Object"/>
-                <Column editable="false" title="Result" type="java.lang.Object"/>
+                <Column editable="false" title="Status" type="java.lang.Object"/>
                 <Column editable="false" title="Remarks" type="java.lang.Object"/>
               </Table>
             </Property>

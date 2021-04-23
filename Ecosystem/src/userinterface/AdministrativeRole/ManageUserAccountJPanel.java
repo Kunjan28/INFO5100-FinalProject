@@ -133,7 +133,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
                 java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -163,7 +163,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel3.setText("Employee");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 105, 35));
 
-        employeeJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         employeeJComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         add(employeeJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 350, 200, 30));
 
@@ -171,7 +170,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel5.setText("Organization");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 300, 105, 34));
 
-        organizationJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         organizationJComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         organizationJComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -185,7 +183,6 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
         jLabel4.setText("Role");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 400, 66, 35));
 
-        roleJComboBox.setBackground(new java.awt.Color(255, 255, 255));
         roleJComboBox.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         add(roleJComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 400, 200, 30));
 
