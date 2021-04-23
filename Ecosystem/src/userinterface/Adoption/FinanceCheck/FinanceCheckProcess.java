@@ -91,8 +91,8 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         btnApprove = new javax.swing.JButton();
         rdbMale = new javax.swing.JRadioButton();
         rdbFemale = new javax.swing.JRadioButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -124,6 +124,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         add(txtSSN, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 190, 160, -1));
         add(txtIncome, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 150, 170, -1));
 
+        tblRequest.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblRequest.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null},
@@ -150,6 +151,8 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         lblRemarks.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblRemarks.setText("Remarks");
         add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 440, 70, -1));
+
+        txtRemarks.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 410, 210, 70));
 
         btnDeny.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
@@ -176,16 +179,16 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         rdbFemale.setText("Female");
         add(rdbFemale, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 110, -1, -1));
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance-png-20994.png"))); // NOI18N
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 560, 580));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refreshBtn.png"))); // NOI18N
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel9MousePressed(evt);
             }
         });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, -1, -1));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/finance-png-20994.png"))); // NOI18N
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 20, 650, 640));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 40, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnApproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApproveActionPerformed
@@ -272,10 +275,10 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
         txtRemarks.setText("");
     }//GEN-LAST:event_btnDenyActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void jLabel9MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MousePressed
         // TODO add your handling code here:
         populateWorkRequest();
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    }//GEN-LAST:event_jLabel9MousePressed
     
     public void populateWorkRequest() {
 
@@ -314,7 +317,6 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnApprove;
     private javax.swing.JButton btnDeny;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -323,6 +325,7 @@ public class FinanceCheckProcess extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblRemarks;
     private javax.swing.JRadioButton rdbFemale;

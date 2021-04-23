@@ -57,7 +57,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
-                btnAdopt.setEnabled(adopter.isFlag());
+                btnAdopt.setEnabled(!adopter.isFlag());
             }
         }
         populateChildTable();
@@ -89,17 +89,17 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         tblChild.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblChild.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Child ID", "Child Name", "Gender", "Age", "Message", "Status"
+                "Child ID", "Child Name", "Gender", "Age", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, true
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -155,8 +155,9 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
             account.getWorkQueue().getWorkRequestList().add(adc);
             business.getWorkQueue().getWorkRequestList().add(adc);
         }
-        adopter.setFlag(false);
+        adopter.setFlag(true);
         JOptionPane.showMessageDialog(null, "Request has been sent to Child Care");
+        btnAdopt.setEnabled(false);
     }//GEN-LAST:event_btnAdoptActionPerformed
 
     public void populateChildTable() {
@@ -170,7 +171,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
                 row[2] = child.getGender();
                 row[3] = child.getChildAge();
                 row[4] = child.getStatus();
-                row[5] = child.getStatus();
+                //row[5] = child.getStatus();
                 dtms.addRow(row);
             }
         }

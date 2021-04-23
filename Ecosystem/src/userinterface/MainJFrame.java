@@ -80,7 +80,6 @@ public class MainJFrame extends javax.swing.JFrame {
         lblPwdPic = new javax.swing.JLabel();
         lblPasswrd = new javax.swing.JPasswordField();
         lblLogin = new javax.swing.JLabel();
-        lblCancel = new javax.swing.JLabel();
         lblAdopt = new javax.swing.JLabel();
         lblSponsor = new javax.swing.JLabel();
         bottomPanel = new javax.swing.JPanel();
@@ -91,6 +90,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblInfo1 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
+        lblCancel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cc.jpeg"))); // NOI18N
 
@@ -145,16 +147,18 @@ public class MainJFrame extends javax.swing.JFrame {
         upperPanel.setLayout(upperPanelLayout);
         upperPanelLayout.setHorizontalGroup(
             upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblPic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, upperPanelLayout.createSequentialGroup()
+                .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 1567, Short.MAX_VALUE)
+                .addContainerGap())
         );
         upperPanelLayout.setVerticalGroup(
             upperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(upperPanelLayout.createSequentialGroup()
-                .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 324, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(lblPic, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 3, Short.MAX_VALUE))
         );
 
-        loginJPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1340, 330));
+        loginJPanel.add(upperPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1340, 300));
 
         UserPanel.setBackground(new java.awt.Color(255, 255, 255));
         UserPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
@@ -182,15 +186,15 @@ public class MainJFrame extends javax.swing.JFrame {
             .addGroup(UserPanelLayout.createSequentialGroup()
                 .addComponent(lblUserPic, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(lblUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
         );
         UserPanelLayout.setVerticalGroup(
             UserPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lblUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
-            .addComponent(lblUserPic, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(lblUserPic, javax.swing.GroupLayout.DEFAULT_SIZE, 36, Short.MAX_VALUE)
+            .addComponent(lblUserName)
         );
 
-        loginJPanel.add(UserPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 480, 300, 40));
+        loginJPanel.add(UserPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 560, 300, 40));
 
         lblPwd.setBackground(new java.awt.Color(255, 255, 255));
         lblPwd.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(255, 204, 153)));
@@ -218,8 +222,8 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblPwdPic, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblPasswrd, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addComponent(lblPasswrd, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         lblPwdLayout.setVerticalGroup(
             lblPwdLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +231,7 @@ public class MainJFrame extends javax.swing.JFrame {
             .addComponent(lblPasswrd)
         );
 
-        loginJPanel.add(lblPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 550, 300, 40));
+        loginJPanel.add(lblPwd, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 620, 300, 40));
 
         lblLogin.setBackground(new java.awt.Color(255, 255, 255));
         lblLogin.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -239,16 +243,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 lblLoginMousePressed(evt);
             }
         });
-        loginJPanel.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 620, 300, 40));
-
-        lblCancel.setBackground(new java.awt.Color(255, 255, 255));
-        lblCancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-16.png"))); // NOI18N
-        lblCancel.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                lblCancelMousePressed(evt);
-            }
-        });
-        loginJPanel.add(lblCancel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1292, 6, 40, 40));
+        loginJPanel.add(lblLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 690, 300, 40));
 
         lblAdopt.setBackground(new java.awt.Color(255, 204, 153));
         lblAdopt.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -260,7 +255,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 lblAdoptMousePressed(evt);
             }
         });
-        loginJPanel.add(lblAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 700, 150, 40));
+        loginJPanel.add(lblAdopt, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 730, 150, 40));
 
         lblSponsor.setBackground(new java.awt.Color(255, 204, 153));
         lblSponsor.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
@@ -272,7 +267,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 lblSponsorMousePressed(evt);
             }
         });
-        loginJPanel.add(lblSponsor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 500, 160, 40));
+        loginJPanel.add(lblSponsor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 540, 160, 40));
 
         lblBottom.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cc copy.jpeg"))); // NOI18N
         lblBottom.setText("jLabel5");
@@ -291,10 +286,10 @@ public class MainJFrame extends javax.swing.JFrame {
         loginJPanel.add(bottomPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 790, 1340, 110));
 
         lblSupport.setFont(new java.awt.Font("SansSerif", 3, 20)); // NOI18N
-        lblSupport.setForeground(new java.awt.Color(255, 51, 0));
+        lblSupport.setForeground(new java.awt.Color(255, 0, 0));
         lblSupport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblSupport.setText("Your support can change the life of a child");
-        loginJPanel.add(lblSupport, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, 450, 40));
+        loginJPanel.add(lblSupport, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 380, 450, 40));
 
         lblInfo.setBorder(null);
         lblInfo.setForeground(new java.awt.Color(255, 0, 255));
@@ -304,12 +299,12 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextPane1.setText("\"The world may not change if you adopt a child but for that child, their world will change.\" ");
         lblInfo.setViewportView(jTextPane1);
 
-        loginJPanel.add(lblInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 650, 720, 50));
+        loginJPanel.add(lblInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 660, 720, 50));
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 3, 20)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 0, 0));
         jLabel2.setText("Together, we can make the world a better place for children everywhere");
-        loginJPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 600, 760, 30));
+        loginJPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 610, 760, 30));
 
         lblInfo1.setBorder(null);
         lblInfo1.setForeground(new java.awt.Color(255, 0, 255));
@@ -319,7 +314,39 @@ public class MainJFrame extends javax.swing.JFrame {
         jTextPane3.setText("\"When you sponsor a child, you're helping to ensure they can grow up healthy, learning and safe – no matter where they were born. Many children around the world aren’t getting the opportunity to reach their full potential. As a sponsor, you can help change that.\"");
         lblInfo1.setViewportView(jTextPane3);
 
-        loginJPanel.add(lblInfo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 410, 720, 100));
+        loginJPanel.add(lblInfo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 440, 720, 100));
+
+        lblCancel1.setBackground(new java.awt.Color(255, 255, 255));
+        lblCancel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/cancel-16.png"))); // NOI18N
+        lblCancel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblCancel1MousePressed(evt);
+            }
+        });
+        loginJPanel.add(lblCancel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1300, 10, 40, 40));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/44480953_248901905791534_9111493881165250560_n.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        loginJPanel.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 370, 230, 180));
 
         getContentPane().add(loginJPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
@@ -408,11 +435,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     }//GEN-LAST:event_lblLoginMousePressed
 
-    private void lblCancelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancelMousePressed
-        // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_lblCancelMousePressed
-
     private void lblAdoptMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblAdoptMousePressed
         // TODO add your handling code here:
         AdopterRegistrationJPanel panel = new AdopterRegistrationJPanel(container, system);
@@ -448,6 +470,11 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         logout();
     }//GEN-LAST:event_lblBackMousePressed
+
+    private void lblCancel1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCancel1MousePressed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_lblCancel1MousePressed
 
     private void logout() {
         container.removeAll();
@@ -500,12 +527,14 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JPanel container;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JLabel lblAdopt;
     private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblBottom;
-    private javax.swing.JLabel lblCancel;
+    private javax.swing.JLabel lblCancel1;
     private javax.swing.JScrollPane lblInfo;
     private javax.swing.JScrollPane lblInfo1;
     private javax.swing.JLabel lblLogin;
