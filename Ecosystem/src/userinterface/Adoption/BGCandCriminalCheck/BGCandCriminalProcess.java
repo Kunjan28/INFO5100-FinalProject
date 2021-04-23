@@ -269,6 +269,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
             }
+            txtRemarks.setText("");
         }
     }//GEN-LAST:event_btnApproveActionPerformed
 
@@ -315,6 +316,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
             } else {
                 JOptionPane.showMessageDialog(null, "Please select work request assigned to you");
             }
+            txtRemarks.setText("");
         }
     }//GEN-LAST:event_btnDenyActionPerformed
     

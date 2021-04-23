@@ -126,8 +126,8 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblInitiateBCG = new javax.swing.JTable();
         btnInitiateBCG = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
+        lblRefresh = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -224,16 +224,16 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         });
         add(btnInitiateBCG, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 580, 150, 30));
 
-        btnRefresh.setText("Refresh");
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        add(btnRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 20, 110, -1));
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids11.png"))); // NOI18N
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 930, 510));
+
+        lblRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refreshBtn.png"))); // NOI18N
+        lblRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblRefreshMousePressed(evt);
+            }
+        });
+        add(lblRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 20, 30, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void rdbMaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdbMaleActionPerformed
@@ -326,15 +326,14 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnInitiateBCGActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+    private void lblRefreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRefreshMousePressed
         // TODO add your handling code here:
         populateWorkRequest();
-    }//GEN-LAST:event_btnRefreshActionPerformed
+    }//GEN-LAST:event_lblRefreshMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInitiateBCG;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -345,6 +344,7 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAdopterDetails;
     private javax.swing.JLabel lblHeading;
+    private javax.swing.JLabel lblRefresh;
     private javax.swing.JRadioButton rdbFemale;
     private javax.swing.JRadioButton rdbMale;
     private javax.swing.JTable tblInitiateBCG;
