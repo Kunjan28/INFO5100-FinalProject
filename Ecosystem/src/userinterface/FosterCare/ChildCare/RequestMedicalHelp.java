@@ -136,7 +136,7 @@ public class RequestMedicalHelp extends javax.swing.JPanel {
             account.getWorkQueue().getWorkRequestList().add(docwrkreq);
             business.getWorkQueue().getWorkRequestList().add(docwrkreq);
         }
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child,true);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child, true);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
