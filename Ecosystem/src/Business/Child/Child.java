@@ -12,6 +12,7 @@ import java.util.Date;
  * @author Kunjan
  */
 public class Child {
+
     int childId;
     String name;
     int childAge;
@@ -19,7 +20,7 @@ public class Child {
     String imageDetails;
     String identificationMark;
     String gender;
-    private static int count=1;
+    private static int count = 1;
     Date registrationDate;
     String medicalStatus;
     private double BP;
@@ -174,10 +175,9 @@ public class Child {
     public void setIsSpecialChild(boolean isSpecialChild) {
         this.isSpecialChild = isSpecialChild;
     }
-    
-    
+
     @Override
-    public String toString(){
+    public String toString() {
         return String.valueOf(childId);
     }
 }

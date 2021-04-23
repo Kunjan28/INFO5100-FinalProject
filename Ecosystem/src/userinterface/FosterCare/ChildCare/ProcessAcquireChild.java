@@ -30,7 +30,6 @@ public class ProcessAcquireChild extends javax.swing.JPanel {
     /**
      * Creates new form ProcessChildCareWorkRequest
      */
-    
     JPanel userProcessContainer;
     ChildCareWorkRequest request;
     Child child;

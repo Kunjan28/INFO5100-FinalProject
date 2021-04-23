@@ -41,41 +41,41 @@ public class ChildCareWorkArea extends javax.swing.JPanel {
     Adopter adopter;
     Role roler;
     Network network;
-    
-    
+
     public ChildCareWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
         this.business = business;
-        this.childCareOrganization=(ChildCareOrganization)organization;
+        this.childCareOrganization = (ChildCareOrganization) organization;
         this.childdirectory = childdirectory;
         this.adopterdirectory = adopterdirectory;
         valueLabel.setText(organization.getName());
         manageChildAreaJPanel();
-        
+
     }
-    
-    private void manageChildAreaJPanel(){
+
+    private void manageChildAreaJPanel() {
         AcquireChild panel = new AcquireChild(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
-        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
-        layout.next(rightSystemAdminPanel);
-     }
-    
-    private void ViewChild(){
-        ViewChildDetails panel = new ViewChildDetails(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
+
+    private void ViewChild() {
+        ViewChildDetails panel = new ViewChildDetails(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
+        CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
+        layout.next(rightSystemAdminPanel);
+    }
+
     private void ViewAdopterRequest() {
         ViewAdoptionRequest panel = new ViewAdoptionRequest(rightSystemAdminPanel, account, childCareOrganization, enterprise, business, childdirectory, adopterdirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

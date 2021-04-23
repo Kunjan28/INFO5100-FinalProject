@@ -27,7 +27,7 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
     private Enterprise enterprise;
     private EcoSystem ecosystem;
 
-    public ManageUserAccountJPanel(JPanel container, Enterprise enterprise,EcoSystem ecosystem) {
+    public ManageUserAccountJPanel(JPanel container, Enterprise enterprise, EcoSystem ecosystem) {
         initComponents();
         this.enterprise = enterprise;
         this.container = container;
@@ -43,18 +43,18 @@ public class ManageUserAccountJPanel extends javax.swing.JPanel {
             organizationJComboBox.addItem(organization);
         }
     }
-    
-    public void populateEmployeeComboBox(Organization organization){
+
+    public void populateEmployeeComboBox(Organization organization) {
         employeeJComboBox.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmployeeList()) {
             employeeJComboBox.addItem(employee);
         }
     }
-    
-    private void populateRoleComboBox(Organization organization){
+
+    private void populateRoleComboBox(Organization organization) {
         roleJComboBox.removeAllItems();
-        for (Role role : organization.getSupportedRole()){
+        for (Role role : organization.getSupportedRole()) {
             roleJComboBox.addItem(role);
         }
     }

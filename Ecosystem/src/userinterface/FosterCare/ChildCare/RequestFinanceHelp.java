@@ -40,23 +40,23 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
     String data;
     Network network;
 
-   public RequestFinanceHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child, String data) {
-       initComponents();
-       this.userProcessContainer = userProcessContainer;
-       this.account = account;
-       this.organization = (ChildCareOrganization) organization;
-       this.enterprise = enterprise;
-       this.business = business;
-       this.childdirectory = childdirectory;
-       this.child = child;
+    public RequestFinanceHelp(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, Child child, String data) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = (ChildCareOrganization) organization;
+        this.enterprise = enterprise;
+        this.business = business;
+        this.childdirectory = childdirectory;
+        this.child = child;
 
-       for (Network net : business.getNetworkList()) {
-           for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
-               if (ent.equals(enterprise)) {
-                   network = net;
-               }
-           }
-       }
+        for (Network net : business.getNetworkList()) {
+            for (Enterprise ent : net.getEnterpriseDirectory().getEnterpriseList()) {
+                if (ent.equals(enterprise)) {
+                    network = net;
+                }
+            }
+        }
     }
 
     /**
@@ -142,7 +142,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
             Long amt = Long.parseLong(txtEduFunds.getText()) + Long.parseLong(txtFundsMedExp.getText()) + Long.parseLong(txtFundsLiving.getText())
                     + Long.parseLong(txtFundsMisc.getText());
             fccwr.setAmt(amt.toString());
-        }   catch (Exception e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Please enter numeric amount");
             return;
         }
@@ -168,7 +168,7 @@ public class RequestFinanceHelp extends javax.swing.JPanel {
             business.getWorkQueue().getWorkRequestList().add(fccwr);
         }
         JOptionPane.showMessageDialog(null, "Request raised to Funding team");
-        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child,false);
+        ViewCompleteChildDetails vccd = new ViewCompleteChildDetails(userProcessContainer, account, organization, enterprise, business, childdirectory, child, false);
         this.userProcessContainer.add("ViewCompleteChildDetails", vccd);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
