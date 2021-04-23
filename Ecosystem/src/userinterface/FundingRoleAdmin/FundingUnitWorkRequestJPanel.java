@@ -54,7 +54,7 @@ public class FundingUnitWorkRequestJPanel extends javax.swing.JPanel {
         this.business = system.getInstance();
         populateTable();
     }
-    
+
     public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         model.setRowCount(0);
