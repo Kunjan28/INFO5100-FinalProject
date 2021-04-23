@@ -7,6 +7,7 @@ package userinterface.SystemAdminWorkArea;
 
 import Business.EcoSystem;
 import Business.WorkQueue.AdoptionProcessWorkRequest;
+import Business.WorkQueue.ChildCareWorkRequest;
 import Business.WorkQueue.MedicalHelpWorkRequest;
 import Business.WorkQueue.EducationalHelpWorkRequest;
 
@@ -43,6 +44,7 @@ public class Services extends javax.swing.JPanel {
         ArrayList<AdoptionProcessWorkRequest> adpReqList = new ArrayList<>();
         ArrayList<MedicalHelpWorkRequest> medReqList = new ArrayList<>();
         ArrayList<EducationalHelpWorkRequest> finReqList = new ArrayList<>();
+        ArrayList<ChildCareWorkRequest> ccReqList = new ArrayList<>();
         Map<String, Integer> workReqMap = new HashMap<>();
         for (WorkRequest workQue : system.getWorkQueue().getWorkRequestList()) {
             if (workQue instanceof AdoptionProcessWorkRequest) {
@@ -52,11 +54,15 @@ public class Services extends javax.swing.JPanel {
             } else if (workQue instanceof EducationalHelpWorkRequest) {
                 finReqList.add((EducationalHelpWorkRequest) workQue);
             }
+            else if (workQue instanceof ChildCareWorkRequest) {
+                ccReqList.add((ChildCareWorkRequest) workQue);
+        }
 
         }
         workReqMap.put("Adoption Services", adpReqList.size());
         workReqMap.put("Medical Help Services", medReqList.size());
         workReqMap.put("Financial Help Services", finReqList.size());
+        workReqMap.put("Care Co-ordination Services", ccReqList.size());
 
         barChart = ChartFactory.createPieChart(
                 "Services At a Glance",

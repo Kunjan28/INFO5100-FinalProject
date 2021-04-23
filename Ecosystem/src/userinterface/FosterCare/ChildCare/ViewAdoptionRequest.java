@@ -96,6 +96,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
         tblReq = new javax.swing.JTable();
         btnProcess = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -126,9 +127,10 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
         });
         tblAdoptionReq.setViewportView(tblReq);
 
-        add(tblAdoptionReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, 708, 166));
+        add(tblAdoptionReq, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 180, 708, 140));
 
         btnProcess.setBackground(new java.awt.Color(255, 255, 255));
+        btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
         btnProcess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +145,10 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(721, 30, 110, -1));
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 20, 110, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/adp.png"))); // NOI18N
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 730, 460));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed
@@ -185,6 +190,7 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
     private javax.swing.JButton btnProcess;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane tblAdoptionReq;
     private javax.swing.JTable tblReq;
     // End of variables declaration//GEN-END:variables

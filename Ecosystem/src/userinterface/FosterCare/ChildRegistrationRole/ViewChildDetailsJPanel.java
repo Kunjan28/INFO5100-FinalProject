@@ -98,7 +98,6 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
         CancelBtn = new javax.swing.JButton();
         imageLable = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
@@ -112,6 +111,7 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         yesBtn = new javax.swing.JRadioButton();
         noBtn = new javax.swing.JRadioButton();
+        lblBack = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setEnabled(false);
@@ -180,14 +180,6 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         add(CancelBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 620, 133, 33));
         add(imageLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 220, 180));
 
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 50, 30));
-
         jLabel10.setFont(new java.awt.Font("Lucida Grande", 1, 13)); // NOI18N
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel10.setText("Identification mark");
@@ -245,17 +237,15 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
 
         noBtn.setText("No");
         add(noBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 460, -1, -1));
-    }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        ViewChildTable panel = (ViewChildTable) component;
-        panel.poplulateTable();
-        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
+        lblBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/BackIcon.png"))); // NOI18N
+        lblBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblBackMousePressed(evt);
+            }
+        });
+        add(lblBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 10, 50, 40));
+    }// </editor-fold>//GEN-END:initComponents
 
     private void updateBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateBtnActionPerformed
         enableInput();
@@ -310,12 +300,22 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_imageTextFieldActionPerformed
 
+    private void lblBackMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblBackMousePressed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] componentArray = userProcessContainer.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        ViewChildTable panel = (ViewChildTable) component;
+        panel.poplulateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_lblBackMousePressed
+
     private void enableInput() {
         CancelBtn.setEnabled(true);
         femaleRDB.setEnabled(true);
         imageLable.setEnabled(true);
         cmbAge.setEnabled(true);
-        btnBack.setEnabled(true);
         jScrollPane1.setEnabled(true);
         jTextArea1.setEnabled(true);
         jXDatePicker1.setEnabled(true);
@@ -352,7 +352,6 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CancelBtn;
-    private javax.swing.JButton btnBack;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbAge;
     private javax.swing.JRadioButton femaleRDB;
@@ -369,6 +368,7 @@ public class ViewChildDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
     private org.jdesktop.swingx.JXDatePicker jXDatePicker1;
+    private javax.swing.JLabel lblBack;
     private javax.swing.JLabel lblPhoto;
     private javax.swing.JRadioButton maleRDB;
     private javax.swing.JTextField nameTextField;

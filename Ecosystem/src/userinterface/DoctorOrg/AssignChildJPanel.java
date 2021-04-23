@@ -73,7 +73,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         populateLabTable();
         populateMedicationTable();
         txtName.setEnabled(false);
-        cmbAge.setEnabled(false);
+        txtAge.setEnabled(false);
         btnMale.setEnabled(false);
         btnFemale.setEnabled(false);
         txtMark.setEnabled(false);
@@ -142,7 +142,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private void getChildDetails() {
         displayImage();
         txtName.setText(child.getName());
-        cmbAge.setSelectedIndex(child.getChildAge());
+        txtAge.setText(String.valueOf(child.getChildAge()));
         if (child.getGender().equalsIgnoreCase("male")) {
             btnMale.setSelected(true);
         } else {
@@ -215,9 +215,9 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         btnFemale = new javax.swing.JRadioButton();
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        cmbAge = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         lblChildPic = new javax.swing.JLabel();
+        txtAge = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -347,12 +347,10 @@ public class AssignChildJPanel extends javax.swing.JPanel {
         });
         add(btnSave, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 250, 90, -1));
 
-        cmbAge.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18" }));
-        add(cmbAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 210, -1));
-
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/kids.png"))); // NOI18N
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 100, 860, 660));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, 860, 660));
         add(lblChildPic, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 30, 180, 180));
+        add(txtAge, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 210, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRequestTestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestTestActionPerformed
@@ -451,7 +449,6 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnPrescribeMedication;
     private javax.swing.JButton btnRequestTest;
     private javax.swing.JButton btnSave;
-    private javax.swing.JComboBox<String> cmbAge;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -469,6 +466,7 @@ public class AssignChildJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel lblTemp;
     private javax.swing.JTable tblLab;
     private javax.swing.JTable tblMedication;
+    private javax.swing.JTextField txtAge;
     private javax.swing.JTextField txtBP;
     private javax.swing.JTextField txtMark;
     private javax.swing.JTextField txtName;

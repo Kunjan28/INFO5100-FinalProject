@@ -300,9 +300,10 @@ public class AdoptionCheckProcess extends javax.swing.JPanel {
                     for (Enterprise ent : network.getEnterpriseDirectory().getEnterpriseList()) {
                         for (Organization organization : ent.getOrganizationDirectory().getOrganizationList()) {
                             if (organization instanceof AdopterOrganization) {
-
+                                        if(adopter.getName().equalsIgnoreCase(organization.getName())){
                                 org1 = organization;
                                 break;
+                                        }
                             }
                         }
                     }
