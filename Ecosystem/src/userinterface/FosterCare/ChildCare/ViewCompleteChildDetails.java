@@ -154,7 +154,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         add(maleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 120, -1, -1));
 
         femaleRDB.setText("Female");
-        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 110, 100, 50));
+        add(femaleRDB, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 100, 100, 60));
 
         lblGender.setText("Gender");
         add(lblGender, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 120, 130, 30));

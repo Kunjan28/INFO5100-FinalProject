@@ -140,7 +140,7 @@ public class PharmacistJPanel extends javax.swing.JPanel {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 500, 140, -1));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 500, 140, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/PharmacyImage.png"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 150, 500, 460));

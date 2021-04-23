@@ -73,7 +73,6 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         txtPrescription = new javax.swing.JTextField();
         Save = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        btnBack = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -99,14 +98,6 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/prescribtion.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(192, 100, 550, 570));
-
-        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/BackIcon.png"))); // NOI18N
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
-        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 40, 60, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
@@ -146,21 +137,9 @@ public class DoctorPrescibeMedicine extends javax.swing.JPanel {
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_SaveActionPerformed
 
-    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        // TODO add your handling code here:
-        userProcessContainer.remove(this);
-        Component[] componentArray = userProcessContainer.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        AssignChildJPanel panel = (AssignChildJPanel) component;
-        panel.populateLabTable();
-        CardLayout layout = (CardLayout)userProcessContainer.getLayout();
-        layout.previous(userProcessContainer);
-    }//GEN-LAST:event_btnBackActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Save;
-    private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblPrescription;

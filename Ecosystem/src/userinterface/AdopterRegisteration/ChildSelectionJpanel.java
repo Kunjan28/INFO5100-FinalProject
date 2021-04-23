@@ -57,6 +57,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         for (Adopter a : adopterdirectory.getAdoptersList()) {
             if (a.getUsername().equals(account.getUsername())) {
                 adopter = a;
+                btnAdopt.setEnabled(adopter.isFlag());
             }
         }
         populateChildTable();

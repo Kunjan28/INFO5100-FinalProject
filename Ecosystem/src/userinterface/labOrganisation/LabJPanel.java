@@ -110,7 +110,7 @@ public class LabJPanel extends javax.swing.JPanel {
                 btnAssignToMeActionPerformed(evt);
             }
         });
-        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 420, 160, 30));
+        add(btnAssignToMe, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 430, 160, 30));
 
         btnProcess.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnProcess.setText("Process");
@@ -119,7 +119,7 @@ public class LabJPanel extends javax.swing.JPanel {
                 btnProcessActionPerformed(evt);
             }
         });
-        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 420, 150, 30));
+        add(btnProcess, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 430, 150, 30));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icon/lab.jpeg"))); // NOI18N
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 140, 760, 540));
