@@ -36,9 +36,8 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
     AdopterDirectory adopterdirectory;
     ChildDirectory childdirectory;
     DonorDirectory donorDirectory;
-   
-    
-    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory,DonorDirectory donorDirectory) {
+
+    public AdminWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory, DonorDirectory donorDirectory) {
         initComponents();
         System.out.println("here");
         this.userProcessContainer = userProcessContainer;
@@ -54,45 +53,42 @@ public class AdminWorkAreaJPanel extends javax.swing.JPanel {
         valueLabel.setText(enterprise.getName());
         manageOrganisation();
     }
-   
-    
-    private void manageOrganisation(){
+
+    private void manageOrganisation() {
         ManageOrganizationJPanel panel = new ManageOrganizationJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory(), enterprise);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-     }
-    
-    private void manageEmployee(){
+    }
+
+    private void manageEmployee() {
         ManageEmployeeJPanel panel = new ManageEmployeeJPanel(rightSystemAdminPanel, enterprise.getOrganizationDirectory());
-        rightSystemAdminPanel.add("ManageEnterpriseJPanel",panel);
+        rightSystemAdminPanel.add("ManageEnterpriseJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
-        
+
     }
-    
-    private void manageUser(){
+
+    private void manageUser() {
         ManageUserAccountJPanel panel = new ManageUserAccountJPanel(rightSystemAdminPanel, enterprise, business);
-        rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel",panel);
+        rightSystemAdminPanel.add("ManageEnterpriseAdminJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
-    private void manageRequests(){
-         if("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
-               AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,adopterdirectory);
-        rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
-         }
-         else if("Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())){
-             FundingUnitWorkRequestJPanel vOUWRJP = new FundingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business,adopterdirectory,donorDirectory);
-        rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
-         }
-        
+
+    private void manageRequests() {
+        if ("Adoption".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())) {
+            AdoptionUnitWorkRequestJPanel vOUWRJP = new AdoptionUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business, adopterdirectory);
+            rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
+        } else if ("Funding".equalsIgnoreCase(this.enterprise.getEnterpriseType().getValue())) {
+            FundingUnitWorkRequestJPanel vOUWRJP = new FundingUnitWorkRequestJPanel(rightSystemAdminPanel, account, enterprise, business, adopterdirectory, donorDirectory);
+            rightSystemAdminPanel.add("manageOrganizationJPanel", vOUWRJP);
+        }
+
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
- 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
