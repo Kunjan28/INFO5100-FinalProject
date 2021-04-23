@@ -258,7 +258,7 @@ public class SponsorRegistrationJPanel extends javax.swing.JPanel {
                 btnRegisterActionPerformed(evt);
             }
         });
-        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 680, 160, -1));
+        add(btnRegister, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 590, 160, -1));
 
         usernameExistsMessage.setForeground(new java.awt.Color(255, 0, 0));
         usernameExistsMessage.setText("Username already exists");
@@ -311,7 +311,6 @@ public class SponsorRegistrationJPanel extends javax.swing.JPanel {
         lblcity.setText("City");
         add(lblcity, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 380, 70, 20));
 
-        cmbCity.setBackground(new java.awt.Color(255, 255, 255));
         add(cmbCity, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 230, 30));
 
         lblAnnual.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N

@@ -102,7 +102,15 @@ public class AdoptionRequestJPanel extends javax.swing.JPanel {
             new String [] {
                 "Message", "Adopter Name", "Receiver", "Adopter ID", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblAdoptersRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 830, 160));

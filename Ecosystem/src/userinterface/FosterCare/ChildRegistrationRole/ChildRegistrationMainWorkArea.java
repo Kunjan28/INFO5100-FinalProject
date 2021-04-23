@@ -33,8 +33,7 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
     ChildDirectory childdirectory;
     EcoSystem business;
     Network network;
-    
-    
+
     public ChildRegistrationMainWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -46,14 +45,13 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
         valueLabel.setText(organization.getName());
         childRegistrationArea();
     }
-    
+
     private void childRegistrationArea() {
         RegisterNewChildJPanel panel = new RegisterNewChildJPanel(rightSystemAdminPanel, childdirectory, account, enterprise, business, childRegistrationOrganization);
         rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -190,7 +188,7 @@ public class ChildRegistrationMainWorkArea extends javax.swing.JPanel {
     private void lblViewChildMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblViewChildMousePressed
         // TODO add your handling code here:
         ViewChildTable panel = new ViewChildTable(rightSystemAdminPanel, account, childRegistrationOrganization, enterprise, business, childdirectory);
-        rightSystemAdminPanel.add("ManageNetworkJPanel",panel);
+        rightSystemAdminPanel.add("ManageNetworkJPanel", panel);
         CardLayout layout = (CardLayout) rightSystemAdminPanel.getLayout();
         layout.next(rightSystemAdminPanel);
     }//GEN-LAST:event_lblViewChildMousePressed

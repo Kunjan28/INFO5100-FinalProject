@@ -45,7 +45,7 @@ public class AcquireChild extends javax.swing.JPanel {
     Adopter adopter;
     Role roler;
     Network network;
-      
+
     public AcquireChild(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory, AdopterDirectory adopterdirectory) {
         initComponents();
         this.userProcessContainer = userProcessContainer;
@@ -149,7 +149,7 @@ public class AcquireChild extends javax.swing.JPanel {
         }
         WorkRequest re = (WorkRequest) workTable.getValueAt(selectedRow, 0);
         //if (re.getStatus().equalsIgnoreCase("Acquired")) {
-        if("Acquired".equalsIgnoreCase(re.getStatus())) {
+        if ("Acquired".equalsIgnoreCase(re.getStatus())) {
             JOptionPane.showMessageDialog(null, "Request already completed.");
             return;
         } else {
@@ -184,7 +184,6 @@ public class AcquireChild extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Request Assigned");
         }
     }//GEN-LAST:event_btnAssignActionPerformed
-
 
     public void populateWorkRequest() {
         DefaultTableModel table = (DefaultTableModel) workTable.getModel();
