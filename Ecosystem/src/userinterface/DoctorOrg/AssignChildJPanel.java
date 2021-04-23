@@ -296,7 +296,15 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             new String [] {
                 "Test Requested", "Child ID", "Child Name", "Receiver", "Message", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         ScrollPaneLabWork.setViewportView(tblLab);
 
         add(ScrollPaneLabWork, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 490, 850, 90));
@@ -311,7 +319,15 @@ public class AssignChildJPanel extends javax.swing.JPanel {
             new String [] {
                 "Message", "Child ID", "Child Name", "Receiver", "Status", "Medication Prescribed"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tblMedication);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 660, 850, 90));

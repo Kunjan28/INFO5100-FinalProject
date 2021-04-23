@@ -102,7 +102,15 @@ public class BGCandCriminalCheckRequestJPanel extends javax.swing.JPanel {
             new String [] {
                 "Message", "Sender", "Receiver", "UserID", "Adopter Name", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 340, 930, 170));

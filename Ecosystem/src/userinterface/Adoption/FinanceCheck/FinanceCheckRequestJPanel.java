@@ -84,7 +84,15 @@ public class FinanceCheckRequestJPanel extends javax.swing.JPanel {
             new String [] {
                 "Message", "Sender", "Receiver", "User ID", "Adopter Name", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblRequest);
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 960, 166));
