@@ -172,11 +172,11 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
 
         lblRemarks.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblRemarks.setText("Remarks");
-        add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 530, 90, -1));
+        add(lblRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 620, 90, -1));
 
         txtRemarks.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         txtRemarks.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 500, 210, 70));
+        add(txtRemarks, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 570, 210, 70));
 
         btnApprove.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnApprove.setText("Approve");
@@ -185,7 +185,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
                 btnApproveActionPerformed(evt);
             }
         });
-        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 630, 140, -1));
+        add(btnApprove, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 610, 140, -1));
 
         btnDeny.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         btnDeny.setText("Deny");
@@ -194,7 +194,7 @@ public class BGCandCriminalProcess extends javax.swing.JPanel {
                 btnDenyActionPerformed(evt);
             }
         });
-        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 620, 130, -1));
+        add(btnDeny, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 610, 130, -1));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/search.png"))); // NOI18N
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 830, 610));
