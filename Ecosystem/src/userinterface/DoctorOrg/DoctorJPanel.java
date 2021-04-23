@@ -51,7 +51,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
             }
         }
         populateRequestTable();
-        btnProcess.setEnabled(false);
+        
     }
     
     
@@ -166,7 +166,7 @@ public class DoctorJPanel extends javax.swing.JPanel {
         populateRequestTable();
         JOptionPane.showMessageDialog(null, "Request has been assigned");
         populateRequestTable();
-        btnProcess.setEnabled(true);
+        
     }//GEN-LAST:event_btnAssignToMeActionPerformed
 
     private void btnProcessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcessActionPerformed

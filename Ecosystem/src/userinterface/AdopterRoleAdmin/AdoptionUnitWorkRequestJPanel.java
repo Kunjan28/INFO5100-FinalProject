@@ -90,6 +90,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         processJButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        lblRefresh = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1058, 840));
@@ -158,6 +159,14 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/funds.png"))); // NOI18N
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 350, 870, 300));
+
+        lblRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/refreshBtn.png"))); // NOI18N
+        lblRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                lblRefreshMousePressed(evt);
+            }
+        });
+        add(lblRefresh, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 130, 40, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void assignJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignJButtonActionPerformed
@@ -243,6 +252,11 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_processJButtonActionPerformed
 
+    private void lblRefreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblRefreshMousePressed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_lblRefreshMousePressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable adpworkRequest;
@@ -250,6 +264,7 @@ public class AdoptionUnitWorkRequestJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblRefresh;
     private javax.swing.JButton processJButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -14,6 +14,7 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
 import Business.WorkQueue.DonorWorkRequest;
+import Business.WorkQueue.EducationalHelpWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -164,6 +165,13 @@ public class ViewAndProcessTransactionRecord extends javax.swing.JPanel {
                         break;
                     }
                 }
+            }
+            for (WorkRequest request : business.getWorkQueue().getWorkRequestList()) {
+            if (request.getChildId() == req.getChildId()) {
+                if (request instanceof EducationalHelpWorkRequest) {
+                    request.setStatus("Sponsored");
+                }
+            }
             }
             String subject = "Payment Receipt";
             String content = "Dear Sponsor, this is an acknowledgement receipt. We have recieved your payment. Thank you so much for your kind donation. Your caring support will make a great difference in the child's academic success. We hope that you will continue serving and make world a better place for children.";

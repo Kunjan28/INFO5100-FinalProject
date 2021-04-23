@@ -33,7 +33,6 @@ public class FinanceWorkAreaJPanel extends javax.swing.JPanel {
     Enterprise enterprise;
     EcoSystem business;
     ChildDirectory childdirectory;
-    int countApprove=0, countDeny=0, countPending=0; 
     
    
 public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, EcoSystem business, ChildDirectory childdirectory) {
@@ -73,11 +72,11 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
 
             },
             new String [] {
-                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Results", "Status"
+                "Message", "Sender", "Receiver", "Child ID", "Remarks", "Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -185,15 +184,7 @@ public FinanceWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, O
                 String remarks = ((EducationalHelpWorkRequest) req).getRemarks();
                 row[4] = remarks;
                 String result = ((EducationalHelpWorkRequest) req).getTestResult();
-                row[5] = result == null ? "Waiting" : result;
-                row[6] = req.getStatus();
-                if (result == "Approved") {
-                    countApprove++;
-                } else if (result == "Denied") {
-                    countDeny++;
-                } else {
-                    countPending++;
-                }
+                row[5] = req.getStatus();
                 dtms.addRow(row);
             }
 

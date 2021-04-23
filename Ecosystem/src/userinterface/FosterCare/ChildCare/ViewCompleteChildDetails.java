@@ -79,6 +79,10 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
         populaterequestTable();
         btnRequestFunds.setEnabled(!child.isFinancialHelp() && flag);
         requestMedicalHelpBtn.setEnabled(!child.isMedicalHelp());
+        if(child.getStatus().contains("Adopted by")){
+             btnRequestFunds.setEnabled(false);
+        requestMedicalHelpBtn.setEnabled(false);
+        }
     }
 
     public void displayImage() {
@@ -239,7 +243,7 @@ public class ViewCompleteChildDetails extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Message", "Child Id", "Sender", "Receiver", "Result", "Remarks"
+                "Message", "Child Id", "Sender", "Receiver", "Status", "Remarks"
             }
         ) {
             boolean[] canEdit = new boolean [] {

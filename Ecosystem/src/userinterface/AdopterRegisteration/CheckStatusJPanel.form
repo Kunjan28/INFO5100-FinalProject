@@ -54,7 +54,7 @@
               <Table columnCount="3" rowCount="4">
                 <Column editable="false" title="Message" type="java.lang.Object"/>
                 <Column editable="false" title="BGC Status" type="java.lang.Object"/>
-                <Column editable="false" title="Criminal Check Status" type="java.lang.Object"/>
+                <Column editable="false" title="Finance Check Status" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

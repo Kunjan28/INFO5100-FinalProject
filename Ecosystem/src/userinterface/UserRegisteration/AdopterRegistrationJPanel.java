@@ -314,14 +314,14 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         contactNoValidate.setForeground(new java.awt.Color(255, 0, 0));
         contactNoValidate.setText("Phone format incorrect");
-        add(contactNoValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 310, -1, -1));
+        add(contactNoValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 310, -1, -1));
 
         annualIncomeCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(annualIncomeCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(1180, 530, -1, 30));
 
         AnnualIncomeValidate.setForeground(new java.awt.Color(255, 0, 0));
         AnnualIncomeValidate.setText("Enter numeric value");
-        add(AnnualIncomeValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 540, -1, -1));
+        add(AnnualIncomeValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 540, -1, -1));
 
         ageCorrect.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/tick.png"))); // NOI18N
         add(ageCorrect, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, -1, -1));
@@ -335,7 +335,7 @@ public class AdopterRegistrationJPanel extends javax.swing.JPanel {
 
         ssnValidate.setForeground(new java.awt.Color(255, 0, 0));
         ssnValidate.setText("Enter valid SSN");
-        add(ssnValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1210, 460, -1, -1));
+        add(ssnValidate, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 460, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterActionPerformed
