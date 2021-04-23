@@ -114,7 +114,15 @@ public class ViewChildDetails extends javax.swing.JPanel {
             new String [] {
                 "Child ID", "Name", "Age", "Gender", "Status"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblChild.setOpaque(false);
         tblChildDetails.setViewportView(tblChild);
 

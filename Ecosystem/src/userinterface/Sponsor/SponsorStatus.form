@@ -59,9 +59,9 @@
                 <Column editable="false" title="Message" type="java.lang.Object"/>
                 <Column editable="false" title="Reciever" type="java.lang.Object"/>
                 <Column editable="false" title="Child ID" type="java.lang.Object"/>
-                <Column editable="true" title="Child Name" type="java.lang.Object"/>
+                <Column editable="false" title="Child Name" type="java.lang.Object"/>
                 <Column editable="false" title="Amount" type="java.lang.Object"/>
-                <Column editable="true" title="Status" type="java.lang.Object"/>
+                <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

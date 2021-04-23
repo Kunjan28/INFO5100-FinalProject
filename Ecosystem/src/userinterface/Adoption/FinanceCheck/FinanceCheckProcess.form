@@ -151,7 +151,7 @@
                 <Column editable="false" title="Sender" type="java.lang.Object"/>
                 <Column editable="false" title="Receiver" type="java.lang.Object"/>
                 <Column editable="false" title="User ID" type="java.lang.Object"/>
-                <Column editable="true" title="User Name" type="java.lang.Object"/>
+                <Column editable="false" title="User Name" type="java.lang.Object"/>
                 <Column editable="false" title="Status" type="java.lang.Object"/>
               </Table>
             </Property>
