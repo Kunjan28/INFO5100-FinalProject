@@ -15,8 +15,6 @@ import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import userinterface.UserRegisteration.SponsorRegistrationJPanel;
 import java.awt.CardLayout;
-import java.awt.Color;
-import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import userinterface.UserRegisteration.AdopterRegistrationJPanel;
 ;
@@ -379,14 +377,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         if (userAccount == null) {
             for (Network network : system.getNetworkList()) {
-                //Step 2.a: check against each enterprise
-                System.out.println("Network name --->> " + network.getName());
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()) {
-                    System.out.println("Enterprise name --->> " + enterprise.getName());
+
                     userAccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
                     networkEmergency = network;
                     if (userAccount == null) {
-                        //Step 3:check against each organization for each enterprise
                         for (Organization organization : enterprise.getOrganizationDirectory().getOrganizationList()) {
                             userAccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
                             if (userAccount != null) {
@@ -408,9 +403,6 @@ public class MainJFrame extends javax.swing.JFrame {
                 if (inEnterprise != null) {
                     break;
                 }
-                /*if (networkEmergency != null) {//changed
-                    break;
-                }*/
             }
         }
         if (userAccount == null) {
