@@ -135,7 +135,7 @@ public class ChildSelectionJpanel extends javax.swing.JPanel {
         adc.setUserId(uid);
         adc.setAdopterName(adopter.getName());
         adc.setMessage("I want to adopt");
-        adc.setStatus("Finance and background check completed");
+        adc.setStatus("Pending with child care");
         adc.setChildName(ch.getName());
         adc.setEmailId(adopter.getEmailId());
         //adc.s
