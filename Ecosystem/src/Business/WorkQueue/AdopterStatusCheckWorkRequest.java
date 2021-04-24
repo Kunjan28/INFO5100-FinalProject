@@ -12,6 +12,7 @@ package Business.WorkQueue;
 public class AdopterStatusCheckWorkRequest extends WorkRequest {
      private String bgcStatus;
      private String financeStatus;
+     private String childCareStatus;
 
     public String getBgcStatus() {
         return bgcStatus;
@@ -28,5 +29,17 @@ public class AdopterStatusCheckWorkRequest extends WorkRequest {
     public void setFinanceStatus(String financeStatus) {
         this.financeStatus = financeStatus;
     }
+
+    public String getChildCareStatus() {
+        return childCareStatus;
+    }
+
+    public void setChildCareStatus(String childCareStatus) {
+        this.childCareStatus = childCareStatus;
+    }
+    
+    
+    
+   
     
 }

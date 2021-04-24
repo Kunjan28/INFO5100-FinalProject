@@ -17,6 +17,7 @@ import Business.Organization.Organization;
 import Business.Role.Role;
 import Business.UserAccount.UserAccount;
 import Business.Utils.CommonMail;
+import Business.WorkQueue.AdopterStatusCheckWorkRequest;
 import Business.WorkQueue.ChildCareAdoptionWorkRequest;
 import Business.WorkQueue.WorkRequest;
 import javax.swing.JOptionPane;
@@ -173,6 +174,17 @@ public class ViewAdoptionRequest extends javax.swing.JPanel {
                     ch.setStatus("Adopted by " + req.getAdopterName());
                 }
             }
+             for (WorkRequest wreq : business.getWorkQueue().getWorkRequestList()) {
+                   
+                        if (wreq instanceof AdopterStatusCheckWorkRequest) {
+                             if (wreq.getUserId() == req.getUserId()) {
+                            ((AdopterStatusCheckWorkRequest) wreq).setFinanceStatus("Approved");
+                            ((AdopterStatusCheckWorkRequest) wreq).setBgcStatus("Approved");
+                             ((AdopterStatusCheckWorkRequest) wreq).setChildCareStatus("Processed");
+                           
+                        }
+                    }
+                }
             String subject = "Congratulations! Your adoption request is approved";
             String content = "We are happy to inform you that your adoption request has been approved. We are sure that " +name+ " will witness loving attention from you.";
             CommonMail.sendEmailMessage(req.getEmailId(), subject, content);

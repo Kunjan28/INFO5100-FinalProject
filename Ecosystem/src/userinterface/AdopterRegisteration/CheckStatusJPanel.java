@@ -70,6 +70,7 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
                     row[0] = req;
                     row[1] = ((AdopterStatusCheckWorkRequest) req).getBgcStatus();
                     row[2] = ((AdopterStatusCheckWorkRequest) req).getFinanceStatus();
+                    row[3] = ((AdopterStatusCheckWorkRequest) req).getChildCareStatus();
                     dtms.addRow(row);
 
                     bgcstatus = ((AdopterStatusCheckWorkRequest) req).getBgcStatus();
@@ -103,17 +104,17 @@ public class CheckStatusJPanel extends javax.swing.JPanel {
         tblReq.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         tblReq.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Message", "BGC Status", "Finance Check Status"
+                "Message", "BGC Status", "Finance Check Status", "Child Care Status"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
